@@ -23,7 +23,7 @@
                     <rect key="frame" x="117" y="119" width="141" height="30"/>
                     <state key="normal" title="Login with Facebook"/>
                     <connections>
-                        <action selector="loginWithFacebookButton:" destination="-1" eventType="touchUpInside" id="sJx-wW-bdm"/>
+                        <action selector="loginWithFacebook:" destination="-1" eventType="touchUpInside" id="Zgq-Fb-YqN"/>
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GjY-ar-OaK">
@@ -51,12 +51,5 @@
                 <constraint firstItem="GjY-ar-OaK" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="269" id="tqN-xr-vQB"/>
             </constraints>
         </view>
-        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="2be-6J-pb0">
-            <rect key="frame" x="0.0" y="0.0" width="42" height="21"/>
-            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-            <nil key="textColor"/>
-            <nil key="highlightedColor"/>
-        </label>
     </objects>
 </document>

@@ -26,11 +26,20 @@
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gMg-dn-4sX">
+                    <rect key="frame" x="132" y="416" width="110" height="30"/>
+                    <state key="normal" title="Find Challenges"/>
+                    <connections>
+                        <action selector="showFindChallenges:" destination="-1" eventType="touchUpInside" id="ZCQ-Eb-QWK"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="M4o-nY-Z3A" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="SPd-zO-I9F"/>
-                <constraint firstItem="M4o-nY-Z3A" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="zC2-LF-Wvv"/>
+                <constraint firstItem="M4o-nY-Z3A" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="Uzd-lM-RL1"/>
+                <constraint firstItem="M4o-nY-Z3A" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="k1V-2C-30r"/>
+                <constraint firstItem="gMg-dn-4sX" firstAttribute="top" secondItem="M4o-nY-Z3A" secondAttribute="bottom" constant="72" id="m5k-Fi-tJk"/>
+                <constraint firstItem="M4o-nY-Z3A" firstAttribute="centerX" secondItem="gMg-dn-4sX" secondAttribute="centerX" id="rZX-Cg-QHm"/>
             </constraints>
             <point key="canvasLocation" x="126.5" y="54.5"/>
         </view>

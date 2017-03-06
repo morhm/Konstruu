@@ -11,7 +11,7 @@ import UIKit
 class LoginViewController: UIViewController {
     // MARK: - Navigation
 
-     @IBAction func loginWithFacebookButton(_ sender: UIButton) {
+     @IBAction func loginWithFacebook(_ sender: UIButton) {
         let profileVC = ProfileViewController(nibName: "ProfileViewController", bundle: nil)
         present(profileVC, animated: false, completion: {
             profileVC.userID = 1
