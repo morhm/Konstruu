@@ -15,6 +15,14 @@
 		61BD68CC1E6DF3C500B1A0E9 /* FindChallengesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61BD68CB1E6DF3C500B1A0E9 /* FindChallengesTableViewController.swift */; };
 		61BD68CF1E6DF7B900B1A0E9 /* ChallengeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61BD68CD1E6DF7B900B1A0E9 /* ChallengeTableViewCell.swift */; };
 		61BD68D01E6DF7B900B1A0E9 /* ChallengeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 61BD68CE1E6DF7B900B1A0E9 /* ChallengeTableViewCell.xib */; };
+		61F7F8761E6E06870017461F /* ChallengeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61F7F8741E6E06870017461F /* ChallengeViewController.swift */; };
+		61F7F8771E6E06870017461F /* ChallengeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 61F7F8751E6E06870017461F /* ChallengeViewController.xib */; };
+		61F7F87A1E6E06FB0017461F /* TeamViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61F7F8781E6E06FB0017461F /* TeamViewController.swift */; };
+		61F7F87B1E6E06FB0017461F /* TeamViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 61F7F8791E6E06FB0017461F /* TeamViewController.xib */; };
+		61F7F87E1E6E076C0017461F /* CreateChallengeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61F7F87C1E6E076C0017461F /* CreateChallengeViewController.swift */; };
+		61F7F87F1E6E076C0017461F /* CreateChallengeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 61F7F87D1E6E076C0017461F /* CreateChallengeViewController.xib */; };
+		61F7F8821E6E077D0017461F /* CreateTeamViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61F7F8801E6E077D0017461F /* CreateTeamViewController.swift */; };
+		61F7F8831E6E077D0017461F /* CreateTeamViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 61F7F8811E6E077D0017461F /* CreateTeamViewController.xib */; };
 		63C9D1FF9CC1A80C8AADAB4C /* Pods_Konstruu.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F54197AF7908272DF974385 /* Pods_Konstruu.framework */; };
 		68C8E55C1E6408AA00047901 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68C8E55B1E6408AA00047901 /* AppDelegate.swift */; };
 		68C8E5631E6408AA00047901 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 68C8E5621E6408AA00047901 /* Assets.xcassets */; };
@@ -32,6 +40,14 @@
 		61BD68CB1E6DF3C500B1A0E9 /* FindChallengesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FindChallengesTableViewController.swift; sourceTree = "<group>"; };
 		61BD68CD1E6DF7B900B1A0E9 /* ChallengeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChallengeTableViewCell.swift; sourceTree = "<group>"; };
 		61BD68CE1E6DF7B900B1A0E9 /* ChallengeTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChallengeTableViewCell.xib; sourceTree = "<group>"; };
+		61F7F8741E6E06870017461F /* ChallengeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChallengeViewController.swift; sourceTree = "<group>"; };
+		61F7F8751E6E06870017461F /* ChallengeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChallengeViewController.xib; sourceTree = "<group>"; };
+		61F7F8781E6E06FB0017461F /* TeamViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeamViewController.swift; sourceTree = "<group>"; };
+		61F7F8791E6E06FB0017461F /* TeamViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TeamViewController.xib; sourceTree = "<group>"; };
+		61F7F87C1E6E076C0017461F /* CreateChallengeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateChallengeViewController.swift; sourceTree = "<group>"; };
+		61F7F87D1E6E076C0017461F /* CreateChallengeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CreateChallengeViewController.xib; sourceTree = "<group>"; };
+		61F7F8801E6E077D0017461F /* CreateTeamViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateTeamViewController.swift; sourceTree = "<group>"; };
+		61F7F8811E6E077D0017461F /* CreateTeamViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CreateTeamViewController.xib; sourceTree = "<group>"; };
 		68C8E5581E6408AA00047901 /* Konstruu.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Konstruu.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		68C8E55B1E6408AA00047901 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		68C8E5621E6408AA00047901 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -117,6 +133,14 @@
 				61BD68C91E6DF3BC00B1A0E9 /* FindChallengesTableViewController.xib */,
 				61BD68CD1E6DF7B900B1A0E9 /* ChallengeTableViewCell.swift */,
 				61BD68CE1E6DF7B900B1A0E9 /* ChallengeTableViewCell.xib */,
+				61F7F8741E6E06870017461F /* ChallengeViewController.swift */,
+				61F7F8751E6E06870017461F /* ChallengeViewController.xib */,
+				61F7F8781E6E06FB0017461F /* TeamViewController.swift */,
+				61F7F8791E6E06FB0017461F /* TeamViewController.xib */,
+				61F7F87C1E6E076C0017461F /* CreateChallengeViewController.swift */,
+				61F7F87D1E6E076C0017461F /* CreateChallengeViewController.xib */,
+				61F7F8801E6E077D0017461F /* CreateTeamViewController.swift */,
+				61F7F8811E6E077D0017461F /* CreateTeamViewController.xib */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -195,10 +219,14 @@
 			files = (
 				61BD68BF1E6DEC0A00B1A0E9 /* LoginViewController.xib in Resources */,
 				61BD68CA1E6DF3BC00B1A0E9 /* FindChallengesTableViewController.xib in Resources */,
+				61F7F8771E6E06870017461F /* ChallengeViewController.xib in Resources */,
+				61F7F87F1E6E076C0017461F /* CreateChallengeViewController.xib in Resources */,
 				68C8E5661E6408AA00047901 /* LaunchScreen.storyboard in Resources */,
 				61BD68C31E6DEEF400B1A0E9 /* ProfileViewController.xib in Resources */,
+				61F7F87B1E6E06FB0017461F /* TeamViewController.xib in Resources */,
 				68C8E5631E6408AA00047901 /* Assets.xcassets in Resources */,
 				61BD68D01E6DF7B900B1A0E9 /* ChallengeTableViewCell.xib in Resources */,
+				61F7F8831E6E077D0017461F /* CreateTeamViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -261,7 +289,11 @@
 				61BD68C21E6DEEF400B1A0E9 /* ProfileViewController.swift in Sources */,
 				61BD68BE1E6DEC0A00B1A0E9 /* LoginViewController.swift in Sources */,
 				68C8E55C1E6408AA00047901 /* AppDelegate.swift in Sources */,
+				61F7F87E1E6E076C0017461F /* CreateChallengeViewController.swift in Sources */,
+				61F7F8821E6E077D0017461F /* CreateTeamViewController.swift in Sources */,
+				61F7F8761E6E06870017461F /* ChallengeViewController.swift in Sources */,
 				61BD68CF1E6DF7B900B1A0E9 /* ChallengeTableViewCell.swift in Sources */,
+				61F7F87A1E6E06FB0017461F /* TeamViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
