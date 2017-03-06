@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		61BD68BE1E6DEC0A00B1A0E9 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61BD68BC1E6DEC0A00B1A0E9 /* LoginViewController.swift */; };
 		61BD68BF1E6DEC0A00B1A0E9 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 61BD68BD1E6DEC0A00B1A0E9 /* LoginViewController.xib */; };
+		61BD68C21E6DEEF400B1A0E9 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61BD68C01E6DEEF400B1A0E9 /* ProfileViewController.swift */; };
+		61BD68C31E6DEEF400B1A0E9 /* ProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 61BD68C11E6DEEF400B1A0E9 /* ProfileViewController.xib */; };
 		63C9D1FF9CC1A80C8AADAB4C /* Pods_Konstruu.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F54197AF7908272DF974385 /* Pods_Konstruu.framework */; };
 		68C8E55C1E6408AA00047901 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68C8E55B1E6408AA00047901 /* AppDelegate.swift */; };
 		68C8E5631E6408AA00047901 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 68C8E5621E6408AA00047901 /* Assets.xcassets */; };
@@ -20,6 +22,8 @@
 		3933F443C092D674AF826DEB /* Pods-Konstruu.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Konstruu.release.xcconfig"; path = "Pods/Target Support Files/Pods-Konstruu/Pods-Konstruu.release.xcconfig"; sourceTree = "<group>"; };
 		61BD68BC1E6DEC0A00B1A0E9 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		61BD68BD1E6DEC0A00B1A0E9 /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
+		61BD68C01E6DEEF400B1A0E9 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		61BD68C11E6DEEF400B1A0E9 /* ProfileViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProfileViewController.xib; sourceTree = "<group>"; };
 		68C8E5581E6408AA00047901 /* Konstruu.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Konstruu.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		68C8E55B1E6408AA00047901 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		68C8E5621E6408AA00047901 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -91,6 +95,8 @@
 			children = (
 				61BD68BC1E6DEC0A00B1A0E9 /* LoginViewController.swift */,
 				61BD68BD1E6DEC0A00B1A0E9 /* LoginViewController.xib */,
+				61BD68C01E6DEEF400B1A0E9 /* ProfileViewController.swift */,
+				61BD68C11E6DEEF400B1A0E9 /* ProfileViewController.xib */,
 			);
 			name = "View Controller";
 			sourceTree = "<group>";
@@ -169,6 +175,7 @@
 			files = (
 				61BD68BF1E6DEC0A00B1A0E9 /* LoginViewController.xib in Resources */,
 				68C8E5661E6408AA00047901 /* LaunchScreen.storyboard in Resources */,
+				61BD68C31E6DEEF400B1A0E9 /* ProfileViewController.xib in Resources */,
 				68C8E5631E6408AA00047901 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -228,6 +235,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				61BD68C21E6DEEF400B1A0E9 /* ProfileViewController.swift in Sources */,
 				61BD68BE1E6DEC0A00B1A0E9 /* LoginViewController.swift in Sources */,
 				68C8E55C1E6408AA00047901 /* AppDelegate.swift in Sources */,
 			);

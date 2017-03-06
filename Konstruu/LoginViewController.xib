@@ -19,15 +19,44 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e1A-5I-jxT">
-                    <rect key="frame" x="166" y="277" width="42" height="21"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <nil key="textColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z8T-xX-6wh">
+                    <rect key="frame" x="117" y="119" width="141" height="30"/>
+                    <state key="normal" title="Login with Facebook"/>
+                    <connections>
+                        <action selector="loginWithFacebookButton:" destination="-1" eventType="touchUpInside" id="sJx-wW-bdm"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GjY-ar-OaK">
+                    <rect key="frame" x="132" y="269" width="111" height="30"/>
+                    <state key="normal" title="Login with Email"/>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bdP-g8-I4a">
+                    <rect key="frame" x="110" y="383" width="155" height="30"/>
+                    <state key="normal" title="Sign up with Facebook"/>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f7i-x2-vzQ">
+                    <rect key="frame" x="125" y="476" width="125" height="30"/>
+                    <state key="normal" title="Sign up with Email"/>
+                </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="Z8T-xX-6wh" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="6db-hq-gxV"/>
+                <constraint firstItem="Z8T-xX-6wh" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="119" id="SPS-sz-Nxl"/>
+                <constraint firstItem="Z8T-xX-6wh" firstAttribute="centerX" secondItem="GjY-ar-OaK" secondAttribute="centerX" id="VnX-xB-FDz"/>
+                <constraint firstItem="GjY-ar-OaK" firstAttribute="centerX" secondItem="bdP-g8-I4a" secondAttribute="centerX" id="ZYY-C2-29K"/>
+                <constraint firstItem="bdP-g8-I4a" firstAttribute="centerX" secondItem="f7i-x2-vzQ" secondAttribute="centerX" id="frl-T5-Cob"/>
+                <constraint firstItem="bdP-g8-I4a" firstAttribute="top" secondItem="GjY-ar-OaK" secondAttribute="bottom" constant="84" id="nCc-2e-nja"/>
+                <constraint firstItem="f7i-x2-vzQ" firstAttribute="top" secondItem="bdP-g8-I4a" secondAttribute="bottom" constant="63" id="rln-S0-FEP"/>
+                <constraint firstItem="GjY-ar-OaK" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="269" id="tqN-xr-vQB"/>
+            </constraints>
         </view>
+        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="2be-6J-pb0">
+            <rect key="frame" x="0.0" y="0.0" width="42" height="21"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+            <nil key="textColor"/>
+            <nil key="highlightedColor"/>
+        </label>
     </objects>
 </document>
