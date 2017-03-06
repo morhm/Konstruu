@@ -13,6 +13,8 @@
 		61BD68C31E6DEEF400B1A0E9 /* ProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 61BD68C11E6DEEF400B1A0E9 /* ProfileViewController.xib */; };
 		61BD68CA1E6DF3BC00B1A0E9 /* FindChallengesTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 61BD68C91E6DF3BC00B1A0E9 /* FindChallengesTableViewController.xib */; };
 		61BD68CC1E6DF3C500B1A0E9 /* FindChallengesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61BD68CB1E6DF3C500B1A0E9 /* FindChallengesTableViewController.swift */; };
+		61BD68CF1E6DF7B900B1A0E9 /* ChallengeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61BD68CD1E6DF7B900B1A0E9 /* ChallengeTableViewCell.swift */; };
+		61BD68D01E6DF7B900B1A0E9 /* ChallengeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 61BD68CE1E6DF7B900B1A0E9 /* ChallengeTableViewCell.xib */; };
 		63C9D1FF9CC1A80C8AADAB4C /* Pods_Konstruu.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F54197AF7908272DF974385 /* Pods_Konstruu.framework */; };
 		68C8E55C1E6408AA00047901 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68C8E55B1E6408AA00047901 /* AppDelegate.swift */; };
 		68C8E5631E6408AA00047901 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 68C8E5621E6408AA00047901 /* Assets.xcassets */; };
@@ -28,6 +30,8 @@
 		61BD68C11E6DEEF400B1A0E9 /* ProfileViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProfileViewController.xib; sourceTree = "<group>"; };
 		61BD68C91E6DF3BC00B1A0E9 /* FindChallengesTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FindChallengesTableViewController.xib; sourceTree = "<group>"; };
 		61BD68CB1E6DF3C500B1A0E9 /* FindChallengesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FindChallengesTableViewController.swift; sourceTree = "<group>"; };
+		61BD68CD1E6DF7B900B1A0E9 /* ChallengeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChallengeTableViewCell.swift; sourceTree = "<group>"; };
+		61BD68CE1E6DF7B900B1A0E9 /* ChallengeTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChallengeTableViewCell.xib; sourceTree = "<group>"; };
 		68C8E5581E6408AA00047901 /* Konstruu.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Konstruu.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		68C8E55B1E6408AA00047901 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		68C8E5621E6408AA00047901 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -111,6 +115,8 @@
 				61BD68C11E6DEEF400B1A0E9 /* ProfileViewController.xib */,
 				61BD68CB1E6DF3C500B1A0E9 /* FindChallengesTableViewController.swift */,
 				61BD68C91E6DF3BC00B1A0E9 /* FindChallengesTableViewController.xib */,
+				61BD68CD1E6DF7B900B1A0E9 /* ChallengeTableViewCell.swift */,
+				61BD68CE1E6DF7B900B1A0E9 /* ChallengeTableViewCell.xib */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -192,6 +198,7 @@
 				68C8E5661E6408AA00047901 /* LaunchScreen.storyboard in Resources */,
 				61BD68C31E6DEEF400B1A0E9 /* ProfileViewController.xib in Resources */,
 				68C8E5631E6408AA00047901 /* Assets.xcassets in Resources */,
+				61BD68D01E6DF7B900B1A0E9 /* ChallengeTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -254,6 +261,7 @@
 				61BD68C21E6DEEF400B1A0E9 /* ProfileViewController.swift in Sources */,
 				61BD68BE1E6DEC0A00B1A0E9 /* LoginViewController.swift in Sources */,
 				68C8E55C1E6408AA00047901 /* AppDelegate.swift in Sources */,
+				61BD68CF1E6DF7B900B1A0E9 /* ChallengeTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
