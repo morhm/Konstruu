@@ -17,4 +17,10 @@ class LoginViewController: UIViewController {
             profileVC.userID = 1
         })
      }
+    
+    @IBAction func loginWithEmail(_ sender: UIButton) {
+        let findChallengeVC = FindChallengesTableViewController(nibName: "FindChallengesTableViewController", bundle: nil)
+        present(findChallengeVC, animated: false, completion: {
+        })
+    }
 }
