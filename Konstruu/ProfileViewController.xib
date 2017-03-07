@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16B2659" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -20,28 +20,72 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="UserID" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M4o-nY-Z3A">
-                    <rect key="frame" x="161" y="323" width="53" height="21"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <nil key="textColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gMg-dn-4sX">
-                    <rect key="frame" x="132.5" y="416" width="110" height="30"/>
+                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gMg-dn-4sX">
+                    <rect key="frame" x="123" y="424" width="128" height="47"/>
+                    <color key="backgroundColor" red="0.4039215686" green="0.6588235294" blue="0.84705882349999995" alpha="1" colorSpace="calibratedRGB"/>
                     <state key="normal" title="Find Challenges"/>
                     <connections>
                         <action selector="showFindChallenges:" destination="-1" eventType="touchUpInside" id="ZCQ-Eb-QWK"/>
                     </connections>
                 </button>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="myPicture" translatesAutoresizingMaskIntoConstraints="NO" id="b1J-IX-uvX">
+                    <rect key="frame" x="29" y="88" width="117" height="141"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Joaquin Phoenix" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UpP-VT-9TV">
+                    <rect key="frame" x="178" y="88" width="126" height="48"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="kiwiBadge" translatesAutoresizingMaskIntoConstraints="NO" id="cgu-Kl-IVo">
+                    <rect key="frame" x="176" y="172" width="45" height="45"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Community Kiwi" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dUG-n5-QhK">
+                    <rect key="frame" x="235" y="184" width="124" height="21"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="My Teams" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="59V-z7-BaP">
+                    <rect key="frame" x="36" y="271" width="78" height="21"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="groupIcon" translatesAutoresizingMaskIntoConstraints="NO" id="Eph-2K-cUA">
+                    <rect key="frame" x="36" y="312" width="65" height="71"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="slackIcon" translatesAutoresizingMaskIntoConstraints="NO" id="NWT-dW-RXf">
+                    <rect key="frame" x="123" y="312" width="65" height="69"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="UserID" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M4o-nY-Z3A">
+                    <rect key="frame" x="152" y="528" width="53" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="M4o-nY-Z3A" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="Uzd-lM-RL1"/>
-                <constraint firstItem="M4o-nY-Z3A" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="k1V-2C-30r"/>
-                <constraint firstItem="gMg-dn-4sX" firstAttribute="top" secondItem="M4o-nY-Z3A" secondAttribute="bottom" constant="72" id="m5k-Fi-tJk"/>
-                <constraint firstItem="M4o-nY-Z3A" firstAttribute="centerX" secondItem="gMg-dn-4sX" secondAttribute="centerX" id="rZX-Cg-QHm"/>
+                <constraint firstItem="M4o-nY-Z3A" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" constant="205" id="Uzd-lM-RL1"/>
+                <constraint firstItem="M4o-nY-Z3A" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" constant="-9" id="k1V-2C-30r"/>
+                <constraint firstItem="gMg-dn-4sX" firstAttribute="top" secondItem="M4o-nY-Z3A" secondAttribute="bottom" constant="-125" id="m5k-Fi-tJk"/>
+                <constraint firstItem="M4o-nY-Z3A" firstAttribute="centerX" secondItem="gMg-dn-4sX" secondAttribute="centerX" constant="-8.5" id="rZX-Cg-QHm"/>
             </constraints>
             <point key="canvasLocation" x="126.5" y="54.5"/>
         </view>
     </objects>
+    <resources>
+        <image name="groupIcon" width="50" height="50"/>
+        <image name="kiwiBadge" width="33" height="33"/>
+        <image name="myPicture" width="1536" height="2048"/>
+        <image name="slackIcon" width="50" height="51"/>
+    </resources>
 </document>
