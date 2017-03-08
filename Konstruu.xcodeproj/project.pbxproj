@@ -23,6 +23,12 @@
 		61F7F87F1E6E076C0017461F /* CreateChallengeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 61F7F87D1E6E076C0017461F /* CreateChallengeViewController.xib */; };
 		61F7F8821E6E077D0017461F /* CreateTeamViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61F7F8801E6E077D0017461F /* CreateTeamViewController.swift */; };
 		61F7F8831E6E077D0017461F /* CreateTeamViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 61F7F8811E6E077D0017461F /* CreateTeamViewController.xib */; };
+		61F811D31E6F928A00777F68 /* Konstruu.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 61F811D11E6F928A00777F68 /* Konstruu.xcdatamodeld */; };
+		61F811D51E6F973000777F68 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61F811D41E6F973000777F68 /* User.swift */; };
+		61F811D71E6F973B00777F68 /* Team.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61F811D61E6F973B00777F68 /* Team.swift */; };
+		61F811D91E6F974600777F68 /* Challenge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61F811D81E6F974600777F68 /* Challenge.swift */; };
+		61F811DB1E6F974C00777F68 /* ProgressPost.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61F811DA1E6F974C00777F68 /* ProgressPost.swift */; };
+		61F811DD1E6F975100777F68 /* Badge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61F811DC1E6F975100777F68 /* Badge.swift */; };
 		63C9D1FF9CC1A80C8AADAB4C /* Pods_Konstruu.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F54197AF7908272DF974385 /* Pods_Konstruu.framework */; };
 		68C8E55C1E6408AA00047901 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68C8E55B1E6408AA00047901 /* AppDelegate.swift */; };
 		68C8E5631E6408AA00047901 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 68C8E5621E6408AA00047901 /* Assets.xcassets */; };
@@ -48,6 +54,12 @@
 		61F7F87D1E6E076C0017461F /* CreateChallengeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CreateChallengeViewController.xib; sourceTree = "<group>"; };
 		61F7F8801E6E077D0017461F /* CreateTeamViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateTeamViewController.swift; sourceTree = "<group>"; };
 		61F7F8811E6E077D0017461F /* CreateTeamViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CreateTeamViewController.xib; sourceTree = "<group>"; };
+		61F811D21E6F928A00777F68 /* Konstruu.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Konstruu.xcdatamodel; sourceTree = "<group>"; };
+		61F811D41E6F973000777F68 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		61F811D61E6F973B00777F68 /* Team.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Team.swift; sourceTree = "<group>"; };
+		61F811D81E6F974600777F68 /* Challenge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Challenge.swift; sourceTree = "<group>"; };
+		61F811DA1E6F974C00777F68 /* ProgressPost.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressPost.swift; sourceTree = "<group>"; };
+		61F811DC1E6F975100777F68 /* Badge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Badge.swift; sourceTree = "<group>"; };
 		68C8E5581E6408AA00047901 /* Konstruu.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Konstruu.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		68C8E55B1E6408AA00047901 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		68C8E5621E6408AA00047901 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -118,6 +130,12 @@
 		68C8E5701E64193F00047901 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				61F811D11E6F928A00777F68 /* Konstruu.xcdatamodeld */,
+				61F811D41E6F973000777F68 /* User.swift */,
+				61F811D61E6F973B00777F68 /* Team.swift */,
+				61F811D81E6F974600777F68 /* Challenge.swift */,
+				61F811DA1E6F974C00777F68 /* ProgressPost.swift */,
+				61F811DC1E6F975100777F68 /* Badge.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -285,15 +303,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				61F811D71E6F973B00777F68 /* Team.swift in Sources */,
+				61F811DD1E6F975100777F68 /* Badge.swift in Sources */,
+				61F811D91E6F974600777F68 /* Challenge.swift in Sources */,
 				61BD68CC1E6DF3C500B1A0E9 /* FindChallengesTableViewController.swift in Sources */,
 				61BD68C21E6DEEF400B1A0E9 /* ProfileViewController.swift in Sources */,
 				61BD68BE1E6DEC0A00B1A0E9 /* LoginViewController.swift in Sources */,
 				68C8E55C1E6408AA00047901 /* AppDelegate.swift in Sources */,
+				61F811D31E6F928A00777F68 /* Konstruu.xcdatamodeld in Sources */,
 				61F7F87E1E6E076C0017461F /* CreateChallengeViewController.swift in Sources */,
 				61F7F8821E6E077D0017461F /* CreateTeamViewController.swift in Sources */,
 				61F7F8761E6E06870017461F /* ChallengeViewController.swift in Sources */,
+				61F811DB1E6F974C00777F68 /* ProgressPost.swift in Sources */,
 				61BD68CF1E6DF7B900B1A0E9 /* ChallengeTableViewCell.swift in Sources */,
 				61F7F87A1E6E06FB0017461F /* TeamViewController.swift in Sources */,
+				61F811D51E6F973000777F68 /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -452,6 +476,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		61F811D11E6F928A00777F68 /* Konstruu.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				61F811D21E6F928A00777F68 /* Konstruu.xcdatamodel */,
+			);
+			currentVersion = 61F811D21E6F928A00777F68 /* Konstruu.xcdatamodel */;
+			path = Konstruu.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 68C8E5501E6408AA00047901 /* Project object */;
 }
