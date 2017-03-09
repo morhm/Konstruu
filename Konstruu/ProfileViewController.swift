@@ -18,18 +18,29 @@ class ProfileViewController: UIViewController {
         }
     }
     
+    // MARK: - View Lifecycle
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        updateUI()
+    }
+    
     // MARK: - UI
+    
+    @IBOutlet weak var profileImageView: UIImageView!
     
     @IBOutlet weak var usernameLabel: UILabel!
     
     private func updateUI() {
-        // set @IBOutlet elements to show the user's stuff
+        profileImageView?.image = user?.profileImage
+        usernameLabel?.text = user?.username
     }
     
     // MARK: - Navigation
     
     @IBAction func showFindChallenges(_ sender: UIButton) {
         let findChallengesVC = FindChallengesTableViewController(nibName: "FindChallengesTableViewController", bundle: nil)
+        findChallengesVC.challenge = DataStructures.exampleChallenges[0]
         present(findChallengesVC, animated: false, completion: nil)
     }
 }

@@ -7,8 +7,15 @@
 //
 
 import UIKit
+import DataStructures
 
 class FindChallengesTableViewController: UITableViewController {
+    
+    // MARK: - Model
+    
+    var challenge: DataStructures.Challenge?
+    
+    // MARK: - View Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,7 +42,7 @@ class FindChallengesTableViewController: UITableViewController {
         
         if let challengeCell = (cell as? ChallengeTableViewCell) {
             // TODO: change once we have a model so that it passes the model object
-            challengeCell.challengeID = 1
+            challengeCell.challenge = challenge
         }
         
         return cell

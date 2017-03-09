@@ -14,9 +14,8 @@ class LoginViewController: UIViewController {
 
      @IBAction func loginWithFacebook(_ sender: UIButton) {
         let profileVC = ProfileViewController(nibName: "ProfileViewController", bundle: nil)
-        present(profileVC, animated: false, completion: {
-            profileVC.user = DataStructures.exampleUsers[0]
-        })
+        profileVC.user = DataStructures.exampleUsers[0]
+        present(profileVC, animated: false, completion: nil)
      }
     
     @IBAction func loginWithEmail(_ sender: UIButton) {
