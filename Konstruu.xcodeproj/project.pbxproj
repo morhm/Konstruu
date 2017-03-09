@@ -29,11 +29,27 @@
 		61F811D91E6F974600777F68 /* Challenge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61F811D81E6F974600777F68 /* Challenge.swift */; };
 		61F811DB1E6F974C00777F68 /* ProgressPost.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61F811DA1E6F974C00777F68 /* ProgressPost.swift */; };
 		61F811DD1E6F975100777F68 /* Badge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61F811DC1E6F975100777F68 /* Badge.swift */; };
+		61F8121B1E70DBFF00777F68 /* DataStructures.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 61F8121A1E70DBFF00777F68 /* DataStructures.framework */; };
+		61F8121C1E70DBFF00777F68 /* DataStructures.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 61F8121A1E70DBFF00777F68 /* DataStructures.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		63C9D1FF9CC1A80C8AADAB4C /* Pods_Konstruu.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F54197AF7908272DF974385 /* Pods_Konstruu.framework */; };
 		68C8E55C1E6408AA00047901 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68C8E55B1E6408AA00047901 /* AppDelegate.swift */; };
 		68C8E5631E6408AA00047901 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 68C8E5621E6408AA00047901 /* Assets.xcassets */; };
 		68C8E5661E6408AA00047901 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 68C8E5641E6408AA00047901 /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		61F8121D1E70DBFF00777F68 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				61F8121C1E70DBFF00777F68 /* DataStructures.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		2F54197AF7908272DF974385 /* Pods_Konstruu.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Konstruu.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -60,6 +76,7 @@
 		61F811D81E6F974600777F68 /* Challenge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Challenge.swift; sourceTree = "<group>"; };
 		61F811DA1E6F974C00777F68 /* ProgressPost.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressPost.swift; sourceTree = "<group>"; };
 		61F811DC1E6F975100777F68 /* Badge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Badge.swift; sourceTree = "<group>"; };
+		61F8121A1E70DBFF00777F68 /* DataStructures.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = DataStructures.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		68C8E5581E6408AA00047901 /* Konstruu.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Konstruu.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		68C8E55B1E6408AA00047901 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		68C8E5621E6408AA00047901 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -73,6 +90,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				61F8121B1E70DBFF00777F68 /* DataStructures.framework in Frameworks */,
 				63C9D1FF9CC1A80C8AADAB4C /* Pods_Konstruu.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -102,10 +120,11 @@
 		68C8E54F1E6408AA00047901 = {
 			isa = PBXGroup;
 			children = (
-				68C8E55A1E6408AA00047901 /* Konstruu */,
+				61F8121A1E70DBFF00777F68 /* DataStructures.framework */,
 				68C8E5591E6408AA00047901 /* Products */,
 				DE30FA7DFD21E511907F4F1A /* Pods */,
 				2065EBDA1A66E90A51391AF4 /* Frameworks */,
+				68C8E55A1E6408AA00047901 /* Konstruu */,
 			);
 			sourceTree = "<group>";
 		};
@@ -131,11 +150,11 @@
 			isa = PBXGroup;
 			children = (
 				61F811D11E6F928A00777F68 /* Konstruu.xcdatamodeld */,
-				61F811D41E6F973000777F68 /* User.swift */,
-				61F811D61E6F973B00777F68 /* Team.swift */,
+				61F811DC1E6F975100777F68 /* Badge.swift */,
 				61F811D81E6F974600777F68 /* Challenge.swift */,
 				61F811DA1E6F974C00777F68 /* ProgressPost.swift */,
-				61F811DC1E6F975100777F68 /* Badge.swift */,
+				61F811D61E6F973B00777F68 /* Team.swift */,
+				61F811D41E6F973000777F68 /* User.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -185,6 +204,7 @@
 				68C8E5561E6408AA00047901 /* Resources */,
 				B5C779D525A2796105C587BE /* [CP] Embed Pods Frameworks */,
 				EC0525A50005594C7AA240EC /* [CP] Copy Pods Resources */,
+				61F8121D1E70DBFF00777F68 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);

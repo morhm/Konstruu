@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16B2659" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -11,7 +11,6 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ProfileViewController" customModule="Konstruu" customModuleProvider="target">
             <connections>
-                <outlet property="usernameLabel" destination="M4o-nY-Z3A" id="gpu-XS-RgV"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -20,8 +19,9 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gMg-dn-4sX">
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gMg-dn-4sX">
                     <rect key="frame" x="123" y="424" width="128" height="47"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" red="0.4039215686" green="0.6588235294" blue="0.84705882349999995" alpha="1" colorSpace="calibratedRGB"/>
                     <state key="normal" title="Find Challenges"/>
                     <connections>
@@ -65,20 +65,8 @@
                     <rect key="frame" x="123" y="312" width="65" height="69"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 </imageView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="UserID" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M4o-nY-Z3A">
-                    <rect key="frame" x="152" y="528" width="53" height="21"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <nil key="textColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-            <constraints>
-                <constraint firstItem="M4o-nY-Z3A" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" constant="205" id="Uzd-lM-RL1"/>
-                <constraint firstItem="M4o-nY-Z3A" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" constant="-9" id="k1V-2C-30r"/>
-                <constraint firstItem="gMg-dn-4sX" firstAttribute="top" secondItem="M4o-nY-Z3A" secondAttribute="bottom" constant="-125" id="m5k-Fi-tJk"/>
-                <constraint firstItem="M4o-nY-Z3A" firstAttribute="centerX" secondItem="gMg-dn-4sX" secondAttribute="centerX" constant="-8.5" id="rZX-Cg-QHm"/>
-            </constraints>
             <point key="canvasLocation" x="126.5" y="54.5"/>
         </view>
     </objects>

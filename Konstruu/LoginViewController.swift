@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import DataStructures
 
 class LoginViewController: UIViewController {
     // MARK: - Navigation
@@ -14,7 +15,7 @@ class LoginViewController: UIViewController {
      @IBAction func loginWithFacebook(_ sender: UIButton) {
         let profileVC = ProfileViewController(nibName: "ProfileViewController", bundle: nil)
         present(profileVC, animated: false, completion: {
-            profileVC.userID = 1
+            profileVC.user = DataStructures.exampleUsers[0]
         })
      }
     

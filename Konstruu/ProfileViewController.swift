@@ -7,24 +7,29 @@
 //
 
 import UIKit
+import DataStructures
 
 class ProfileViewController: UIViewController {
+    // MARK: - Model
     
-    // TODO: change after demo
-    var userID: Int? {
+    var user: DataStructures.User? {
         didSet {
             updateUI()
         }
     }
     
+    // MARK: - UI
+    
     @IBOutlet weak var usernameLabel: UILabel!
+    
+    private func updateUI() {
+        // set @IBOutlet elements to show the user's stuff
+    }
+    
+    // MARK: - Navigation
     
     @IBAction func showFindChallenges(_ sender: UIButton) {
         let findChallengesVC = FindChallengesTableViewController(nibName: "FindChallengesTableViewController", bundle: nil)
         present(findChallengesVC, animated: false, completion: nil)
-    }
-    
-    private func updateUI() {
-        usernameLabel.text = "\(userID)"
     }
 }
