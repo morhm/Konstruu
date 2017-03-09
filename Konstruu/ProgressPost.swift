@@ -8,16 +8,17 @@
 
 import UIKit
 import CoreData
+import DataStructures
 
 class ProgressPost: NSManagedObject {
-    class func createProgressPost(date: NSDate, text: String?, image: UIImage?, for team: Team, in context: NSManagedObjectContext) -> ProgressPost {
+    class func createProgressPost(matching progressPostInfo: DataStructures.ProgressPost, for teamInfo: DataStructures.Team, in context: NSManagedObjectContext) -> ProgressPost {
         let progressPost = ProgressPost(context: context)
-        progressPost.date = date
-        progressPost.text = text
-        if image != nil, let imageData = UIImageJPEGRepresentation(image!, 1) {
+        progressPost.date = progressPostInfo.date
+        progressPost.text = progressPostInfo.text
+        if progressPostInfo.image != nil, let imageData = UIImageJPEGRepresentation(progressPostInfo.image!, 1) {
             progressPost.imageData = NSData(base64Encoded: imageData)
         }
-        progressPost.team = team
+        progressPost.team = try? Team.findOrCreateTeam(matching: teamInfo, in: context)
         return progressPost
     }
 }

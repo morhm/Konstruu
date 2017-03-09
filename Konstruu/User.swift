@@ -8,11 +8,12 @@
 
 import UIKit
 import CoreData
+import DataStructures
 
 class User: NSManagedObject {
-    class func findOrCreateUser(withID id: Int, in context: NSManagedObjectContext) throws -> User {
+    class func findOrCreateUser(matching userInfo: DataStructures.User, in context: NSManagedObjectContext) throws -> User {
         let request: NSFetchRequest<User> = User.fetchRequest()
-        request.predicate = NSPredicate(format: "id = %@", id)
+        request.predicate = NSPredicate(format: "id = %@", userInfo.id)
         
         do {
             let matches = try context.fetch(request)
@@ -25,7 +26,10 @@ class User: NSManagedObject {
         }
         
         let user = User(context: context)
-        user.id = Int64(id)
+        user.id = Int64(userInfo.id)
+        if userInfo.profileImage != nil, let imageData = UIImageJPEGRepresentation(userInfo.profileImage!, 1) {
+            user.profileImageData = NSData(base64Encoded: imageData)
+        }
         return user
     }
 }

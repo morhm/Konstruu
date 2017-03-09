@@ -8,9 +8,10 @@
 
 import UIKit
 import CoreData
+import DataStructures
 
 class Badge: NSManagedObject {
-    class func findBadge(named title: String, in context: NSManagedObjectContext) throws -> Badge? {
+    class func findOrCreateBadge(named title: String, in context: NSManagedObjectContext) throws -> Badge? {
         let request: NSFetchRequest<Badge> = Badge.fetchRequest()
         request.predicate = NSPredicate(format: "title = %@", title)
         
@@ -24,6 +25,9 @@ class Badge: NSManagedObject {
             throw error
         }
         
-        return nil
+        let badge = Badge(context: context)
+        badge.title = title
+        badge.desc = DataStructures.badges[title]
+        return badge
     }
 }

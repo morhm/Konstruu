@@ -8,11 +8,12 @@
 
 import UIKit
 import CoreData
+import DataStructures
 
 class Challenge: NSManagedObject {
-    class func findOrCreateChallenge(withID id: Int, in context: NSManagedObjectContext) throws -> Challenge {
+    class func findOrCreateChallenge(matching challengeInfo: DataStructures.Challenge, in context: NSManagedObjectContext) throws -> Challenge {
         let request: NSFetchRequest<Challenge> = Challenge.fetchRequest()
-        request.predicate = NSPredicate(format: "id = %@", id)
+        request.predicate = NSPredicate(format: "id = %@", challengeInfo.id)
         
         do {
             let matches = try context.fetch(request)
@@ -25,7 +26,9 @@ class Challenge: NSManagedObject {
         }
         
         let challenge = Challenge(context: context)
-        challenge.id = Int64(id)
+        challenge.id = Int64(challengeInfo.id)
+        challenge.title = challengeInfo.title
+        challenge.desc = challengeInfo.desc
         return challenge
     }
 }
