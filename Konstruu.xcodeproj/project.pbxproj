@@ -7,12 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		613B1B511E72144800544297 /* TeamTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 613B1B4F1E72144800544297 /* TeamTableViewCell.swift */; };
+		613B1B521E72144800544297 /* TeamTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 613B1B501E72144800544297 /* TeamTableViewCell.xib */; };
+		613B1B551E721A1E00544297 /* FindChallengesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 613B1B531E721A1E00544297 /* FindChallengesViewController.swift */; };
+		613B1B561E721A1E00544297 /* FindChallengesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 613B1B541E721A1E00544297 /* FindChallengesViewController.xib */; };
 		61BD68BE1E6DEC0A00B1A0E9 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61BD68BC1E6DEC0A00B1A0E9 /* LoginViewController.swift */; };
 		61BD68BF1E6DEC0A00B1A0E9 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 61BD68BD1E6DEC0A00B1A0E9 /* LoginViewController.xib */; };
 		61BD68C21E6DEEF400B1A0E9 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61BD68C01E6DEEF400B1A0E9 /* ProfileViewController.swift */; };
 		61BD68C31E6DEEF400B1A0E9 /* ProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 61BD68C11E6DEEF400B1A0E9 /* ProfileViewController.xib */; };
-		61BD68CA1E6DF3BC00B1A0E9 /* FindChallengesTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 61BD68C91E6DF3BC00B1A0E9 /* FindChallengesTableViewController.xib */; };
-		61BD68CC1E6DF3C500B1A0E9 /* FindChallengesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61BD68CB1E6DF3C500B1A0E9 /* FindChallengesTableViewController.swift */; };
 		61BD68CF1E6DF7B900B1A0E9 /* ChallengeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61BD68CD1E6DF7B900B1A0E9 /* ChallengeTableViewCell.swift */; };
 		61F7F8761E6E06870017461F /* ChallengeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61F7F8741E6E06870017461F /* ChallengeViewController.swift */; };
 		61F7F8771E6E06870017461F /* ChallengeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 61F7F8751E6E06870017461F /* ChallengeViewController.xib */; };
@@ -54,12 +56,14 @@
 /* Begin PBXFileReference section */
 		2F54197AF7908272DF974385 /* Pods_Konstruu.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Konstruu.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3933F443C092D674AF826DEB /* Pods-Konstruu.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Konstruu.release.xcconfig"; path = "Pods/Target Support Files/Pods-Konstruu/Pods-Konstruu.release.xcconfig"; sourceTree = "<group>"; };
+		613B1B4F1E72144800544297 /* TeamTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeamTableViewCell.swift; sourceTree = "<group>"; };
+		613B1B501E72144800544297 /* TeamTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TeamTableViewCell.xib; sourceTree = "<group>"; };
+		613B1B531E721A1E00544297 /* FindChallengesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FindChallengesViewController.swift; sourceTree = "<group>"; };
+		613B1B541E721A1E00544297 /* FindChallengesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FindChallengesViewController.xib; sourceTree = "<group>"; };
 		61BD68BC1E6DEC0A00B1A0E9 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		61BD68BD1E6DEC0A00B1A0E9 /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
 		61BD68C01E6DEEF400B1A0E9 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		61BD68C11E6DEEF400B1A0E9 /* ProfileViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProfileViewController.xib; sourceTree = "<group>"; };
-		61BD68C91E6DF3BC00B1A0E9 /* FindChallengesTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FindChallengesTableViewController.xib; sourceTree = "<group>"; };
-		61BD68CB1E6DF3C500B1A0E9 /* FindChallengesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FindChallengesTableViewController.swift; sourceTree = "<group>"; };
 		61BD68CD1E6DF7B900B1A0E9 /* ChallengeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChallengeTableViewCell.swift; sourceTree = "<group>"; };
 		61F7F8741E6E06870017461F /* ChallengeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChallengeViewController.swift; sourceTree = "<group>"; };
 		61F7F8751E6E06870017461F /* ChallengeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChallengeViewController.xib; sourceTree = "<group>"; };
@@ -127,8 +131,8 @@
 		61592C711E711965008B89C6 /* Find Challenges Page */ = {
 			isa = PBXGroup;
 			children = (
-				61BD68CB1E6DF3C500B1A0E9 /* FindChallengesTableViewController.swift */,
-				61BD68C91E6DF3BC00B1A0E9 /* FindChallengesTableViewController.xib */,
+				613B1B531E721A1E00544297 /* FindChallengesViewController.swift */,
+				613B1B541E721A1E00544297 /* FindChallengesViewController.xib */,
 				61BD68CD1E6DF7B900B1A0E9 /* ChallengeTableViewCell.swift */,
 				CA3A89431E6F81820000D33E /* ChallengeTableViewCell.xib */,
 			);
@@ -140,6 +144,8 @@
 			children = (
 				61F7F8741E6E06870017461F /* ChallengeViewController.swift */,
 				61F7F8751E6E06870017461F /* ChallengeViewController.xib */,
+				613B1B4F1E72144800544297 /* TeamTableViewCell.swift */,
+				613B1B501E72144800544297 /* TeamTableViewCell.xib */,
 			);
 			name = "Challenge Page";
 			sourceTree = "<group>";
@@ -312,14 +318,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				61BD68BF1E6DEC0A00B1A0E9 /* LoginViewController.xib in Resources */,
-				61BD68CA1E6DF3BC00B1A0E9 /* FindChallengesTableViewController.xib in Resources */,
 				61F7F8771E6E06870017461F /* ChallengeViewController.xib in Resources */,
 				61F7F87F1E6E076C0017461F /* CreateChallengeViewController.xib in Resources */,
 				68C8E5661E6408AA00047901 /* LaunchScreen.storyboard in Resources */,
 				CA3A89441E6F81820000D33E /* ChallengeTableViewCell.xib in Resources */,
 				61BD68C31E6DEEF400B1A0E9 /* ProfileViewController.xib in Resources */,
 				61F7F87B1E6E06FB0017461F /* TeamViewController.xib in Resources */,
+				613B1B521E72144800544297 /* TeamTableViewCell.xib in Resources */,
 				68C8E5631E6408AA00047901 /* Assets.xcassets in Resources */,
+				613B1B561E721A1E00544297 /* FindChallengesViewController.xib in Resources */,
 				61F7F8831E6E077D0017461F /* CreateTeamViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -382,7 +389,7 @@
 				61F811D71E6F973B00777F68 /* Team.swift in Sources */,
 				61F811DD1E6F975100777F68 /* Badge.swift in Sources */,
 				61F811D91E6F974600777F68 /* Challenge.swift in Sources */,
-				61BD68CC1E6DF3C500B1A0E9 /* FindChallengesTableViewController.swift in Sources */,
+				613B1B551E721A1E00544297 /* FindChallengesViewController.swift in Sources */,
 				61BD68C21E6DEEF400B1A0E9 /* ProfileViewController.swift in Sources */,
 				61BD68BE1E6DEC0A00B1A0E9 /* LoginViewController.swift in Sources */,
 				68C8E55C1E6408AA00047901 /* AppDelegate.swift in Sources */,
@@ -391,6 +398,7 @@
 				61F7F8821E6E077D0017461F /* CreateTeamViewController.swift in Sources */,
 				61F7F8761E6E06870017461F /* ChallengeViewController.swift in Sources */,
 				61F811DB1E6F974C00777F68 /* ProgressPost.swift in Sources */,
+				613B1B511E72144800544297 /* TeamTableViewCell.swift in Sources */,
 				61BD68CF1E6DF7B900B1A0E9 /* ChallengeTableViewCell.swift in Sources */,
 				61F7F87A1E6E06FB0017461F /* TeamViewController.swift in Sources */,
 				61F811D51E6F973000777F68 /* User.swift in Sources */,

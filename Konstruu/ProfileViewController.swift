@@ -39,7 +39,7 @@ class ProfileViewController: UIViewController {
     // MARK: - Navigation
     
     @IBAction func showFindChallenges(_ sender: UIButton) {
-        let findChallengesVC = FindChallengesTableViewController(nibName: "FindChallengesTableViewController", bundle: nil)
+        let findChallengesVC = FindChallengesViewController(nibName: "FindChallengesViewController", bundle: nil)
         findChallengesVC.challenges = DataStructures.exampleChallenges
         present(findChallengesVC, animated: false, completion: nil)
     }

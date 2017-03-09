@@ -10,6 +10,7 @@ import UIKit
 import DataStructures
 
 class LoginViewController: UIViewController {
+    
     // MARK: - Navigation
 
      @IBAction func loginWithFacebook(_ sender: UIButton) {
@@ -17,10 +18,4 @@ class LoginViewController: UIViewController {
         profileVC.user = DataStructures.exampleUsers[0]
         present(profileVC, animated: false, completion: nil)
      }
-    
-    @IBAction func loginWithEmail(_ sender: UIButton) {
-        let findChallengeVC = FindChallengesTableViewController(nibName: "FindChallengesTableViewController", bundle: nil)
-        present(findChallengeVC, animated: false, completion: {
-        })
-    }
 }

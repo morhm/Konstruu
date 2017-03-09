@@ -9,13 +9,14 @@
 import UIKit
 import DataStructures
 
-class ChallengeViewController: UITableViewController {
+class ChallengeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     // MARK: - Model
     
     var challenge: DataStructures.Challenge? {
         didSet {
             updateUI()
+            teamsTableView?.reloadData()
         }
     }
     
@@ -23,6 +24,7 @@ class ChallengeViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        teamsTableView?.register(UINib(nibName: "TeamTableViewCell", bundle: nil), forCellReuseIdentifier: "team")
         updateUI()
     }
     
@@ -34,8 +36,8 @@ class ChallengeViewController: UITableViewController {
     
     @IBOutlet weak var teamsTableView: UITableView! {
         didSet {
-            self.tableView = teamsTableView
             teamsTableView.dataSource = self
+            teamsTableView.delegate = self
         }
     }
     
@@ -46,22 +48,24 @@ class ChallengeViewController: UITableViewController {
     
     // MARK: - Table view data source
     
-    // THIS DOES NOT WORK RIGHT NOW. THE APP CRASHES BECAUSE THE UITABLEVIEW IS NOT PROPERLY CONNECTED
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         // transition to team page
     }
     
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "team", for: indexPath)
-        cell.textLabel?.text = challenge?.teams?[indexPath.row].name
+        if let teamCell = (cell as? TeamTableViewCell) {
+            teamCell.team = challenge?.teams?[indexPath.row]
+            return teamCell
+        }
         return cell
     }
     
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return challenge?.teams?.count ?? 0
     }
     
-    override func numberOfSections(in tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
 }

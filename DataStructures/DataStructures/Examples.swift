@@ -8,7 +8,10 @@
 
 import Foundation
 
-public let exampleChallenges: [Challenge] = [challenge]
+public var exampleChallenges: [Challenge] { get {
+    challenge.teams = exampleTeams
+    return [challenge]
+} }
 
 public let exampleProgressPosts: [ProgressPost] = [
     ProgressPost(date: NSDate.init(timeIntervalSinceNow: 0), text: "We did a thing!", image: nil)
@@ -28,7 +31,7 @@ public var exampleUsers: [User] { get {
     return [user1, user2, user3, user4]
 } }
 
-private let challenge = Challenge(id: 1, title: "Geotagging graffiti", desc: "Make an app to geotag graffiti")
+private var challenge = Challenge(id: 1, title: "Geotagging graffiti", desc: "Make an app to geotag graffiti")
 
 private var team = Team(id: 1, name: "Frog and Code", challenge: nil, users: nil, progressPosts: exampleProgressPosts)
 
