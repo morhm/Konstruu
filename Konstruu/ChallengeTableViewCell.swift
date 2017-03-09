@@ -22,10 +22,10 @@ class ChallengeTableViewCell: UITableViewCell {
     // MARK: - UI
     
     @IBOutlet weak var titleLabel: UILabel!
+    
     @IBOutlet weak var descriptionLabel: UILabel!
     
     private func updateUI() {
-        // TODO: get title & description from challengeID key
         titleLabel.text = challenge?.title
         descriptionLabel.text = challenge?.desc
     }

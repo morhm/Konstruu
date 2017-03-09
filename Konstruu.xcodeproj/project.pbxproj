@@ -106,6 +106,71 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		61592C6F1E711952008B89C6 /* Login Page */ = {
+			isa = PBXGroup;
+			children = (
+				61BD68BC1E6DEC0A00B1A0E9 /* LoginViewController.swift */,
+				61BD68BD1E6DEC0A00B1A0E9 /* LoginViewController.xib */,
+			);
+			name = "Login Page";
+			sourceTree = "<group>";
+		};
+		61592C701E71195B008B89C6 /* Profile Page */ = {
+			isa = PBXGroup;
+			children = (
+				61BD68C01E6DEEF400B1A0E9 /* ProfileViewController.swift */,
+				61BD68C11E6DEEF400B1A0E9 /* ProfileViewController.xib */,
+			);
+			name = "Profile Page";
+			sourceTree = "<group>";
+		};
+		61592C711E711965008B89C6 /* Find Challenges Page */ = {
+			isa = PBXGroup;
+			children = (
+				61BD68CB1E6DF3C500B1A0E9 /* FindChallengesTableViewController.swift */,
+				61BD68C91E6DF3BC00B1A0E9 /* FindChallengesTableViewController.xib */,
+				61BD68CD1E6DF7B900B1A0E9 /* ChallengeTableViewCell.swift */,
+				CA3A89431E6F81820000D33E /* ChallengeTableViewCell.xib */,
+			);
+			name = "Find Challenges Page";
+			sourceTree = "<group>";
+		};
+		61592C721E71196F008B89C6 /* Challenge Page */ = {
+			isa = PBXGroup;
+			children = (
+				61F7F8741E6E06870017461F /* ChallengeViewController.swift */,
+				61F7F8751E6E06870017461F /* ChallengeViewController.xib */,
+			);
+			name = "Challenge Page";
+			sourceTree = "<group>";
+		};
+		61592C731E711975008B89C6 /* Team Page */ = {
+			isa = PBXGroup;
+			children = (
+				61F7F8781E6E06FB0017461F /* TeamViewController.swift */,
+				61F7F8791E6E06FB0017461F /* TeamViewController.xib */,
+			);
+			name = "Team Page";
+			sourceTree = "<group>";
+		};
+		61592C741E71197B008B89C6 /* Create Challenge Page */ = {
+			isa = PBXGroup;
+			children = (
+				61F7F87C1E6E076C0017461F /* CreateChallengeViewController.swift */,
+				61F7F87D1E6E076C0017461F /* CreateChallengeViewController.xib */,
+			);
+			name = "Create Challenge Page";
+			sourceTree = "<group>";
+		};
+		61592C751E711983008B89C6 /* Create Team Page */ = {
+			isa = PBXGroup;
+			children = (
+				61F7F8801E6E077D0017461F /* CreateTeamViewController.swift */,
+				61F7F8811E6E077D0017461F /* CreateTeamViewController.xib */,
+			);
+			name = "Create Team Page";
+			sourceTree = "<group>";
+		};
 		61BD68C41E6DF2D300B1A0E9 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
@@ -162,22 +227,13 @@
 		68C8E5711E64194800047901 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				61BD68BC1E6DEC0A00B1A0E9 /* LoginViewController.swift */,
-				61BD68BD1E6DEC0A00B1A0E9 /* LoginViewController.xib */,
-				61BD68C01E6DEEF400B1A0E9 /* ProfileViewController.swift */,
-				61BD68C11E6DEEF400B1A0E9 /* ProfileViewController.xib */,
-				61BD68CB1E6DF3C500B1A0E9 /* FindChallengesTableViewController.swift */,
-				61BD68C91E6DF3BC00B1A0E9 /* FindChallengesTableViewController.xib */,
-				61BD68CD1E6DF7B900B1A0E9 /* ChallengeTableViewCell.swift */,
-				CA3A89431E6F81820000D33E /* ChallengeTableViewCell.xib */,
-				61F7F8741E6E06870017461F /* ChallengeViewController.swift */,
-				61F7F8751E6E06870017461F /* ChallengeViewController.xib */,
-				61F7F8781E6E06FB0017461F /* TeamViewController.swift */,
-				61F7F8791E6E06FB0017461F /* TeamViewController.xib */,
-				61F7F87C1E6E076C0017461F /* CreateChallengeViewController.swift */,
-				61F7F87D1E6E076C0017461F /* CreateChallengeViewController.xib */,
-				61F7F8801E6E077D0017461F /* CreateTeamViewController.swift */,
-				61F7F8811E6E077D0017461F /* CreateTeamViewController.xib */,
+				61592C6F1E711952008B89C6 /* Login Page */,
+				61592C701E71195B008B89C6 /* Profile Page */,
+				61592C711E711965008B89C6 /* Find Challenges Page */,
+				61592C721E71196F008B89C6 /* Challenge Page */,
+				61592C731E711975008B89C6 /* Team Page */,
+				61592C741E71197B008B89C6 /* Create Challenge Page */,
+				61592C751E711983008B89C6 /* Create Team Page */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";

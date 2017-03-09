@@ -13,9 +13,9 @@ class FindChallengesTableViewController: UITableViewController {
     
     // MARK: - Model
     
-    var challenge: DataStructures.Challenge?
+    var challenges: [DataStructures.Challenge]?
     
-    // MARK: - View Lifecycle
+    // MARK: - View controller lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,28 +23,28 @@ class FindChallengesTableViewController: UITableViewController {
     }
     
     // MARK: - Table view data source
-    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 100
-    }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 1
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 10
+        return challenges?.count ?? 0
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "challenge", for: indexPath)
         
         if let challengeCell = (cell as? ChallengeTableViewCell) {
-            // TODO: change once we have a model so that it passes the model object
-            challengeCell.challenge = challenge
+            challengeCell.challenge = challenges?[indexPath.row]
         }
         
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let challengeVC = ChallengeViewController(nibName: "ChallengeViewController", bundle: nil)
+        challengeVC.challenge = challenges?[indexPath.row]
+        present(challengeVC, animated: false, completion: nil)
     }
 }
