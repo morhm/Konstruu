@@ -12,6 +12,7 @@ public struct User {
     public let id: Int
     public let username: String
     public var profileImage: UIImage?
+    public var communityLevel: String?
     
     public var teams: [Team]?
     public var badges: [String]?

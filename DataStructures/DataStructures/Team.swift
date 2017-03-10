@@ -11,6 +11,7 @@ import Foundation
 public struct Team {
     public let id: Int
     public let name: String
+    public var lookingForTeammates: Bool = true
     
     public var challenge: Challenge?
     public var users: [User]?

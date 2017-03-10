@@ -27,6 +27,7 @@ class User: NSManagedObject {
         
         let user = User(context: context)
         user.id = Int64(userInfo.id)
+        user.communityLevel = userInfo.communityLevel
         if userInfo.profileImage != nil, let imageData = UIImageJPEGRepresentation(userInfo.profileImage!, 1) {
             user.profileImageData = NSData(base64Encoded: imageData)
         }

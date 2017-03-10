@@ -28,6 +28,7 @@ class Team: NSManagedObject {
         let team = Team(context: context)
         team.id = Int64(teamInfo.id)
         team.name = teamInfo.name
+        team.lookingForTeammates = teamInfo.lookingForTeammates
         if let challenge = teamInfo.challenge {
             team.challenge = try? Challenge.findOrCreateChallenge(matching: challenge, in: context)
         }

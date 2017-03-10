@@ -19,12 +19,14 @@
     </entity>
     <entity name="Team" representedClassName=".Team" syncable="YES" codeGenerationType="category">
         <attribute name="id" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="lookingForTeammates" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="challenge" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Challenge" inverseName="teams" inverseEntity="Challenge" syncable="YES"/>
         <relationship name="progressPosts" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ProgressPost" inverseName="team" inverseEntity="ProgressPost" syncable="YES"/>
         <relationship name="users" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="User" inverseName="teams" inverseEntity="User" syncable="YES"/>
     </entity>
     <entity name="User" representedClassName=".User" syncable="YES" codeGenerationType="category">
+        <attribute name="communityLevel" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="id" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="profileImageData" optional="YES" attributeType="Binary" syncable="YES"/>
         <attribute name="username" optional="YES" attributeType="String" syncable="YES"/>
@@ -32,10 +34,10 @@
         <relationship name="teams" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Team" inverseName="users" inverseEntity="Team" syncable="YES"/>
     </entity>
     <elements>
-        <element name="User" positionX="-279" positionY="72" width="128" height="118"/>
-        <element name="Challenge" positionX="151" positionY="71" width="128" height="103"/>
-        <element name="Team" positionX="-63" positionY="72" width="128" height="118"/>
         <element name="Badge" positionX="-173" positionY="243" width="128" height="88"/>
+        <element name="Challenge" positionX="151" positionY="71" width="128" height="103"/>
         <element name="ProgressPost" positionX="43" positionY="234" width="128" height="103"/>
+        <element name="Team" positionX="-63" positionY="72" width="128" height="135"/>
+        <element name="User" positionX="-279" positionY="72" width="128" height="135"/>
     </elements>
 </model>
