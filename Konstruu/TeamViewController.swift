@@ -15,6 +15,9 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     var team: DataStructures.Team? {
         didSet {
+            team?.challenge = DataStructures.exampleChallenges[0] // REMOVE AFTER DEMO
+            team?.users = DataStructures.exampleUsers // REMOVE AFTER DEMO
+            team?.progressPosts = DataStructures.exampleProgressPosts // REMOVE AFTER DEMO
             updateUI()
             usersCollectionView?.reloadData()
             progressPostsTableView?.reloadData()
@@ -52,7 +55,7 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     private func updateUI() {
         teamNameLabel?.text = team?.name
-        challengeButton?.titleLabel?.text = team?.challenge?.title
+        challengeButton?.setTitle(team?.challenge?.title, for: .normal)
     }
     
     // MARK: - Collection view data source

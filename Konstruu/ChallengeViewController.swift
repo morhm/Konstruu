@@ -15,6 +15,7 @@ class ChallengeViewController: UIViewController, UITableViewDelegate, UITableVie
     
     var challenge: DataStructures.Challenge? {
         didSet {
+            challenge?.teams = DataStructures.exampleTeams // REMOVE AFTER DEMO
             updateUI()
             teamsTableView?.reloadData()
         }
