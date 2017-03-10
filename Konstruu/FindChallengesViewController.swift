@@ -13,7 +13,7 @@ class FindChallengesViewController: UIViewController, UITableViewDataSource, UIT
     
     // MARK: - Model
     
-    var challenges: [DataStructures.Challenge]? {
+    var challenges: [DataStructures.Challenge]? = DataStructures.exampleChallenges { // REPLACE AFTER DEMO
         didSet {
             challengeTableView?.reloadData()
         }
@@ -23,6 +23,7 @@ class FindChallengesViewController: UIViewController, UITableViewDataSource, UIT
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.title = "Find Challenges"
         challengeTableView.register(UINib(nibName: "ChallengeTableViewCell", bundle: nil), forCellReuseIdentifier: "challenge")
     }
     
@@ -66,6 +67,6 @@ class FindChallengesViewController: UIViewController, UITableViewDataSource, UIT
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let challengeVC = ChallengeViewController(nibName: "ChallengeViewController", bundle: nil)
         challengeVC.challenge = challenges?[indexPath.row]
-        present(challengeVC, animated: false, completion: nil)
+        self.navigationController?.pushViewController(challengeVC, animated: false)
     }
 }

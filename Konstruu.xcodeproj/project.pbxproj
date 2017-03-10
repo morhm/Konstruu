@@ -15,6 +15,7 @@
 		613B1B5A1E722F2A00544297 /* UserCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 613B1B581E722F2A00544297 /* UserCollectionViewCell.xib */; };
 		613B1B5D1E722F3C00544297 /* ProgressPostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 613B1B5B1E722F3C00544297 /* ProgressPostTableViewCell.swift */; };
 		613B1B5E1E722F3C00544297 /* ProgressPostTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 613B1B5C1E722F3C00544297 /* ProgressPostTableViewCell.xib */; };
+		618FBA441E7332B300B2F652 /* KonstruuTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618FBA421E7332B300B2F652 /* KonstruuTabBarController.swift */; };
 		61BD68BE1E6DEC0A00B1A0E9 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61BD68BC1E6DEC0A00B1A0E9 /* LoginViewController.swift */; };
 		61BD68BF1E6DEC0A00B1A0E9 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 61BD68BD1E6DEC0A00B1A0E9 /* LoginViewController.xib */; };
 		61BD68C21E6DEEF400B1A0E9 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61BD68C01E6DEEF400B1A0E9 /* ProfileViewController.swift */; };
@@ -68,6 +69,7 @@
 		613B1B581E722F2A00544297 /* UserCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserCollectionViewCell.xib; sourceTree = "<group>"; };
 		613B1B5B1E722F3C00544297 /* ProgressPostTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressPostTableViewCell.swift; sourceTree = "<group>"; };
 		613B1B5C1E722F3C00544297 /* ProgressPostTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProgressPostTableViewCell.xib; sourceTree = "<group>"; };
+		618FBA421E7332B300B2F652 /* KonstruuTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KonstruuTabBarController.swift; sourceTree = "<group>"; };
 		61BD68BC1E6DEC0A00B1A0E9 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		61BD68BD1E6DEC0A00B1A0E9 /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
 		61BD68C01E6DEEF400B1A0E9 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
@@ -189,6 +191,14 @@
 			name = "Create Team Page";
 			sourceTree = "<group>";
 		};
+		618FBA411E732F0400B2F652 /* Tab Bar Controller */ = {
+			isa = PBXGroup;
+			children = (
+				618FBA421E7332B300B2F652 /* KonstruuTabBarController.swift */,
+			);
+			name = "Tab Bar Controller";
+			sourceTree = "<group>";
+		};
 		61BD68C41E6DF2D300B1A0E9 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
@@ -246,6 +256,7 @@
 			isa = PBXGroup;
 			children = (
 				61592C6F1E711952008B89C6 /* Login Page */,
+				618FBA411E732F0400B2F652 /* Tab Bar Controller */,
 				61592C701E71195B008B89C6 /* Profile Page */,
 				61592C711E711965008B89C6 /* Find Challenges Page */,
 				61592C721E71196F008B89C6 /* Challenge Page */,
@@ -301,7 +312,7 @@
 				TargetAttributes = {
 					68C8E5571E6408AA00047901 = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = TLAM246JYZ;
+						DevelopmentTeam = W2QCZ475YE;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -416,6 +427,7 @@
 				613B1B511E72144800544297 /* TeamTableViewCell.swift in Sources */,
 				613B1B5D1E722F3C00544297 /* ProgressPostTableViewCell.swift in Sources */,
 				61BD68CF1E6DF7B900B1A0E9 /* ChallengeTableViewCell.swift in Sources */,
+				618FBA441E7332B300B2F652 /* KonstruuTabBarController.swift in Sources */,
 				61F7F87A1E6E06FB0017461F /* TeamViewController.swift in Sources */,
 				61F811D51E6F973000777F68 /* User.swift in Sources */,
 			);
@@ -531,7 +543,7 @@
 			baseConfigurationReference = A9732213F7532194FC238323 /* Pods-Konstruu.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = TLAM246JYZ;
+				DEVELOPMENT_TEAM = W2QCZ475YE;
 				INFOPLIST_FILE = Konstruu/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.example.Konstruu;
@@ -545,7 +557,7 @@
 			baseConfigurationReference = 3933F443C092D674AF826DEB /* Pods-Konstruu.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = TLAM246JYZ;
+				DEVELOPMENT_TEAM = W2QCZ475YE;
 				INFOPLIST_FILE = Konstruu/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.example.Konstruu;

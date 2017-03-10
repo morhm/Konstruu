@@ -22,6 +22,7 @@ class ProfileViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.title = "Profile"
         updateUI()
     }
     
@@ -39,8 +40,6 @@ class ProfileViewController: UIViewController {
     // MARK: - Navigation
     
     @IBAction func showFindChallenges(_ sender: UIButton) {
-        let findChallengesVC = FindChallengesViewController(nibName: "FindChallengesViewController", bundle: nil)
-        findChallengesVC.challenges = DataStructures.exampleChallenges
-        present(findChallengesVC, animated: false, completion: nil)
+        self.tabBarController?.selectedIndex = 1 // TODO: Maybe fix style on this
     }
 }

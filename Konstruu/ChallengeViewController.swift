@@ -25,6 +25,7 @@ class ChallengeViewController: UIViewController, UITableViewDelegate, UITableVie
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.title = challenge?.title
         teamsTableView?.register(UINib(nibName: "TeamTableViewCell", bundle: nil), forCellReuseIdentifier: "team")
         updateUI()
     }
@@ -70,6 +71,6 @@ class ChallengeViewController: UIViewController, UITableViewDelegate, UITableVie
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let teamVC = TeamViewController(nibName: "TeamViewController", bundle: nil)
         teamVC.team = challenge?.teams?[indexPath.row]
-        present(teamVC, animated: false, completion: nil)
+        self.navigationController?.pushViewController(teamVC, animated: false)
     }
 }
