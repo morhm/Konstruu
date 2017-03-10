@@ -71,6 +71,6 @@ class ChallengeViewController: UIViewController, UITableViewDelegate, UITableVie
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let teamVC = TeamViewController(nibName: "TeamViewController", bundle: nil)
         teamVC.team = challenge?.teams?[indexPath.row]
-        self.navigationController?.pushViewController(teamVC, animated: false)
+        self.navigationController?.pushViewController(teamVC, animated: true)
     }
 }

@@ -16,6 +16,6 @@ class LoginViewController: UIViewController {
      @IBAction func loginWithFacebook(_ sender: UIButton) {
         let tabBarVC = KonstruuTabBarController(nibName: "KonstruuTabBarController", bundle: nil)
         tabBarVC.user = DataStructures.exampleUsers[0] // REPLACE AFTER DEMO
-        present(tabBarVC, animated: false, completion: nil)
+        present(tabBarVC, animated: true, completion: nil)
      }
 }

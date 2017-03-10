@@ -67,6 +67,6 @@ class FindChallengesViewController: UIViewController, UITableViewDataSource, UIT
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let challengeVC = ChallengeViewController(nibName: "ChallengeViewController", bundle: nil)
         challengeVC.challenge = challenges?[indexPath.row]
-        self.navigationController?.pushViewController(challengeVC, animated: false)
+        self.navigationController?.pushViewController(challengeVC, animated: true)
     }
 }
