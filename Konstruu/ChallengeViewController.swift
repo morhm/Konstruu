@@ -48,24 +48,27 @@ class ChallengeViewController: UIViewController, UITableViewDelegate, UITableVie
     
     // MARK: - Table view data source
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        // transition to team page
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "team", for: indexPath)
-        if let teamCell = (cell as? TeamTableViewCell) {
-            teamCell.team = challenge?.teams?[indexPath.row]
-            return teamCell
-        }
-        return cell
-    }
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return challenge?.teams?.count ?? 0
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "team", for: indexPath)
+        if let teamCell = (cell as? TeamTableViewCell) {
+            // Pass any information to the individual table cell here!
+            teamCell.team = challenge?.teams?[indexPath.row]
+            return teamCell
+        }
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let teamVC = TeamViewController(nibName: "TeamViewController", bundle: nil)
+        teamVC.team = challenge?.teams?[indexPath.row]
+        present(teamVC, animated: false, completion: nil)
     }
 }

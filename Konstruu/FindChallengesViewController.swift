@@ -23,18 +23,23 @@ class FindChallengesViewController: UIViewController, UITableViewDataSource, UIT
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        challengeTableView.dataSource = self
-        challengeTableView.delegate = self
         challengeTableView.register(UINib(nibName: "ChallengeTableViewCell", bundle: nil), forCellReuseIdentifier: "challenge")
-        challengeTableView.reloadData()
-        searchBar.delegate = self
     }
     
     // MARK: - UI
     
-    @IBOutlet weak var searchBar: UISearchBar!
+    @IBOutlet weak var searchBar: UISearchBar! {
+        didSet {
+            searchBar.delegate = self
+        }
+    }
     
-    @IBOutlet weak var challengeTableView: UITableView!
+    @IBOutlet weak var challengeTableView: UITableView! {
+        didSet {
+            challengeTableView.dataSource = self
+            challengeTableView.delegate = self
+        }
+    }
     
     
     // MARK: - Table view data source
@@ -51,6 +56,7 @@ class FindChallengesViewController: UIViewController, UITableViewDataSource, UIT
         let cell = tableView.dequeueReusableCell(withIdentifier: "challenge", for: indexPath)
         
         if let challengeCell = (cell as? ChallengeTableViewCell) {
+            // Pass any information to the individual table cell here!
             challengeCell.challenge = challenges?[indexPath.row]
         }
         
