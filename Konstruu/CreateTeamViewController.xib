@@ -1,11 +1,15 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11134" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11106"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CreateTeamViewController" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CreateTeamViewController" customModule="Konstruu" customModuleProvider="target">
             <connections>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -14,7 +18,49 @@
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xKs-PX-CXy">
+                    <rect key="frame" x="310" y="141" width="51" height="31"/>
+                </switch>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Team Name:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PoV-5I-MYm">
+                    <rect key="frame" x="16" y="85" width="96" height="31"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="A8m-lL-EWs">
+                    <rect key="frame" x="120" y="85" width="239" height="30"/>
+                    <nil key="textColor"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits"/>
+                </textField>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Looking for Teammates?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iuh-yu-A9S">
+                    <rect key="frame" x="16" y="146" width="188" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RjG-kP-5Z1">
+                    <rect key="frame" x="144" y="218" width="87" height="30"/>
+                    <state key="normal" title="Create Team"/>
+                </button>
+            </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="PoV-5I-MYm" firstAttribute="centerY" secondItem="A8m-lL-EWs" secondAttribute="centerY" id="830-Z8-aNJ"/>
+                <constraint firstItem="PoV-5I-MYm" firstAttribute="leading" secondItem="iuh-yu-A9S" secondAttribute="leading" id="Bs2-4Q-w1N"/>
+                <constraint firstItem="iuh-yu-A9S" firstAttribute="centerY" secondItem="xKs-PX-CXy" secondAttribute="centerY" id="FV5-tn-d7e"/>
+                <constraint firstAttribute="trailing" secondItem="xKs-PX-CXy" secondAttribute="trailing" constant="16" id="HYq-JM-K26"/>
+                <constraint firstItem="PoV-5I-MYm" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="16" id="L65-QF-KL2"/>
+                <constraint firstItem="A8m-lL-EWs" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="85" id="SVs-Jx-C24"/>
+                <constraint firstAttribute="trailing" secondItem="A8m-lL-EWs" secondAttribute="trailing" constant="16" id="X0M-bR-gSq"/>
+                <constraint firstItem="RjG-kP-5Z1" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="bYR-JT-SqC"/>
+                <constraint firstItem="iuh-yu-A9S" firstAttribute="top" secondItem="PoV-5I-MYm" secondAttribute="bottom" constant="30" id="hes-Pr-LQy"/>
+                <constraint firstItem="A8m-lL-EWs" firstAttribute="leading" secondItem="PoV-5I-MYm" secondAttribute="trailing" constant="8" symbolic="YES" id="sWr-XO-2Lr"/>
+                <constraint firstItem="RjG-kP-5Z1" firstAttribute="top" secondItem="iuh-yu-A9S" secondAttribute="bottom" constant="51" id="x8x-Nc-mUw"/>
+                <constraint firstItem="PoV-5I-MYm" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="85" id="yEg-hs-2eV"/>
+            </constraints>
+            <point key="canvasLocation" x="34.5" y="54.5"/>
         </view>
     </objects>
 </document>

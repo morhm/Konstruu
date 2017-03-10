@@ -90,4 +90,12 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         return cell
     }
+    
+    // MARK: - Navigation
+    
+    @IBAction func showChallenge(_ sender: UIButton) {
+        let challengeVC = ChallengeViewController(nibName: "ChallengeViewController", bundle: nil)
+        challengeVC.challenge = team?.challenge
+        self.navigationController?.pushViewController(challengeVC, animated: true)
+    }
 }

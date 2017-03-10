@@ -44,8 +44,14 @@ class KonstruuTabBarController: UITabBarController, UITabBarControllerDelegate {
         let findChallengesNavigationController = UINavigationController()
         findChallengesNavigationController.viewControllers = [findChallengesVC]
         
-        // TODO: Add a tab for "Create a Challenge"
+        // Set up CreateChallengeViewController with its UITabBarItem
+        let createChallengeVC = CreateChallengeViewController(nibName: "CreateChallengeViewController", bundle: nil)
+        let createChallengeTabBarItem = UITabBarItem(title: "Create a Challenge", image: #imageLiteral(resourceName: "New"), tag: 2)
+        createChallengeVC.tabBarItem = createChallengeTabBarItem
         
-        self.viewControllers = [profileNavigationController, findChallengesNavigationController]
+        let createChallengeNavigationController = UINavigationController()
+        createChallengeNavigationController.viewControllers = [createChallengeVC]
+        
+        self.viewControllers = [profileNavigationController, findChallengesNavigationController, createChallengeNavigationController]
     }
 }
