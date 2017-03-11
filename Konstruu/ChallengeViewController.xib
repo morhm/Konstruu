@@ -19,11 +19,11 @@
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
-            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <rect key="frame" x="0.0" y="0.0" width="375" height="554"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Teams Working on this Project" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4yG-Hc-yBE">
-                    <rect key="frame" x="16" y="204" width="343" height="21"/>
+                    <rect key="frame" x="16" y="134" width="343" height="21"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="21" id="LQg-Ad-uqo"/>
                     </constraints>
@@ -32,17 +32,17 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="BXR-gE-hS6">
-                    <rect key="frame" x="0.0" y="233" width="375" height="434"/>
+                    <rect key="frame" x="0.0" y="163" width="375" height="391"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </tableView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Challenge Title" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z0F-bZ-0q2">
-                    <rect key="frame" x="97" y="85" width="180" height="34"/>
+                    <rect key="frame" x="97" y="15" width="180" height="34"/>
                     <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Challenge Description" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e1I-hg-J27">
-                    <rect key="frame" x="16" y="142" width="343" height="21"/>
+                    <rect key="frame" x="16" y="72" width="343" height="21"/>
                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
@@ -50,7 +50,7 @@
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="z0F-bZ-0q2" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="85" id="BQ6-HT-EkT"/>
+                <constraint firstItem="z0F-bZ-0q2" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="15" id="BQ6-HT-EkT"/>
                 <constraint firstItem="z0F-bZ-0q2" firstAttribute="centerX" secondItem="e1I-hg-J27" secondAttribute="centerX" id="DBx-CR-CUl"/>
                 <constraint firstAttribute="bottom" secondItem="BXR-gE-hS6" secondAttribute="bottom" id="HEC-C7-jtL"/>
                 <constraint firstItem="e1I-hg-J27" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="16" id="Inb-0b-WUB"/>
@@ -63,6 +63,8 @@
                 <constraint firstItem="e1I-hg-J27" firstAttribute="trailing" secondItem="4yG-Hc-yBE" secondAttribute="trailing" id="yzC-Zp-zh8"/>
                 <constraint firstItem="4yG-Hc-yBE" firstAttribute="top" secondItem="e1I-hg-J27" secondAttribute="bottom" constant="41" id="zwE-lT-9Bu"/>
             </constraints>
+            <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
+            <simulatedTabBarMetrics key="simulatedBottomBarMetrics" translucent="NO"/>
             <point key="canvasLocation" x="34.5" y="53.5"/>
         </view>
     </objects>

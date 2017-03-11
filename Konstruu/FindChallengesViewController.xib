@@ -18,15 +18,15 @@
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
-            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <rect key="frame" x="0.0" y="0.0" width="375" height="554"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="eK1-QB-O3x">
-                    <rect key="frame" x="0.0" y="109" width="375" height="558"/>
+                    <rect key="frame" x="0.0" y="44" width="375" height="510"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </tableView>
                 <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="PuL-ih-grX">
-                    <rect key="frame" x="0.0" y="65" width="375" height="44"/>
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                     <textInputTraits key="textInputTraits"/>
                 </searchBar>
             </subviews>
@@ -34,12 +34,14 @@
             <constraints>
                 <constraint firstItem="eK1-QB-O3x" firstAttribute="leading" secondItem="PuL-ih-grX" secondAttribute="leading" id="5SD-jC-ZvU"/>
                 <constraint firstItem="eK1-QB-O3x" firstAttribute="trailing" secondItem="PuL-ih-grX" secondAttribute="trailing" id="Cmm-DR-lbq"/>
-                <constraint firstItem="PuL-ih-grX" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="65" id="blM-1n-y16"/>
+                <constraint firstItem="PuL-ih-grX" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" symbolic="YES" id="blM-1n-y16"/>
                 <constraint firstAttribute="trailing" secondItem="PuL-ih-grX" secondAttribute="trailing" id="d4C-RP-T65"/>
                 <constraint firstAttribute="bottom" secondItem="eK1-QB-O3x" secondAttribute="bottom" id="g2h-kp-4U8"/>
                 <constraint firstItem="eK1-QB-O3x" firstAttribute="top" secondItem="PuL-ih-grX" secondAttribute="bottom" id="ked-6A-7hs"/>
                 <constraint firstItem="PuL-ih-grX" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="ttf-Cv-e8E"/>
             </constraints>
+            <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
+            <simulatedTabBarMetrics key="simulatedBottomBarMetrics" translucent="NO"/>
             <point key="canvasLocation" x="33.5" y="53.5"/>
         </view>
         <navigationBar contentMode="scaleToFill" id="dc5-n3-SS9">
