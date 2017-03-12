@@ -11,50 +11,53 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CreateChallengeViewController" customModule="Konstruu" customModuleProvider="target">
             <connections>
+                <outlet property="challengeDescriptionTextView" destination="BXq-8Y-W0Y" id="A4t-S7-2v9"/>
+                <outlet property="challengeNameTextField" destination="db0-s9-2pd" id="hyh-SP-E4u"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
-            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <rect key="frame" x="0.0" y="0.0" width="375" height="554"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Challenge Name:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gzq-83-uK0">
-                    <rect key="frame" x="16" y="85" width="131" height="31"/>
+                    <rect key="frame" x="16" y="15" width="131" height="31"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="db0-s9-2pd">
-                    <rect key="frame" x="155" y="85" width="204" height="30"/>
+                    <rect key="frame" x="155" y="15" width="204" height="30"/>
                     <nil key="textColor"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                    <textInputTraits key="textInputTraits"/>
+                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                 </textField>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Challenge Description:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GbE-el-d4e">
-                    <rect key="frame" x="16" y="139" width="174" height="21"/>
+                    <rect key="frame" x="16" y="69" width="174" height="21"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Enter challenge description here" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="BXq-8Y-W0Y">
-                    <rect key="frame" x="16" y="168" width="343" height="135"/>
+                    <rect key="frame" x="16" y="98" width="343" height="135"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="135" id="hP4-OM-wiS"/>
                     </constraints>
+                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                 </textView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3uT-Nt-tQq">
-                    <rect key="frame" x="128" y="330" width="118" height="30"/>
+                    <rect key="frame" x="128" y="260" width="118" height="30"/>
                     <state key="normal" title="Create Challenge"/>
                 </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="BXq-8Y-W0Y" firstAttribute="centerX" secondItem="3uT-Nt-tQq" secondAttribute="centerX" id="1ap-AH-gv5"/>
-                <constraint firstItem="db0-s9-2pd" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="85" id="5bn-LL-QF2"/>
+                <constraint firstItem="db0-s9-2pd" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="15" id="5bn-LL-QF2"/>
                 <constraint firstItem="BXq-8Y-W0Y" firstAttribute="top" secondItem="GbE-el-d4e" secondAttribute="bottom" constant="8" symbolic="YES" id="LZy-PT-vNZ"/>
                 <constraint firstItem="3uT-Nt-tQq" firstAttribute="top" secondItem="BXq-8Y-W0Y" secondAttribute="bottom" constant="27" id="SYL-xv-wAr"/>
                 <constraint firstItem="Gzq-83-uK0" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="16" id="SZI-Mv-Tvb"/>
@@ -62,11 +65,13 @@
                 <constraint firstItem="3uT-Nt-tQq" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="f68-5o-tQT"/>
                 <constraint firstItem="GbE-el-d4e" firstAttribute="leading" secondItem="BXq-8Y-W0Y" secondAttribute="leading" id="h4K-BZ-Yn5"/>
                 <constraint firstItem="db0-s9-2pd" firstAttribute="leading" secondItem="Gzq-83-uK0" secondAttribute="trailing" constant="8" symbolic="YES" id="ihg-nv-OOo"/>
-                <constraint firstItem="Gzq-83-uK0" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="85" id="iyj-t9-7M2"/>
+                <constraint firstItem="Gzq-83-uK0" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="15" id="iyj-t9-7M2"/>
                 <constraint firstItem="Gzq-83-uK0" firstAttribute="leading" secondItem="GbE-el-d4e" secondAttribute="leading" id="kx9-dC-5dc"/>
                 <constraint firstItem="Gzq-83-uK0" firstAttribute="centerY" secondItem="db0-s9-2pd" secondAttribute="centerY" id="uie-dJ-0mY"/>
                 <constraint firstItem="GbE-el-d4e" firstAttribute="top" secondItem="Gzq-83-uK0" secondAttribute="bottom" constant="23" id="usd-IM-ntS"/>
             </constraints>
+            <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
+            <simulatedTabBarMetrics key="simulatedBottomBarMetrics" translucent="NO"/>
             <point key="canvasLocation" x="34.5" y="54.5"/>
         </view>
     </objects>
