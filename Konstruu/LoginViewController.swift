@@ -14,8 +14,25 @@ class LoginViewController: UIViewController {
     // MARK: - Navigation
 
      @IBAction func loginWithFacebook(_ sender: UIButton) {
-        let tabBarVC = KonstruuTabBarController(nibName: "KonstruuTabBarController", bundle: nil)
-        tabBarVC.user = DataStructures.exampleUsers[0] // REPLACE AFTER DEMO
-        present(tabBarVC, animated: true, completion: nil)
+        skipToProfile()
      }
+    
+    @IBAction func loginWithEmail(_ sender: UIButton) {
+        skipToProfile()
+    }
+    
+    @IBAction func signUpWithFacebook(_ sender: UIButton) {
+        skipToProfile()
+    }
+    
+    @IBAction func signUpWithEmail(_ sender: UIButton) {
+        skipToProfile()
+    }
+    
+    // REMOVE AFTER DEMO
+    private func skipToProfile() {
+        let tabBarVC = KonstruuTabBarController(nibName: "KonstruuTabBarController", bundle: nil)
+        tabBarVC.user = DataStructures.exampleUsers[0]
+        present(tabBarVC, animated: true, completion: nil)
+    }
 }
