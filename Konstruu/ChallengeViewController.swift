@@ -41,6 +41,8 @@ class ChallengeViewController: UIViewController, UITableViewDelegate, UITableVie
         didSet {
             teamsTableView.dataSource = self
             teamsTableView.delegate = self
+            teamsTableView.rowHeight = UITableViewAutomaticDimension
+            teamsTableView.estimatedRowHeight = 100
         }
     }
     

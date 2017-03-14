@@ -7,12 +7,24 @@
 //
 
 import UIKit
+import DataStructures
 
 class UserCollectionViewCell: UICollectionViewCell {
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
+    // MARK: - Model
+    
+    var user: DataStructures.User? {
+        didSet {
+            updateUI()
+        }
+    }
+    
+    // MARK: - UI
+    
+    @IBOutlet weak var profileImageView: UIImageView!
+    
+    private func updateUI() {
+        profileImageView?.image = user?.profileImage
     }
 
 }

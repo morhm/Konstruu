@@ -7,18 +7,41 @@
 //
 
 import UIKit
+import Foundation
+import DataStructures
 
 class ProgressPostTableViewCell: UITableViewCell {
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
+    // MARK: - Model
+    
+    var progressPost: DataStructures.ProgressPost? {
+        didSet {
+            updateUI()
+        }
     }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+    
+    // MARK: - UI
+    
+    @IBOutlet weak var dateLabel: UILabel!
+    
+    @IBOutlet weak var progressPostImageView: UIImageView!
+    
+    @IBOutlet weak var progressPostTextLabel: UILabel!
+    
+    private func updateUI() {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd MMM yyyy hh:mm:ss"
+        if let date = progressPost?.date {
+            dateLabel.text = dateFormatter.string(from: date)
+        }
+        
+        if let image = progressPost?.image {
+            progressPostImageView.image = image
+        } else {
+            progressPostImageView.isHidden = true
+        }
+        
+        progressPostTextLabel.text = progressPost?.text
     }
     
 }

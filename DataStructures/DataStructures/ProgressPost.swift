@@ -9,11 +9,11 @@
 import Foundation
 
 public struct ProgressPost {
-    public let date: NSDate
+    public let date: Date
     public let text: String?
     public let image: UIImage?
     
-    init(date: NSDate, text: String?, image: UIImage?) {
+    init(date: Date, text: String?, image: UIImage?) {
         self.date = date
         self.text = text
         self.image = image

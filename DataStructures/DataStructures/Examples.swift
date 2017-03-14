@@ -15,7 +15,7 @@ public var exampleChallenges: [Challenge] = [
 ]
 
 public let exampleProgressPosts: [ProgressPost] = [
-    ProgressPost(date: NSDate.init(timeIntervalSinceNow: 0), text: "We did a thing!", image: nil)
+    ProgressPost(date: Date.init(timeIntervalSinceNow: 0), text: "We did a thing!", image: nil)
 ]
 
 public var exampleTeams: [Team] = [

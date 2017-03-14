@@ -40,6 +40,8 @@ class FindChallengesViewController: UIViewController, UITableViewDataSource, UIT
         didSet {
             challengeTableView.dataSource = self
             challengeTableView.delegate = self
+            challengeTableView.rowHeight = UITableViewAutomaticDimension
+            challengeTableView.estimatedRowHeight = 100
         }
     }
     

@@ -52,6 +52,8 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
         didSet {
             progressPostsTableView.dataSource = self
             progressPostsTableView.delegate = self
+            progressPostsTableView.rowHeight = UITableViewAutomaticDimension
+            progressPostsTableView.estimatedRowHeight = 100
         }
     }
     
@@ -73,7 +75,18 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = usersCollectionView.dequeueReusableCell(withReuseIdentifier: "user", for: indexPath)
         
+        if let userCell = (cell as? UserCollectionViewCell) {
+            userCell.user = team?.users?[indexPath.row]
+            return userCell
+        }
+        
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let profileVC = ProfileViewController(nibName: "ProfileViewController", bundle: nil)
+        profileVC.user = team?.users?[indexPath.row]
+        self.navigationController?.pushViewController(profileVC, animated: true)
     }
     
     // MARK: - Table view data source
@@ -89,7 +102,16 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = progressPostsTableView.dequeueReusableCell(withIdentifier: "progressPost", for: indexPath)
         
+        if let progressPostCell = (cell as? ProgressPostTableViewCell) {
+            progressPostCell.progressPost = team?.progressPosts?[indexPath.row]
+            return progressPostCell
+        }
+        
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableViewAutomaticDimension
     }
     
     // MARK: - Navigation

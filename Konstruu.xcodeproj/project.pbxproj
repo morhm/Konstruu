@@ -16,6 +16,8 @@
 		613B1B5D1E722F3C00544297 /* ProgressPostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 613B1B5B1E722F3C00544297 /* ProgressPostTableViewCell.swift */; };
 		613B1B5E1E722F3C00544297 /* ProgressPostTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 613B1B5C1E722F3C00544297 /* ProgressPostTableViewCell.xib */; };
 		618FBA441E7332B300B2F652 /* KonstruuTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618FBA421E7332B300B2F652 /* KonstruuTabBarController.swift */; };
+		619E96481E7768900001D807 /* BadgeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 619E96461E7768900001D807 /* BadgeTableViewCell.swift */; };
+		619E96491E7768900001D807 /* BadgeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 619E96471E7768900001D807 /* BadgeTableViewCell.xib */; };
 		61BD68BE1E6DEC0A00B1A0E9 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61BD68BC1E6DEC0A00B1A0E9 /* LoginViewController.swift */; };
 		61BD68BF1E6DEC0A00B1A0E9 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 61BD68BD1E6DEC0A00B1A0E9 /* LoginViewController.xib */; };
 		61BD68C21E6DEEF400B1A0E9 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61BD68C01E6DEEF400B1A0E9 /* ProfileViewController.swift */; };
@@ -70,6 +72,8 @@
 		613B1B5B1E722F3C00544297 /* ProgressPostTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressPostTableViewCell.swift; sourceTree = "<group>"; };
 		613B1B5C1E722F3C00544297 /* ProgressPostTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProgressPostTableViewCell.xib; sourceTree = "<group>"; };
 		618FBA421E7332B300B2F652 /* KonstruuTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KonstruuTabBarController.swift; sourceTree = "<group>"; };
+		619E96461E7768900001D807 /* BadgeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BadgeTableViewCell.swift; sourceTree = "<group>"; };
+		619E96471E7768900001D807 /* BadgeTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BadgeTableViewCell.xib; sourceTree = "<group>"; };
 		61BD68BC1E6DEC0A00B1A0E9 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		61BD68BD1E6DEC0A00B1A0E9 /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
 		61BD68C01E6DEEF400B1A0E9 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
@@ -134,6 +138,8 @@
 			children = (
 				61BD68C01E6DEEF400B1A0E9 /* ProfileViewController.swift */,
 				61BD68C11E6DEEF400B1A0E9 /* ProfileViewController.xib */,
+				619E96461E7768900001D807 /* BadgeTableViewCell.swift */,
+				619E96471E7768900001D807 /* BadgeTableViewCell.xib */,
 			);
 			name = "Profile Page";
 			sourceTree = "<group>";
@@ -347,6 +353,7 @@
 				68C8E5661E6408AA00047901 /* LaunchScreen.storyboard in Resources */,
 				CA3A89441E6F81820000D33E /* ChallengeTableViewCell.xib in Resources */,
 				61BD68C31E6DEEF400B1A0E9 /* ProfileViewController.xib in Resources */,
+				619E96491E7768900001D807 /* BadgeTableViewCell.xib in Resources */,
 				61F7F87B1E6E06FB0017461F /* TeamViewController.xib in Resources */,
 				613B1B521E72144800544297 /* TeamTableViewCell.xib in Resources */,
 				68C8E5631E6408AA00047901 /* Assets.xcassets in Resources */,
@@ -416,6 +423,7 @@
 				61F811D91E6F974600777F68 /* Challenge.swift in Sources */,
 				613B1B551E721A1E00544297 /* FindChallengesViewController.swift in Sources */,
 				61BD68C21E6DEEF400B1A0E9 /* ProfileViewController.swift in Sources */,
+				619E96481E7768900001D807 /* BadgeTableViewCell.swift in Sources */,
 				61BD68BE1E6DEC0A00B1A0E9 /* LoginViewController.swift in Sources */,
 				68C8E55C1E6408AA00047901 /* AppDelegate.swift in Sources */,
 				61F811D31E6F928A00777F68 /* Konstruu.xcdatamodeld in Sources */,
