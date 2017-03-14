@@ -54,4 +54,11 @@ class KonstruuTabBarController: UITabBarController, UITabBarControllerDelegate {
         
         self.viewControllers = [profileNavigationController, findChallengesNavigationController, createChallengeNavigationController]
     }
+    
+    func findChallengesWasClicked() {
+        self.selectedIndex = 1
+        if let navigationController = (self.viewControllers?[1] as? UINavigationController) {
+            navigationController.popToRootViewController(animated: false)
+        }
+    }
 }

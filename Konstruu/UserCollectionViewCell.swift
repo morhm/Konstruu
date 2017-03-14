@@ -24,6 +24,8 @@ class UserCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var profileImageView: UIImageView!
     
     private func updateUI() {
+        profileImageView?.clipsToBounds = true
+        profileImageView?.contentMode = UIViewContentMode.scaleAspectFill
         profileImageView?.image = user?.profileImage
     }
 

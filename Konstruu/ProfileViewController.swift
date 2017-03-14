@@ -44,6 +44,8 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     private func updateUI() {
+        profileImageView?.clipsToBounds = true
+        profileImageView?.contentMode = UIViewContentMode.scaleAspectFill
         profileImageView?.image = user?.profileImage
         usernameLabel?.text = user?.username
     }
@@ -72,6 +74,8 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
     // MARK: - Navigation
     
     @IBAction func showFindChallenges(_ sender: UIButton) {
-        self.tabBarController?.selectedIndex = 1 // TODO: Maybe fix style on this
+        if let tabBarController = (self.tabBarController as? KonstruuTabBarController) {
+            tabBarController.findChallengesWasClicked()
+        }
     }
 }
