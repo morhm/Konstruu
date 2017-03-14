@@ -36,7 +36,7 @@
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </tableView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Challenge Title" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z0F-bZ-0q2">
-                    <rect key="frame" x="97" y="15" width="180" height="34"/>
+                    <rect key="frame" x="16" y="15" width="343" height="34"/>
                     <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
@@ -56,7 +56,9 @@
                 <constraint firstItem="e1I-hg-J27" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="16" id="Inb-0b-WUB"/>
                 <constraint firstItem="e1I-hg-J27" firstAttribute="top" secondItem="z0F-bZ-0q2" secondAttribute="bottom" constant="23" id="Ja5-J6-fZq"/>
                 <constraint firstItem="BXR-gE-hS6" firstAttribute="top" secondItem="4yG-Hc-yBE" secondAttribute="bottom" constant="8" symbolic="YES" id="KHu-tC-r1C"/>
+                <constraint firstItem="z0F-bZ-0q2" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="16" id="WQ5-lj-v9m"/>
                 <constraint firstItem="e1I-hg-J27" firstAttribute="leading" secondItem="4yG-Hc-yBE" secondAttribute="leading" id="YKr-LV-IeO"/>
+                <constraint firstAttribute="trailing" secondItem="z0F-bZ-0q2" secondAttribute="trailing" constant="16" id="hUX-Ov-QkY"/>
                 <constraint firstItem="BXR-gE-hS6" firstAttribute="centerX" secondItem="4yG-Hc-yBE" secondAttribute="centerX" id="mwM-cO-goP"/>
                 <constraint firstItem="BXR-gE-hS6" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="riU-GA-8LD"/>
                 <constraint firstItem="z0F-bZ-0q2" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="uZB-L3-aQI"/>
@@ -65,7 +67,7 @@
             </constraints>
             <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
             <simulatedTabBarMetrics key="simulatedBottomBarMetrics" translucent="NO"/>
-            <point key="canvasLocation" x="34.5" y="53.5"/>
+            <point key="canvasLocation" x="34.5" y="-74.5"/>
         </view>
     </objects>
 </document>
