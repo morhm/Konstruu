@@ -23,8 +23,8 @@ public var exampleTeams: [Team] = [
 ]
 
 public var exampleUsers: [User] = [
-    User(id: 1, username: "Jaoquin Pheonix", profileImage: #imageLiteral(resourceName: "myPicture"), teams: nil, badges: ["Challenge Guru"]),
-    User(id: 2, username: "al", profileImage: #imageLiteral(resourceName: "some_douchey_guy"), teams: nil, badges: ["Problem-Solver"]),
-    User(id: 3, username: "david", profileImage: #imageLiteral(resourceName: "boy"), teams: nil, badges: ["Teammate"]),
-    User(id: 4, username: "anu", profileImage: #imageLiteral(resourceName: "girls"), teams: nil, badges: ["Challenge Guru"])
+    User(id: 1, username: "Jaoquin Pheonix", profileImage: #imageLiteral(resourceName: "myPicture"), teams: nil, badges: ["Challenge Guru", "Problem-Solver", "Teammate"]),
+    User(id: 2, username: "Al Yuen", profileImage: #imageLiteral(resourceName: "some_douchey_guy"), teams: nil, badges: ["Problem-Solver"]),
+    User(id: 3, username: "David Xue", profileImage: #imageLiteral(resourceName: "boy"), teams: nil, badges: ["Teammate"]),
+    User(id: 4, username: "Anu Rajan", profileImage: #imageLiteral(resourceName: "girls"), teams: nil, badges: ["Challenge Guru"])
 ]
