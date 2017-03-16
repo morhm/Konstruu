@@ -24,7 +24,7 @@ public var exampleTeams: [Team] = [
 
 public var exampleUsers: [User] = [
     User(id: 1, username: "morhm", profileImage: #imageLiteral(resourceName: "myPicture"), teams: nil, badges: ["Challenge Guru"]),
-    User(id: 2, username: "al", profileImage: #imageLiteral(resourceName: "slackIcon"), teams: nil, badges: ["Problem-Solver"]),
-    User(id: 3, username: "david", profileImage: #imageLiteral(resourceName: "slackIcon"), teams: nil, badges: ["Teammate"]),
-    User(id: 4, username: "anu", profileImage: #imageLiteral(resourceName: "slackIcon"), teams: nil, badges: ["Challenge Guru"])
+    User(id: 2, username: "al", profileImage: #imageLiteral(resourceName: "some_douchey_guy"), teams: nil, badges: ["Problem-Solver"]),
+    User(id: 3, username: "david", profileImage: #imageLiteral(resourceName: "boy"), teams: nil, badges: ["Teammate"]),
+    User(id: 4, username: "anu", profileImage: #imageLiteral(resourceName: "girls"), teams: nil, badges: ["Challenge Guru"])
 ]
