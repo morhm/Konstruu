@@ -324,7 +324,7 @@
 				TargetAttributes = {
 					68C8E5571E6408AA00047901 = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = W2QCZ475YE;
+						DevelopmentTeam = TLAM246JYZ;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -559,7 +559,7 @@
 			baseConfigurationReference = A9732213F7532194FC238323 /* Pods-Konstruu.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = W2QCZ475YE;
+				DEVELOPMENT_TEAM = TLAM246JYZ;
 				INFOPLIST_FILE = Konstruu/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.example.Konstruu;
@@ -573,7 +573,7 @@
 			baseConfigurationReference = 3933F443C092D674AF826DEB /* Pods-Konstruu.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = W2QCZ475YE;
+				DEVELOPMENT_TEAM = TLAM246JYZ;
 				INFOPLIST_FILE = Konstruu/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.example.Konstruu;

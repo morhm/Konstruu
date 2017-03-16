@@ -29,7 +29,7 @@ class LoginViewController: UIViewController {
         skipToProfile()
     }
     
-    // REMOVE AFTER DEMO
+    //TODO: REMOVE AFTER DEMO
     private func skipToProfile() {
         let tabBarVC = KonstruuTabBarController(nibName: "KonstruuTabBarController", bundle: nil)
         tabBarVC.user = DataStructures.exampleUsers[0]

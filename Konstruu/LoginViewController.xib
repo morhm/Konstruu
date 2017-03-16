@@ -19,43 +19,48 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <button opaque="NO" contentMode="scaleToFill" placeholderIntrinsicWidth="175" placeholderIntrinsicHeight="63" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z8T-xX-6wh">
-                    <rect key="frame" x="100" y="240" width="174" height="63"/>
-                    <color key="backgroundColor" red="0.94901960780000005" green="0.3803921569" blue="0.3411764706" alpha="1" colorSpace="calibratedRGB"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="174" id="GMj-DH-jvD"/>
-                        <constraint firstAttribute="height" constant="63" id="iDA-c9-m0F"/>
-                    </constraints>
-                    <state key="normal" title="Login with Facebook">
-                        <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                    </state>
-                    <connections>
-                        <action selector="loginWithFacebook:" destination="-1" eventType="touchUpInside" id="Zgq-Fb-YqN"/>
-                    </connections>
-                </button>
-                <button opaque="NO" contentMode="scaleToFill" placeholderIntrinsicWidth="174" placeholderIntrinsicHeight="59" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GjY-ar-OaK">
-                    <rect key="frame" x="100" y="321" width="174" height="59"/>
-                    <color key="backgroundColor" red="0.94509803921568625" green="0.65098039215686276" blue="0.41568627450980389" alpha="1" colorSpace="calibratedRGB"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="174" id="Q9j-EI-Y1l"/>
-                        <constraint firstAttribute="height" constant="59" id="cGn-QN-OQc"/>
-                    </constraints>
-                    <state key="normal" title="Login with Email">
-                        <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                    </state>
-                    <connections>
-                        <action selector="loginWithEmail:" destination="-1" eventType="touchUpInside" id="kv9-qC-F5M"/>
-                    </connections>
-                </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bdP-g8-I4a">
-                    <rect key="frame" x="110" y="431" width="155" height="30"/>
-                    <state key="normal" title="Sign up with Facebook"/>
-                    <connections>
-                        <action selector="signUpWithFacebook:" destination="-1" eventType="touchUpInside" id="bsW-eC-Wai"/>
-                    </connections>
-                </button>
+                <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="nvQ-3F-Jni">
+                    <rect key="frame" x="0.0" y="0.0" width="300" height="63"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                </stackView>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="i7u-Tc-Bt4">
+                    <rect key="frame" x="116" y="424" width="155" height="30"/>
+                    <subviews>
+                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="K3U-26-XwG">
+                            <rect key="frame" x="0.0" y="0.0" width="155" height="30"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bdP-g8-I4a">
+                                    <rect key="frame" x="0.0" y="0.0" width="155" height="30"/>
+                                    <state key="normal" title="Sign up with Facebook"/>
+                                    <connections>
+                                        <action selector="signUpWithFacebook:" destination="-1" eventType="touchUpInside" id="bsW-eC-Wai"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                        </stackView>
+                    </subviews>
+                </stackView>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="u97-eL-mzu">
+                    <rect key="frame" x="43" y="240" width="300" height="60"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" placeholderIntrinsicWidth="175" placeholderIntrinsicHeight="63" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z8T-xX-6wh">
+                            <rect key="frame" x="0.0" y="0.0" width="300" height="60"/>
+                            <color key="backgroundColor" red="0.40000000600000002" green="0.40000000600000002" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="300" id="GMj-DH-jvD"/>
+                                <constraint firstAttribute="height" constant="60" id="iDA-c9-m0F"/>
+                            </constraints>
+                            <state key="normal" title="Login with Facebook">
+                                <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            </state>
+                            <connections>
+                                <action selector="loginWithFacebook:" destination="-1" eventType="touchUpInside" id="Zgq-Fb-YqN"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                </stackView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome to Konstruu" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mTs-SR-QUe">
-                    <rect key="frame" x="42.5" y="162" width="289" height="25"/>
+                    <rect key="frame" x="43" y="160" width="289" height="25"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="25" id="HuX-Tv-NRh"/>
                     </constraints>
@@ -63,8 +68,27 @@
                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="VLv-Ry-dI4">
+                    <rect key="frame" x="43" y="320" width="300" height="60"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" placeholderIntrinsicWidth="174" placeholderIntrinsicHeight="59" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GjY-ar-OaK">
+                            <rect key="frame" x="0.0" y="0.0" width="300" height="60"/>
+                            <color key="backgroundColor" red="0.94509803921568625" green="0.65098039215686276" blue="0.41568627450980389" alpha="1" colorSpace="calibratedRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="300" id="Q9j-EI-Y1l"/>
+                                <constraint firstAttribute="height" constant="60" id="cGn-QN-OQc"/>
+                            </constraints>
+                            <state key="normal" title="Login with Email">
+                                <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            </state>
+                            <connections>
+                                <action selector="loginWithEmail:" destination="-1" eventType="touchUpInside" id="kv9-qC-F5M"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                </stackView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f7i-x2-vzQ">
-                    <rect key="frame" x="125" y="469" width="125" height="30"/>
+                    <rect key="frame" x="125" y="462" width="125" height="30"/>
                     <state key="normal" title="Sign up with Email"/>
                     <connections>
                         <action selector="signUpWithEmail:" destination="-1" eventType="touchUpInside" id="Fou-V4-O4P"/>
@@ -73,16 +97,16 @@
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
-                <constraint firstItem="mTs-SR-QUe" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="162" id="5oh-e2-y6t"/>
-                <constraint firstItem="GjY-ar-OaK" firstAttribute="centerX" secondItem="Z8T-xX-6wh" secondAttribute="centerX" id="EAn-sg-tYe"/>
-                <constraint firstItem="Z8T-xX-6wh" firstAttribute="centerX" secondItem="mTs-SR-QUe" secondAttribute="centerX" id="Et8-Ir-kjI"/>
-                <constraint firstItem="f7i-x2-vzQ" firstAttribute="top" secondItem="bdP-g8-I4a" secondAttribute="bottom" constant="8" symbolic="YES" id="WJB-Z3-jgY"/>
-                <constraint firstItem="GjY-ar-OaK" firstAttribute="centerX" secondItem="bdP-g8-I4a" secondAttribute="centerX" id="aBW-Fa-K61"/>
+                <constraint firstItem="u97-eL-mzu" firstAttribute="top" secondItem="mTs-SR-QUe" secondAttribute="bottom" constant="55" id="0M5-s4-AYg"/>
+                <constraint firstItem="VLv-Ry-dI4" firstAttribute="top" secondItem="u97-eL-mzu" secondAttribute="bottom" constant="20" id="5hQ-fa-aVB"/>
+                <constraint firstItem="mTs-SR-QUe" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="160" id="5oh-e2-y6t"/>
+                <constraint firstItem="f7i-x2-vzQ" firstAttribute="top" secondItem="i7u-Tc-Bt4" secondAttribute="bottom" constant="8" symbolic="YES" id="8cB-7S-d7a"/>
+                <constraint firstItem="i7u-Tc-Bt4" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" constant="6" id="RXE-P0-cAc"/>
+                <constraint firstItem="f7i-x2-vzQ" firstAttribute="centerX" secondItem="VLv-Ry-dI4" secondAttribute="centerX" constant="-5.5" id="ZNZ-mu-KD1"/>
+                <constraint firstItem="f7i-x2-vzQ" firstAttribute="centerX" secondItem="u97-eL-mzu" secondAttribute="centerX" constant="-5.5" id="dqo-cs-vyN"/>
                 <constraint firstItem="mTs-SR-QUe" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="f34-W9-LmZ"/>
-                <constraint firstItem="bdP-g8-I4a" firstAttribute="top" secondItem="GjY-ar-OaK" secondAttribute="bottom" constant="51" id="gT3-Wr-imH"/>
-                <constraint firstItem="GjY-ar-OaK" firstAttribute="top" secondItem="Z8T-xX-6wh" secondAttribute="bottom" constant="18" id="h7i-mH-hXF"/>
-                <constraint firstItem="f7i-x2-vzQ" firstAttribute="centerX" secondItem="bdP-g8-I4a" secondAttribute="centerX" id="nKj-gh-mYp"/>
-                <constraint firstItem="Z8T-xX-6wh" firstAttribute="top" secondItem="mTs-SR-QUe" secondAttribute="bottom" constant="53" id="uxX-KO-k5b"/>
+                <constraint firstAttribute="bottom" secondItem="f7i-x2-vzQ" secondAttribute="bottom" constant="175" id="hPE-oJ-WEX"/>
+                <constraint firstItem="f7i-x2-vzQ" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="q16-4d-LNb"/>
             </constraints>
             <point key="canvasLocation" x="33.5" y="54.5"/>
         </view>
