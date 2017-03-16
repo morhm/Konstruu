@@ -9,7 +9,7 @@
 import UIKit
 import DataStructures
 
-class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UICollectionViewDelegate, UICollectionViewDataSource {
     // MARK: - Model
     
     var user: DataStructures.User? {
@@ -25,6 +25,7 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
         self.edgesForExtendedLayout = []
         self.title = "Profile"
         badgesTableView.register(UINib(nibName: "BadgeTableViewCell", bundle: nil), forCellReuseIdentifier: "badge")
+        teamsCollectionView.register(UINib(nibName: "TeamCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "team")
         updateUI()
     }
     
@@ -33,6 +34,13 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
     @IBOutlet weak var profileImageView: UIImageView!
     
     @IBOutlet weak var usernameLabel: UILabel!
+    
+    @IBOutlet weak var teamsCollectionView: UICollectionView! {
+        didSet {
+            teamsCollectionView.dataSource = self
+            teamsCollectionView.delegate = self
+        }
+    }
     
     @IBOutlet weak var badgesTableView: UITableView! {
         didSet {
@@ -48,6 +56,22 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
         profileImageView?.contentMode = UIViewContentMode.scaleAspectFill
         profileImageView?.image = user?.profileImage
         usernameLabel?.text = user?.username
+    }
+    
+    // MARK: - Collection view data source
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return user?.teams?.count ?? 0
+    }
+    
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 1
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "team", for: indexPath)
+        
+        return cell
     }
     
     // MARK: - Table view data source
