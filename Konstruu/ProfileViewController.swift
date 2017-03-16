@@ -10,6 +10,8 @@ import UIKit
 import DataStructures
 
 class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UICollectionViewDelegate, UICollectionViewDataSource {
+  
+  
     // MARK: - Model
     
     var user: DataStructures.User? {
@@ -22,15 +24,48 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     override func viewDidLoad() {
         super.viewDidLoad()
+      
         self.edgesForExtendedLayout = []
         self.title = "Profile"
         badgesTableView.register(UINib(nibName: "BadgeTableViewCell", bundle: nil), forCellReuseIdentifier: "badge")
         teamsCollectionView.register(UINib(nibName: "TeamCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "team")
         updateUI()
+      
+        addSubviews()
+        addConstraints()
     }
-    
+  
+    func addSubviews() {
+      view.addSubview(backgroundView)
+      view.sendSubview(toBack: backgroundView)
+    }
+  
+    func addConstraints() {
+      //backgroundView
+      
+      //top
+      view.addConstraint(NSLayoutConstraint(item:backgroundView, attribute:.top, relatedBy:.equal, toItem: view, attribute:.top, multiplier: 1, constant: 0))
+      //bottom
+      view.addConstraint(NSLayoutConstraint(item:backgroundView, attribute:.bottom, relatedBy:.equal, toItem: view, attribute:.bottom, multiplier: 1, constant: 0))
+      //left
+      view.addConstraint(NSLayoutConstraint(item:backgroundView, attribute:.left, relatedBy:.equal, toItem: view, attribute:.left, multiplier: 1, constant: 0))
+      //right
+      view.addConstraint(NSLayoutConstraint(item:backgroundView, attribute:.right, relatedBy:.equal, toItem: view, attribute:.right, multiplier: 1, constant: 0))
+      
+      view.layoutIfNeeded()
+    }
+  
     // MARK: - UI
-    
+  
+    private lazy var backgroundView: UIImageView = { [unowned self] in
+      let backgroundView = UIImageView()
+      backgroundView.image = UIImage(named: "profileGradient.png")
+      backgroundView.contentMode = UIViewContentMode.scaleAspectFill
+      
+      backgroundView.translatesAutoresizingMaskIntoConstraints = false
+      return backgroundView
+      }()
+  
     @IBOutlet weak var profileImageView: UIImageView!
     
     @IBOutlet weak var usernameLabel: UILabel!
