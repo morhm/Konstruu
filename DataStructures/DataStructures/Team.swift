@@ -9,7 +9,7 @@
 import Foundation
 
 public struct Team {
-    public let id: Int
+    public let id: Int // TODO: remove and use name as unique
     public let name: String
     public var lookingForTeammates: Bool = true
     

@@ -5,4 +5,6 @@ source 'https://github.com/CocoaPods/Specs.git'
 
 target 'Konstruu' do
     pod 'MSSlidingPanelController'
+    pod 'Firebase/Core'
+    pod 'Firebase/Database'
 end

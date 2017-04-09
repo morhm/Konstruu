@@ -8,6 +8,8 @@
 
 import Foundation
 
+// NOTE: NOT USING IN CURRENT VERSION
+
 public struct ProgressPost {
     public let date: Date
     public let text: String?

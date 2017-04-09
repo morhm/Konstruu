@@ -15,6 +15,7 @@
 		613B1B5A1E722F2A00544297 /* UserCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 613B1B581E722F2A00544297 /* UserCollectionViewCell.xib */; };
 		613B1B5D1E722F3C00544297 /* ProgressPostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 613B1B5B1E722F3C00544297 /* ProgressPostTableViewCell.swift */; };
 		613B1B5E1E722F3C00544297 /* ProgressPostTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 613B1B5C1E722F3C00544297 /* ProgressPostTableViewCell.xib */; };
+		615A292B1E9AD5E700568D40 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 615A292A1E9AD5E700568D40 /* API.swift */; };
 		615CE3E21E7A4F87007CD7CA /* TeamCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 615CE3E01E7A4F87007CD7CA /* TeamCollectionViewCell.swift */; };
 		615CE3E31E7A4F87007CD7CA /* TeamCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 615CE3E11E7A4F87007CD7CA /* TeamCollectionViewCell.xib */; };
 		618FBA441E7332B300B2F652 /* KonstruuTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618FBA421E7332B300B2F652 /* KonstruuTabBarController.swift */; };
@@ -25,6 +26,7 @@
 		61BD68C21E6DEEF400B1A0E9 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61BD68C01E6DEEF400B1A0E9 /* ProfileViewController.swift */; };
 		61BD68C31E6DEEF400B1A0E9 /* ProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 61BD68C11E6DEEF400B1A0E9 /* ProfileViewController.xib */; };
 		61BD68CF1E6DF7B900B1A0E9 /* ChallengeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61BD68CD1E6DF7B900B1A0E9 /* ChallengeTableViewCell.swift */; };
+		61F255DF1E984E2C0039459D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 61F255DE1E984E2C0039459D /* GoogleService-Info.plist */; };
 		61F7F8761E6E06870017461F /* ChallengeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61F7F8741E6E06870017461F /* ChallengeViewController.swift */; };
 		61F7F8771E6E06870017461F /* ChallengeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 61F7F8751E6E06870017461F /* ChallengeViewController.xib */; };
 		61F7F87A1E6E06FB0017461F /* TeamViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61F7F8781E6E06FB0017461F /* TeamViewController.swift */; };
@@ -73,6 +75,7 @@
 		613B1B581E722F2A00544297 /* UserCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserCollectionViewCell.xib; sourceTree = "<group>"; };
 		613B1B5B1E722F3C00544297 /* ProgressPostTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressPostTableViewCell.swift; sourceTree = "<group>"; };
 		613B1B5C1E722F3C00544297 /* ProgressPostTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProgressPostTableViewCell.xib; sourceTree = "<group>"; };
+		615A292A1E9AD5E700568D40 /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		615CE3E01E7A4F87007CD7CA /* TeamCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeamCollectionViewCell.swift; sourceTree = "<group>"; };
 		615CE3E11E7A4F87007CD7CA /* TeamCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TeamCollectionViewCell.xib; sourceTree = "<group>"; };
 		618FBA421E7332B300B2F652 /* KonstruuTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KonstruuTabBarController.swift; sourceTree = "<group>"; };
@@ -83,6 +86,7 @@
 		61BD68C01E6DEEF400B1A0E9 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		61BD68C11E6DEEF400B1A0E9 /* ProfileViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProfileViewController.xib; sourceTree = "<group>"; };
 		61BD68CD1E6DF7B900B1A0E9 /* ChallengeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChallengeTableViewCell.swift; sourceTree = "<group>"; };
+		61F255DE1E984E2C0039459D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		61F7F8741E6E06870017461F /* ChallengeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChallengeViewController.swift; sourceTree = "<group>"; };
 		61F7F8751E6E06870017461F /* ChallengeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChallengeViewController.xib; sourceTree = "<group>"; };
 		61F7F8781E6E06FB0017461F /* TeamViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeamViewController.swift; sourceTree = "<group>"; };
@@ -203,6 +207,19 @@
 			name = "Create Team Page";
 			sourceTree = "<group>";
 		};
+		615A29291E9AD5BC00568D40 /* Core Data */ = {
+			isa = PBXGroup;
+			children = (
+				61F811D11E6F928A00777F68 /* Konstruu.xcdatamodeld */,
+				61F811DC1E6F975100777F68 /* Badge.swift */,
+				61F811D81E6F974600777F68 /* Challenge.swift */,
+				61F811DA1E6F974C00777F68 /* ProgressPost.swift */,
+				61F811D61E6F973B00777F68 /* Team.swift */,
+				61F811D41E6F973000777F68 /* User.swift */,
+			);
+			name = "Core Data";
+			sourceTree = "<group>";
+		};
 		618FBA411E732F0400B2F652 /* Tab Bar Controller */ = {
 			isa = PBXGroup;
 			children = (
@@ -214,6 +231,7 @@
 		61BD68C41E6DF2D300B1A0E9 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				61F255DE1E984E2C0039459D /* GoogleService-Info.plist */,
 				68C8E55B1E6408AA00047901 /* AppDelegate.swift */,
 				68C8E5641E6408AA00047901 /* LaunchScreen.storyboard */,
 				68C8E5621E6408AA00047901 /* Assets.xcassets */,
@@ -254,12 +272,8 @@
 		68C8E5701E64193F00047901 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				61F811D11E6F928A00777F68 /* Konstruu.xcdatamodeld */,
-				61F811DC1E6F975100777F68 /* Badge.swift */,
-				61F811D81E6F974600777F68 /* Challenge.swift */,
-				61F811DA1E6F974C00777F68 /* ProgressPost.swift */,
-				61F811D61E6F973B00777F68 /* Team.swift */,
-				61F811D41E6F973000777F68 /* User.swift */,
+				615A29291E9AD5BC00568D40 /* Core Data */,
+				615A292A1E9AD5E700568D40 /* API.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -324,7 +338,7 @@
 				TargetAttributes = {
 					68C8E5571E6408AA00047901 = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = TLAM246JYZ;
+						DevelopmentTeam = W2QCZ475YE;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -361,6 +375,7 @@
 				CA3A89441E6F81820000D33E /* ChallengeTableViewCell.xib in Resources */,
 				61BD68C31E6DEEF400B1A0E9 /* ProfileViewController.xib in Resources */,
 				619E96491E7768900001D807 /* BadgeTableViewCell.xib in Resources */,
+				61F255DF1E984E2C0039459D /* GoogleService-Info.plist in Resources */,
 				61F7F87B1E6E06FB0017461F /* TeamViewController.xib in Resources */,
 				613B1B521E72144800544297 /* TeamTableViewCell.xib in Resources */,
 				68C8E5631E6408AA00047901 /* Assets.xcassets in Resources */,
@@ -425,6 +440,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				615A292B1E9AD5E700568D40 /* API.swift in Sources */,
 				61F811D71E6F973B00777F68 /* Team.swift in Sources */,
 				61F811DD1E6F975100777F68 /* Badge.swift in Sources */,
 				61F811D91E6F974600777F68 /* Challenge.swift in Sources */,
@@ -559,7 +575,7 @@
 			baseConfigurationReference = A9732213F7532194FC238323 /* Pods-Konstruu.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = TLAM246JYZ;
+				DEVELOPMENT_TEAM = W2QCZ475YE;
 				INFOPLIST_FILE = Konstruu/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.example.Konstruu;
@@ -573,7 +589,7 @@
 			baseConfigurationReference = 3933F443C092D674AF826DEB /* Pods-Konstruu.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = TLAM246JYZ;
+				DEVELOPMENT_TEAM = W2QCZ475YE;
 				INFOPLIST_FILE = Konstruu/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.example.Konstruu;

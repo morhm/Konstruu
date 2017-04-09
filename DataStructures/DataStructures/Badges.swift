@@ -8,6 +8,8 @@
 
 import Foundation
 
+// TODO: Convert this to a Dictionary<String,(String, UIImage)> to store badge images
+
 public let badges: Dictionary<String,String> = [
     "Challenge Guru" : "Created 5 challenges",
     "Problem-Solver" : "Completed 3 challenges",

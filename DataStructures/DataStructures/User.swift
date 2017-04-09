@@ -10,9 +10,12 @@ import Foundation
 
 public struct User {
     public let id: Int
-    public let username: String
+    // TODO: add real name
+    // TODO: add description
+    // TODO: add skills
+    public let username: String // TODO: remove and use real name instead
     public var profileImage: UIImage?
-    public var communityLevel: String?
+    public var communityLevel: String? // TODO: remove?
     
     public var teams: [Team]?
     public var badges: [String]?
