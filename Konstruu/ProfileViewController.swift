@@ -90,7 +90,7 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
         profileImageView?.clipsToBounds = true
         profileImageView?.contentMode = UIViewContentMode.scaleAspectFill
         profileImageView?.image = user?.profileImage
-        usernameLabel?.text = user?.username
+        usernameLabel?.text = user?.name
     }
     
     // MARK: - Collection view data source

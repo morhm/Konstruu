@@ -10,15 +10,17 @@ import UIKit
 import CoreData
 import DataStructures
 
+// NOTE: NOT IN USE RIGHT NOW
+
 class ProgressPost: NSManagedObject {
-    class func createProgressPost(matching progressPostInfo: DataStructures.ProgressPost, for teamInfo: DataStructures.Team, in context: NSManagedObjectContext) -> ProgressPost {
-        let progressPost = ProgressPost(context: context)
-        progressPost.date = progressPostInfo.date as NSDate?
-        progressPost.text = progressPostInfo.text
-        if progressPostInfo.image != nil, let imageData = UIImageJPEGRepresentation(progressPostInfo.image!, 1) {
-            progressPost.imageData = NSData(base64Encoded: imageData)
-        }
-        progressPost.team = try? Team.findOrCreateTeam(matching: teamInfo, in: context)
-        return progressPost
-    }
+//    class func createProgressPost(matching progressPostInfo: DataStructures.ProgressPost, for teamInfo: DataStructures.Team, in context: NSManagedObjectContext) -> ProgressPost {
+//        let progressPost = ProgressPost(context: context)
+//        progressPost.date = progressPostInfo.date as NSDate?
+//        progressPost.text = progressPostInfo.text
+//        if progressPostInfo.image != nil, let imageData = UIImageJPEGRepresentation(progressPostInfo.image!, 1) {
+//            progressPost.imageData = NSData(base64Encoded: imageData)
+//        }
+//        progressPost.team = try? Team.findOrCreateTeam(matching: teamInfo, in: context)
+//        return progressPost
+//    }
 }

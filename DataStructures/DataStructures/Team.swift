@@ -9,21 +9,18 @@
 import Foundation
 
 public struct Team {
-    public let id: Int // TODO: remove and use name as unique
     public let name: String
-    public var lookingForTeammates: Bool = true
+    public var open: Bool = true
     
     public var challenge: Challenge?
     public var users: [User]?
     public var progressPosts: [ProgressPost]?
     
-    init(id: Int, name: String) {
-        self.id = id
+    init(name: String) {
         self.name = name
     }
     
-    init(id: Int, name: String, challenge: Challenge?, users: [User]?, progressPosts: [ProgressPost]?) {
-        self.id = id
+    init(name: String, challenge: Challenge?, users: [User]?, progressPosts: [ProgressPost]?) {
         self.name = name
         self.challenge = challenge
         self.users = users

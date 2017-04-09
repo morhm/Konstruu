@@ -10,24 +10,22 @@ import Foundation
 
 public struct User {
     public let id: Int
-    // TODO: add real name
-    // TODO: add description
-    // TODO: add skills
-    public let username: String // TODO: remove and use real name instead
+    public let name: String
+    public var desc: String?
     public var profileImage: UIImage?
-    public var communityLevel: String? // TODO: remove?
     
+    public var skills: [String]?
     public var teams: [Team]?
     public var badges: [String]?
     
-    init(id: Int, username: String) {
+    init(id: Int, name: String) {
         self.id = id
-        self.username = username
+        self.name = name
     }
     
-    init(id: Int, username: String, profileImage: UIImage?, teams: [Team]?, badges: [String]?) {
+    init(id: Int, name: String, profileImage: UIImage?, teams: [Team]?, badges: [String]?) {
         self.id = id
-        self.username = username
+        self.name = name
         self.profileImage = profileImage
         self.teams = teams
         self.badges = badges
