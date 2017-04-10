@@ -15,7 +15,7 @@ public struct ProgressPost {
     public let text: String?
     public let image: UIImage?
     
-    init(date: Date, text: String?, image: UIImage?) {
+    public init(date: Date, text: String?, image: UIImage?) {
         self.date = date
         self.text = text
         self.image = image

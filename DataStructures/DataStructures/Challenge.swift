@@ -9,19 +9,19 @@
 import Foundation
 
 public struct Challenge {
-    public let id: Int
+    public let id: String
     public let title: String
     public let desc: String
     
     public var teams: [Team]?
     
-    init(id: Int, title: String, desc: String) {
+    public init(id: String, title: String, desc: String) {
         self.id = id
         self.title = title
         self.desc = desc
     }
     
-    init(id: Int, title: String, desc: String, teams: [Team]?) {
+    public init(id: String, title: String, desc: String, teams: [Team]?) {
         self.id = id
         self.title = title
         self.desc = desc
