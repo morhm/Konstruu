@@ -22,9 +22,12 @@ class CreateChallengeViewController: UIViewController, UITextViewDelegate {
         super.viewDidLoad()
         self.title = "Create a Challenge"
         self.edgesForExtendedLayout = []
+      
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Add", style: .plain, target: self, action: #selector(postChallenge))
+
         addToolbarToKeyboard()
     }
-    
+  
     // MARK: - UI
     
     @IBOutlet weak var challengeNameTextField: UITextField!
@@ -38,7 +41,31 @@ class CreateChallengeViewController: UIViewController, UITextViewDelegate {
             challengeDescriptionTextView.textColor = placeholderColor
         }
     }
+  
+    private lazy var addPhotoButton: ChallengeButton = { [unowned self] in
+      let addPhotoButton = ChallengeButton(challengeButtonType: ChallengeButtonType.media)
+      addPhotoButton.addTarget(self, action: #selector(addPhoto), for: UIControlEvents.touchUpInside)
+      
+      addPhotoButton.translatesAutoresizingMaskIntoConstraints = false
+      return addPhotoButton
+      }()
+  
+    private lazy var addLocationButton: ChallengeButton = { [unowned self] in
+      let addLocationButton = ChallengeButton(challengeButtonType: ChallengeButtonType.location)
+      addLocationButton.addTarget(self, action: #selector(addLocation), for: UIControlEvents.touchUpInside)
+      
+      addLocationButton.translatesAutoresizingMaskIntoConstraints = false
+      return addLocationButton
+      }()
     
+    private lazy var tagFriendsButton: ChallengeButton = { [unowned self] in
+      let tagFriendsButton = ChallengeButton(challengeButtonType: ChallengeButtonType.friends)
+      tagFriendsButton.addTarget(self, action: #selector(tagFriends), for: UIControlEvents.touchUpInside)
+      
+      tagFriendsButton.translatesAutoresizingMaskIntoConstraints = false
+      return tagFriendsButton
+      }()
+  
     // Tutorial: https://www.youtube.com/watch?v=RuzHai2RVZU
     private func addToolbarToKeyboard() {
         let toolbar = UIToolbar()
@@ -53,7 +80,26 @@ class CreateChallengeViewController: UIViewController, UITextViewDelegate {
         challengeNameTextField.inputAccessoryView = toolbar
         challengeDescriptionTextView.inputAccessoryView = toolbar
     }
+  
+    // MARK: - Actions
+  
+  
+    func addPhoto() {
+      
+    }
     
+    func addLocation() {
+      
+    }
+    
+    func tagFriends() {
+      
+    }
+  
+    func postChallenge() {
+      
+    }
+  
     func doneClicked() {
         view.endEditing(true)
     }
