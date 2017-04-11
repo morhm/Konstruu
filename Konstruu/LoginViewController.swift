@@ -34,5 +34,11 @@ class LoginViewController: UIViewController {
         let tabBarVC = KonstruuTabBarController(nibName: "KonstruuTabBarController", bundle: nil)
         tabBarVC.user = DataStructures.exampleUsers[0]
         present(tabBarVC, animated: true, completion: nil)
+        // TESTING CODE BELOW
+//        let newUser = API.createUser(name: DataStructures.exampleUsers[0].name)
+//        API.getUserWithId(newUser.id, completed: { user in
+//            tabBarVC.user = user
+//            self.present(tabBarVC, animated: true, completion: nil)
+//        })
     }
 }

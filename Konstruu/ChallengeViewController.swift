@@ -15,7 +15,7 @@ class ChallengeViewController: UIViewController, UITableViewDelegate, UITableVie
     
     var challenge: DataStructures.Challenge? {
         didSet {
-            challenge?.teams = DataStructures.exampleTeams // REMOVE AFTER DEMO
+            challenge?.teamIds = DataStructures.exampleTeams.map({ $0.id }) // REMOVE AFTER DEMO
             updateUI()
             teamsTableView?.reloadData()
         }
@@ -54,7 +54,7 @@ class ChallengeViewController: UIViewController, UITableViewDelegate, UITableVie
     // MARK: - Table view data source
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return challenge?.teams?.count ?? 0
+        return challenge?.teamIds?.count ?? 0
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -65,7 +65,7 @@ class ChallengeViewController: UIViewController, UITableViewDelegate, UITableVie
         let cell = tableView.dequeueReusableCell(withIdentifier: "team", for: indexPath)
         if let teamCell = (cell as? TeamTableViewCell) {
             // Pass any information to the individual table cell here!
-            teamCell.team = challenge?.teams?[indexPath.row]
+            //teamCell.team = challenge?.teamIds?[indexPath.row] // TODO: use firebase
             return teamCell
         }
         return cell
@@ -73,7 +73,7 @@ class ChallengeViewController: UIViewController, UITableViewDelegate, UITableVie
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let teamVC = TeamViewController(nibName: "TeamViewController", bundle: nil)
-        teamVC.team = challenge?.teams?[indexPath.row]
+        //teamVC.team = challenge?.teamIds?[indexPath.row] // TODO: use firebase
         self.navigationController?.pushViewController(teamVC, animated: true)
     }
 }

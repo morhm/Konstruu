@@ -13,20 +13,18 @@ public struct Team {
     public let name: String
     public var open: Bool = true
     
-    public var challenge: Challenge?
-    public var users: [User]?
-    public var progressPosts: [ProgressPost]?
-    
+    public var challengeId: String?
+    public var userIds: [String]?
+
     public init(id: String, name: String) {
         self.id = id
         self.name = name
     }
     
-    public init(id: String, name: String, challenge: Challenge?, users: [User]?, progressPosts: [ProgressPost]?) {
+    public init(id: String, name: String, challengeId: String?, userIds: [String]?) {
         self.id = id
         self.name = name
-        self.challenge = challenge
-        self.users = users
-        self.progressPosts = progressPosts
+        self.challengeId = challengeId
+        self.userIds = userIds
     }
 }

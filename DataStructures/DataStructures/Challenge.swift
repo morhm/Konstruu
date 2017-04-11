@@ -13,7 +13,7 @@ public struct Challenge {
     public let title: String
     public let desc: String
     
-    public var teams: [Team]?
+    public var teamIds: [String]?
     
     public init(id: String, title: String, desc: String) {
         self.id = id
@@ -21,10 +21,10 @@ public struct Challenge {
         self.desc = desc
     }
     
-    public init(id: String, title: String, desc: String, teams: [Team]?) {
+    public init(id: String, title: String, desc: String, teamIds: [String]?) {
         self.id = id
         self.title = title
         self.desc = desc
-        self.teams = teams
+        self.teamIds = teamIds
     }
 }

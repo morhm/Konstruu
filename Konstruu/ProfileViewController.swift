@@ -96,7 +96,7 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
     // MARK: - Collection view data source
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return user?.teams?.count ?? 0
+        return user?.teamIds?.count ?? 0
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {

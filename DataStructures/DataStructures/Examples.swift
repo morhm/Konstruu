@@ -19,12 +19,12 @@ public let exampleProgressPosts: [ProgressPost] = [
 ]
 
 public var exampleTeams: [Team] = [
-    Team(id: "1", name: "Frog and Code", challenge: nil, users: nil, progressPosts: exampleProgressPosts)
+    Team(id: "1", name: "Frog and Code", challengeId: nil, userIds: nil)
 ]
 
 public var exampleUsers: [User] = [
-    User(id: "1", name: "Jaoquin Pheonix", profileImage: #imageLiteral(resourceName: "myPicture"), teams: nil, badges: ["Challenge Guru", "Problem-Solver", "Teammate"]),
-    User(id: "2", name: "Al Yuen", profileImage: #imageLiteral(resourceName: "some_douchey_guy"), teams: nil, badges: ["Problem-Solver"]),
-    User(id: "3", name: "David Xue", profileImage: #imageLiteral(resourceName: "boy"), teams: nil, badges: ["Teammate"]),
-    User(id: "4", name: "Anu Rajan", profileImage: #imageLiteral(resourceName: "girls"), teams: nil, badges: ["Challenge Guru"])
+    User(id: "1", name: "Jaoquin Pheonix", profileImage: #imageLiteral(resourceName: "myPicture"), teamIds: nil, badges: ["Challenge Guru", "Problem-Solver", "Teammate"]),
+    User(id: "2", name: "Al Yuen", profileImage: #imageLiteral(resourceName: "some_douchey_guy"), teamIds: nil, badges: ["Problem-Solver"]),
+    User(id: "3", name: "David Xue", profileImage: #imageLiteral(resourceName: "boy"), teamIds: nil, badges: ["Teammate"]),
+    User(id: "4", name: "Anu Rajan", profileImage: #imageLiteral(resourceName: "girls"), teamIds: nil, badges: ["Challenge Guru"])
 ]

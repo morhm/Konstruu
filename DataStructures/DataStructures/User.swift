@@ -17,7 +17,7 @@ public struct User {
     public var profileImage: UIImage?
     
     public var skills: [String]?
-    public var teams: [Team]?
+    public var teamIds: [String]?
     public var badges: [String]?
     
     public init(id: String, name: String) {
@@ -25,11 +25,11 @@ public struct User {
         self.name = name
     }
     
-    public init(id: String, name: String, profileImage: UIImage?, teams: [Team]?, badges: [String]?) {
+    public init(id: String, name: String, profileImage: UIImage?, teamIds: [String]?, badges: [String]?) {
         self.id = id
         self.name = name
         self.profileImage = profileImage
-        self.teams = teams
+        self.teamIds = teamIds
         self.badges = badges
     }
 }

@@ -9,7 +9,7 @@
 import UIKit
 import DataStructures
 
-class TeamViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UICollectionViewDelegate, UICollectionViewDataSource {
+class TeamViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
   
     let sectionInsets = UIEdgeInsets(top: 10.0, left: 20.0, bottom: 10.0, right: 20.0)
 //    let itemsPerRow: CGFloat = 4
@@ -18,9 +18,8 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     var team: DataStructures.Team? {
         didSet {
-            team?.challenge = DataStructures.exampleChallenges[0] // REMOVE AFTER DEMO
-            team?.users = DataStructures.exampleUsers // REMOVE AFTER DEMO
-            team?.progressPosts = DataStructures.exampleProgressPosts // REMOVE AFTER DEMO
+            team?.challengeId = DataStructures.exampleChallenges[0].id // REMOVE AFTER DEMO
+            team?.userIds = DataStructures.exampleUsers.map({ $0.id }) // REMOVE AFTER DEMO
             updateUI()
             usersCollectionView?.reloadData()
             progressPostsTableView?.reloadData()
@@ -85,8 +84,6 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     @IBOutlet weak var progressPostsTableView: UITableView! {
         didSet {
-            progressPostsTableView.dataSource = self
-            progressPostsTableView.delegate = self
             progressPostsTableView.rowHeight = UITableViewAutomaticDimension
             progressPostsTableView.estimatedRowHeight = 100
         }
@@ -94,13 +91,13 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     private func updateUI() {
         teamNameLabel?.text = team?.name
-        challengeButton?.setTitle(team?.challenge?.title, for: .normal)
+        //challengeButton?.setTitle(team?.challenge?.title, for: .normal) // TODO: use firebase
     }
     
     // MARK: - Collection view data source
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return team?.users?.count ?? 0
+        return team?.userIds?.count ?? 0
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -111,7 +108,7 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
         let cell = usersCollectionView.dequeueReusableCell(withReuseIdentifier: "user", for: indexPath)
         
         if let userCell = (cell as? UserCollectionViewCell) {
-            userCell.user = team?.users?[indexPath.row]
+            //userCell.user = team?.userIds?[indexPath.row] // TODO: use firebase
             return userCell
         }
         
@@ -120,40 +117,42 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let profileVC = ProfileViewController(nibName: "ProfileViewController", bundle: nil)
-        profileVC.user = team?.users?[indexPath.row]
+        //profileVC.user = team?.userIds?[indexPath.row] // TODO: use firebase
         self.navigationController?.pushViewController(profileVC, animated: true)
     }
     
     // MARK: - Table view data source
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return team?.progressPosts?.count ?? 0
-    }
+    // NOTE: NOT IN USE
     
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = progressPostsTableView.dequeueReusableCell(withIdentifier: "progressPost", for: indexPath)
-        
-        if let progressPostCell = (cell as? ProgressPostTableViewCell) {
-            progressPostCell.progressPost = team?.progressPosts?[indexPath.row]
-            return progressPostCell
-        }
-        
-        return cell
-    }
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return UITableViewAutomaticDimension
-    }
+//    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+//        return team?.progressPosts?.count ?? 0
+//    }
+//    
+//    func numberOfSections(in tableView: UITableView) -> Int {
+//        return 1
+//    }
+//    
+//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+//        let cell = progressPostsTableView.dequeueReusableCell(withIdentifier: "progressPost", for: indexPath)
+//        
+//        if let progressPostCell = (cell as? ProgressPostTableViewCell) {
+//            progressPostCell.progressPost = team?.progressPosts?[indexPath.row]
+//            return progressPostCell
+//        }
+//        
+//        return cell
+//    }
+//    
+//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+//        return UITableViewAutomaticDimension
+//    }
     
     // MARK: - Navigation
     
     @IBAction func showChallenge(_ sender: UIButton) {
         let challengeVC = ChallengeViewController(nibName: "ChallengeViewController", bundle: nil)
-        challengeVC.challenge = team?.challenge
+        //challengeVC.challenge = team?.challenge // TODO: use firebase
         self.navigationController?.pushViewController(challengeVC, animated: true)
     }
 }
