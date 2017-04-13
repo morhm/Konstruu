@@ -41,6 +41,8 @@
 		61F8121B1E70DBFF00777F68 /* DataStructures.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 61F8121A1E70DBFF00777F68 /* DataStructures.framework */; };
 		61F8121C1E70DBFF00777F68 /* DataStructures.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 61F8121A1E70DBFF00777F68 /* DataStructures.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		63C9D1FF9CC1A80C8AADAB4C /* Pods_Konstruu.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F54197AF7908272DF974385 /* Pods_Konstruu.framework */; };
+		681085F51E9D239300FB32F0 /* ChallengeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 681085F41E9D239300FB32F0 /* ChallengeButton.swift */; };
+		681085F71E9D245000FB32F0 /* ScalableButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 681085F61E9D245000FB32F0 /* ScalableButton.swift */; };
 		68C8E55C1E6408AA00047901 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68C8E55B1E6408AA00047901 /* AppDelegate.swift */; };
 		68C8E5631E6408AA00047901 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 68C8E5621E6408AA00047901 /* Assets.xcassets */; };
 		68C8E5661E6408AA00047901 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 68C8E5641E6408AA00047901 /* LaunchScreen.storyboard */; };
@@ -96,6 +98,8 @@
 		61F7F8801E6E077D0017461F /* CreateTeamViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateTeamViewController.swift; sourceTree = "<group>"; };
 		61F7F8811E6E077D0017461F /* CreateTeamViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CreateTeamViewController.xib; sourceTree = "<group>"; };
 		61F8121A1E70DBFF00777F68 /* DataStructures.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = DataStructures.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		681085F41E9D239300FB32F0 /* ChallengeButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChallengeButton.swift; sourceTree = "<group>"; };
+		681085F61E9D245000FB32F0 /* ScalableButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScalableButton.swift; sourceTree = "<group>"; };
 		68C8E5581E6408AA00047901 /* Konstruu.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Konstruu.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		68C8E55B1E6408AA00047901 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		68C8E5621E6408AA00047901 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -221,6 +225,15 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		681085F11E9D234100FB32F0 /* Custom Views */ = {
+			isa = PBXGroup;
+			children = (
+				681085F61E9D245000FB32F0 /* ScalableButton.swift */,
+				681085F41E9D239300FB32F0 /* ChallengeButton.swift */,
+			);
+			name = "Custom Views";
+			sourceTree = "<group>";
+		};
 		68C8E54F1E6408AA00047901 = {
 			isa = PBXGroup;
 			children = (
@@ -243,6 +256,7 @@
 		68C8E55A1E6408AA00047901 /* Konstruu */ = {
 			isa = PBXGroup;
 			children = (
+				681085F11E9D234100FB32F0 /* Custom Views */,
 				61BD68C41E6DF2D300B1A0E9 /* Supporting Files */,
 				68C8E5711E64194800047901 /* View Controllers */,
 				68C8E5701E64193F00047901 /* Model */,
@@ -321,7 +335,7 @@
 				TargetAttributes = {
 					68C8E5571E6408AA00047901 = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = W2QCZ475YE;
+						DevelopmentTeam = TLAM246JYZ;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -428,6 +442,7 @@
 				61E7C2DF1E9DB3BD0052B0E6 /* Team.swift in Sources */,
 				613B1B551E721A1E00544297 /* FindChallengesViewController.swift in Sources */,
 				61BD68C21E6DEEF400B1A0E9 /* ProfileViewController.swift in Sources */,
+				681085F51E9D239300FB32F0 /* ChallengeButton.swift in Sources */,
 				619E96481E7768900001D807 /* BadgeTableViewCell.swift in Sources */,
 				615CE3E21E7A4F87007CD7CA /* TeamCollectionViewCell.swift in Sources */,
 				61BD68BE1E6DEC0A00B1A0E9 /* LoginViewController.swift in Sources */,
@@ -438,6 +453,7 @@
 				613B1B591E722F2A00544297 /* UserCollectionViewCell.swift in Sources */,
 				61F7F8761E6E06870017461F /* ChallengeViewController.swift in Sources */,
 				613B1B511E72144800544297 /* TeamTableViewCell.swift in Sources */,
+				681085F71E9D245000FB32F0 /* ScalableButton.swift in Sources */,
 				613B1B5D1E722F3C00544297 /* ProgressPostTableViewCell.swift in Sources */,
 				61BD68CF1E6DF7B900B1A0E9 /* ChallengeTableViewCell.swift in Sources */,
 				618FBA441E7332B300B2F652 /* KonstruuTabBarController.swift in Sources */,
@@ -555,7 +571,7 @@
 			baseConfigurationReference = A9732213F7532194FC238323 /* Pods-Konstruu.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = W2QCZ475YE;
+				DEVELOPMENT_TEAM = TLAM246JYZ;
 				INFOPLIST_FILE = Konstruu/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.example.Konstruu;
@@ -569,7 +585,7 @@
 			baseConfigurationReference = 3933F443C092D674AF826DEB /* Pods-Konstruu.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = W2QCZ475YE;
+				DEVELOPMENT_TEAM = TLAM246JYZ;
 				INFOPLIST_FILE = Konstruu/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.example.Konstruu;
