@@ -34,11 +34,18 @@ class LoginViewController: UIViewController {
         let tabBarVC = KonstruuTabBarController(nibName: "KonstruuTabBarController", bundle: nil)
         tabBarVC.user = DataStructures.exampleUsers[0]
         present(tabBarVC, animated: true, completion: nil)
+        
         // TESTING CODE BELOW
-//        let newUser = API.createUser(name: DataStructures.exampleUsers[0].name)
-//        API.getUserWithId(newUser.id, completed: { user in
-//            tabBarVC.user = user
-//            self.present(tabBarVC, animated: true, completion: nil)
+//        let user = API.createUser(userInfo: ["name": "Al" as AnyObject])
+//        let challenge = API.createChallenge(challengeInfo: ["title": "Do a thing" as AnyObject, "description": "Really do it" as AnyObject])
+//        let team = API.createTeam(teamInfo: ["name": "Frog and Code" as AnyObject, "open": true as AnyObject, "challenge": challenge.key as AnyObject])
+//        team.addUser(user)
+//        challenge.addTeam(team)
+//        API.getTeamsForUser(user, completed: { teams in
+//            print("\(teams)")
 //        })
+//        print("\(user)")
+//        print("\(challenge)")
+//        print("\(team)")
     }
 }

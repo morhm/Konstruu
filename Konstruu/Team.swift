@@ -2,38 +2,70 @@
 //  Team.swift
 //  Konstruu
 //
-//  Created by Al Yuen on 3/7/17.
+//  Created by Al Yuen on 4/11/17.
 //  Copyright © 2017 Frog and Code. All rights reserved.
 //
 
-import UIKit
-import CoreData
-import DataStructures
+import Foundation
+import FirebaseDatabase
 
-// NOTE: NOT IN USE RIGHT NOW
-
-class Team: NSManagedObject {
-//    class func findOrCreateTeam(matching teamInfo: DataStructures.Team, in context: NSManagedObjectContext) throws -> Team {
-//        let request: NSFetchRequest<Team> = Team.fetchRequest()
-//        request.predicate = NSPredicate(format: "id = %@", teamInfo.id)
-//        
-//        do {
-//            let matches = try context.fetch(request)
-//            if matches.count > 0 {
-//                assert(matches.count == 1, "Team.findOrCreateTeam -- database inconsistency")
-//                return matches[0]
-//            }
-//        } catch {
-//            throw error
-//        }
-//        
-//        let team = Team(context: context)
-//        team.id = Int64(teamInfo.id)
-//        team.name = teamInfo.name
-//        team.lookingForTeammates = teamInfo.lookingForTeammates
-//        if let challenge = teamInfo.challenge {
-//            team.challenge = try? Challenge.findOrCreateChallenge(matching: challenge, in: context)
-//        }
-//        return team
-//    }
+class Team: CustomStringConvertible {
+    
+    var reference: FIRDatabaseReference!
+    var key: String!
+    var name: String!
+    var open: Bool = true
+    var challengeKey: String!
+    var userKeys: [String] = []
+    
+    init(key: String, dictionary: Dictionary<String, AnyObject>) {
+        self.key = key
+        
+        if let name = dictionary["name"] as? String {
+            self.name = name
+        }
+        
+        if let open = dictionary["open"] as? Bool {
+            self.open = open
+        }
+        
+        if let challengeKey = dictionary["challengeKey"] as? String {
+            self.challengeKey = challengeKey
+        }
+        
+        if let userKeysDictionary = dictionary["userKeys"] as? Dictionary<String, AnyObject> {
+            self.userKeys = Array(userKeysDictionary.keys)
+        }
+        
+        self.reference = API.teamsReference.child(self.key)
+    }
+    
+    func addUser(_ user: User) {
+        userKeys.append(user.key)
+        reference.child("userKeys").child(user.key).setValue(true)
+        
+        user.teamKeys.append(key)
+        user.reference.child("teamKeys").child(key).setValue(true)
+    }
+    
+    func markAsOpen() {
+        open = true
+        reference.child("open").setValue(true)
+    }
+    
+    func markAsClosed() {
+        open = false
+        reference.child("open").setValue(false)
+    }
+    
+    var description: String {
+        let data = [
+            "key": key,
+            "name": name,
+            "open": String(describing: open),
+            "challengeKey": challengeKey,
+            "userKeys": String(describing: userKeys)
+        ]
+        return String(describing: data)
+    }
 }

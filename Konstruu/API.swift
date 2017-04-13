@@ -9,135 +9,198 @@
 import Foundation
 import DataStructures
 import FirebaseDatabase
+import Firebase
 
 class API {
     
+    /* Database Structure:
+     {
+         "users": {
+             "1": {
+                 "name": "Mark Orozco",
+                 "desc": "Hi everyone!",
+                 "skills": {
+                     "iOS Development": true,
+                     "git": true,
+                 },
+                 "teamKeys": {
+                     "1": true
+                 },
+                 "badges": {
+                     "Challenge Guru": true
+                 }
+             }
+         },
+         "teams": {
+             "1": {
+                 "name": "Frog and Code",
+                 "open": true, // looking for teammates
+                 "challengeKey": "1",
+                 "userKeys": {
+                     "1": true,
+                 }
+             }
+         },
+         "challenges": {
+             "1": {
+                 "title": "Mobile app to help geo-tag graffiti",
+                 "desc": "People can drop pins on a map to help remove grafitti.",
+                 "teamKeys": {
+                     "Frog and Code": true
+                 }
+             }
+         },
+         "skills": {
+             "iOS Development": {
+                 "1": true
+             },
+             "git": {
+                 "1": true
+             }
+         }
+     }
+    */
+    
     static let databaseReference: FIRDatabaseReference = FIRDatabase.database().reference()
+    static let usersReference = databaseReference.child("users")
+    static let teamsReference = databaseReference.child("teams")
+    static let challengesReference = databaseReference.child("challenges")
+    static let skillsReference = databaseReference.child("skills")
     
     // MARK: User
     
     // reference: https://firebase.google.com/docs/database/ios/read-and-write
-    class func getUserWithId(_ id: String, completed: ((DataStructures.User?) -> Void)?) {
-        databaseReference.child("users").child(id).observeSingleEvent(of: .value, with: { snapshot in
-            let userInfo = snapshot.value as? NSDictionary
-            if let name = userInfo?["name"] as? String {
-//                let teamIds = userInfo?["teams"]
-//                let badges = userInfo?["badges"]
-                // TODO: figure out how to turn teamIds and badges into arrays
-                completed?(DataStructures.User(id: id, name: name, profileImage: nil, teamIds: nil, badges: nil))
-            } else {
-                completed?(nil)
+    class func getUserWithKey(_ key: String, completed: ((User?) -> Void)?) {
+        usersReference.child(key).observeSingleEvent(of: .value, with: { snapshot in
+            var user: User?
+            
+            if let dictionary = snapshot.value as? Dictionary<String, AnyObject> {
+                user = User(key: key, dictionary: dictionary)
             }
+            
+            completed?(user)
         })
     }
     
-    class func getTeamsForUser(_ user: DataStructures.User, completed: (([DataStructures.Team?]?) -> Void)?) {
-        // TODO
+    // reference: http://www.appcoda.com/firebase/
+    class func getTeamsForUser(_ user: User, completed: (([Team]) -> Void)?) {
+        getTeamsInList(teamKeys: user.teamKeys, index: 0, teams: [], completed: completed)
     }
     
-    class func getSkillsForUser(_ user: DataStructures.User, completed: (([String]?) -> Void)?) {
-        // TODO
-    }
-    
-    class func getBadgesForUser(_ user: DataStructures.User, completed: (([String]?) -> Void)?) {
-        // TODO
+    private class func getTeamsInList(teamKeys: [String], index: Int, teams: [Team], completed: (([Team]) -> Void)?) {
+        var currentTeams = teams
+        if index >= teamKeys.count {
+            completed?(teams)
+        } else {
+            let key = teamKeys[index]
+            teamsReference.child(key).observeSingleEvent(of: .value, with: { snapshot in
+                if let dictionary = snapshot.value as? Dictionary<String, AnyObject> {
+                    let team = Team(key: key, dictionary: dictionary)
+                    currentTeams.append(team)
+                }
+                getTeamsInList(teamKeys: teamKeys, index: index + 1, teams: currentTeams, completed: completed)
+            })
+        }
     }
     
     // reference: https://stackoverflow.com/questions/39691818/firebase-swift-how-to-create-a-child-and-add-its-id-to-another-ref-property
-    class func createUser(name: String) -> DataStructures.User {
-        print("createUser")
-        let newUserReference = databaseReference.child("users").childByAutoId()
-        let id = newUserReference.key
-        newUserReference.setValue([
-            "id": id,
-            "name": name
-        ])
-        return DataStructures.User(id: id, name: name)
-    }
-    
-    class func updateUserDescription(description: String, userID: String) {
-        // TODO
-    }
-    
-    class func addSkillToUser(skill: String, user: DataStructures.User) {
-        // TODO
-    }
-    
-    class func addBadgeToUser(badgeName: String, user: DataStructures.User) {
-        // TODO
+    /* Dictionary Format:
+     [
+         "name": "",                            REQUIRED
+         "desc": "",
+         "skills": ["skill name", "skill name"],
+         "badges": ["badge name", "badge name"],
+         "teamKeys": ["team key", "team key"]
+     ]
+     */
+    class func createUser(userInfo: Dictionary<String, AnyObject>) -> User {
+        let userReference = usersReference.childByAutoId()
+        let key = userReference.key
+        userReference.setValue(userInfo)
+        return User(key: key, dictionary: userInfo)
     }
     
     // MARK: Team
     
-    class func getTeamWithId(_ id: String, completed: ((DataStructures.Team?) -> Void)?) {
-        databaseReference.child("teams").child(id).observeSingleEvent(of: .value, with: { snapshot in
-            let teamInfo = snapshot.value as? NSDictionary
-            if let name = teamInfo?["name"] as? String {
-                completed?(DataStructures.Team(id: id, name: name))
-            } else {
-                completed?(nil)
+    class func getTeamWithKey(_ key: String, completed: ((Team?) -> Void)?) {
+        teamsReference.child(key).observeSingleEvent(of: .value, with: { snapshot in
+            var team: Team?
+            
+            if let dictionary = snapshot.value as? Dictionary<String, AnyObject> {
+                team = Team(key: key, dictionary: dictionary)
             }
+            
+            completed?(team)
         })
     }
     
-    class func getUsersForTeam(_ team: DataStructures.Team, completed: (([DataStructures.User?]?) -> Void)?) {
-        // TODO
-    }
-    
-    class func getChallengeForTeam(_ team: DataStructures.Team, completed: ((DataStructures.Team?) -> Void)?) {
-        // TODO
-    }
-    
-    class func createTeam(name: String, challengeID: String) -> DataStructures.Team {
-        let newTeamReference = databaseReference.child("teams").childByAutoId()
-        let id = newTeamReference.key
-        newTeamReference.setValue([
-            "id": id,
-            "name": name,
-            "challenge": challengeID,
-            "open": true
-        ])
-        return DataStructures.Team(id: id, name: name)
-    }
-    
-    class func updateStatusForTeam(status open: Bool, team: DataStructures.Team) {
-        // TODO
-    }
-    
-    class func addUserToTeam(user: DataStructures.User, team: DataStructures.Team) {
-        // TODO
+    /* Dictionary Format:
+     [
+         "name": "",                            REQUIRED
+         "open": true,
+         "challengeKey": "challenge key",       REQUIRED
+         "userKeys": ["user key", "user key"]
+     ]
+     */
+    class func createTeam(teamInfo: Dictionary<String, AnyObject>) -> Team {
+        let teamReference = teamsReference.childByAutoId()
+        let key = teamReference.key
+        teamReference.setValue(teamInfo)
+        return Team(key: key, dictionary: teamInfo)
     }
     
     // MARK: Challenge
     
-    class func getChallengeWithId(_ id: String, completed: ((DataStructures.Challenge?) -> Void)?) {
-        databaseReference.child("challenges").child(id).observeSingleEvent(of: .value, with: { snapshot in
-            let challengeInfo = snapshot.value as? NSDictionary
-            if let title = challengeInfo?["title"] as? String,
-                let desc = challengeInfo?["description"] as? String {
-                completed?(DataStructures.Challenge(id: id, title: title, desc: desc))
-            } else {
-                completed?(nil)
+    class func getChallengeWithKey(_ key: String, completed: ((Challenge?) -> Void)?) {
+        challengesReference.child(key).observeSingleEvent(of: .value, with: { snapshot in
+            var challenge: Challenge?
+            
+            if let dictionary = snapshot.value as? Dictionary<String, AnyObject> {
+                challenge = Challenge(key: key, dictionary: dictionary)
+            }
+            
+            completed?(challenge)
+        })
+    }
+    
+    /* Dictionary Format:
+     [
+         "title": "",                           REQUIRED
+         "desc": "",                            REQUIRED
+         "teamKeys": ["team key", "team key"]
+     ]
+     */
+    class func createChallenge(challengeInfo: Dictionary<String, AnyObject>) -> Challenge {
+        let challengeReference = challengesReference.childByAutoId()
+        let key = challengeReference.key
+        challengeReference.setValue(challengeInfo)
+        return Challenge(key: key, dictionary: challengeInfo)
+    }
+    
+    // MARK: Skills
+    
+    class func getUsersWithSkill(_ skill: String, completed: (([User]) -> Void)?) {
+        skillsReference.child(skill).observeSingleEvent(of: .value, with: { snapshot in
+            if let dictionary = snapshot.value as? Dictionary<String, AnyObject> {
+                let userKeys = Array(dictionary.keys)
+                getUsersInList(userKeys: userKeys, index: 0, users: [], completed: completed)
             }
         })
     }
     
-    class func getTeamsForChallenge(_ challenge: DataStructures.Challenge, completed: (([DataStructures.Team?]?) -> Void)?) {
-        // TODO
-    }
-    
-    class func createChallenge(title: String, desc: String) -> DataStructures.Challenge {
-        let newChallengeReference = databaseReference.child("challenges").childByAutoId()
-        let id = newChallengeReference.key
-        newChallengeReference.setValue([
-            "id": id,
-            "title": title,
-            "description": desc
-        ])
-        return DataStructures.Challenge(id: id, title: title, desc: desc)
-    }
-    
-    class func addTeamToChallenge(team: DataStructures.Team, challenge: DataStructures.Challenge) {
-        // TODO
+    private class func getUsersInList(userKeys: [String], index: Int, users: [User], completed: (([User]) -> Void)?) {
+        var currentUsers = users
+        if index >= userKeys.count {
+            completed?(users)
+        } else {
+            let key = userKeys[index]
+            usersReference.child(key).observeSingleEvent(of: .value, with: { snapshot in
+                if let dictionary = snapshot.value as? Dictionary<String, AnyObject> {
+                    let user = User(key: key, dictionary: dictionary)
+                    currentUsers.append(user)
+                }
+                getUsersInList(userKeys: userKeys, index: index + 1, users: currentUsers, completed: completed)
+            })
+        }
     }
 }

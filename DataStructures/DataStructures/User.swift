@@ -11,6 +11,7 @@ import Foundation
 public struct User {
     // TODO: add email address or FB info or whatever they use to log in
     // TODO: add authentification information
+    
     public let id: String
     public let name: String
     public var desc: String?

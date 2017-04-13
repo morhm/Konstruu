@@ -2,35 +2,59 @@
 //  Challenge.swift
 //  Konstruu
 //
-//  Created by Al Yuen on 3/7/17.
+//  Created by Al Yuen on 4/11/17.
 //  Copyright © 2017 Frog and Code. All rights reserved.
 //
 
-import UIKit
-import CoreData
-import DataStructures
+import Foundation
+import FirebaseDatabase
 
-// NOTE: NOT IN USE RIGHT NOW
-
-class Challenge: NSManagedObject {
-//    class func findOrCreateChallenge(matching challengeInfo: DataStructures.Challenge, in context: NSManagedObjectContext) throws -> Challenge {
-//        let request: NSFetchRequest<Challenge> = Challenge.fetchRequest()
-//        request.predicate = NSPredicate(format: "id = %@", challengeInfo.id)
-//        
-//        do {
-//            let matches = try context.fetch(request)
-//            if matches.count > 0 {
-//                assert(matches.count == 1, "Challenge.findOrCreateChallenge -- database inconsistency")
-//                return matches[0]
-//            }
-//        } catch {
-//            throw error
-//        }
-//        
-//        let challenge = Challenge(context: context)
-//        challenge.id = Int64(challengeInfo.id)
-//        challenge.title = challengeInfo.title
-//        challenge.desc = challengeInfo.desc
-//        return challenge
-//    }
+class Challenge: CustomStringConvertible {
+    
+    var reference: FIRDatabaseReference!
+    var key: String!
+    var title: String!
+    var desc: String!
+    var teamKeys: [String]?
+    
+    init(key: String, dictionary: Dictionary<String, AnyObject>) {
+        self.key = key
+        
+        if let title = dictionary["title"] as? String {
+            self.title = title
+        }
+        
+        if let desc = dictionary["desc"] as? String {
+            self.desc = desc
+        }
+        
+        if let teamKeysDictionary = dictionary["teamKeys"] as? Dictionary<String, AnyObject> {
+            self.teamKeys = Array(teamKeysDictionary.keys)
+        }
+        
+        self.reference = API.challengesReference.child(self.key)
+    }
+    
+    func updateDescription(to desc: String) {
+        self.desc = desc
+        reference.child("desc").setValue(desc)
+    }
+    
+    func addTeam(_ team: Team) {
+        teamKeys?.append(team.key)
+        reference.child("teamKeys").child(team.key).setValue(true)
+        
+        team.challengeKey = key
+        team.reference.child("challengeKey").setValue(key)
+    }
+    
+    var description: String {
+        let data = [
+            "key": key,
+            "title": title,
+            "desc": desc,
+            "teamKeys": String(describing: teamKeys)
+        ]
+        return String(describing: data)
+    }
 }
