@@ -38,14 +38,13 @@ class LoginViewController: UIViewController {
         // TESTING CODE BELOW
 //        let user = API.createUser(userInfo: ["name": "Al" as AnyObject])
 //        let challenge = API.createChallenge(challengeInfo: ["title": "Do a thing" as AnyObject, "description": "Really do it" as AnyObject])
-//        let team = API.createTeam(teamInfo: ["name": "Frog and Code" as AnyObject, "open": true as AnyObject, "challenge": challenge.key as AnyObject])
+//        let team = API.createTeam(teamInfo: ["name": "Frog and Code" as AnyObject, "open": true as AnyObject, "challengeKey": challenge.key as AnyObject])
 //        team.addUser(user)
 //        challenge.addTeam(team)
-//        API.getTeamsForUser(user, completed: { teams in
-//            print("\(teams)")
-//        })
-//        print("\(user)")
-//        print("\(challenge)")
-//        print("\(team)")
+//        if let imageData = UIImagePNGRepresentation(#imageLiteral(resourceName: "slackIcon")) {
+//            user.updateProfileImage(to: imageData, completed: { metadata, error in
+//                user.getProfileImage(completed: { image in print(image ?? "none") })
+//            })
+//        }
     }
 }

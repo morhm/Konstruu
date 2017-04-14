@@ -9,7 +9,7 @@
 import Foundation
 import DataStructures
 import FirebaseDatabase
-import Firebase
+import FirebaseStorage
 
 class API {
     
@@ -61,11 +61,27 @@ class API {
      }
     */
     
+    /* Cloud Storage Structure:
+     {
+        "userImages": {
+            "user key": file
+        },
+        "teamImages": {
+            "team key": file
+        }
+     }
+    */
+    
     static let databaseReference: FIRDatabaseReference = FIRDatabase.database().reference()
     static let usersReference = databaseReference.child("users")
     static let teamsReference = databaseReference.child("teams")
     static let challengesReference = databaseReference.child("challenges")
     static let skillsReference = databaseReference.child("skills")
+    
+    static let storage = FIRStorage.storage()
+    static let storageReference = storage.reference()
+    static let userImagesReference = storageReference.child("userImages")
+    static let teamImagesReference = storageReference.child("teamImages")
     
     // MARK: User
     
@@ -80,27 +96,6 @@ class API {
             
             completed?(user)
         })
-    }
-    
-    // reference: http://www.appcoda.com/firebase/
-    class func getTeamsForUser(_ user: User, completed: (([Team]) -> Void)?) {
-        getTeamsInList(teamKeys: user.teamKeys, index: 0, teams: [], completed: completed)
-    }
-    
-    private class func getTeamsInList(teamKeys: [String], index: Int, teams: [Team], completed: (([Team]) -> Void)?) {
-        var currentTeams = teams
-        if index >= teamKeys.count {
-            completed?(teams)
-        } else {
-            let key = teamKeys[index]
-            teamsReference.child(key).observeSingleEvent(of: .value, with: { snapshot in
-                if let dictionary = snapshot.value as? Dictionary<String, AnyObject> {
-                    let team = Team(key: key, dictionary: dictionary)
-                    currentTeams.append(team)
-                }
-                getTeamsInList(teamKeys: teamKeys, index: index + 1, teams: currentTeams, completed: completed)
-            })
-        }
     }
     
     // reference: https://stackoverflow.com/questions/39691818/firebase-swift-how-to-create-a-child-and-add-its-id-to-another-ref-property
@@ -132,6 +127,23 @@ class API {
             
             completed?(team)
         })
+    }
+    
+    // reference: http://www.appcoda.com/firebase/
+    class func getTeamsInList(teamKeys: [String], index: Int, teams: [Team], completed: (([Team]) -> Void)?) {
+        var currentTeams = teams
+        if index >= teamKeys.count {
+            completed?(teams)
+        } else {
+            let key = teamKeys[index]
+            teamsReference.child(key).observeSingleEvent(of: .value, with: { snapshot in
+                if let dictionary = snapshot.value as? Dictionary<String, AnyObject> {
+                    let team = Team(key: key, dictionary: dictionary)
+                    currentTeams.append(team)
+                }
+                getTeamsInList(teamKeys: teamKeys, index: index + 1, teams: currentTeams, completed: completed)
+            })
+        }
     }
     
     /* Dictionary Format:

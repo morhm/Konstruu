@@ -7,11 +7,14 @@
 //
 
 import Foundation
+import UIKit
 import FirebaseDatabase
+import FirebaseStorage
 
 class Team: CustomStringConvertible {
     
     var reference: FIRDatabaseReference!
+    var profileImageReference: FIRStorageReference!
     var key: String!
     var name: String!
     var open: Bool = true
@@ -38,6 +41,22 @@ class Team: CustomStringConvertible {
         }
         
         self.reference = API.teamsReference.child(self.key)
+        self.profileImageReference = API.teamImagesReference.child(self.key)
+    }
+    
+    func getProfileImage(completed: ((UIImage?) -> Void)?) {
+        profileImageReference.data(withMaxSize: 1 * 1024 * 1024, completion: { data, error in
+            if error != nil || data == nil {
+                print("error in downloading team profile image:\n\(String(describing:error))")
+                completed?(nil)
+            } else {
+                completed?(UIImage(data: data!))
+            }
+        })
+    }
+    
+    func updateProfileImage(to imageData: Data, completed: ((FIRStorageMetadata?, Error?) -> Void)?) {
+        profileImageReference.put(imageData, metadata: nil, completion: completed)
     }
     
     func addUser(_ user: User) {

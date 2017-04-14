@@ -7,11 +7,14 @@
 //
 
 import Foundation
+import UIKit
+import FirebaseStorage
 import FirebaseDatabase
 
 class User: CustomStringConvertible {
     
     var reference: FIRDatabaseReference!
+    var profileImageReference: FIRStorageReference!
     var key: String!
     var name: String!
     var desc: String?
@@ -43,11 +46,33 @@ class User: CustomStringConvertible {
         }
         
         self.reference = API.usersReference.child(self.key)
+        self.profileImageReference = API.userImagesReference.child(self.key)
+    }
+    
+    // reference: https://firebase.google.com/docs/storage/ios/download-files
+    func getProfileImage(completed: ((UIImage?) -> Void)?) {
+        profileImageReference.data(withMaxSize: 1 * 1024 * 1024, completion: { data, error in
+            if error != nil || data == nil {
+                print("error in downloading user profile image:\n\(String(describing:error))")
+                completed?(nil)
+            } else {
+                completed?(UIImage(data: data!))
+            }
+        })
+    }
+    
+    func getTeams(completed: (([Team]) -> Void)?) {
+        API.getTeamsInList(teamKeys: teamKeys, index: 0, teams: [], completed: completed)
     }
     
     func updateDescription(to desc: String) {
         self.desc = desc
         reference.child("desc").setValue(desc)
+    }
+    
+    // reference: https://firebase.google.com/docs/storage/ios/upload-files
+    func updateProfileImage(to imageData: Data, completed: ((FIRStorageMetadata?, Error?) -> Void)?) {
+        profileImageReference.put(imageData, metadata: nil, completion: completed)
     }
     
     func addSkill(_ skill: String) {

@@ -256,8 +256,8 @@
 		68C8E55A1E6408AA00047901 /* Konstruu */ = {
 			isa = PBXGroup;
 			children = (
-				681085F11E9D234100FB32F0 /* Custom Views */,
 				61BD68C41E6DF2D300B1A0E9 /* Supporting Files */,
+				681085F11E9D234100FB32F0 /* Custom Views */,
 				68C8E5711E64194800047901 /* View Controllers */,
 				68C8E5701E64193F00047901 /* Model */,
 			);

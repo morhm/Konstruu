@@ -7,4 +7,5 @@ target 'Konstruu' do
     pod 'MSSlidingPanelController'
     pod 'Firebase/Core'
     pod 'Firebase/Database'
+    pod 'Firebase/Storage'
 end

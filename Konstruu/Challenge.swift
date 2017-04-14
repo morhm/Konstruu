@@ -15,7 +15,7 @@ class Challenge: CustomStringConvertible {
     var key: String!
     var title: String!
     var desc: String!
-    var teamKeys: [String]?
+    var teamKeys: [String] = []
     
     init(key: String, dictionary: Dictionary<String, AnyObject>) {
         self.key = key
@@ -35,13 +35,17 @@ class Challenge: CustomStringConvertible {
         self.reference = API.challengesReference.child(self.key)
     }
     
+    func getTeams(completed: (([Team]) -> Void)?) {
+        API.getTeamsInList(teamKeys: teamKeys, index: 0, teams: [], completed: completed)
+    }
+    
     func updateDescription(to desc: String) {
         self.desc = desc
         reference.child("desc").setValue(desc)
     }
     
     func addTeam(_ team: Team) {
-        teamKeys?.append(team.key)
+        teamKeys.append(team.key)
         reference.child("teamKeys").child(team.key).setValue(true)
         
         team.challengeKey = key
