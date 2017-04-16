@@ -7,15 +7,13 @@
 //
 
 import UIKit
-import DataStructures
 
 class ChallengeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     // MARK: - Model
     
-    var challenge: DataStructures.Challenge? {
+    var challenge: Challenge? {
         didSet {
-            challenge?.teamIds = DataStructures.exampleTeams.map({ $0.id }) // REMOVE AFTER DEMO
             updateUI()
             teamsTableView?.reloadData()
         }
@@ -54,7 +52,7 @@ class ChallengeViewController: UIViewController, UITableViewDelegate, UITableVie
     // MARK: - Table view data source
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return challenge?.teamIds?.count ?? 0
+        return challenge?.teamKeys.count ?? 0
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -63,9 +61,11 @@ class ChallengeViewController: UIViewController, UITableViewDelegate, UITableVie
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "team", for: indexPath)
-        if let teamCell = (cell as? TeamTableViewCell) {
-            // Pass any information to the individual table cell here!
-            //teamCell.team = challenge?.teamIds?[indexPath.row] // TODO: use firebase
+        if let teamCell = (cell as? TeamTableViewCell),
+            let teamKey = challenge?.teamKeys[indexPath.row] {
+            API.getTeamWithKey(teamKey, completed: { team in
+                teamCell.team = team
+            })
             return teamCell
         }
         return cell
@@ -73,7 +73,11 @@ class ChallengeViewController: UIViewController, UITableViewDelegate, UITableVie
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let teamVC = TeamViewController(nibName: "TeamViewController", bundle: nil)
-        //teamVC.team = challenge?.teamIds?[indexPath.row] // TODO: use firebase
-        self.navigationController?.pushViewController(teamVC, animated: true)
+        if let teamKey = challenge?.teamKeys[indexPath.row] {
+            API.getTeamWithKey(teamKey, completed: { team in
+                teamVC.team = team
+                self.navigationController?.pushViewController(teamVC, animated: true)
+            })
+        }
     }
 }

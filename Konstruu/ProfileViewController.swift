@@ -14,7 +14,7 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
   
     // MARK: - Model
     
-    var user: DataStructures.User? {
+    var user: User? {
         didSet {
             updateUI()
         }
@@ -89,14 +89,17 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
     private func updateUI() {
         profileImageView?.clipsToBounds = true
         profileImageView?.contentMode = UIViewContentMode.scaleAspectFill
-        profileImageView?.image = user?.profileImage
         usernameLabel?.text = user?.name
+        
+        user?.getProfileImage(completed: { [weak self] image in
+            self?.profileImageView?.image = image
+        })
     }
     
     // MARK: - Collection view data source
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return user?.teamIds?.count ?? 0
+        return user?.teamKeys.count ?? 0
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -112,7 +115,7 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
     // MARK: - Table view data source
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return user?.badges?.count ?? 0
+        return user?.badges.count ?? 0
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -123,7 +126,7 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
         let cell = tableView.dequeueReusableCell(withIdentifier: "badge", for: indexPath)
         
         if let badgeCell = (cell as? BadgeTableViewCell) {
-            badgeCell.badgeTitle = user?.badges?[indexPath.row]
+            badgeCell.badgeTitle = user?.badges[indexPath.row]
             return badgeCell
         }
         

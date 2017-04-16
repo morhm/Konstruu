@@ -7,13 +7,12 @@
 //
 
 import UIKit
-import DataStructures
 
 class TeamTableViewCell: UITableViewCell {
 
     // MARK: - Model
     
-    var team: DataStructures.Team? {
+    var team: Team? {
         didSet {
             updateUI()
         }

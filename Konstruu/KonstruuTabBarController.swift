@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import DataStructures
 
 class KonstruuTabBarController: UITabBarController, UITabBarControllerDelegate {
 
@@ -15,7 +14,7 @@ class KonstruuTabBarController: UITabBarController, UITabBarControllerDelegate {
     
     // MARK: - Model
     
-    var user: DataStructures.User?
+    var user: User?
     
     // MARK: - View controller lifecycle
     

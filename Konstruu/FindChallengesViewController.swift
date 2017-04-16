@@ -7,13 +7,12 @@
 //
 
 import UIKit
-import DataStructures
 
 class FindChallengesViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate {
     
     // MARK: - Model
     
-    var challenges: [DataStructures.Challenge]? = DataStructures.exampleChallenges { // REPLACE AFTER DEMO
+    var challenges: [Challenge]? {
         didSet {
             challengeTableView?.reloadData()
         }
@@ -26,6 +25,9 @@ class FindChallengesViewController: UIViewController, UITableViewDataSource, UIT
         self.edgesForExtendedLayout = []
         self.title = "Find Challenges"
         challengeTableView.register(UINib(nibName: "ChallengeTableViewCell", bundle: nil), forCellReuseIdentifier: "challenge")
+        API.getAllChallenges(completed: { [weak self] challenges in
+            self?.challenges = challenges
+        })
     }
     
     // MARK: - UI
@@ -45,7 +47,6 @@ class FindChallengesViewController: UIViewController, UITableViewDataSource, UIT
         }
     }
     
-    
     // MARK: - Table view data source
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -60,7 +61,6 @@ class FindChallengesViewController: UIViewController, UITableViewDataSource, UIT
         let cell = tableView.dequeueReusableCell(withIdentifier: "challenge", for: indexPath)
         
         if let challengeCell = (cell as? ChallengeTableViewCell) {
-            // Pass any information to the individual table cell here!
             challengeCell.challenge = challenges?[indexPath.row]
         }
         

@@ -28,7 +28,7 @@ class BadgeTableViewCell: UITableViewCell {
     private func updateUI() {
         titleLabel?.text = badgeTitle
         if badgeTitle != nil {
-            descriptionLabel?.text = DataStructures.badges[badgeTitle!]
+            descriptionLabel?.text = badges[badgeTitle!]
         }
     }
 }

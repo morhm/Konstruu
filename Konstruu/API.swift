@@ -175,6 +175,21 @@ class API {
         })
     }
     
+    class func getAllChallenges(completed: (([Challenge]) -> Void)?) {
+        challengesReference.observeSingleEvent(of: .value, with: { snapshot in
+            var challenges: [Challenge] = []
+            if let snapshots = snapshot.children.allObjects as? [FIRDataSnapshot] {
+                for snap in snapshots {
+                    if let dictionary = snap.value as? Dictionary<String, AnyObject> {
+                        let challenge = Challenge(key: snap.key, dictionary: dictionary)
+                        challenges.append(challenge)
+                    }
+                }
+            }
+            completed?(challenges)
+        })
+    }
+    
     /* Dictionary Format:
      [
          "title": "",                           REQUIRED

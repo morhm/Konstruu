@@ -7,13 +7,12 @@
 //
 
 import UIKit
-import DataStructures
 
 class UserCollectionViewCell: UICollectionViewCell {
 
     // MARK: - Model
     
-    var user: DataStructures.User? {
+    var user: User? {
         didSet {
             updateUI()
         }
@@ -26,7 +25,9 @@ class UserCollectionViewCell: UICollectionViewCell {
     private func updateUI() {
         profileImageView?.clipsToBounds = true
         profileImageView?.contentMode = UIViewContentMode.scaleAspectFill
-        profileImageView?.image = user?.profileImage
+        user?.getProfileImage(completed: { [weak self] image in
+            self?.profileImageView?.image = image
+        })
     }
 
 }

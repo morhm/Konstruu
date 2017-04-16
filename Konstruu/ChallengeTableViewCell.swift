@@ -7,13 +7,12 @@
 //
 
 import UIKit
-import DataStructures
 
 class ChallengeTableViewCell: UITableViewCell {
     
     // MARK: - Model
     
-    var challenge: DataStructures.Challenge? {
+    var challenge: Challenge? {
         didSet {
             updateUI()
         }
