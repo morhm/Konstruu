@@ -35,12 +35,22 @@
 		61F7F87A1E6E06FB0017461F /* TeamViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61F7F8781E6E06FB0017461F /* TeamViewController.swift */; };
 		61F7F87B1E6E06FB0017461F /* TeamViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 61F7F8791E6E06FB0017461F /* TeamViewController.xib */; };
 		61F7F87E1E6E076C0017461F /* CreateChallengeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61F7F87C1E6E076C0017461F /* CreateChallengeViewController.swift */; };
-		61F7F87F1E6E076C0017461F /* CreateChallengeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 61F7F87D1E6E076C0017461F /* CreateChallengeViewController.xib */; };
 		61F7F8821E6E077D0017461F /* CreateTeamViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61F7F8801E6E077D0017461F /* CreateTeamViewController.swift */; };
 		61F7F8831E6E077D0017461F /* CreateTeamViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 61F7F8811E6E077D0017461F /* CreateTeamViewController.xib */; };
 		63C9D1FF9CC1A80C8AADAB4C /* Pods_Konstruu.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F54197AF7908272DF974385 /* Pods_Konstruu.framework */; };
 		681085F51E9D239300FB32F0 /* ChallengeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 681085F41E9D239300FB32F0 /* ChallengeButton.swift */; };
 		681085F71E9D245000FB32F0 /* ScalableButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 681085F61E9D245000FB32F0 /* ScalableButton.swift */; };
+		6874023B1EA6656600232634 /* UIFont+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6874023A1EA6656600232634 /* UIFont+Helper.swift */; };
+		687402461EA665E900232634 /* OpenSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6874023D1EA665BD00232634 /* OpenSans-Bold.ttf */; };
+		687402471EA665EE00232634 /* OpenSans-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6874023E1EA665BD00232634 /* OpenSans-BoldItalic.ttf */; };
+		687402481EA665EE00232634 /* OpenSans-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6874023F1EA665BD00232634 /* OpenSans-ExtraBold.ttf */; };
+		687402491EA665EE00232634 /* OpenSans-ExtraBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 687402401EA665BD00232634 /* OpenSans-ExtraBoldItalic.ttf */; };
+		6874024A1EA665EE00232634 /* OpenSans-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 687402411EA665BD00232634 /* OpenSans-Light.ttf */; };
+		6874024B1EA665EE00232634 /* OpenSans-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 687402421EA665BD00232634 /* OpenSans-LightItalic.ttf */; };
+		6874024C1EA665EE00232634 /* OpenSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 687402431EA665BD00232634 /* OpenSans-Regular.ttf */; };
+		6874024D1EA665EE00232634 /* OpenSans-Semibold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 687402441EA665BD00232634 /* OpenSans-Semibold.ttf */; };
+		6874024E1EA665EE00232634 /* OpenSans-SemiboldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 687402451EA665BD00232634 /* OpenSans-SemiboldItalic.ttf */; };
+		687402501EA6668100232634 /* UIColor+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6874024F1EA6668100232634 /* UIColor+Helper.swift */; };
 		68C8E55C1E6408AA00047901 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68C8E55B1E6408AA00047901 /* AppDelegate.swift */; };
 		68C8E5631E6408AA00047901 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 68C8E5621E6408AA00047901 /* Assets.xcassets */; };
 		68C8E5661E6408AA00047901 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 68C8E5641E6408AA00047901 /* LaunchScreen.storyboard */; };
@@ -91,11 +101,21 @@
 		61F7F8781E6E06FB0017461F /* TeamViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeamViewController.swift; sourceTree = "<group>"; };
 		61F7F8791E6E06FB0017461F /* TeamViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TeamViewController.xib; sourceTree = "<group>"; };
 		61F7F87C1E6E076C0017461F /* CreateChallengeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateChallengeViewController.swift; sourceTree = "<group>"; };
-		61F7F87D1E6E076C0017461F /* CreateChallengeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CreateChallengeViewController.xib; sourceTree = "<group>"; };
 		61F7F8801E6E077D0017461F /* CreateTeamViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateTeamViewController.swift; sourceTree = "<group>"; };
 		61F7F8811E6E077D0017461F /* CreateTeamViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CreateTeamViewController.xib; sourceTree = "<group>"; };
 		681085F41E9D239300FB32F0 /* ChallengeButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChallengeButton.swift; sourceTree = "<group>"; };
 		681085F61E9D245000FB32F0 /* ScalableButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScalableButton.swift; sourceTree = "<group>"; };
+		6874023A1EA6656600232634 /* UIFont+Helper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIFont+Helper.swift"; sourceTree = "<group>"; };
+		6874023D1EA665BD00232634 /* OpenSans-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Bold.ttf"; sourceTree = "<group>"; };
+		6874023E1EA665BD00232634 /* OpenSans-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-BoldItalic.ttf"; sourceTree = "<group>"; };
+		6874023F1EA665BD00232634 /* OpenSans-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-ExtraBold.ttf"; sourceTree = "<group>"; };
+		687402401EA665BD00232634 /* OpenSans-ExtraBoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-ExtraBoldItalic.ttf"; sourceTree = "<group>"; };
+		687402411EA665BD00232634 /* OpenSans-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Light.ttf"; sourceTree = "<group>"; };
+		687402421EA665BD00232634 /* OpenSans-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-LightItalic.ttf"; sourceTree = "<group>"; };
+		687402431EA665BD00232634 /* OpenSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Regular.ttf"; sourceTree = "<group>"; };
+		687402441EA665BD00232634 /* OpenSans-Semibold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Semibold.ttf"; sourceTree = "<group>"; };
+		687402451EA665BD00232634 /* OpenSans-SemiboldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-SemiboldItalic.ttf"; sourceTree = "<group>"; };
+		6874024F1EA6668100232634 /* UIColor+Helper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Helper.swift"; sourceTree = "<group>"; };
 		68C8E5581E6408AA00047901 /* Konstruu.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Konstruu.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		68C8E55B1E6408AA00047901 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		68C8E5621E6408AA00047901 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -185,7 +205,6 @@
 			isa = PBXGroup;
 			children = (
 				61F7F87C1E6E076C0017461F /* CreateChallengeViewController.swift */,
-				61F7F87D1E6E076C0017461F /* CreateChallengeViewController.xib */,
 			);
 			name = "Create Challenge Page";
 			sourceTree = "<group>";
@@ -210,6 +229,7 @@
 		61BD68C41E6DF2D300B1A0E9 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				6874023C1EA665B200232634 /* Fonts */,
 				61F255DE1E984E2C0039459D /* GoogleService-Info.plist */,
 				68C8E55B1E6408AA00047901 /* AppDelegate.swift */,
 				68C8E5641E6408AA00047901 /* LaunchScreen.storyboard */,
@@ -226,6 +246,31 @@
 				681085F41E9D239300FB32F0 /* ChallengeButton.swift */,
 			);
 			name = "Custom Views";
+			sourceTree = "<group>";
+		};
+		687402391EA6655200232634 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				6874023A1EA6656600232634 /* UIFont+Helper.swift */,
+				6874024F1EA6668100232634 /* UIColor+Helper.swift */,
+			);
+			name = Helpers;
+			sourceTree = "<group>";
+		};
+		6874023C1EA665B200232634 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				6874023D1EA665BD00232634 /* OpenSans-Bold.ttf */,
+				6874023E1EA665BD00232634 /* OpenSans-BoldItalic.ttf */,
+				6874023F1EA665BD00232634 /* OpenSans-ExtraBold.ttf */,
+				687402401EA665BD00232634 /* OpenSans-ExtraBoldItalic.ttf */,
+				687402411EA665BD00232634 /* OpenSans-Light.ttf */,
+				687402421EA665BD00232634 /* OpenSans-LightItalic.ttf */,
+				687402431EA665BD00232634 /* OpenSans-Regular.ttf */,
+				687402441EA665BD00232634 /* OpenSans-Semibold.ttf */,
+				687402451EA665BD00232634 /* OpenSans-SemiboldItalic.ttf */,
+			);
+			name = Fonts;
 			sourceTree = "<group>";
 		};
 		68C8E54F1E6408AA00047901 = {
@@ -250,6 +295,7 @@
 			isa = PBXGroup;
 			children = (
 				61BD68C41E6DF2D300B1A0E9 /* Supporting Files */,
+				687402391EA6655200232634 /* Helpers */,
 				681085F11E9D234100FB32F0 /* Custom Views */,
 				68C8E5711E64194800047901 /* View Controllers */,
 				68C8E5701E64193F00047901 /* Model */,
@@ -359,19 +405,27 @@
 			files = (
 				61BD68BF1E6DEC0A00B1A0E9 /* LoginViewController.xib in Resources */,
 				613B1B5E1E722F3C00544297 /* ProgressPostTableViewCell.xib in Resources */,
+				6874024B1EA665EE00232634 /* OpenSans-LightItalic.ttf in Resources */,
+				687402461EA665E900232634 /* OpenSans-Bold.ttf in Resources */,
 				61F7F8771E6E06870017461F /* ChallengeViewController.xib in Resources */,
 				615CE3E31E7A4F87007CD7CA /* TeamCollectionViewCell.xib in Resources */,
-				61F7F87F1E6E076C0017461F /* CreateChallengeViewController.xib in Resources */,
 				68C8E5661E6408AA00047901 /* LaunchScreen.storyboard in Resources */,
 				CA3A89441E6F81820000D33E /* ChallengeTableViewCell.xib in Resources */,
+				687402471EA665EE00232634 /* OpenSans-BoldItalic.ttf in Resources */,
 				61BD68C31E6DEEF400B1A0E9 /* ProfileViewController.xib in Resources */,
 				619E96491E7768900001D807 /* BadgeTableViewCell.xib in Resources */,
 				61F255DF1E984E2C0039459D /* GoogleService-Info.plist in Resources */,
+				6874024C1EA665EE00232634 /* OpenSans-Regular.ttf in Resources */,
+				687402491EA665EE00232634 /* OpenSans-ExtraBoldItalic.ttf in Resources */,
+				687402481EA665EE00232634 /* OpenSans-ExtraBold.ttf in Resources */,
 				61F7F87B1E6E06FB0017461F /* TeamViewController.xib in Resources */,
+				6874024E1EA665EE00232634 /* OpenSans-SemiboldItalic.ttf in Resources */,
 				613B1B521E72144800544297 /* TeamTableViewCell.xib in Resources */,
+				6874024D1EA665EE00232634 /* OpenSans-Semibold.ttf in Resources */,
 				68C8E5631E6408AA00047901 /* Assets.xcassets in Resources */,
 				613B1B5A1E722F2A00544297 /* UserCollectionViewCell.xib in Resources */,
 				613B1B561E721A1E00544297 /* FindChallengesViewController.xib in Resources */,
+				6874024A1EA665EE00232634 /* OpenSans-Light.ttf in Resources */,
 				61F7F8831E6E077D0017461F /* CreateTeamViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -436,7 +490,9 @@
 				61E7C2DF1E9DB3BD0052B0E6 /* Team.swift in Sources */,
 				613B1B551E721A1E00544297 /* FindChallengesViewController.swift in Sources */,
 				61BD68C21E6DEEF400B1A0E9 /* ProfileViewController.swift in Sources */,
+				687402501EA6668100232634 /* UIColor+Helper.swift in Sources */,
 				681085F51E9D239300FB32F0 /* ChallengeButton.swift in Sources */,
+				6874023B1EA6656600232634 /* UIFont+Helper.swift in Sources */,
 				619E96481E7768900001D807 /* BadgeTableViewCell.swift in Sources */,
 				615CE3E21E7A4F87007CD7CA /* TeamCollectionViewCell.swift in Sources */,
 				61BD68BE1E6DEC0A00B1A0E9 /* LoginViewController.swift in Sources */,

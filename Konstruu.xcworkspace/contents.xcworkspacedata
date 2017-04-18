@@ -5,6 +5,9 @@
       location = "group:Konstruu.xcodeproj">
    </FileRef>
    <FileRef
+      location = "group:DataStructures/DataStructures.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "group:Pods/Pods.xcodeproj">
    </FileRef>
 </Workspace>

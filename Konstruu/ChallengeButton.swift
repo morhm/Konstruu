@@ -23,7 +23,7 @@ extension ChallengeButtonType {
     case .location:
       return UIImage(named: "location-maps.png")!
     case .friends:
-      return UIImage(named: "Contacts.png")!
+      return UIImage(named: "Contact.png")!
     }
   }
   
@@ -58,12 +58,12 @@ private extension CGFloat {
 }
 
 private extension CGFloat {
+  static let imageButtonHeightConstraint: CGFloat             = 20.0
   static let imageViewTopConstraint: CGFloat                  = 15.0
   static let imageViewBottomConstraint: CGFloat               = 10.0
-  static let imageViewWidthConstraint: CGFloat                = 85.0
   static let imageViewHeightConstraint: CGFloat               = 75.0
   static let titleLabelTopConstraint: CGFloat                 = 7.0
-  static let titleLabelSideConstraint: CGFloat                = 20.0
+  static let titleLabelLeftConstraint: CGFloat                = 10.0
   static let titleLabelHeightConstraint: CGFloat              = 50.0
 }
 
@@ -77,6 +77,8 @@ class ChallengeButton: ScalableButton {
   fileprivate var title:String?
   fileprivate var titleColor:UIColor?
   
+  fileprivate var updated = false
+
   // MARK: - subviews
   
   fileprivate lazy var buttonImageView: UIImageView = { [unowned self] in
@@ -92,10 +94,9 @@ class ChallengeButton: ScalableButton {
     let titleLabel = UILabel()
     titleLabel.text = self.title
     titleLabel.textColor = self.titleColor!
-    titleLabel.textAlignment = .center
-    titleLabel.numberOfLines = 2
-    titleLabel.adjustsFontSizeToFitWidth = true
-//    titleLabel.font = SwapcardFont.OpenSansSemiBold.font(16.0)
+    titleLabel.textAlignment = .left
+    titleLabel.numberOfLines = 1
+    titleLabel.font = UIFont.konstruuFontWithSize(14.0)
     
     titleLabel.translatesAutoresizingMaskIntoConstraints = false
     return titleLabel
@@ -108,29 +109,33 @@ class ChallengeButton: ScalableButton {
   }
   
   override func updateConstraints() {
+    guard !updated else {
+      super.updateConstraints()
+      return
+    }
+    updated = true
     
     // image view
     
-    //top
-    addConstraint(NSLayoutConstraint(item:buttonImageView, attribute:.top, relatedBy:.equal, toItem: self, attribute:.top, multiplier: 1, constant: .imageViewTopConstraint))
-    //bottom
-    addConstraint(NSLayoutConstraint(item:buttonImageView, attribute:.bottom, relatedBy:.equal, toItem: buttonTitleLabel, attribute:.top, multiplier: 1, constant: -.imageViewBottomConstraint))
-    //CenterX
-    addConstraint(NSLayoutConstraint(item:buttonImageView, attribute:.centerX, relatedBy:.equal, toItem: self, attribute:.centerX, multiplier: 1, constant: 0))
+    //centerY
+    addConstraint(NSLayoutConstraint(item:buttonImageView, attribute:.centerY, relatedBy:.equal, toItem: self, attribute:.centerY, multiplier: 1, constant: 0))
+    //left
+    addConstraint(NSLayoutConstraint(item:buttonImageView, attribute:.left, relatedBy:.equal, toItem: self, attribute:.left, multiplier: 1, constant: 0))
+    //height
+    addConstraint(NSLayoutConstraint(item:buttonImageView, attribute:.height, relatedBy:.equal, toItem: nil, attribute:.notAnAttribute, multiplier: 1, constant: .imageButtonHeightConstraint))
     //width
     addConstraint(NSLayoutConstraint(item:buttonImageView, attribute:.width, relatedBy:.equal, toItem: buttonImageView, attribute:.height, multiplier: 1, constant: 0))
     
+    //buttonTitleLabel
     
-    // title label
-    
+    //left
+    addConstraint(NSLayoutConstraint(item:buttonTitleLabel, attribute:.left, relatedBy:.equal, toItem: buttonImageView, attribute:.right, multiplier: 1, constant: .titleLabelLeftConstraint))
+    //right
+    addConstraint(NSLayoutConstraint(item:buttonTitleLabel, attribute:.right, relatedBy:.equal, toItem: self, attribute:.right, multiplier: 1, constant: 0))
     //centerY
     addConstraint(NSLayoutConstraint(item:buttonTitleLabel, attribute:.centerY, relatedBy:.equal, toItem: self, attribute:.centerY, multiplier: 1, constant: 0))
-    //left
-    addConstraint(NSLayoutConstraint(item:buttonTitleLabel, attribute:.left, relatedBy:.equal, toItem: self, attribute:.left, multiplier: 1, constant: .titleLabelSideConstraint))
-    //right
-    addConstraint(NSLayoutConstraint(item:buttonTitleLabel, attribute:.right, relatedBy:.equal, toItem: self, attribute:.right, multiplier: 1, constant: -.titleLabelSideConstraint))
     //height
-    addConstraint(NSLayoutConstraint(item:buttonTitleLabel, attribute:.height, relatedBy:.lessThanOrEqual, toItem: nil, attribute:.notAnAttribute, multiplier: 1, constant:.titleLabelHeightConstraint))
+    addConstraint(NSLayoutConstraint(item:buttonTitleLabel, attribute:.height, relatedBy:.equal, toItem: buttonImageView, attribute:.height, multiplier: 1, constant:0))
     
     super.updateConstraints()
   }
@@ -150,10 +155,10 @@ class ChallengeButton: ScalableButton {
     self.title                = self.challengeButtonType.getButtonText()
     self.titleColor           = self.challengeButtonType.getTextColor()
     
-//    setupCardBackground()
     setupScalableProperties()
     
     addSubviews()
+    updateConstraints()
   }
   
   required init?(coder aDecoder: NSCoder) {

@@ -9,7 +9,7 @@
 import UIKit
 import DataStructures
 
-class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UICollectionViewDelegate, UICollectionViewDataSource {
+class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
   
   
     // MARK: - Model
@@ -18,41 +18,6 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
         didSet {
             updateUI()
         }
-    }
-    
-    // MARK: - View Lifecycle
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-      
-        self.edgesForExtendedLayout = []
-        self.title = "Profile"
-        badgesTableView.register(UINib(nibName: "BadgeTableViewCell", bundle: nil), forCellReuseIdentifier: "badge")
-        teamsCollectionView.register(UINib(nibName: "TeamCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "team")
-        updateUI()
-      
-        addSubviews()
-        addConstraints()
-    }
-  
-    func addSubviews() {
-      view.addSubview(backgroundView)
-      view.sendSubview(toBack: backgroundView)
-    }
-  
-    func addConstraints() {
-      //backgroundView
-      
-      //top
-      view.addConstraint(NSLayoutConstraint(item:backgroundView, attribute:.top, relatedBy:.equal, toItem: view, attribute:.top, multiplier: 1, constant: 0))
-      //bottom
-      view.addConstraint(NSLayoutConstraint(item:backgroundView, attribute:.bottom, relatedBy:.equal, toItem: view, attribute:.bottom, multiplier: 1, constant: 0))
-      //left
-      view.addConstraint(NSLayoutConstraint(item:backgroundView, attribute:.left, relatedBy:.equal, toItem: view, attribute:.left, multiplier: 1, constant: 0))
-      //right
-      view.addConstraint(NSLayoutConstraint(item:backgroundView, attribute:.right, relatedBy:.equal, toItem: view, attribute:.right, multiplier: 1, constant: 0))
-      
-      view.layoutIfNeeded()
     }
   
     // MARK: - UI
@@ -69,14 +34,7 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
     @IBOutlet weak var profileImageView: UIImageView!
     
     @IBOutlet weak var usernameLabel: UILabel!
-    
-    @IBOutlet weak var teamsCollectionView: UICollectionView! {
-        didSet {
-            teamsCollectionView.dataSource = self
-            teamsCollectionView.delegate = self
-        }
-    }
-    
+  
     @IBOutlet weak var badgesTableView: UITableView! {
         didSet {
             badgesTableView.dataSource = self
@@ -95,23 +53,41 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
             self?.profileImageView?.image = image
         })
     }
+  
+    // MARK: - View Lifecycle
     
-    // MARK: - Collection view data source
-    
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return user?.teamKeys.count ?? 0
+    override func viewDidLoad() {
+      super.viewDidLoad()
+      
+      self.edgesForExtendedLayout = []
+      self.title = "Profile"
+      badgesTableView.register(UINib(nibName: "BadgeTableViewCell", bundle: nil), forCellReuseIdentifier: "badge")
+      updateUI()
+      
+      addSubviews()
+      addConstraints()
     }
     
-    func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 1
+    func addSubviews() {
+      view.addSubview(backgroundView)
+      view.sendSubview(toBack: backgroundView)
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "team", for: indexPath)
-        
-        return cell
+    func addConstraints() {
+      //backgroundView
+      
+      //top
+      view.addConstraint(NSLayoutConstraint(item:backgroundView, attribute:.top, relatedBy:.equal, toItem: view, attribute:.top, multiplier: 1, constant: 0))
+      //bottom
+      view.addConstraint(NSLayoutConstraint(item:backgroundView, attribute:.bottom, relatedBy:.equal, toItem: view, attribute:.bottom, multiplier: 1, constant: 0))
+      //left
+      view.addConstraint(NSLayoutConstraint(item:backgroundView, attribute:.left, relatedBy:.equal, toItem: view, attribute:.left, multiplier: 1, constant: 0))
+      //right
+      view.addConstraint(NSLayoutConstraint(item:backgroundView, attribute:.right, relatedBy:.equal, toItem: view, attribute:.right, multiplier: 1, constant: 0))
+      
+      view.layoutIfNeeded()
     }
-    
+  
     // MARK: - Table view data source
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
