@@ -18,6 +18,8 @@ class User: CustomStringConvertible {
     var key: String!
     var name: String!
     var desc: String?
+    var photoURL: URL?
+    var email: String?
     var skills: [String] = []
     var badges: [String] = []
     var teamKeys: [String] = []
@@ -31,6 +33,14 @@ class User: CustomStringConvertible {
         
         if let desc = dictionary["desc"] as? String {
             self.desc = desc
+        }
+        
+        if let photoURL = dictionary["photoURL"] as? String {
+            self.photoURL = URL(string: photoURL)
+        }
+        
+        if let email = dictionary["email"] as? String {
+            self.email = email
         }
         
         if let skillsDictionary = dictionary["skills"] as? Dictionary<String, AnyObject> {

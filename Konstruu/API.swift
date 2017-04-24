@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import DataStructures
 import FirebaseDatabase
 import FirebaseStorage
 
@@ -19,6 +18,8 @@ class API {
              "1": {
                  "name": "Mark Orozco",
                  "desc": "Hi everyone!",
+                 "photoURL": "blah.com",
+                 "email": "blah@blah.com",
                  "skills": {
                      "iOS Development": true,
                      "git": true,
@@ -103,6 +104,8 @@ class API {
      [
          "name": "",                            REQUIRED
          "desc": "",
+         "photoURL": "",
+         "email": "",
          "skills": ["skill name", "skill name"],
          "badges": ["badge name", "badge name"],
          "teamKeys": ["team key", "team key"]
