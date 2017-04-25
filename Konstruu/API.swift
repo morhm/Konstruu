@@ -118,6 +118,23 @@ class API {
         return User(key: key, dictionary: userInfo)
     }
     
+    /* Dictionary Format:
+     [
+         "name": "",                            REQUIRED
+         "desc": "",
+         "photoURL": "",
+         "email": "",
+         "skills": ["skill name", "skill name"],
+         "badges": ["badge name", "badge name"],
+         "teamKeys": ["team key", "team key"]
+         ]
+     */
+    class func createUserWithKey(_ key: String, userInfo: Dictionary<String, AnyObject>) -> User {
+        let userReference = usersReference.child(key)
+        userReference.setValue(userInfo)
+        return User(key: key, dictionary: userInfo)
+    }
+    
     // MARK: Team
     
     class func getTeamWithKey(_ key: String, completed: ((Team?) -> Void)?) {

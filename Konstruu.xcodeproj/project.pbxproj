@@ -17,6 +17,8 @@
 		615A292B1E9AD5E700568D40 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 615A292A1E9AD5E700568D40 /* API.swift */; };
 		615CE3E21E7A4F87007CD7CA /* TeamCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 615CE3E01E7A4F87007CD7CA /* TeamCollectionViewCell.swift */; };
 		615CE3E31E7A4F87007CD7CA /* TeamCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 615CE3E11E7A4F87007CD7CA /* TeamCollectionViewCell.xib */; };
+		617ED0D31EAF11C5003639A6 /* SignUpWithEmailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 617ED0D11EAF11C5003639A6 /* SignUpWithEmailViewController.swift */; };
+		617ED0D41EAF11C5003639A6 /* SignUpWithEmailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 617ED0D21EAF11C5003639A6 /* SignUpWithEmailViewController.xib */; };
 		618C69771EA2C2C500AA84B0 /* Badges.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618C69761EA2C2C500AA84B0 /* Badges.swift */; };
 		618FBA441E7332B300B2F652 /* KonstruuTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618FBA421E7332B300B2F652 /* KonstruuTabBarController.swift */; };
 		619E96481E7768900001D807 /* BadgeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 619E96461E7768900001D807 /* BadgeTableViewCell.swift */; };
@@ -83,6 +85,8 @@
 		615A292A1E9AD5E700568D40 /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		615CE3E01E7A4F87007CD7CA /* TeamCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeamCollectionViewCell.swift; sourceTree = "<group>"; };
 		615CE3E11E7A4F87007CD7CA /* TeamCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TeamCollectionViewCell.xib; sourceTree = "<group>"; };
+		617ED0D11EAF11C5003639A6 /* SignUpWithEmailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpWithEmailViewController.swift; sourceTree = "<group>"; };
+		617ED0D21EAF11C5003639A6 /* SignUpWithEmailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SignUpWithEmailViewController.xib; sourceTree = "<group>"; };
 		618C69761EA2C2C500AA84B0 /* Badges.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Badges.swift; sourceTree = "<group>"; };
 		618FBA421E7332B300B2F652 /* KonstruuTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KonstruuTabBarController.swift; sourceTree = "<group>"; };
 		619E96461E7768900001D807 /* BadgeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BadgeTableViewCell.swift; sourceTree = "<group>"; };
@@ -150,6 +154,8 @@
 			children = (
 				61BD68BC1E6DEC0A00B1A0E9 /* LoginViewController.swift */,
 				61BD68BD1E6DEC0A00B1A0E9 /* LoginViewController.xib */,
+				617ED0D11EAF11C5003639A6 /* SignUpWithEmailViewController.swift */,
+				617ED0D21EAF11C5003639A6 /* SignUpWithEmailViewController.xib */,
 			);
 			name = "Login Page";
 			sourceTree = "<group>";
@@ -406,6 +412,7 @@
 				61BD68BF1E6DEC0A00B1A0E9 /* LoginViewController.xib in Resources */,
 				613B1B5E1E722F3C00544297 /* ProgressPostTableViewCell.xib in Resources */,
 				6874024B1EA665EE00232634 /* OpenSans-LightItalic.ttf in Resources */,
+				617ED0D41EAF11C5003639A6 /* SignUpWithEmailViewController.xib in Resources */,
 				687402461EA665E900232634 /* OpenSans-Bold.ttf in Resources */,
 				61F7F8771E6E06870017461F /* ChallengeViewController.xib in Resources */,
 				615CE3E31E7A4F87007CD7CA /* TeamCollectionViewCell.xib in Resources */,
@@ -508,6 +515,7 @@
 				61BD68CF1E6DF7B900B1A0E9 /* ChallengeTableViewCell.swift in Sources */,
 				618FBA441E7332B300B2F652 /* KonstruuTabBarController.swift in Sources */,
 				61F7F87A1E6E06FB0017461F /* TeamViewController.swift in Sources */,
+				617ED0D31EAF11C5003639A6 /* SignUpWithEmailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
