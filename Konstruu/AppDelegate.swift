@@ -9,6 +9,7 @@
 import UIKit
 import CoreData
 import Firebase
+import FacebookCore
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -36,6 +37,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Make the window visible
         window!.makeKeyAndVisible()
         return true
+    }
+    
+//    func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
+//        return SDKApplicationDelegate.shared.application(application, open: url, sourceApplication: sourceApplication, annotation: annotation)
+//    }
+    
+    func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
+        return SDKApplicationDelegate.shared.application(app, open: url, options: options)
     }
     
     func applicationWillResignActive(_ application: UIApplication) {

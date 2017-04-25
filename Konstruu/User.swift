@@ -109,6 +109,8 @@ class User: CustomStringConvertible {
             "key": key,
             "name": name,
             "desc": desc,
+            "photoURL": String(describing: photoURL),
+            "email": email,
             "skills": String(describing: skills),
             "badges": String(describing: badges),
             "teamKeys": String(describing: teamKeys)
