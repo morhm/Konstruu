@@ -39,7 +39,8 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
         didSet {
             badgesTableView.dataSource = self
             badgesTableView.delegate = self
-            badgesTableView.rowHeight = UITableViewAutomaticDimension
+            badgesTableView.backgroundColor = .clear
+            badgesTableView.rowHeight = 290.0
             badgesTableView.estimatedRowHeight = 100
         }
     }
@@ -61,7 +62,7 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
       
       self.edgesForExtendedLayout = []
       self.title = "Profile"
-      badgesTableView.register(UINib(nibName: "BadgeTableViewCell", bundle: nil), forCellReuseIdentifier: "badge")
+//      badgesTableView.register(UITableViewCell.self, forCellReuseIdentifier: "infoCell")
       updateUI()
       
       addSubviews()
@@ -89,9 +90,29 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
   
     // MARK: - Table view data source
-    
+  
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+      if indexPath.section == 0 {
+        switch indexPath.row {
+        case 0:
+          return 290.0
+        case 1:
+          return 360.0
+        case 2:
+          return 300.0
+        default:
+          break
+        }
+      }
+      return 70.0
+    }
+  
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+      return 20.0
+    }
+  
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return user?.badges.count ?? 0
+        return 3
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -99,13 +120,31 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "badge", for: indexPath)
-        
-        if let badgeCell = (cell as? BadgeTableViewCell) {
-            badgeCell.badgeTitle = user?.badges[indexPath.row]
-            return badgeCell
+      let cell =  UITableViewCell(style: .default, reuseIdentifier: "cell")
+
+      if indexPath.section == 0 {
+        switch indexPath.row {
+        case 0:
+          let cell:ProfileInfoTableViewCell =  ProfileInfoTableViewCell(style: .default, reuseIdentifier: "infoCell")
+          return cell
+        case 1:
+          let cell:ProfileSpecialtyTableViewCell =  ProfileSpecialtyTableViewCell(style: .default, reuseIdentifier: "specialtyCell")
+          return cell
+        case 2:
+          let cell:ProfileProjectTableViewCell =  ProfileProjectTableViewCell(style: .default, reuseIdentifier: "projectCell")
+          return cell
+        default:
+          break
         }
+      }
+      
+      //tableView.dequeueReusableCell(withIdentifier: "badge", for: indexPath)
         
+//        if let badgeCell = (cell as? BadgeTableViewCell) {
+//            badgeCell.badgeTitle = user?.badges[indexPath.row]
+//            return badgeCell
+//        }
+      
         return cell
     }
     
