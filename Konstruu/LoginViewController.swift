@@ -25,7 +25,8 @@ class LoginViewController: UIViewController {
     }
     
     @IBAction func signUpWithEmail(_ sender: UIButton) {
-        skipToProfile()
+        let signUpWithEmailVC = SignUpWithEmailViewController(nibName: "SignUpWithEmailViewController", bundle: nil)
+        present(signUpWithEmailVC, animated: true, completion: nil)
     }
     
     // TESTING CODE
