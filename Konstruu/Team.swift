@@ -67,6 +67,18 @@ class Team: CustomStringConvertible {
         user.reference.child("teamKeys").child(key).setValue(true)
     }
     
+    func removeUser(_ user: User) {
+        if let index = userKeys.index(of: user.key) {
+            userKeys.remove(at: index)
+        }
+        reference.child("userKeys").child(user.key).removeValue()
+        
+        if let index = user.teamKeys.index(of: key) {
+            user.teamKeys.remove(at: index)
+        }
+        user.reference.child("teamKeys").child(key).removeValue()
+    }
+    
     func markAsOpen() {
         open = true
         reference.child("open").setValue(true)
