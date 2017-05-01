@@ -1,23 +1,4 @@
-[2017-04-27T11:47:31,682][INFO ][o.e.n.Node               ] [] initializing ...
-[2017-04-27T11:47:31,781][INFO ][o.e.e.NodeEnvironment    ] [WPbkL6-] using [1] data paths, mounts [[/ (/dev/disk1)]], net usable_space [245gb], net total_space [464.7gb], spins? [unknown], types [hfs]
-[2017-04-27T11:47:31,781][INFO ][o.e.e.NodeEnvironment    ] [WPbkL6-] heap size [1.9gb], compressed ordinary object pointers [true]
-[2017-04-27T11:47:31,783][INFO ][o.e.n.Node               ] [WPbkL6-] node name [WPbkL6-] derived from node ID; set [node.name] to override
-[2017-04-27T11:47:31,788][INFO ][o.e.n.Node               ] [WPbkL6-] version[5.0.0], pid[764], build[253032b/2016-10-26T04:37:51.531Z], OS[Mac OS X/10.12.4/x86_64], JVM[Oracle Corporation/Java HotSpot(TM) 64-Bit Server VM/1.8.0_131/25.131-b11]
-[2017-04-27T11:47:32,822][INFO ][o.e.p.PluginsService     ] [WPbkL6-] loaded module [aggs-matrix-stats]
-[2017-04-27T11:47:32,822][INFO ][o.e.p.PluginsService     ] [WPbkL6-] loaded module [ingest-common]
-[2017-04-27T11:47:32,822][INFO ][o.e.p.PluginsService     ] [WPbkL6-] loaded module [lang-expression]
-[2017-04-27T11:47:32,822][INFO ][o.e.p.PluginsService     ] [WPbkL6-] loaded module [lang-groovy]
-[2017-04-27T11:47:32,822][INFO ][o.e.p.PluginsService     ] [WPbkL6-] loaded module [lang-mustache]
-[2017-04-27T11:47:32,822][INFO ][o.e.p.PluginsService     ] [WPbkL6-] loaded module [lang-painless]
-[2017-04-27T11:47:32,825][INFO ][o.e.p.PluginsService     ] [WPbkL6-] loaded module [percolator]
-[2017-04-27T11:47:32,825][INFO ][o.e.p.PluginsService     ] [WPbkL6-] loaded module [reindex]
-[2017-04-27T11:47:32,825][INFO ][o.e.p.PluginsService     ] [WPbkL6-] loaded module [transport-netty3]
-[2017-04-27T11:47:32,825][INFO ][o.e.p.PluginsService     ] [WPbkL6-] loaded module [transport-netty4]
-[2017-04-27T11:47:32,834][INFO ][o.e.p.PluginsService     ] [WPbkL6-] no plugins loaded
-[2017-04-27T11:47:35,835][INFO ][o.e.n.Node               ] [WPbkL6-] initialized
-[2017-04-27T11:47:35,836][INFO ][o.e.n.Node               ] [WPbkL6-] starting ...
-[2017-04-27T11:47:36,064][INFO ][o.e.t.TransportService   ] [WPbkL6-] publish_address {127.0.0.1:9300}, bound_addresses {[fe80::1]:9300}, {[::1]:9300}, {127.0.0.1:9300}
-[2017-04-27T11:47:39,143][INFO ][o.e.c.s.ClusterService   ] [WPbkL6-] new_master {WPbkL6-}{WPbkL6-RQqSQn4ovXp7G7Q}{5bYuSHEgQFu3gnZrFWwZGQ}{127.0.0.1}{127.0.0.1:9300}, reason: zen-disco-elected-as-master ([0] nodes joined)
-[2017-04-27T11:47:39,167][INFO ][o.e.h.HttpServer         ] [WPbkL6-] publish_address {127.0.0.1:9200}, bound_addresses {[fe80::1]:9200}, {[::1]:9200}, {127.0.0.1:9200}
-[2017-04-27T11:47:39,168][INFO ][o.e.g.GatewayService     ] [WPbkL6-] recovered [0] indices into cluster_state
-[2017-04-27T11:47:39,168][INFO ][o.e.n.Node               ] [WPbkL6-] started
+[2017-04-30T00:33:46,881][INFO ][o.e.n.Node               ] [WPbkL6-] stopping ...
+[2017-04-30T00:33:46,929][INFO ][o.e.n.Node               ] [WPbkL6-] stopped
+[2017-04-30T00:33:46,929][INFO ][o.e.n.Node               ] [WPbkL6-] closing ...
+[2017-04-30T00:33:46,944][INFO ][o.e.n.Node               ] [WPbkL6-] closed

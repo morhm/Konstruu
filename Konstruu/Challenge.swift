@@ -15,7 +15,13 @@ class Challenge: CustomStringConvertible {
     var key: String!
     var title: String!
     var desc: String!
+    var categories: [String] = []
+    var likesUserKeys: [String] = []
     var teamKeys: [String] = []
+    
+    var numberOfLikes: Int {
+        return likesUserKeys.count
+    }
     
     init(key: String, dictionary: Dictionary<String, AnyObject>) {
         self.key = key
@@ -28,8 +34,16 @@ class Challenge: CustomStringConvertible {
             self.desc = desc
         }
         
+        if let categoriesDictionary = dictionary["categories"] as? Dictionary<String, AnyObject> {
+            self.categories = self.categories + Array(categoriesDictionary.keys)
+        }
+        
+        if let likesUserKeysDictionary = dictionary["likesUserKeys"] as? Dictionary<String, AnyObject> {
+            self.likesUserKeys = self.likesUserKeys + Array(likesUserKeysDictionary.keys)
+        }
+        
         if let teamKeysDictionary = dictionary["teamKeys"] as? Dictionary<String, AnyObject> {
-            self.teamKeys = Array(teamKeysDictionary.keys)
+            self.teamKeys = self.teamKeys + Array(teamKeysDictionary.keys)
         }
         
         self.reference = API.challengesReference.child(self.key)
@@ -50,6 +64,22 @@ class Challenge: CustomStringConvertible {
         
         team.challengeKey = key
         team.reference.child("challengeKey").setValue(key)
+    }
+    
+    func addToCategory(_ category: String) {
+        categories.append(category)
+        reference.child("categories").child(category).setValue(true)
+        
+        API.categoriesReference.child(category).child(key).setValue(true)
+    }
+    
+    func removeFromCategory(_ category: String) {
+        if let index = categories.index(of: category) {
+            categories.remove(at: index)
+        }
+        reference.child("categories").child(category).removeValue()
+        
+        API.categoriesReference.child(category).child(key).removeValue()
     }
     
     var description: String {

@@ -24,8 +24,11 @@ class API {
                      "iOS Development": true,
                      "git": true,
                  },
+                 "likedChallengeKeys": {
+                     "3": true
+                 }
                  "teamKeys": {
-                     "1": true
+                     "2": true
                  },
                  "badges": {
                      "Challenge Guru": true
@@ -33,19 +36,26 @@ class API {
              }
          },
          "teams": {
-             "1": {
+             "2": {
                  "name": "Frog and Code",
                  "open": true, // looking for teammates
-                 "challengeKey": "1",
+                 "challengeKey": "3",
                  "userKeys": {
                      "1": true,
                  }
              }
          },
          "challenges": {
-             "1": {
+             "3": {
                  "title": "Mobile app to help geo-tag graffiti",
                  "desc": "People can drop pins on a map to help remove grafitti.",
+                 "categories": {
+                     "sponsored": true,
+                     "mobile": true
+                 },
+                 "likesUserKeys": {
+                     "1": true
+                 },
                  "teamKeys": {
                      "Frog and Code": true
                  }
@@ -58,6 +68,14 @@ class API {
              "git": {
                  "1": true
              }
+         },
+         "categories": {
+             "sponsored": {
+                 "3": true
+             },
+             "mobile": {
+                 "3": true
+             },
          }
      }
     */
@@ -78,6 +96,7 @@ class API {
     static let teamsReference = databaseReference.child("teams")
     static let challengesReference = databaseReference.child("challenges")
     static let skillsReference = databaseReference.child("skills")
+    static let categoriesReference = databaseReference.child("categories")
     
     static let storage = FIRStorage.storage()
     static let storageReference = storage.reference()
@@ -102,11 +121,12 @@ class API {
     // reference: https://stackoverflow.com/questions/39691818/firebase-swift-how-to-create-a-child-and-add-its-id-to-another-ref-property
     /* Dictionary Format:
      [
-         "name": "",                            REQUIRED
+         "name": "",                                                REQUIRED
          "desc": "",
          "photoURL": "",
          "email": "",
          "skills": ["skill name", "skill name"],
+         "likedChallengeKeys": ["challenge key", "challenge key"],
          "badges": ["badge name", "badge name"],
          "teamKeys": ["team key", "team key"]
      ]
@@ -120,7 +140,7 @@ class API {
     
     /* Dictionary Format:
      [
-         "name": "",                            REQUIRED
+         "name": "",                                REQUIRED
          "desc": "",
          "photoURL": "",
          "email": "",
@@ -210,10 +230,28 @@ class API {
         })
     }
     
+    class func getChallengesInList(challengeKeys: [String] , index: Int, challenges: [Challenge], completed: (([Challenge]) -> Void)?) {
+        var currentChallenges = challenges
+        if index >= challengeKeys.count {
+            completed?(challenges)
+        } else {
+            let key = challengeKeys[index]
+            teamsReference.child(key).observeSingleEvent(of: .value, with: { snapshot in
+                if let dictionary = snapshot.value as? Dictionary<String, AnyObject> {
+                    let challenge = Challenge(key: key, dictionary: dictionary)
+                    currentChallenges.append(challenge)
+                }
+                getChallengesInList(challengeKeys: challengeKeys, index: index + 1, challenges: currentChallenges, completed: completed)
+            })
+        }
+    }
+    
     /* Dictionary Format:
      [
-         "title": "",                           REQUIRED
-         "desc": "",                            REQUIRED
+         "title": "",                                       REQUIRED
+         "desc": "",                                        REQUIRED
+         "cateogires": ["category name", "category name"],
+         "likesUserKeys": ["user key", "user key"],
          "teamKeys": ["team key", "team key"]
      ]
      */
@@ -249,5 +287,16 @@ class API {
                 getUsersInList(userKeys: userKeys, index: index + 1, users: currentUsers, completed: completed)
             })
         }
+    }
+    
+    // MARK: Categories
+    
+    class func getChallengesInCategory(_ category: String, completed: (([Challenge]) -> Void)?) {
+        categoriesReference.child(category).observeSingleEvent(of: .value, with: { snapshot in
+            if let dictionary = snapshot.value as? Dictionary<String, AnyObject> {
+                let challengeKeys = Array(dictionary.keys)
+                getChallengesInList(challengeKeys: challengeKeys, index: 0, challenges: [], completed: completed)
+            }
+        })
     }
 }

@@ -21,6 +21,7 @@ class User: CustomStringConvertible {
     var photoURL: URL?
     var email: String?
     var skills: [String] = []
+    var likedChallengeKeys: [String] = []
     var badges: [String] = []
     var teamKeys: [String] = []
     
@@ -45,6 +46,10 @@ class User: CustomStringConvertible {
         
         if let skillsDictionary = dictionary["skills"] as? Dictionary<String, AnyObject> {
             self.skills = self.skills + Array(skillsDictionary.keys)
+        }
+        
+        if let likedChallengeKeysDictionary = dictionary["likedChallengeKeys"] as? Dictionary<String, AnyObject> {
+            self.likedChallengeKeys = self.likedChallengeKeys + Array(likedChallengeKeysDictionary.keys)
         }
         
         if let badgesDictionary = dictionary["badges"] as? Dictionary<String, AnyObject> {
@@ -75,6 +80,10 @@ class User: CustomStringConvertible {
         API.getTeamsInList(teamKeys: teamKeys, index: 0, teams: [], completed: completed)
     }
     
+    func getLikedChallenges(completed: (([Challenge]) -> Void)?) {
+        API.getChallengesInList(challengeKeys: likedChallengeKeys, index: 0, challenges: [], completed: completed)
+    }
+    
     func updateDescription(to desc: String) {
         self.desc = desc
         reference.child("desc").setValue(desc)
@@ -97,6 +106,26 @@ class User: CustomStringConvertible {
         }
         reference.child("skills").child(skill).removeValue()
         API.skillsReference.child(skill).child(key).removeValue()
+    }
+    
+    func likeChallenge(_ challenge: Challenge) {
+        self.likedChallengeKeys.append(challenge.key)
+        reference.child("likedChallengeKeys").child(challenge.key).setValue(true)
+        
+        challenge.likesUserKeys.append(key)
+        challenge.reference.child("likesUserKeys").child(key).setValue(true)
+    }
+    
+    func unlikeChallenge(_ challenge: Challenge) {
+        if let index = likedChallengeKeys.index(of: challenge.key) {
+            likedChallengeKeys.remove(at: index)
+        }
+        reference.child("likedChallengeKeys").child(challenge.key).removeValue()
+        
+        if let index = challenge.likesUserKeys.index(of: key) {
+            challenge.likesUserKeys.remove(at: index)
+        }
+        challenge.reference.child("likesUserKeys").child(key).removeValue()
     }
     
     func addBadge(_ badge: String) {
