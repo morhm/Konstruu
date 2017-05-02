@@ -10,7 +10,6 @@ import UIKit
 
 class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
   
-  
     // MARK: - Model
     
     var user: User? {
@@ -30,10 +29,6 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
       return backgroundView
       }()
   
-    @IBOutlet weak var profileImageView: UIImageView!
-    
-    @IBOutlet weak var usernameLabel: UILabel!
-  
     @IBOutlet weak var badgesTableView: UITableView! {
         didSet {
             badgesTableView.dataSource = self
@@ -43,15 +38,25 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
             badgesTableView.estimatedRowHeight = 100
         }
     }
-    
+  
+    var infoCell: ProfileInfoTableViewCell = ProfileInfoTableViewCell(style: .default, reuseIdentifier: "infoCell")
+    var specialtyCell: ProfileSpecialtyTableViewCell = ProfileSpecialtyTableViewCell(style: .default, reuseIdentifier: "specialtyCell")
+    var projectCell: ProfileProjectTableViewCell = ProfileProjectTableViewCell(style: .default, reuseIdentifier: "projectCell")
+  
     private func updateUI() {
-        profileImageView?.clipsToBounds = true
-        profileImageView?.contentMode = UIViewContentMode.scaleAspectFill
-        usernameLabel?.text = user?.name
-        
-        user?.getProfileImage(completed: { [weak self] image in
-            self?.profileImageView?.image = image
-        })
+      updateInfoCellUI()
+      
+      badgesTableView?.reloadData()
+    }
+  
+    private func updateInfoCellUI() {
+      infoCell.nameText = user?.name
+//      infoCell.educationText = user?.name
+      infoCell.descriptionText = user?.desc
+      
+      user?.getProfileImage(completed: { [weak self] image in
+        self?.infoCell.profileImage = image
+      })
     }
   
     // MARK: - View Lifecycle
@@ -61,11 +66,11 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
       
       self.edgesForExtendedLayout = []
       self.title = "Profile"
-//      badgesTableView.register(UITableViewCell.self, forCellReuseIdentifier: "infoCell")
-      updateUI()
       
       addSubviews()
       addConstraints()
+      
+      updateUI()
     }
     
     func addSubviews() {
@@ -119,31 +124,25 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-      let cell =  UITableViewCell(style: .default, reuseIdentifier: "cell")
-
       if indexPath.section == 0 {
         switch indexPath.row {
         case 0:
-          let cell:ProfileInfoTableViewCell =  ProfileInfoTableViewCell(style: .default, reuseIdentifier: "infoCell")
-          return cell
+          return infoCell
         case 1:
-          let cell:ProfileSpecialtyTableViewCell =  ProfileSpecialtyTableViewCell(style: .default, reuseIdentifier: "specialtyCell")
-          return cell
+          return specialtyCell
         case 2:
-          let cell:ProfileProjectTableViewCell =  ProfileProjectTableViewCell(style: .default, reuseIdentifier: "projectCell")
-          return cell
+          return projectCell
         default:
           break
         }
       }
       
       //tableView.dequeueReusableCell(withIdentifier: "badge", for: indexPath)
-        
 //        if let badgeCell = (cell as? BadgeTableViewCell) {
 //            badgeCell.badgeTitle = user?.badges[indexPath.row]
 //            return badgeCell
 //        }
-      
+        let cell =  UITableViewCell(style: .default, reuseIdentifier: "cell")
         return cell
     }
     

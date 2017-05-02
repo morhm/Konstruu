@@ -42,27 +42,33 @@ class ProfileInfoTableViewCell: UITableViewCell {
   
   // MARK: - Data
   
-  var nameText:String = "Jaoquin Pheonix" {
+  var nameText:String? {
     didSet {
       usernameLabel.text = nameText
     }
   }
   
-  var educationText:String = "Senior at Phoenix High School" {
+  var educationText:String? = "Senior at Phoenix High School" {
     didSet {
       educationLabel.text = educationText
     }
   }
   
-  var locationText:String = "San Jose, CA" {
+  var locationText:String? = "San Jose, CA" {
     didSet {
       locationLabel.text = locationText
     }
   }
   
-  var descriptionText:String = "Hi, I’m Joaquin and I am enthusiastic about creating solutions to problems in my community. I want to be the next Elon Musk. I also love Minecraft!!1! xD" {
+  var descriptionText:String? {
     didSet {
       descriptionLabel.text = descriptionText
+    }
+  }
+  
+  var profileImage:UIImage? {
+    didSet {
+      profileImageView.image = profileImage
     }
   }
   
@@ -70,7 +76,7 @@ class ProfileInfoTableViewCell: UITableViewCell {
   
   // MARK: - Subviews
   
-  private  lazy var cardView: UIView = { [unowned self] in
+  private lazy var cardView: UIView = { [unowned self] in
     let cardView = UIView()
     cardView.backgroundColor = UIColor.white
     
@@ -78,9 +84,9 @@ class ProfileInfoTableViewCell: UITableViewCell {
     return cardView
     }()
   
-  private  lazy var profileImageView: UIImageView = { [unowned self] in
+  private lazy var profileImageView: UIImageView = { [unowned self] in
     let profileImageView = UIImageView()
-    profileImageView.image = UIImage(named: "slackIcon.png")
+    profileImageView.image = self.profileImage
     profileImageView.contentMode = .scaleAspectFill
     
     profileImageView.translatesAutoresizingMaskIntoConstraints = false

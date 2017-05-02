@@ -34,16 +34,7 @@ class KonstruuTabBarController: UITabBarController, UITabBarControllerDelegate {
         
         let profileNavigationController = UINavigationController()
         profileNavigationController.viewControllers = [profileVC]
-        
-        
-        // my new code
-        let challengeCategoriesVC = ChallengeCategoriesViewController(nibName: "ChallengeCategoriesViewController", bundle: nil)
-        let challengeCategoriesTabBarItem = UITabBarItem(title: "Find Challenges", image: #imageLiteral(resourceName: "Search"), tag: 1)
-        challengeCategoriesVC.tabBarItem = challengeCategoriesTabBarItem
-        
-        let challengeCategoriesNavigationController = UINavigationController()
-        challengeCategoriesNavigationController.viewControllers = [challengeCategoriesVC]
-        
+      
         /* Set up FindChallengesViewController with its UITabBarItem
         let findChallengesVC = FindChallengesViewController(nibName: "FindChallengesViewController", bundle: nil)
         let findChallengesTabBarItem = UITabBarItem(title: "Find Challenges", image: #imageLiteral(resourceName: "Search"), tag: 1)
@@ -60,8 +51,16 @@ class KonstruuTabBarController: UITabBarController, UITabBarControllerDelegate {
         
         let createChallengeNavigationController = UINavigationController()
         createChallengeNavigationController.viewControllers = [createChallengeVC]
+      
+        // my new code
+        let challengeCategoriesVC = ChallengeCategoriesViewController(nibName: "ChallengeCategoriesViewController", bundle: nil)
+        let challengeCategoriesTabBarItem = UITabBarItem(title: "Find Challenges", image: #imageLiteral(resourceName: "Search"), tag: 1)
+        challengeCategoriesVC.tabBarItem = challengeCategoriesTabBarItem
         
-        self.viewControllers = [profileNavigationController, challengeCategoriesNavigationController, createChallengeNavigationController]
+        let challengeCategoriesNavigationController = UINavigationController()
+        challengeCategoriesNavigationController.viewControllers = [challengeCategoriesVC]
+      
+        self.viewControllers = [profileNavigationController, createChallengeNavigationController, challengeCategoriesNavigationController]
     }
     
     func findChallengesWasClicked() {

@@ -12,6 +12,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ChallengeCategoriesViewController" customModule="Konstruu" customModuleProvider="target">
             <connections>
                 <outlet property="addChallengeButton" destination="p4A-nU-HLd" id="i1J-RG-adZ"/>
+                <outlet property="exploreChallengesButton" destination="dPQ-hB-1Q2" id="cCP-uk-Dd2"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -44,6 +45,9 @@
                             <rect key="frame" x="0.0" y="0.0" width="335" height="148.5"/>
                             <color key="backgroundColor" red="1" green="0.2962685893" blue="0.23497764569999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <state key="normal" title="Explore"/>
+                            <connections>
+                                <action selector="findChallenges:" destination="-1" eventType="touchUpInside" id="LAc-rc-XzV"/>
+                            </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kfc-5Y-UnR">
                             <rect key="frame" x="0.0" y="168.5" width="335" height="148"/>

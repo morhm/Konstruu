@@ -14,11 +14,18 @@ class ChallengeCategoriesViewController: UIViewController {
   
   @IBOutlet weak var addChallengeButton: UIButton!
   
+  @IBOutlet weak var exploreChallengesButton: UIButton!
+  
   // MARK: - Actions
   
   @IBAction func addChallenge(_ sender: Any) {
     let createChallengeVC = CreateChallengeViewController()
     self.navigationController?.pushViewController(createChallengeVC, animated: true)
+  }
+  
+  @IBAction func findChallenges(_ sender: Any) {
+    let findChallengesVC = FindChallengesViewController(nibName: "FindChallengesViewController", bundle: nil)
+    self.navigationController?.pushViewController(findChallengesVC, animated: true)
   }
   
   // MARK: - View Lifecycle
