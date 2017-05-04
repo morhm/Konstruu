@@ -51,8 +51,8 @@ class LoginViewController: UIViewController, LoginButtonDelegate {
                 print("failed in loginWithFacebook") // DEBUGGING
                 print(error.debugDescription) // DEBUGGING
             } else {
-                print(String(describing: firebaseAuthUser!.displayName))
-                print(String(describing: firebaseAuthUser!.email))
+                print(String(describing: firebaseAuthUser!.displayName)) // DEBUGGING
+                print(String(describing: firebaseAuthUser!.email)) // DEBUGGING
                 API.getUserWithKey(firebaseAuthUser!.uid, completed: { [weak self] user in
                     if user != nil {
                         self?.showProfile(user: user!)
@@ -91,31 +91,12 @@ class LoginViewController: UIViewController, LoginButtonDelegate {
     }
     
     @IBAction func loginWithEmail(_ sender: UIButton) {
-        skipToProfile()
-    }
-    
-    @IBAction func signUpWithFacebook(_ sender: UIButton) {
-        skipToProfile()
+        let loginWithEmailVC = LoginWithEmailViewController(nibName: "LoginWithEmailViewController", bundle: nil)
+        present(loginWithEmailVC, animated: true, completion: nil)
     }
     
     @IBAction func signUpWithEmail(_ sender: UIButton) {
         let signUpWithEmailVC = SignUpWithEmailViewController(nibName: "SignUpWithEmailViewController", bundle: nil)
         present(signUpWithEmailVC, animated: true, completion: nil)
-    }
-    
-    // TESTING CODE
-    private func skipToProfile() {
-        let user = API.createUser(userInfo: ["name": "Al" as AnyObject])
-        let challenge = API.createChallenge(challengeInfo: ["title": "Do a thing" as AnyObject, "desc": "Really do it" as AnyObject])
-        let team = API.createTeam(teamInfo: ["name": "Frog and Code" as AnyObject, "open": true as AnyObject, "challengeKey": challenge.key as AnyObject])
-        team.addUser(user)
-        challenge.addTeam(team)
-        if let imageData = UIImagePNGRepresentation(#imageLiteral(resourceName: "slackIcon")) {
-            user.updateProfileImage(to: imageData, completed: { [weak self] metadata, error in
-                let tabBarVC = KonstruuTabBarController(nibName: "KonstruuTabBarController", bundle: nil)
-                tabBarVC.user = user
-                self?.present(tabBarVC, animated: true, completion: nil)
-            })
-        }
     }
 }
