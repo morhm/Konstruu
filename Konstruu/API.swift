@@ -9,6 +9,7 @@
 import Foundation
 import FirebaseDatabase
 import FirebaseStorage
+import FirebaseAuth
 
 class API {
     
@@ -103,6 +104,8 @@ class API {
     static let userImagesReference = storageReference.child("userImages")
     static let teamImagesReference = storageReference.child("teamImages")
     
+    static let alApplicationId = "stanford2fb38fdcc41b82a674ad291ab8410ea70"
+    
     // MARK: User
     
     // reference: https://firebase.google.com/docs/database/ios/read-and-write
@@ -116,6 +119,14 @@ class API {
             
             completed?(user)
         })
+    }
+    
+    class func getCurrentUser(completed: ((User?) -> Void)?) {
+        if let key = FIRAuth.auth()?.currentUser?.uid {
+            getUserWithKey(key, completed: completed)
+        } else {
+            completed?(nil)
+        }
     }
     
     // reference: https://stackoverflow.com/questions/39691818/firebase-swift-how-to-create-a-child-and-add-its-id-to-another-ref-property

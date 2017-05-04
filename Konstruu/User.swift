@@ -11,6 +11,7 @@ import UIKit
 import FirebaseStorage
 import FirebaseDatabase
 import FirebaseAuth
+import Applozic
 
 class User: CustomStringConvertible {
     
@@ -141,6 +142,24 @@ class User: CustomStringConvertible {
     func addBadge(_ badge: String) {
         self.badges.append(badge)
         reference.child("badges").child(badge).setValue(true)
+    }
+    
+    func startChat(from controller: UIViewController) {
+        // register current user
+        API.getCurrentUser(completed: { [weak self] user in
+            if let user = user {
+                let alUser = ALUser()
+                alUser.applicationId = API.alApplicationId
+                alUser.userId = user.key
+                alUser.email = user.email
+                alUser.imageLink = String(describing: user.photoURL)
+                alUser.displayName = user.name
+                
+                // start chat with this user
+                let chatManager = ALChatManager(applicationKey: API.alApplicationId as NSString)
+                chatManager.registerUserAndLaunchChat(alUser, fromController: controller, forUser: self?.key)
+            }
+        })
     }
     
     var description: String { get {

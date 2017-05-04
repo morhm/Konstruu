@@ -44,20 +44,12 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
     var projectCell: ProfileProjectTableViewCell = ProfileProjectTableViewCell(style: .default, reuseIdentifier: "projectCell")
   
     private func updateUI() {
-      updateInfoCellUI()
+      infoCell.user = user
+      infoCell.parentViewController = self
       
       badgesTableView?.reloadData()
     }
-  
-    private func updateInfoCellUI() {
-      infoCell.nameText = user?.name
-//      infoCell.educationText = user?.name
-      infoCell.descriptionText = user?.desc
-      
-      user?.getProfileImage(completed: { [weak self] image in
-        self?.infoCell.profileImage = image
-      })
-    }
+    
   
     // MARK: - View Lifecycle
     
