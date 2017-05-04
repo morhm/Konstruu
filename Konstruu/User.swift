@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 import FirebaseStorage
 import FirebaseDatabase
+import FirebaseAuth
 
 class User: CustomStringConvertible {
     
@@ -62,6 +63,15 @@ class User: CustomStringConvertible {
         
         self.reference = API.usersReference.child(self.key)
         self.profileImageReference = API.userImagesReference.child(self.key)
+    }
+    
+    func isCurrentUser() -> Bool {
+        if FIRAuth.auth()?.currentUser != nil {
+            let currentUserKey = FIRAuth.auth()!.currentUser!.uid
+            return currentUserKey == key
+        } else {
+            return false
+        }
     }
     
     // reference: https://firebase.google.com/docs/storage/ios/download-files

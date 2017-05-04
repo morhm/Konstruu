@@ -15,6 +15,9 @@
 		613B1B5A1E722F2A00544297 /* UserCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 613B1B581E722F2A00544297 /* UserCollectionViewCell.xib */; };
 		613B1B5E1E722F3C00544297 /* ProgressPostTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 613B1B5C1E722F3C00544297 /* ProgressPostTableViewCell.xib */; };
 		615A292B1E9AD5E700568D40 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 615A292A1E9AD5E700568D40 /* API.swift */; };
+		615BD3C11EBAF0F8003F62B9 /* Applozic.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 615BD3C01EBAF0F8003F62B9 /* Applozic.framework */; };
+		615BD3C31EBAF152003F62B9 /* ALChatManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 615BD3C21EBAF152003F62B9 /* ALChatManager.swift */; };
+		615BD3C61EBAF8F7003F62B9 /* Applozic.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 615BD3C01EBAF0F8003F62B9 /* Applozic.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		617ED0D31EAF11C5003639A6 /* SignUpWithEmailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 617ED0D11EAF11C5003639A6 /* SignUpWithEmailViewController.swift */; };
 		617ED0D41EAF11C5003639A6 /* SignUpWithEmailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 617ED0D21EAF11C5003639A6 /* SignUpWithEmailViewController.xib */; };
 		618C69771EA2C2C500AA84B0 /* Badges.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618C69761EA2C2C500AA84B0 /* Badges.swift */; };
@@ -71,6 +74,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				615BD3C61EBAF8F7003F62B9 /* Applozic.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -88,6 +92,10 @@
 		613B1B581E722F2A00544297 /* UserCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserCollectionViewCell.xib; sourceTree = "<group>"; };
 		613B1B5C1E722F3C00544297 /* ProgressPostTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProgressPostTableViewCell.xib; sourceTree = "<group>"; };
 		615A292A1E9AD5E700568D40 /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
+		615BD3C01EBAF0F8003F62B9 /* Applozic.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Applozic.framework; sourceTree = "<group>"; };
+		615BD3C21EBAF152003F62B9 /* ALChatManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ALChatManager.swift; sourceTree = "<group>"; };
+		615BD3C41EBAF178003F62B9 /* Konstruu-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Konstruu-Bridging-Header.h"; sourceTree = "<group>"; };
+		615BD3C51EBAF178003F62B9 /* NSObject_ApplozicBridge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSObject_ApplozicBridge.h; sourceTree = "<group>"; };
 		617ED0D11EAF11C5003639A6 /* SignUpWithEmailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpWithEmailViewController.swift; sourceTree = "<group>"; };
 		617ED0D21EAF11C5003639A6 /* SignUpWithEmailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SignUpWithEmailViewController.xib; sourceTree = "<group>"; };
 		618C69761EA2C2C500AA84B0 /* Badges.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Badges.swift; sourceTree = "<group>"; };
@@ -144,6 +152,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				615BD3C11EBAF0F8003F62B9 /* Applozic.framework in Frameworks */,
 				63C9D1FF9CC1A80C8AADAB4C /* Pods_Konstruu.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -154,6 +163,7 @@
 		2065EBDA1A66E90A51391AF4 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				615BD3C01EBAF0F8003F62B9 /* Applozic.framework */,
 				2F54197AF7908272DF974385 /* Pods_Konstruu.framework */,
 			);
 			name = Frameworks;
@@ -246,10 +256,13 @@
 			children = (
 				6874023C1EA665B200232634 /* Fonts */,
 				61F255DE1E984E2C0039459D /* GoogleService-Info.plist */,
+				615BD3C21EBAF152003F62B9 /* ALChatManager.swift */,
+				615BD3C51EBAF178003F62B9 /* NSObject_ApplozicBridge.h */,
 				68C8E55B1E6408AA00047901 /* AppDelegate.swift */,
 				68C8E5641E6408AA00047901 /* LaunchScreen.storyboard */,
 				68C8E5621E6408AA00047901 /* Assets.xcassets */,
 				68C8E5671E6408AA00047901 /* Info.plist */,
+				615BD3C41EBAF178003F62B9 /* Konstruu-Bridging-Header.h */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -334,12 +347,12 @@
 			isa = PBXGroup;
 			children = (
 				618FBA411E732F0400B2F652 /* Tab Bar Controller */,
-				CA7915A41EB074C9002F8318 /* Challenge Categories */,
-				CA7915A31EB074C2002F8318 /* Team Details */,
-				CA7915A21EB074B9002F8318 /* Challenge Details */,
 				61592C6F1E711952008B89C6 /* Login Page */,
 				61592C701E71195B008B89C6 /* Profile Page */,
+				CA7915A41EB074C9002F8318 /* Challenge Categories */,
 				61592C711E711965008B89C6 /* Find Challenges Page */,
+				CA7915A21EB074B9002F8318 /* Challenge Details */,
+				CA7915A31EB074C2002F8318 /* Team Details */,
 				61592C721E71196F008B89C6 /* Challenge Page */,
 				61592C731E711975008B89C6 /* Team Page */,
 				61592C741E71197B008B89C6 /* Create Challenge Page */,
@@ -421,6 +434,7 @@
 					68C8E5571E6408AA00047901 = {
 						CreatedOnToolsVersion = 8.2.1;
 						DevelopmentTeam = TLAM246JYZ;
+						LastSwiftMigration = 0830;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -551,6 +565,7 @@
 				CA7915A71EB074E6002F8318 /* ChallengeCategoriesViewController.swift in Sources */,
 				687402591EAE803700232634 /* ProfileInfoTableViewCell.swift in Sources */,
 				613B1B591E722F2A00544297 /* UserCollectionViewCell.swift in Sources */,
+				615BD3C31EBAF152003F62B9 /* ALChatManager.swift in Sources */,
 				61F7F8761E6E06870017461F /* ChallengeViewController.swift in Sources */,
 				613B1B511E72144800544297 /* TeamTableViewCell.swift in Sources */,
 				681085F71E9D245000FB32F0 /* ScalableButton.swift in Sources */,
@@ -673,11 +688,18 @@
 			baseConfigurationReference = A9732213F7532194FC238323 /* Pods-Konstruu.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = TLAM246JYZ;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = Konstruu/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.example.Konstruu;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Konstruu/Konstruu-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -687,11 +709,17 @@
 			baseConfigurationReference = 3933F443C092D674AF826DEB /* Pods-Konstruu.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = TLAM246JYZ;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = Konstruu/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.example.Konstruu;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Konstruu/Konstruu-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
