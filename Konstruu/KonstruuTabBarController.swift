@@ -34,15 +34,27 @@ class KonstruuTabBarController: UITabBarController, UITabBarControllerDelegate {
         
         let profileNavigationController = UINavigationController()
         profileNavigationController.viewControllers = [profileVC]
+        
+        
+       
+        let teamsVC = TeamListViewController(nibName: "TeamListViewController", bundle: nil)
+        teamsVC.user = user
+        
+        let teamsTabBarItem = UITabBarItem(title: "Teams", image: #imageLiteral(resourceName: "groupIcon"), tag: 1)
+        teamsVC.tabBarItem = teamsTabBarItem
+        
+        let teamsNavigationController = UINavigationController()
+        teamsNavigationController.viewControllers = [teamsVC]
+        
       
-        /* Set up FindChallengesViewController with its UITabBarItem
+        // Set up FindChallengesViewController with its UITabBarItem
         let findChallengesVC = FindChallengesViewController(nibName: "FindChallengesViewController", bundle: nil)
-        let findChallengesTabBarItem = UITabBarItem(title: "Find Challenges", image: #imageLiteral(resourceName: "Search"), tag: 1)
+        let findChallengesTabBarItem = UITabBarItem(title: "Find Challenges", image: #imageLiteral(resourceName: "Search"), tag: 3)
         findChallengesVC.tabBarItem = findChallengesTabBarItem
         
         let findChallengesNavigationController = UINavigationController()
         findChallengesNavigationController.viewControllers = [findChallengesVC]
-        */
+ 
  
         // Set up CreateChallengeViewController with its UITabBarItem
         let createChallengeVC = CreateChallengeViewController()
@@ -53,14 +65,16 @@ class KonstruuTabBarController: UITabBarController, UITabBarControllerDelegate {
         createChallengeNavigationController.viewControllers = [createChallengeVC]
       
         // my new code
-        let challengeCategoriesVC = ChallengeCategoriesViewController(nibName: "ChallengeCategoriesViewController", bundle: nil)
-        let challengeCategoriesTabBarItem = UITabBarItem(title: "Find Challenges", image: #imageLiteral(resourceName: "Search"), tag: 1)
+        /*let challengeCategoriesVC = ChallengeCategoriesViewController(nibName: "ChallengeCategoriesViewController", bundle: nil)
+        let challengeCategoriesTabBarItem = UITabBarItem(title: "Find Challenges", image: #imageLiteral(resourceName: "Search"), tag: 3)
         challengeCategoriesVC.tabBarItem = challengeCategoriesTabBarItem
         
         let challengeCategoriesNavigationController = UINavigationController()
         challengeCategoriesNavigationController.viewControllers = [challengeCategoriesVC]
+ */
       
-        self.viewControllers = [profileNavigationController, createChallengeNavigationController, challengeCategoriesNavigationController]
+        self.viewControllers = [profileNavigationController, teamsNavigationController, createChallengeNavigationController, findChallengesNavigationController]
+ 
     }
     
     func findChallengesWasClicked() {

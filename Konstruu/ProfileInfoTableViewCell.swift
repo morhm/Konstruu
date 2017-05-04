@@ -60,7 +60,7 @@ class ProfileInfoTableViewCell: UITableViewCell {
     }
   }
   
-  var descriptionText:String? {
+  var descriptionText:String? = "Helloooo???" {
     didSet {
       descriptionLabel.text = descriptionText
     }

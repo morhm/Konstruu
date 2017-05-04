@@ -58,6 +58,8 @@
 		68C8E5631E6408AA00047901 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 68C8E5621E6408AA00047901 /* Assets.xcassets */; };
 		68C8E5661E6408AA00047901 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 68C8E5641E6408AA00047901 /* LaunchScreen.storyboard */; };
 		68EFF7761EAFB0CE003D7785 /* ProfileProjectTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68EFF7751EAFB0CD003D7785 /* ProfileProjectTableViewCell.swift */; };
+		CA1B47871EBBD41700353BD3 /* TeamListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1B47851EBBD41700353BD3 /* TeamListViewController.swift */; };
+		CA1B47881EBBD41700353BD3 /* TeamListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA1B47861EBBD41700353BD3 /* TeamListViewController.xib */; };
 		CA3A89441E6F81820000D33E /* ChallengeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA3A89431E6F81820000D33E /* ChallengeTableViewCell.xib */; };
 		CA7915A71EB074E6002F8318 /* ChallengeCategoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7915A51EB074E6002F8318 /* ChallengeCategoriesViewController.swift */; };
 		CA7915A81EB074E6002F8318 /* ChallengeCategoriesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA7915A61EB074E6002F8318 /* ChallengeCategoriesViewController.xib */; };
@@ -138,6 +140,8 @@
 		68C8E5671E6408AA00047901 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		68EFF7751EAFB0CD003D7785 /* ProfileProjectTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileProjectTableViewCell.swift; sourceTree = "<group>"; };
 		A9732213F7532194FC238323 /* Pods-Konstruu.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Konstruu.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Konstruu/Pods-Konstruu.debug.xcconfig"; sourceTree = "<group>"; };
+		CA1B47851EBBD41700353BD3 /* TeamListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeamListViewController.swift; sourceTree = "<group>"; };
+		CA1B47861EBBD41700353BD3 /* TeamListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TeamListViewController.xib; sourceTree = "<group>"; };
 		CA3A89431E6F81820000D33E /* ChallengeTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChallengeTableViewCell.xib; sourceTree = "<group>"; };
 		CA7915A51EB074E6002F8318 /* ChallengeCategoriesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChallengeCategoriesViewController.swift; sourceTree = "<group>"; };
 		CA7915A61EB074E6002F8318 /* ChallengeCategoriesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChallengeCategoriesViewController.xib; sourceTree = "<group>"; };
@@ -346,6 +350,7 @@
 		68C8E5711E64194800047901 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				CA1B47841EBBD37400353BD3 /* Team List Controller */,
 				618FBA411E732F0400B2F652 /* Tab Bar Controller */,
 				61592C6F1E711952008B89C6 /* Login Page */,
 				61592C701E71195B008B89C6 /* Profile Page */,
@@ -359,6 +364,15 @@
 				61592C751E711983008B89C6 /* Create Team Page */,
 			);
 			name = "View Controllers";
+			sourceTree = "<group>";
+		};
+		CA1B47841EBBD37400353BD3 /* Team List Controller */ = {
+			isa = PBXGroup;
+			children = (
+				CA1B47851EBBD41700353BD3 /* TeamListViewController.swift */,
+				CA1B47861EBBD41700353BD3 /* TeamListViewController.xib */,
+			);
+			name = "Team List Controller";
 			sourceTree = "<group>";
 		};
 		CA7915A21EB074B9002F8318 /* Challenge Details */ = {
@@ -469,6 +483,7 @@
 				6874024B1EA665EE00232634 /* OpenSans-LightItalic.ttf in Resources */,
 				617ED0D41EAF11C5003639A6 /* SignUpWithEmailViewController.xib in Resources */,
 				687402461EA665E900232634 /* OpenSans-Bold.ttf in Resources */,
+				CA1B47881EBBD41700353BD3 /* TeamListViewController.xib in Resources */,
 				61F7F8771E6E06870017461F /* ChallengeViewController.xib in Resources */,
 				CA7915A81EB074E6002F8318 /* ChallengeCategoriesViewController.xib in Resources */,
 				68C8E5661E6408AA00047901 /* LaunchScreen.storyboard in Resources */,
@@ -569,6 +584,7 @@
 				61F7F8761E6E06870017461F /* ChallengeViewController.swift in Sources */,
 				613B1B511E72144800544297 /* TeamTableViewCell.swift in Sources */,
 				681085F71E9D245000FB32F0 /* ScalableButton.swift in Sources */,
+				CA1B47871EBBD41700353BD3 /* TeamListViewController.swift in Sources */,
 				61BD68CF1E6DF7B900B1A0E9 /* ChallengeTableViewCell.swift in Sources */,
 				618FBA441E7332B300B2F652 /* KonstruuTabBarController.swift in Sources */,
 				61F7F87A1E6E06FB0017461F /* TeamViewController.swift in Sources */,
