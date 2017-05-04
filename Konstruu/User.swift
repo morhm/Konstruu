@@ -80,7 +80,7 @@ class User: CustomStringConvertible {
         profileImageReference.data(withMaxSize: 1 * 1024 * 1024, completion: { data, error in
             if error != nil || data == nil {
                 print("error in downloading user profile image:\n\(String(describing:error))")
-                completed?(nil)
+                completed?(#imageLiteral(resourceName: "Happy_Face"))
             } else {
                 completed?(UIImage(data: data!))
             }
