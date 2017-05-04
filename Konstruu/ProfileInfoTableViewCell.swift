@@ -42,11 +42,18 @@ class ProfileInfoTableViewCell: UITableViewCell {
   
   // MARK: - Data
   
-  var nameText:String? {
-    didSet {
-      usernameLabel.text = nameText
+    var user: User? {
+        didSet {
+            usernameLabel.text = user?.name
+            descriptionLabel.text = user?.desc
+            user?.getProfileImage(completed: { [weak self] image in
+                self?.profileImage = image
+            })
+            messageButton.isHidden = user?.isCurrentUser() ?? false
+        }
     }
-  }
+    
+    var parentViewController: UIViewController!
   
   var educationText:String? = "Senior at Phoenix High School" {
     didSet {
@@ -96,7 +103,7 @@ class ProfileInfoTableViewCell: UITableViewCell {
   private lazy var usernameLabel : UILabel = { [unowned self] in
     let usernameLabel = UILabel()
     usernameLabel.textColor = UIColor.black
-    usernameLabel.text  = self.nameText
+    usernameLabel.text  = self.user?.name
     usernameLabel.textAlignment = .center
     usernameLabel.font = UIFont.konstruuLightFontWithSize(18.0)
     
@@ -132,7 +139,7 @@ class ProfileInfoTableViewCell: UITableViewCell {
     messageButton.setTitle("Message", for: UIControlState())
     messageButton.titleLabel!.font = UIFont.konstruuFontWithSize(15.0)
     messageButton.backgroundColor = UIColor.konstruuDarkBlue()
-    messageButton.addTarget(self, action: #selector(sendMessage), for: UIControlEvents.touchUpInside)
+    messageButton.addTarget(self, action: #selector(startChatWithUser), for: UIControlEvents.touchUpInside)
     
     messageButton.translatesAutoresizingMaskIntoConstraints = false
     return messageButton
@@ -141,7 +148,7 @@ class ProfileInfoTableViewCell: UITableViewCell {
   private lazy var descriptionLabel : UILabel = { [unowned self] in
     let descriptionLabel = UILabel()
     descriptionLabel.textColor = UIColor.black
-    descriptionLabel.text  = self.descriptionText
+    descriptionLabel.text  = self.user?.desc
     descriptionLabel.numberOfLines = 0
     descriptionLabel.font = UIFont.konstruuLightFontWithSize(13.0)
     
@@ -264,8 +271,8 @@ class ProfileInfoTableViewCell: UITableViewCell {
     super.updateConstraints()
   }
   
-  func sendMessage() {
-    
+  func startChatWithUser() {
+    user?.startChat(from: parentViewController)
   }
   
   
