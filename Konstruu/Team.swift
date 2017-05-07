@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 import FirebaseDatabase
 import FirebaseStorage
+import Applozic
 
 class Team: CustomStringConvertible {
     
@@ -87,6 +88,26 @@ class Team: CustomStringConvertible {
     func markAsClosed() {
         open = false
         reference.child("open").setValue(false)
+    }
+    
+    func registerForChat() {
+        let channelService = ALChannelService()
+        channelService.createChannel(name, orClientChannelKey: key, andMembersList: userKeys as? NSMutableArray, andImageLink: nil, withCompletion: nil)
+    }
+    
+    func startChatWithUser(_ user: User, from controller: UIViewController) {
+        var membersList = userKeys
+        membersList.append(user.key)
+        
+        let channelService = ALChannelService()
+        channelService.createChannel("\(user.name) with \(self.name)", orClientChannelKey: "\(user.key)\(self.key)", andMembersList: membersList as? NSMutableArray, andImageLink: nil, withCompletion: { alChannel, error in
+            if error != nil || alChannel == nil {
+                print(error.debugDescription)
+            } else {
+                let chatManager = ALChatManager(applicationKey: ALChatManager.applicationId as NSString)
+                chatManager.launchChatForGroup(alChannel!.key, fromController: controller)
+            }
+        })
     }
     
     var description: String {

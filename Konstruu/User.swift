@@ -144,22 +144,25 @@ class User: CustomStringConvertible {
         reference.child("badges").child(badge).setValue(true)
     }
     
+    func registerForChat() {
+        let alUser = ALUser()
+        alUser.applicationId = ALChatManager.applicationId
+        alUser.userId = key
+        alUser.email = email
+        alUser.displayName = name
+        
+        let chatManager = ALChatManager(applicationKey: ALChatManager.applicationId as NSString)
+        chatManager.registerUser(alUser)
+        
+        ALUserDefaultsHandler.setApplicationKey(ALChatManager.applicationId)
+        ALUserDefaultsHandler.setUserId(key)
+        ALUserDefaultsHandler.setEmailId(email)
+        ALUserDefaultsHandler.setDisplayName(name)
+    }
+    
     func startChat(from controller: UIViewController) {
-        // register current user
-        API.getCurrentUser(completed: { [weak self] user in
-            if let user = user {
-                let alUser = ALUser()
-                alUser.applicationId = API.alApplicationId
-                alUser.userId = user.key
-                alUser.email = user.email
-                alUser.imageLink = String(describing: user.photoURL)
-                alUser.displayName = user.name
-                
-                // start chat with this user
-                let chatManager = ALChatManager(applicationKey: API.alApplicationId as NSString)
-                chatManager.registerUserAndLaunchChat(alUser, fromController: controller, forUser: self?.key)
-            }
-        })
+        let chatManager = ALChatManager(applicationKey: ALChatManager.applicationId as NSString)
+        chatManager.registerUserAndLaunchChat(ALChatManager.getUserDetail(), fromController: controller, forUser: key)
     }
     
     var description: String { get {
