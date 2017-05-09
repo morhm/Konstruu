@@ -19,6 +19,7 @@ class TeamListViewController: UIViewController, UITableViewDataSource, UITableVi
         super.viewDidLoad()
         self.edgesForExtendedLayout = []
         self.title = "Your Teams"
+        
         teamsTableView.register(UINib(nibName: "TeamsTableViewCell", bundle: nil), forCellReuseIdentifier: "team")
         
         //user?.getTeams(completed: <#T##(([Team]) -> Void)?##(([Team]) -> Void)?##([Team]) -> Void#>)
@@ -39,11 +40,19 @@ class TeamListViewController: UIViewController, UITableViewDataSource, UITableVi
     
     
     /* Probably wrongo! */
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int { return (user?.teamKeys.count)!
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int { return user?.teamKeys.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "team", for: indexPath)
+        if let teamsCell = (cell as? TeamsTableViewCell),
+            let teamKey = user?.teamKeys[indexPath.row]
+                {
+            API.getTeamWithKey(teamKey, completed: { team in teamsCell.team = team
+            })
+            return teamsCell
+        }
+        return cell
     }
     
 //    

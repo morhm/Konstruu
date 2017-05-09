@@ -63,6 +63,8 @@
 		CA1B47871EBBD41700353BD3 /* TeamListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1B47851EBBD41700353BD3 /* TeamListViewController.swift */; };
 		CA1B47881EBBD41700353BD3 /* TeamListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA1B47861EBBD41700353BD3 /* TeamListViewController.xib */; };
 		CA3A89441E6F81820000D33E /* ChallengeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA3A89431E6F81820000D33E /* ChallengeTableViewCell.xib */; };
+		CA4D902E1EC269C500A74839 /* TeamsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4D902C1EC269C500A74839 /* TeamsTableViewCell.swift */; };
+		CA4D902F1EC269C500A74839 /* TeamsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA4D902D1EC269C500A74839 /* TeamsTableViewCell.xib */; };
 		CA7915A71EB074E6002F8318 /* ChallengeCategoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7915A51EB074E6002F8318 /* ChallengeCategoriesViewController.swift */; };
 		CA7915A81EB074E6002F8318 /* ChallengeCategoriesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA7915A61EB074E6002F8318 /* ChallengeCategoriesViewController.xib */; };
 		CA7915AB1EB0750E002F8318 /* TeamDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7915A91EB0750E002F8318 /* TeamDetailsViewController.swift */; };
@@ -147,6 +149,8 @@
 		CA1B47851EBBD41700353BD3 /* TeamListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeamListViewController.swift; sourceTree = "<group>"; };
 		CA1B47861EBBD41700353BD3 /* TeamListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TeamListViewController.xib; sourceTree = "<group>"; };
 		CA3A89431E6F81820000D33E /* ChallengeTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChallengeTableViewCell.xib; sourceTree = "<group>"; };
+		CA4D902C1EC269C500A74839 /* TeamsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeamsTableViewCell.swift; sourceTree = "<group>"; };
+		CA4D902D1EC269C500A74839 /* TeamsTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TeamsTableViewCell.xib; sourceTree = "<group>"; };
 		CA7915A51EB074E6002F8318 /* ChallengeCategoriesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChallengeCategoriesViewController.swift; sourceTree = "<group>"; };
 		CA7915A61EB074E6002F8318 /* ChallengeCategoriesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChallengeCategoriesViewController.xib; sourceTree = "<group>"; };
 		CA7915A91EB0750E002F8318 /* TeamDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeamDetailsViewController.swift; sourceTree = "<group>"; };
@@ -377,6 +381,8 @@
 			children = (
 				CA1B47851EBBD41700353BD3 /* TeamListViewController.swift */,
 				CA1B47861EBBD41700353BD3 /* TeamListViewController.xib */,
+				CA4D902C1EC269C500A74839 /* TeamsTableViewCell.swift */,
+				CA4D902D1EC269C500A74839 /* TeamsTableViewCell.xib */,
 			);
 			name = "Team List Controller";
 			sourceTree = "<group>";
@@ -493,6 +499,7 @@
 				61F7F8771E6E06870017461F /* ChallengeViewController.xib in Resources */,
 				CA7915A81EB074E6002F8318 /* ChallengeCategoriesViewController.xib in Resources */,
 				6104FA501EBBDDD800444C3B /* LoginWithEmailViewController.xib in Resources */,
+				CA4D902F1EC269C500A74839 /* TeamsTableViewCell.xib in Resources */,
 				68C8E5661E6408AA00047901 /* LaunchScreen.storyboard in Resources */,
 				CA3A89441E6F81820000D33E /* ChallengeTableViewCell.xib in Resources */,
 				687402471EA665EE00232634 /* OpenSans-BoldItalic.ttf in Resources */,
@@ -584,6 +591,7 @@
 				61F7F87E1E6E076C0017461F /* CreateChallengeViewController.swift in Sources */,
 				61F7F8821E6E077D0017461F /* CreateTeamViewController.swift in Sources */,
 				618C69771EA2C2C500AA84B0 /* Badges.swift in Sources */,
+				CA4D902E1EC269C500A74839 /* TeamsTableViewCell.swift in Sources */,
 				CA7915A71EB074E6002F8318 /* ChallengeCategoriesViewController.swift in Sources */,
 				687402591EAE803700232634 /* ProfileInfoTableViewCell.swift in Sources */,
 				613B1B591E722F2A00544297 /* UserCollectionViewCell.swift in Sources */,
