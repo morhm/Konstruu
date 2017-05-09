@@ -38,7 +38,7 @@ class KonstruuTabBarController: UITabBarController, UITabBarControllerDelegate {
         
        
         let teamsVC = TeamListViewController(nibName: "TeamListViewController", bundle: nil)
-        teamsVC.user = user
+        //teamsVC.user = user
         
         let teamsTabBarItem = UITabBarItem(title: "Teams", image: #imageLiteral(resourceName: "groupIcon"), tag: 1)
         teamsVC.tabBarItem = teamsTabBarItem
