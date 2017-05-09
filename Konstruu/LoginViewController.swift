@@ -55,6 +55,7 @@ class LoginViewController: UIViewController, LoginButtonDelegate {
                 print(String(describing: firebaseAuthUser!.email)) // DEBUGGING
                 API.getUserWithKey(firebaseAuthUser!.uid, completed: { [weak self] user in
                     if user != nil {
+                        user?.registerForChat()
                         self?.showProfile(user: user!)
                     } else {
                         self?.createUserFromFacebookProfile(token: token, firebaseAuthUser: firebaseAuthUser!)
@@ -74,6 +75,7 @@ class LoginViewController: UIViewController, LoginButtonDelegate {
             case .success(let value):
                 if let dictionary = value.dictionaryValue {
                     let user = API.createUserWithKey(firebaseAuthUser.uid, userInfo: ["name": dictionary["name"] as AnyObject, "email": dictionary["email"] as AnyObject])
+                    user.registerForChat()
                     self?.showProfile(user: user)
                 }
                 

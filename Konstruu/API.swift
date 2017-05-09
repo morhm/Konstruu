@@ -103,9 +103,7 @@ class API {
     static let storageReference = storage.reference()
     static let userImagesReference = storageReference.child("userImages")
     static let teamImagesReference = storageReference.child("teamImages")
-    
-    static let alApplicationId = "stanford2fb38fdcc41b82a674ad291ab8410ea70"
-    
+        
     // MARK: User
     
     // reference: https://firebase.google.com/docs/database/ios/read-and-write
@@ -209,7 +207,9 @@ class API {
         let teamReference = teamsReference.childByAutoId()
         let key = teamReference.key
         teamReference.setValue(teamInfo)
-        return Team(key: key, dictionary: teamInfo)
+        let team = Team(key: key, dictionary: teamInfo)
+        team.registerForChat()
+        return team
     }
     
     // MARK: Challenge
