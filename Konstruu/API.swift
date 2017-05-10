@@ -134,6 +134,8 @@ class API {
          "desc": "",
          "photoURL": "",
          "email": "",
+         "location": "",
+         "school": "",
          "skills": ["skill name", "skill name"],
          "likedChallengeKeys": ["challenge key", "challenge key"],
          "badges": ["badge name", "badge name"],

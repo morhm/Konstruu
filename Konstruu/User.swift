@@ -22,6 +22,8 @@ class User: CustomStringConvertible {
     var desc: String?
     var photoURL: URL?
     var email: String?
+    var location: String?
+    var school: String?
     var skills: [String] = []
     var likedChallengeKeys: [String] = []
     var badges: [String] = []
@@ -44,6 +46,14 @@ class User: CustomStringConvertible {
         
         if let email = dictionary["email"] as? String {
             self.email = email
+        }
+        
+        if let location = dictionary["location"] as? String {
+            self.location = location
+        }
+        
+        if let school = dictionary["school"] as? String {
+            self.school = school
         }
         
         if let skillsDictionary = dictionary["skills"] as? Dictionary<String, AnyObject> {
@@ -98,6 +108,16 @@ class User: CustomStringConvertible {
     func updateDescription(to desc: String) {
         self.desc = desc
         reference.child("desc").setValue(desc)
+    }
+    
+    func updateLocation(to location: String) {
+        self.location = location
+        reference.child("location").setValue(location)
+    }
+    
+    func updateSchool(to school: String) {
+        self.school = school
+        reference.child("school").setValue(school)
     }
     
     // reference: https://firebase.google.com/docs/storage/ios/upload-files
