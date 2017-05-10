@@ -207,9 +207,7 @@ class API {
         let teamReference = teamsReference.childByAutoId()
         let key = teamReference.key
         teamReference.setValue(teamInfo)
-        let team = Team(key: key, dictionary: teamInfo)
-        team.registerForChat()
-        return team
+        return Team(key: key, dictionary: teamInfo)
     }
     
     // MARK: Challenge
