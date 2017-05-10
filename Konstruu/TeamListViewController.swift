@@ -8,31 +8,53 @@
 
 import UIKit
 
-class TeamListViewController: UIViewController {
+class TeamListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
-//    var teams: [Team]? {
-//        didSet {
-//        }
-//    }
-//    
     var user: User? {
         didSet {
         }
     }
-//    
+    
     override func viewDidLoad() {
+        super.viewDidLoad()
+        self.edgesForExtendedLayout = []
+        self.title = "Your Teams"
+        
+        teamsTableView.register(UINib(nibName: "TeamsTableViewCell", bundle: nil), forCellReuseIdentifier: "team")
+        
+        //user?.getTeams(completed: <#T##(([Team]) -> Void)?##(([Team]) -> Void)?##([Team]) -> Void#>)
     }
-//        super.viewDidLoad()
-//        self.edgesForExtendedLayout = []
-//        self.title = "Your Teams"
-//        teamsTableViews.register(UINib(nibName: "ChallengeTableViewCell", bundle: nil), forCellReuseIdentifier: "team")
-//        
-//        
-//        API.getAllChallenges(completed: { [weak self] challenges in
-//            self?.challenges = challenges
-//        })
-//    }
-//    @IBOutlet weak var teamsTableView: TeamsTableViewController!
+    
+    @IBOutlet weak var teamsTableView: UITableView! {
+        didSet {
+            teamsTableView.dataSource = self
+            teamsTableView.delegate = self
+            teamsTableView.rowHeight = UITableViewAutomaticDimension
+            teamsTableView.estimatedRowHeight = 100
+        }
+    }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    
+    /* Probably wrongo! */
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int { return user?.teamKeys.count ?? 0
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "team", for: indexPath)
+        if let teamsCell = (cell as? TeamsTableViewCell),
+            let teamKey = user?.teamKeys[indexPath.row]
+                {
+            API.getTeamWithKey(teamKey, completed: { team in teamsCell.team = team
+            })
+            return teamsCell
+        }
+        return cell
+    }
+    
 //    
 //    override func viewDidLoad() {
 //        super.viewDidLoad()
