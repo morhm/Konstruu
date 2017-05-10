@@ -18,6 +18,7 @@ class Challenge: CustomStringConvertible {
     var categories: [String] = []
     var likesUserKeys: [String] = []
     var teamKeys: [String] = []
+    var searchText: String?
     
     var numberOfLikes: Int {
         return likesUserKeys.count
@@ -56,6 +57,8 @@ class Challenge: CustomStringConvertible {
     func updateDescription(to desc: String) {
         self.desc = desc
         reference.child("desc").setValue(desc)
+        
+        setSearchText()
     }
     
     func addTeam(_ team: Team) {
@@ -71,6 +74,8 @@ class Challenge: CustomStringConvertible {
         reference.child("categories").child(category).setValue(true)
         
         API.categoriesReference.child(category).child(key).setValue(true)
+        
+        setSearchText()
     }
     
     func removeFromCategory(_ category: String) {
@@ -80,6 +85,24 @@ class Challenge: CustomStringConvertible {
         reference.child("categories").child(category).removeValue()
         
         API.categoriesReference.child(category).child(key).removeValue()
+        
+        setSearchText()
+    }
+    
+    func setSearchText() {
+        var searchText = ""
+        if let title = title {
+            searchText += "\(title) "
+        }
+        if let desc = desc {
+            searchText += "\(desc) "
+        }
+        for category in categories {
+            searchText += "\(category) "
+        }
+        
+        self.searchText = searchText
+        reference.child("searchText").setValue(searchText)
     }
     
     var description: String {

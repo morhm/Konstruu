@@ -73,4 +73,14 @@ class FindChallengesViewController: UIViewController, UITableViewDataSource, UIT
         challengeVC.navigationItem.rightBarButtonItem = KonstruuTabBarController.messagingButtonItem
         self.navigationController?.pushViewController(challengeVC, animated: true)
     }
+    
+    // MARK: - Search bar delegate
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        if let keyword = searchBar.text {
+            API.searchChallenges(keyword: keyword, completed: { challenges in
+                print(challenges)
+            })
+        }
+    }
 }
