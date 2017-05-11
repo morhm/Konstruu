@@ -93,6 +93,7 @@ class ChallengeViewController: UIViewController, UITableViewDelegate, UITableVie
         if let teamKey = challenge?.teamKeys[indexPath.row] {
             API.getTeamWithKey(teamKey, completed: { team in
                 teamVC.team = team
+                teamVC.navigationItem.rightBarButtonItem = KonstruuTabBarController.messagingButtonItem
                 self.navigationController?.pushViewController(teamVC, animated: true)
             })
         }

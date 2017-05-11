@@ -92,7 +92,9 @@ class Team: CustomStringConvertible {
     
     func registerForChat() {
         let channelService = ALChannelService()
-        channelService.createChannel(name, orClientChannelKey: key, andMembersList: userKeys as? NSMutableArray, andImageLink: nil, withCompletion: nil)
+        let membersList = userKeys as NSArray
+        let mutableMembersList = membersList.mutableCopy() as? NSMutableArray
+        channelService.createChannel(name, orClientChannelKey: key, andMembersList: mutableMembersList, andImageLink: nil, withCompletion: nil)
     }
     
     func startChatWithUser(_ user: User, from controller: UIViewController) {

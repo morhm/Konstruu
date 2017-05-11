@@ -54,6 +54,7 @@ class SignUpWithEmailViewController: UIViewController {
                     let team = API.createTeam(teamInfo: ["name": "Test Team" as AnyObject, "open": true as AnyObject, "challengeKey": challenge.key as AnyObject])
                     
                     team.addUser(user)
+                    //team.registerForChat()
                     challenge.addTeam(team)
                     
                     let tabBarVC = KonstruuTabBarController(nibName: "KonstruuTabBarController", bundle: nil)

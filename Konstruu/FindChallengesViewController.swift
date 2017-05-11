@@ -14,6 +14,11 @@ class FindChallengesViewController: UIViewController, UITableViewDataSource, UIT
     
     var challenges: [Challenge]? {
         didSet {
+            if challenges != nil, challenges!.isEmpty {
+                noResultsLabel.isHidden = false
+            } else {
+                noResultsLabel.isHidden = true
+            }
             challengeTableView?.reloadData()
             
         }
@@ -86,6 +91,7 @@ class FindChallengesViewController: UIViewController, UITableViewDataSource, UIT
     @IBOutlet weak var searchBar: UISearchBar! {
         didSet {
             searchBar.delegate = self
+            addToolbarToKeyboard()
         }
     }
     
@@ -96,6 +102,25 @@ class FindChallengesViewController: UIViewController, UITableViewDataSource, UIT
             challengeTableView.rowHeight = UITableViewAutomaticDimension
             challengeTableView.estimatedRowHeight = 150
         }
+    }
+    
+    @IBOutlet weak var noResultsLabel: UILabel!
+    
+    private func addToolbarToKeyboard() {
+        let toolbar = UIToolbar()
+        toolbar.sizeToFit()
+        
+        let doneButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.done, target: self, action: #selector(self.doneClicked))
+        
+        let flexibleSpace = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace, target: nil, action: nil)
+        
+        toolbar.setItems([flexibleSpace, doneButton], animated: false)
+        
+        searchBar.inputAccessoryView = toolbar
+    }
+    
+    func doneClicked() {
+        view.endEditing(true)
     }
     
     // MARK: - Table view data source
@@ -121,6 +146,21 @@ class FindChallengesViewController: UIViewController, UITableViewDataSource, UIT
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let challengeVC = ChallengeViewController(nibName: "ChallengeViewController", bundle: nil)
         challengeVC.challenge = challenges?[indexPath.row]
+        challengeVC.navigationItem.rightBarButtonItem = KonstruuTabBarController.messagingButtonItem
         self.navigationController?.pushViewController(challengeVC, animated: true)
+    }
+    
+    // MARK: - Search bar delegate
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if let keyword = searchBar.text, !keyword.isEmpty {
+            API.searchChallenges(keyword: keyword, completed: { challenges in
+                self.challenges = challenges
+            })
+        } else {
+            API.getAllChallenges(completed: { challenges in
+                self.challenges = challenges
+            })
+        }
     }
 }
