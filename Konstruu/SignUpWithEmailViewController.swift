@@ -13,7 +13,6 @@ class SignUpWithEmailViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
         addToolbarToKeyboard()
     }
 
@@ -46,11 +45,14 @@ class SignUpWithEmailViewController: UIViewController {
                 if error != nil || firebaseUser == nil {
                     print(error!)
                 } else {
+                    
                     let user = API.createUserWithKey(firebaseUser!.uid, userInfo: ["name": name as AnyObject, "email": firebaseUser!.email as AnyObject, "desc": "Test description for user with id \(firebaseUser!.uid)" as AnyObject])
                     user.registerForChat()
                     
                     let challenge = API.createChallenge(challengeInfo: ["title": "Test Challenge" as AnyObject, "desc": "Created for user \(user.key)" as AnyObject])
+                    
                     let team = API.createTeam(teamInfo: ["name": "Test Team" as AnyObject, "open": true as AnyObject, "challengeKey": challenge.key as AnyObject])
+                    
                     team.addUser(user)
                     challenge.addTeam(team)
                     

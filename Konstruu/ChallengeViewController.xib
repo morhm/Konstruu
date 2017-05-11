@@ -11,19 +11,35 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ChallengeViewController" customModule="Konstruu" customModuleProvider="target">
             <connections>
+                <outlet property="bookmarkChallengeButton" destination="Dlm-Qe-fdH" id="8b1-Tf-qIK"/>
                 <outlet property="challengeDescriptionLabel" destination="e1I-hg-J27" id="aNe-k8-Xdw"/>
                 <outlet property="challengeTitleLabel" destination="z0F-bZ-0q2" id="tAX-T3-HH7"/>
+                <outlet property="createTeamButton" destination="el7-0c-637" id="jyV-mc-QgJ"/>
                 <outlet property="teamsTableView" destination="BXR-gE-hS6" id="Pqg-tN-LE1"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
-            <rect key="frame" x="0.0" y="0.0" width="375" height="554"/>
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="profileGradient" translatesAutoresizingMaskIntoConstraints="NO" id="xUy-Fi-2ki">
+                    <rect key="frame" x="0.0" y="63" width="375" height="554"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                </imageView>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="BXR-gE-hS6">
+                    <rect key="frame" x="16" y="395" width="343" height="159"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                </tableView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Challenge Description" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e1I-hg-J27">
+                    <rect key="frame" x="16" y="112" width="343" height="21"/>
+                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Teams Working on this Project" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4yG-Hc-yBE">
-                    <rect key="frame" x="16" y="134" width="343" height="21"/>
+                    <rect key="frame" x="16" y="366" width="271" height="21"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="21" id="LQg-Ad-uqo"/>
                     </constraints>
@@ -31,43 +47,60 @@
                     <color key="textColor" red="0.40000000600000002" green="0.40000000600000002" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="BXR-gE-hS6">
-                    <rect key="frame" x="0.0" y="163" width="375" height="391"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                </tableView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="el7-0c-637">
+                    <rect key="frame" x="16" y="232" width="154" height="39"/>
+                    <color key="backgroundColor" red="0.46274509800000002" green="0.75294117650000003" blue="0.90196078430000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="39" id="YQe-ga-saK"/>
+                        <constraint firstAttribute="width" constant="154" id="ipu-SN-jwb"/>
+                    </constraints>
+                    <state key="normal" title="Create Team"/>
+                    <connections>
+                        <action selector="createTeam:" destination="-1" eventType="touchUpInside" id="C1G-aO-8B3"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dlm-Qe-fdH">
+                    <rect key="frame" x="16" y="290" width="154" height="39"/>
+                    <color key="backgroundColor" red="0.46274509800000002" green="0.75294117650000003" blue="0.90196078430000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <state key="normal" title="Bookmark Challenge"/>
+                    <connections>
+                        <action selector="bookmarkChallenge:" destination="-1" eventType="touchUpInside" id="4Oa-vF-9l2"/>
+                    </connections>
+                </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Challenge Title" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z0F-bZ-0q2">
-                    <rect key="frame" x="16" y="15" width="343" height="34"/>
+                    <rect key="frame" x="16" y="69" width="343" height="34"/>
                     <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
-                    <nil key="textColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Challenge Description" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e1I-hg-J27">
-                    <rect key="frame" x="16" y="72" width="343" height="21"/>
-                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="z0F-bZ-0q2" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="15" id="BQ6-HT-EkT"/>
+                <constraint firstItem="el7-0c-637" firstAttribute="leading" secondItem="e1I-hg-J27" secondAttribute="leading" id="1iD-Ii-OmF"/>
+                <constraint firstItem="z0F-bZ-0q2" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="69" id="BQ6-HT-EkT"/>
                 <constraint firstItem="z0F-bZ-0q2" firstAttribute="centerX" secondItem="e1I-hg-J27" secondAttribute="centerX" id="DBx-CR-CUl"/>
-                <constraint firstAttribute="bottom" secondItem="BXR-gE-hS6" secondAttribute="bottom" id="HEC-C7-jtL"/>
+                <constraint firstItem="el7-0c-637" firstAttribute="top" secondItem="e1I-hg-J27" secondAttribute="bottom" constant="99" id="DFc-IJ-NZz"/>
+                <constraint firstAttribute="bottom" secondItem="BXR-gE-hS6" secondAttribute="bottom" constant="113" id="HEC-C7-jtL"/>
                 <constraint firstItem="e1I-hg-J27" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="16" id="Inb-0b-WUB"/>
-                <constraint firstItem="e1I-hg-J27" firstAttribute="top" secondItem="z0F-bZ-0q2" secondAttribute="bottom" constant="23" id="Ja5-J6-fZq"/>
-                <constraint firstItem="BXR-gE-hS6" firstAttribute="top" secondItem="4yG-Hc-yBE" secondAttribute="bottom" constant="8" symbolic="YES" id="KHu-tC-r1C"/>
+                <constraint firstItem="e1I-hg-J27" firstAttribute="top" secondItem="z0F-bZ-0q2" secondAttribute="bottom" constant="9" id="Ja5-J6-fZq"/>
+                <constraint firstItem="4yG-Hc-yBE" firstAttribute="top" secondItem="Dlm-Qe-fdH" secondAttribute="bottom" constant="37" id="NJH-0s-s2b"/>
                 <constraint firstItem="z0F-bZ-0q2" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="16" id="WQ5-lj-v9m"/>
                 <constraint firstItem="e1I-hg-J27" firstAttribute="leading" secondItem="4yG-Hc-yBE" secondAttribute="leading" id="YKr-LV-IeO"/>
+                <constraint firstItem="Dlm-Qe-fdH" firstAttribute="height" secondItem="el7-0c-637" secondAttribute="height" id="Yan-1t-CJY"/>
                 <constraint firstAttribute="trailing" secondItem="z0F-bZ-0q2" secondAttribute="trailing" constant="16" id="hUX-Ov-QkY"/>
-                <constraint firstItem="BXR-gE-hS6" firstAttribute="centerX" secondItem="4yG-Hc-yBE" secondAttribute="centerX" id="mwM-cO-goP"/>
-                <constraint firstItem="BXR-gE-hS6" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="riU-GA-8LD"/>
+                <constraint firstItem="Dlm-Qe-fdH" firstAttribute="width" secondItem="el7-0c-637" secondAttribute="width" id="jU0-FZ-jSk"/>
+                <constraint firstItem="BXR-gE-hS6" firstAttribute="centerX" secondItem="4yG-Hc-yBE" secondAttribute="centerX" constant="36" id="mwM-cO-goP"/>
+                <constraint firstItem="BXR-gE-hS6" firstAttribute="top" secondItem="4yG-Hc-yBE" secondAttribute="bottom" constant="8" id="qpe-bv-FNM"/>
+                <constraint firstItem="BXR-gE-hS6" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="16" id="riU-GA-8LD"/>
                 <constraint firstItem="z0F-bZ-0q2" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="uZB-L3-aQI"/>
-                <constraint firstItem="e1I-hg-J27" firstAttribute="trailing" secondItem="4yG-Hc-yBE" secondAttribute="trailing" id="yzC-Zp-zh8"/>
-                <constraint firstItem="4yG-Hc-yBE" firstAttribute="top" secondItem="e1I-hg-J27" secondAttribute="bottom" constant="41" id="zwE-lT-9Bu"/>
+                <constraint firstItem="Dlm-Qe-fdH" firstAttribute="leading" secondItem="el7-0c-637" secondAttribute="leading" id="w2u-ik-kZN"/>
+                <constraint firstItem="Dlm-Qe-fdH" firstAttribute="top" secondItem="el7-0c-637" secondAttribute="bottom" constant="19" id="wKZ-9G-td9"/>
             </constraints>
-            <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
-            <simulatedTabBarMetrics key="simulatedBottomBarMetrics" translucent="NO"/>
-            <point key="canvasLocation" x="34.5" y="-74.5"/>
+            <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+            <point key="canvasLocation" x="34.5" y="-1354.5"/>
         </view>
     </objects>
+    <resources>
+        <image name="profileGradient" width="375" height="667"/>
+    </resources>
 </document>

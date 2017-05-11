@@ -17,12 +17,13 @@ class TeamListViewController: UIViewController, UITableViewDataSource, UITableVi
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        print(user?.teamKeys.count ?? 0)
+        
         self.edgesForExtendedLayout = []
         self.title = "Your Teams"
         
         teamsTableView.register(UINib(nibName: "TeamsTableViewCell", bundle: nil), forCellReuseIdentifier: "team")
-        
-        //user?.getTeams(completed: <#T##(([Team]) -> Void)?##(([Team]) -> Void)?##([Team]) -> Void#>)
     }
     
     @IBOutlet weak var teamsTableView: UITableView! {
@@ -40,7 +41,8 @@ class TeamListViewController: UIViewController, UITableViewDataSource, UITableVi
     
     
     /* Probably wrongo! */
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int { return user?.teamKeys.count ?? 0
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return user?.teamKeys.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

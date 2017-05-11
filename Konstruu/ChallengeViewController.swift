@@ -20,11 +20,28 @@ class ChallengeViewController: UIViewController, UITableViewDelegate, UITableVie
     }
     
     // MARK: - View controller lifecycle
+    @IBOutlet weak var createTeamButton: UIButton!
+    @IBOutlet weak var bookmarkChallengeButton: UIButton!
+    
+    @IBAction func createTeam(_ sender: UIButton) {
+        createTeamAction()
+    }
+    
+    @IBAction func bookmarkChallenge(_ sender: UIButton) {
+        bookmarkChallengeAction()
+    }
+    
+    func createTeamAction() {
+        print ("hello")
+    }
+    
+    func bookmarkChallengeAction() {
+        print ("what")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.edgesForExtendedLayout = []
-        self.title = challenge?.title
         teamsTableView.register(UINib(nibName: "TeamTableViewCell", bundle: nil), forCellReuseIdentifier: "team")
         updateUI()
     }

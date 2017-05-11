@@ -15,8 +15,31 @@ class FindChallengesViewController: UIViewController, UITableViewDataSource, UIT
     var challenges: [Challenge]? {
         didSet {
             challengeTableView?.reloadData()
+            
         }
     }
+    
+    var user: User? {
+        didSet {
+            
+            
+            
+            print (user as Any)
+            print (user?.key as Any)
+            print (user?.teamKeys as Any)
+            print (user?.description as Any)
+        }
+    }
+    
+//    private func updateUI() {
+//        
+//        teamNameLabel?.text = team?.name
+//        if let challengeKey = team?.challengeKey {
+//            API.getChallengeWithKey(challengeKey, completed: { [weak self] challenge in
+//                self?.challengeButton?.setTitle(challenge?.title, for: UIControlState.normal)
+//            })
+//        }
+//    }
     
     // MARK: - View controller lifecycle
 
@@ -24,10 +47,38 @@ class FindChallengesViewController: UIViewController, UITableViewDataSource, UIT
         super.viewDidLoad()
         self.edgesForExtendedLayout = []
         self.title = "Find Challenges"
+        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Add Challenge", style: .plain, target: self, action: #selector(addChallenge))
+        
         challengeTableView.register(UINib(nibName: "ChallengeTableViewCell", bundle: nil), forCellReuseIdentifier: "challenge")
         API.getAllChallenges(completed: { [weak self] challenges in
             self?.challenges = challenges
         })
+    }
+    
+    func addChallenge() {
+        
+        print (user as Any)
+        print (user?.key as Any)
+        print (user?.teamKeys as Any)
+        print (user?.description as Any)
+        
+        API.getCurrentUser(completed: { [weak self] user in self?.user = user })
+        
+        print ("after getCurrentUser")
+        
+        print (user as Any)
+        print (user?.key as Any)
+        print (user?.teamKeys as Any)
+        print (user?.description as Any)
+        
+        
+        API.createChallenge(challengeInfo: ["title": "Test Challenge" as AnyObject, "desc": "Created for user \(user?.key)" as AnyObject])
+        
+        
+        
+        print("added challenge!!")
+        //updateUI()
     }
     
     // MARK: - UI
