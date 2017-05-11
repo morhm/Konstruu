@@ -78,7 +78,7 @@ class FindChallengesViewController: UIViewController, UITableViewDataSource, UIT
         print (user?.description as Any)
         
         
-        API.createChallenge(challengeInfo: ["title": "Test Challenge" as AnyObject, "desc": "Created for user \(user?.key)" as AnyObject])
+//        API.createChallenge(challengeInfo: ["title": "Test Challenge" as AnyObject, "desc": "Created for user \(user?.key)" as AnyObject])
         
         
         

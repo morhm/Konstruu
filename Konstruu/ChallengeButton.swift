@@ -12,6 +12,8 @@ enum ChallengeButtonType : Int {
   case media
   case location
   case friends
+  case create_team
+  case bookmark_challenge
 }
 
 extension ChallengeButtonType {
@@ -24,6 +26,10 @@ extension ChallengeButtonType {
       return UIImage(named: "location-maps.png")!
     case .friends:
       return UIImage(named: "Contact.png")!
+    case .create_team:
+      return UIImage(named: "media.png")!
+    case .bookmark_challenge:
+      return UIImage(named: "media.png")!
     }
   }
   
@@ -35,12 +41,16 @@ extension ChallengeButtonType {
       return "Add Location"
     case .friends:
       return "Tag Friends"
+    case .create_team:
+      return "Create Team"
+    case .bookmark_challenge:
+      return "Bookmark Challenge"
     }
   }
   
   func getTextColor() -> UIColor {
     switch self {
-    case .media, .location, .friends:
+    case .media, .location, .friends, .create_team, .bookmark_challenge:
       return UIColor.gray
     }
   }
