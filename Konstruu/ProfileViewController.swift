@@ -93,7 +93,7 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
         case 0:
           return 290.0
         case 1:
-          return 360.0
+          return 170.0
         case 2:
           return 300.0
         default:

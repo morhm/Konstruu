@@ -179,6 +179,7 @@ class ProfileProjectTableViewCell: UITableViewCell {
     //bottom
     contentView.addConstraint(NSLayoutConstraint(item:cardView, attribute:.bottom, relatedBy:.equal, toItem: contentView, attribute:.bottom, multiplier: 1, constant: 0))
     
+    
     //titleLabel
     
     //top
