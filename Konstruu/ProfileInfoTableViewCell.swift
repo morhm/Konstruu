@@ -38,22 +38,25 @@ private extension CGFloat {
   static let descriptionLabelRightConstraint:CGFloat    = 20.0
 }
 
-class ProfileInfoTableViewCell: UITableViewCell {
+class ProfileInfoTableViewCell: UITableViewCell, UITextFieldDelegate, UITextViewDelegate {
   
   // MARK: - Data
   
-    var user: User? {
-        didSet {
-            usernameLabel.text = user?.name
-            descriptionLabel.text = user?.desc
-            user?.getProfileImage(completed: { [weak self] image in
-                self?.profileImage = image
-            })
-            messageButton.isHidden = user?.isCurrentUser() ?? false
-        }
-    }
-    
-    var parentViewController: UIViewController!
+  var user: User? {
+      didSet {
+          usernameLabel.text = user?.name
+          usernameTextField.text = user?.name
+          descriptionLabel.text = user?.desc
+          descriptionTextView.text = user?.desc
+          user?.getProfileImage(completed: { [weak self] image in
+              self?.profileImage = image
+          })
+//            messageButton.isHidden = user?.isCurrentUser() ?? false
+//            editButton.isHidden = user?.isCurrentUser() ?? true
+      }
+  }
+  
+  var parentViewController: UIViewController!
   
   var educationText:String? = "Senior at Phoenix High School" {
     didSet {
@@ -67,15 +70,41 @@ class ProfileInfoTableViewCell: UITableViewCell {
     }
   }
   
-  var descriptionText:String? = "Helloooo???" {
-    didSet {
-      descriptionLabel.text = descriptionText
-    }
-  }
+//  var descriptionText:String? = "Helloooo???" {
+//    didSet {
+//      descriptionLabel.text = descriptionText
+//    }
+//  }
   
   var profileImage:UIImage? {
     didSet {
       profileImageView.image = profileImage
+    }
+  }
+  
+  var editingMode:Bool = false {
+    didSet {
+      if editingMode {
+        usernameLabel.isHidden = true
+        educationLabel.isHidden = true
+        locationLabel.isHidden = true
+        descriptionLabel.isHidden = true
+        
+        usernameTextField.isHidden = false
+        educationTextField.isHidden = false
+        locationTextField.isHidden = false
+        descriptionTextView.isHidden = false
+      } else {
+        usernameLabel.isHidden = false
+        educationLabel.isHidden = false
+        locationLabel.isHidden = false
+        descriptionLabel.isHidden = false
+        
+        usernameTextField.isHidden = true
+        educationTextField.isHidden = true
+        locationTextField.isHidden = true
+        descriptionTextView.isHidden = true
+      }
     }
   }
   
@@ -111,6 +140,18 @@ class ProfileInfoTableViewCell: UITableViewCell {
     return usernameLabel
     }()
   
+  private lazy var usernameTextField : UITextField = { [unowned self] in
+    let usernameTextField = UITextField()
+    usernameTextField.textColor = UIColor.black
+    usernameTextField.text = self.user?.name
+    usernameTextField.textAlignment = .center
+    usernameTextField.font = UIFont.konstruuLightFontWithSize(18.0)
+    usernameTextField.delegate = self
+    
+    usernameTextField.translatesAutoresizingMaskIntoConstraints = false
+    return usernameTextField
+    }()
+  
   private lazy var educationLabel : UILabel = { [unowned self] in
     let educationLabel = UILabel()
     educationLabel.textColor = UIColor.black
@@ -120,6 +161,18 @@ class ProfileInfoTableViewCell: UITableViewCell {
     
     educationLabel.translatesAutoresizingMaskIntoConstraints = false
     return educationLabel
+    }()
+  
+  private lazy var educationTextField : UITextField = { [unowned self] in
+    let educationTextField = UITextField()
+    educationTextField.textColor = UIColor.black
+    educationTextField.text  = self.educationText
+    educationTextField.textAlignment = .center
+    educationTextField.font = UIFont.konstruuLightFontWithSize(13.0)
+    educationTextField.delegate = self
+    
+    educationTextField.translatesAutoresizingMaskIntoConstraints = false
+    return educationTextField
     }()
   
   private lazy var locationLabel : UILabel = { [unowned self] in
@@ -133,6 +186,17 @@ class ProfileInfoTableViewCell: UITableViewCell {
     return locationLabel
     }()
   
+  private lazy var locationTextField : UITextField = { [unowned self] in
+    let locationTextField = UITextField()
+    locationTextField.textColor = UIColor.black
+    locationTextField.text  = self.locationText
+    locationTextField.textAlignment = .center
+    locationTextField.font = UIFont.konstruuLightFontWithSize(13.0)
+    locationTextField.delegate = self
+    
+    locationTextField.translatesAutoresizingMaskIntoConstraints = false
+    return locationTextField
+    }()
   
   private lazy var messageButton: UIButton = { [unowned self] in
     let messageButton = UIButton(type: .custom)
@@ -145,6 +209,17 @@ class ProfileInfoTableViewCell: UITableViewCell {
     return messageButton
     }()
   
+  private lazy var editButton: UIButton = { [unowned self] in
+    let editButton = UIButton(type: .custom)
+    editButton.setTitle("Edit", for: UIControlState())
+    editButton.titleLabel!.font = UIFont.konstruuFontWithSize(15.0)
+    editButton.backgroundColor = UIColor.konstruuDarkBlue()
+    editButton.addTarget(self, action: #selector(toggleEditMode), for: UIControlEvents.touchUpInside)
+    
+    editButton.translatesAutoresizingMaskIntoConstraints = false
+    return editButton
+    }()
+  
   private lazy var descriptionLabel : UILabel = { [unowned self] in
     let descriptionLabel = UILabel()
     descriptionLabel.textColor = UIColor.black
@@ -154,6 +229,17 @@ class ProfileInfoTableViewCell: UITableViewCell {
     
     descriptionLabel.translatesAutoresizingMaskIntoConstraints = false
     return descriptionLabel
+    }()
+  
+  private lazy var descriptionTextView : UITextView = { [unowned self] in
+    let descriptionTextView = UITextView()
+    descriptionTextView.textColor = UIColor.black
+    descriptionTextView.text  = self.user?.desc
+    descriptionTextView.font = UIFont.konstruuLightFontWithSize(13.0)
+    descriptionTextView.delegate = self
+    
+    descriptionTextView.translatesAutoresizingMaskIntoConstraints = false
+    return descriptionTextView
     }()
   
   // MARK: - Init
@@ -168,13 +254,51 @@ class ProfileInfoTableViewCell: UITableViewCell {
     
     contentView.addSubview(cardView)
     contentView.addSubview(profileImageView)
+    
     contentView.addSubview(usernameLabel)
+    contentView.addSubview(usernameTextField)
+    
     contentView.addSubview(educationLabel)
+    contentView.addSubview(educationTextField)
+    
     contentView.addSubview(locationLabel)
+    contentView.addSubview(locationTextField)
+    
     contentView.addSubview(messageButton)
+    contentView.addSubview(editButton)
+    
     contentView.addSubview(descriptionLabel)
+    contentView.addSubview(descriptionTextView)
+    
+    usernameLabel.isHidden = false
+    educationLabel.isHidden = false
+    locationLabel.isHidden = false
+    descriptionLabel.isHidden = false
+    
+    usernameTextField.isHidden = true
+    educationTextField.isHidden = true
+    locationTextField.isHidden = true
+    descriptionTextView.isHidden = true
+    
+    addToolbarToKeyboard()
     
     updateConstraints()
+  }
+  
+  private func addToolbarToKeyboard() {
+    let toolbar = UIToolbar()
+    toolbar.sizeToFit()
+    
+    let doneButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.done, target: self, action: #selector(self.doneClicked))
+    
+    let flexibleSpace = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace, target: nil, action: nil)
+    
+    toolbar.setItems([flexibleSpace, doneButton], animated: false)
+    
+    usernameTextField.inputAccessoryView = toolbar
+    educationTextField.inputAccessoryView = toolbar
+    locationTextField.inputAccessoryView = toolbar
+    descriptionTextView.inputAccessoryView = toolbar
   }
   
   required init?(coder aDecoder: NSCoder) {
@@ -222,6 +346,16 @@ class ProfileInfoTableViewCell: UITableViewCell {
     //width
     contentView.addConstraint(NSLayoutConstraint(item:usernameLabel, attribute:.width, relatedBy:.equal, toItem: contentView, attribute:.width, multiplier: 1, constant: 0))
     
+    //usernameTextField
+    
+    //top
+    contentView.addConstraint(NSLayoutConstraint(item:usernameTextField, attribute:.top, relatedBy:.equal, toItem: profileImageView, attribute:.bottom, multiplier: 1, constant: .nameLabelTopConstraint))
+    //centerX
+    contentView.addConstraint(NSLayoutConstraint(item:usernameTextField, attribute:.centerX, relatedBy:.equal, toItem: contentView, attribute:.centerX, multiplier: 1, constant: 0))
+    //height
+    contentView.addConstraint(NSLayoutConstraint(item:usernameTextField, attribute:.height, relatedBy:.equal, toItem: nil, attribute:.notAnAttribute, multiplier: 1, constant: .nameLabelHeightConstraint))
+    //width
+    contentView.addConstraint(NSLayoutConstraint(item:usernameTextField, attribute:.width, relatedBy:.equal, toItem: contentView, attribute:.width, multiplier: 1, constant: 0))
     
     //educationLabel
     
@@ -234,6 +368,17 @@ class ProfileInfoTableViewCell: UITableViewCell {
     //width
     contentView.addConstraint(NSLayoutConstraint(item:educationLabel, attribute:.width, relatedBy:.equal, toItem: contentView, attribute:.width, multiplier: 1, constant: 0))
     
+    //educationTextField
+    
+    //top
+    contentView.addConstraint(NSLayoutConstraint(item:educationTextField, attribute:.top, relatedBy:.equal, toItem: usernameLabel, attribute:.bottom, multiplier: 1, constant: .educationLabelTopConstraint))
+    //centerX
+    contentView.addConstraint(NSLayoutConstraint(item:educationTextField, attribute:.centerX, relatedBy:.equal, toItem: contentView, attribute:.centerX, multiplier: 1, constant: 0))
+    //height
+    contentView.addConstraint(NSLayoutConstraint(item:educationTextField, attribute:.height, relatedBy:.equal, toItem: nil, attribute:.notAnAttribute, multiplier: 1, constant: .educationLabelHeightConstraint))
+    //width
+    contentView.addConstraint(NSLayoutConstraint(item:educationTextField, attribute:.width, relatedBy:.equal, toItem: contentView, attribute:.width, multiplier: 1, constant: 0))
+    
     //locationLabel
     
     //top
@@ -245,17 +390,38 @@ class ProfileInfoTableViewCell: UITableViewCell {
     //width
     contentView.addConstraint(NSLayoutConstraint(item:locationLabel, attribute:.width, relatedBy:.equal, toItem: contentView, attribute:.width, multiplier: 1, constant: 0))
     
+    //locationTextField
+    
+    //top
+    contentView.addConstraint(NSLayoutConstraint(item:locationTextField, attribute:.top, relatedBy:.equal, toItem: educationLabel, attribute:.bottom, multiplier: 1, constant: .locationLabelTopConstraint))
+    //centerX
+    contentView.addConstraint(NSLayoutConstraint(item:locationTextField, attribute:.centerX, relatedBy:.equal, toItem: contentView, attribute:.centerX, multiplier: 1, constant: 0))
+    //height
+    contentView.addConstraint(NSLayoutConstraint(item:locationTextField, attribute:.height, relatedBy:.equal, toItem: nil, attribute:.notAnAttribute, multiplier: 1, constant: .locationLabelHeightConstraint))
+    //width
+    contentView.addConstraint(NSLayoutConstraint(item:locationTextField, attribute:.width, relatedBy:.equal, toItem: contentView, attribute:.width, multiplier: 1, constant: 0))
+    
     //messageButton
     
     //top
     contentView.addConstraint(NSLayoutConstraint(item:messageButton, attribute:.top, relatedBy:.equal, toItem: locationLabel, attribute:.bottom, multiplier: 1, constant: .messageButtonTopConstraint))
     //centerX
-    contentView.addConstraint(NSLayoutConstraint(item:messageButton, attribute:.centerX, relatedBy:.equal, toItem: contentView, attribute:.centerX, multiplier: 1, constant: 0))
+    contentView.addConstraint(NSLayoutConstraint(item:messageButton, attribute:.centerX, relatedBy:.equal, toItem: contentView, attribute:.centerX, multiplier: 1, constant: -50))
     //height
     contentView.addConstraint(NSLayoutConstraint(item:messageButton, attribute:.height, relatedBy:.equal, toItem: nil, attribute:.notAnAttribute, multiplier: 1, constant: .messageButtonHeightConstraint))
     //width
     contentView.addConstraint(NSLayoutConstraint(item:messageButton, attribute:.width, relatedBy:.equal, toItem: nil, attribute:.notAnAttribute, multiplier: 1, constant: .messageButtonWidthConstraint))
     
+    //editButton
+    
+    //top
+    contentView.addConstraint(NSLayoutConstraint(item:editButton, attribute:.top, relatedBy:.equal, toItem: locationLabel, attribute:.bottom, multiplier: 1, constant: .messageButtonTopConstraint))
+    //centerX
+    contentView.addConstraint(NSLayoutConstraint(item:editButton, attribute:.centerX, relatedBy:.equal, toItem: contentView, attribute:.centerX, multiplier: 1, constant: 50))
+    //height
+    contentView.addConstraint(NSLayoutConstraint(item:editButton, attribute:.height, relatedBy:.equal, toItem: nil, attribute:.notAnAttribute, multiplier: 1, constant: .messageButtonHeightConstraint))
+    //width
+    contentView.addConstraint(NSLayoutConstraint(item:editButton, attribute:.width, relatedBy:.equal, toItem: nil, attribute:.notAnAttribute, multiplier: 1, constant: .messageButtonWidthConstraint))
     
     //descriptionLabel
     
@@ -268,12 +434,87 @@ class ProfileInfoTableViewCell: UITableViewCell {
     //bottom
     contentView.addConstraint(NSLayoutConstraint(item:descriptionLabel, attribute:.bottom, relatedBy:.equal, toItem: contentView, attribute:.bottom, multiplier: 1, constant: -.descriptionLabelBottomConstraint))
     
+    //descriptionTextView
+    
+    //top
+    contentView.addConstraint(NSLayoutConstraint(item:descriptionTextView, attribute:.top, relatedBy:.equal, toItem: messageButton, attribute:.bottom, multiplier: 1, constant: .descriptionLabelTopConstraint))
+    //left
+    contentView.addConstraint(NSLayoutConstraint(item:descriptionTextView, attribute:.left, relatedBy:.equal, toItem: contentView, attribute:.left, multiplier: 1, constant: .descriptionLabelLeftConstraint))
+    //right
+    contentView.addConstraint(NSLayoutConstraint(item:descriptionTextView, attribute:.right, relatedBy:.equal, toItem: contentView, attribute:.right, multiplier: 1, constant: -.descriptionLabelRightConstraint))
+    //bottom
+    contentView.addConstraint(NSLayoutConstraint(item:descriptionTextView, attribute:.bottom, relatedBy:.equal, toItem: contentView, attribute:.bottom, multiplier: 1, constant: -.descriptionLabelBottomConstraint))
+    
     super.updateConstraints()
   }
+  
+  // MARK: - Actions
   
   func startChatWithUser() {
     user?.startChat(from: parentViewController)
   }
+  
+  func toggleEditMode() {
+    if editingMode {
+      editingMode = false
+      editButton.setTitle("Edit", for: UIControlState())
+      editButton.backgroundColor = UIColor.konstruuDarkBlue()
+    } else {
+      editingMode = true
+      editButton.setTitle("Save", for: UIControlState())
+      editButton.backgroundColor = UIColor.konstruuGreen()
+    }
+    doneClicked()
+  }
+  
+  func doneClicked() {
+    user?.updateName(to: usernameTextField.text!)
+    user?.updateDescription(to: descriptionTextView.text)
+    
+    usernameLabel.text = usernameTextField.text!
+    educationLabel.text = educationTextField.text!
+    locationLabel.text = locationTextField.text!
+    descriptionLabel.text = descriptionTextView.text
+    
+    contentView.endEditing(true)
+  }
+  
+  // MARK: - Delegates
+  
+  
+//  func textViewDidBeginEditing(_ textView: UITextView) {
+//    if textView.isEqual(challengeNameTextField) {
+//      if challengeNameTextField.textColor == placeholderColor {
+//        challengeNameTextField.text = ""
+//        challengeNameTextField.textColor = UIColor.black
+//        return
+//      }
+//    }
+//    
+//    if textView.isEqual(challengeDescriptionTextView) {
+//      if challengeDescriptionTextView.textColor == placeholderColor {
+//        challengeDescriptionTextView.text = ""
+//        challengeDescriptionTextView.textColor = UIColor.black
+//      }
+//    }
+//  }
+//  
+//  func textViewDidEndEditing(_ textView: UITextView) {
+//    if textView.isEqual(challengeNameTextField) {
+//      if challengeNameTextField.text.isEmpty {
+//        challengeNameTextField.text = namePlaceholderText
+//        challengeNameTextField.textColor = placeholderColor
+//        return
+//      }
+//    }
+//    
+//    if textView.isEqual(challengeDescriptionTextView) {
+//      if challengeDescriptionTextView.text.isEmpty {
+//        challengeDescriptionTextView.text = descriptionPlaceholderText
+//        challengeDescriptionTextView.textColor = placeholderColor
+//      }
+//    }
+//  }
   
   
 }

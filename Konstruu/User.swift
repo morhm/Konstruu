@@ -94,7 +94,12 @@ class User: CustomStringConvertible {
     func getLikedChallenges(completed: (([Challenge]) -> Void)?) {
         API.getChallengesInList(challengeKeys: likedChallengeKeys, index: 0, challenges: [], completed: completed)
     }
-    
+  
+    func updateName(to name: String) {
+        self.name = name
+        reference.child("name").setValue(name)
+    }
+  
     func updateDescription(to desc: String) {
         self.desc = desc
         reference.child("desc").setValue(desc)

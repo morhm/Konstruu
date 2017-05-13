@@ -245,6 +245,7 @@ class CreateChallengeViewController: UIViewController, UITextViewDelegate {
   
     // MARK: - Delegates
   
+  
     func textViewDidBeginEditing(_ textView: UITextView) {
       if textView.isEqual(challengeNameTextField) {
         if challengeNameTextField.textColor == placeholderColor {

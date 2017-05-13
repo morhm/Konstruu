@@ -56,6 +56,8 @@
 		687402501EA6668100232634 /* UIColor+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6874024F1EA6668100232634 /* UIColor+Helper.swift */; };
 		687402591EAE803700232634 /* ProfileInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 687402581EAE803600232634 /* ProfileInfoTableViewCell.swift */; };
 		6874025B1EAF014D00232634 /* ProfileSpecialityTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6874025A1EAF014D00232634 /* ProfileSpecialityTableViewCell.swift */; };
+		687FC5141EC25FAD00B32B16 /* SingleSpecialtyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 687FC5131EC25FAD00B32B16 /* SingleSpecialtyTableViewCell.swift */; };
+		687FC5161EC2603D00B32B16 /* SingleTeamTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 687FC5151EC2603D00B32B16 /* SingleTeamTableViewCell.swift */; };
 		68C8E55C1E6408AA00047901 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68C8E55B1E6408AA00047901 /* AppDelegate.swift */; };
 		68C8E5631E6408AA00047901 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 68C8E5621E6408AA00047901 /* Assets.xcassets */; };
 		68C8E5661E6408AA00047901 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 68C8E5641E6408AA00047901 /* LaunchScreen.storyboard */; };
@@ -139,6 +141,8 @@
 		6874024F1EA6668100232634 /* UIColor+Helper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Helper.swift"; sourceTree = "<group>"; };
 		687402581EAE803600232634 /* ProfileInfoTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileInfoTableViewCell.swift; sourceTree = "<group>"; };
 		6874025A1EAF014D00232634 /* ProfileSpecialityTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileSpecialityTableViewCell.swift; sourceTree = "<group>"; };
+		687FC5131EC25FAD00B32B16 /* SingleSpecialtyTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SingleSpecialtyTableViewCell.swift; sourceTree = "<group>"; };
+		687FC5151EC2603D00B32B16 /* SingleTeamTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SingleTeamTableViewCell.swift; sourceTree = "<group>"; };
 		68C8E5581E6408AA00047901 /* Konstruu.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Konstruu.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		68C8E55B1E6408AA00047901 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		68C8E5621E6408AA00047901 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -202,6 +206,8 @@
 				687402581EAE803600232634 /* ProfileInfoTableViewCell.swift */,
 				6874025A1EAF014D00232634 /* ProfileSpecialityTableViewCell.swift */,
 				68EFF7751EAFB0CD003D7785 /* ProfileProjectTableViewCell.swift */,
+				687FC5131EC25FAD00B32B16 /* SingleSpecialtyTableViewCell.swift */,
+				687FC5151EC2603D00B32B16 /* SingleTeamTableViewCell.swift */,
 			);
 			name = "Profile Page";
 			sourceTree = "<group>";
@@ -584,6 +590,7 @@
 				61BD68C21E6DEEF400B1A0E9 /* ProfileViewController.swift in Sources */,
 				687402501EA6668100232634 /* UIColor+Helper.swift in Sources */,
 				681085F51E9D239300FB32F0 /* ChallengeButton.swift in Sources */,
+				687FC5141EC25FAD00B32B16 /* SingleSpecialtyTableViewCell.swift in Sources */,
 				6874023B1EA6656600232634 /* UIFont+Helper.swift in Sources */,
 				61BD68BE1E6DEC0A00B1A0E9 /* LoginViewController.swift in Sources */,
 				68C8E55C1E6408AA00047901 /* AppDelegate.swift in Sources */,
@@ -594,6 +601,7 @@
 				618C69771EA2C2C500AA84B0 /* Badges.swift in Sources */,
 				CA7915A71EB074E6002F8318 /* ChallengeCategoriesViewController.swift in Sources */,
 				687402591EAE803700232634 /* ProfileInfoTableViewCell.swift in Sources */,
+				687FC5161EC2603D00B32B16 /* SingleTeamTableViewCell.swift in Sources */,
 				613B1B591E722F2A00544297 /* UserCollectionViewCell.swift in Sources */,
 				615BD3C31EBAF152003F62B9 /* ALChatManager.swift in Sources */,
 				61F7F8761E6E06870017461F /* ChallengeViewController.swift in Sources */,
