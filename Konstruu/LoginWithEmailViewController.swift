@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Applozic
 import FirebaseAuth
 
 class LoginWithEmailViewController: UIViewController {
@@ -24,6 +25,8 @@ class LoginWithEmailViewController: UIViewController {
                     print(error!)
                 } else {
                     API.getUserWithKey(firebaseUser!.uid, completed: { user in
+                        user?.registerForChat()
+                        
                         let tabBarVC = KonstruuTabBarController(nibName: "KonstruuTabBarController", bundle: nil)
                         tabBarVC.user = user
                         self?.present(tabBarVC, animated: true, completion: nil)

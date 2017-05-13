@@ -64,15 +64,13 @@
 		68EFF7761EAFB0CE003D7785 /* ProfileProjectTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68EFF7751EAFB0CD003D7785 /* ProfileProjectTableViewCell.swift */; };
 		CA1B47871EBBD41700353BD3 /* TeamListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1B47851EBBD41700353BD3 /* TeamListViewController.swift */; };
 		CA1B47881EBBD41700353BD3 /* TeamListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA1B47861EBBD41700353BD3 /* TeamListViewController.xib */; };
-		CA1B478E1EBBE74900353BD3 /* TeamsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA1B478D1EBBE74900353BD3 /* TeamsTableViewCell.xib */; };
-		CA1B47901EBBE78E00353BD3 /* TeamsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1B478F1EBBE78E00353BD3 /* TeamsTableViewCell.swift */; };
 		CA3A89441E6F81820000D33E /* ChallengeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA3A89431E6F81820000D33E /* ChallengeTableViewCell.xib */; };
+		CA4D902E1EC269C500A74839 /* TeamsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4D902C1EC269C500A74839 /* TeamsTableViewCell.swift */; };
+		CA4D902F1EC269C500A74839 /* TeamsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA4D902D1EC269C500A74839 /* TeamsTableViewCell.xib */; };
 		CA7915A71EB074E6002F8318 /* ChallengeCategoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7915A51EB074E6002F8318 /* ChallengeCategoriesViewController.swift */; };
 		CA7915A81EB074E6002F8318 /* ChallengeCategoriesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA7915A61EB074E6002F8318 /* ChallengeCategoriesViewController.xib */; };
 		CA7915AB1EB0750E002F8318 /* TeamDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7915A91EB0750E002F8318 /* TeamDetailsViewController.swift */; };
 		CA7915AC1EB0750E002F8318 /* TeamDetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA7915AA1EB0750E002F8318 /* TeamDetailsViewController.xib */; };
-		CA7915AF1EB0753B002F8318 /* ChallengeDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7915AD1EB0753B002F8318 /* ChallengeDetailsViewController.swift */; };
-		CA7915B01EB0753B002F8318 /* ChallengeDetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA7915AE1EB0753B002F8318 /* ChallengeDetailsViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -152,15 +150,13 @@
 		A9732213F7532194FC238323 /* Pods-Konstruu.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Konstruu.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Konstruu/Pods-Konstruu.debug.xcconfig"; sourceTree = "<group>"; };
 		CA1B47851EBBD41700353BD3 /* TeamListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeamListViewController.swift; sourceTree = "<group>"; };
 		CA1B47861EBBD41700353BD3 /* TeamListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TeamListViewController.xib; sourceTree = "<group>"; };
-		CA1B478D1EBBE74900353BD3 /* TeamsTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TeamsTableViewCell.xib; sourceTree = "<group>"; };
-		CA1B478F1EBBE78E00353BD3 /* TeamsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeamsTableViewCell.swift; sourceTree = "<group>"; };
 		CA3A89431E6F81820000D33E /* ChallengeTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChallengeTableViewCell.xib; sourceTree = "<group>"; };
+		CA4D902C1EC269C500A74839 /* TeamsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeamsTableViewCell.swift; sourceTree = "<group>"; };
+		CA4D902D1EC269C500A74839 /* TeamsTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TeamsTableViewCell.xib; sourceTree = "<group>"; };
 		CA7915A51EB074E6002F8318 /* ChallengeCategoriesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChallengeCategoriesViewController.swift; sourceTree = "<group>"; };
 		CA7915A61EB074E6002F8318 /* ChallengeCategoriesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChallengeCategoriesViewController.xib; sourceTree = "<group>"; };
 		CA7915A91EB0750E002F8318 /* TeamDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeamDetailsViewController.swift; sourceTree = "<group>"; };
 		CA7915AA1EB0750E002F8318 /* TeamDetailsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TeamDetailsViewController.xib; sourceTree = "<group>"; };
-		CA7915AD1EB0753B002F8318 /* ChallengeDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChallengeDetailsViewController.swift; sourceTree = "<group>"; };
-		CA7915AE1EB0753B002F8318 /* ChallengeDetailsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChallengeDetailsViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -372,7 +368,6 @@
 				61592C701E71195B008B89C6 /* Profile Page */,
 				CA7915A41EB074C9002F8318 /* Challenge Categories */,
 				61592C711E711965008B89C6 /* Find Challenges Page */,
-				CA7915A21EB074B9002F8318 /* Challenge Details */,
 				CA7915A31EB074C2002F8318 /* Team Details */,
 				61592C721E71196F008B89C6 /* Challenge Page */,
 				61592C731E711975008B89C6 /* Team Page */,
@@ -387,19 +382,10 @@
 			children = (
 				CA1B47851EBBD41700353BD3 /* TeamListViewController.swift */,
 				CA1B47861EBBD41700353BD3 /* TeamListViewController.xib */,
-				CA1B478D1EBBE74900353BD3 /* TeamsTableViewCell.xib */,
-				CA1B478F1EBBE78E00353BD3 /* TeamsTableViewCell.swift */,
+				CA4D902C1EC269C500A74839 /* TeamsTableViewCell.swift */,
+				CA4D902D1EC269C500A74839 /* TeamsTableViewCell.xib */,
 			);
 			name = "Team List Controller";
-			sourceTree = "<group>";
-		};
-		CA7915A21EB074B9002F8318 /* Challenge Details */ = {
-			isa = PBXGroup;
-			children = (
-				CA7915AD1EB0753B002F8318 /* ChallengeDetailsViewController.swift */,
-				CA7915AE1EB0753B002F8318 /* ChallengeDetailsViewController.xib */,
-			);
-			name = "Challenge Details";
 			sourceTree = "<group>";
 		};
 		CA7915A31EB074C2002F8318 /* Team Details */ = {
@@ -465,7 +451,7 @@
 				TargetAttributes = {
 					68C8E5571E6408AA00047901 = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = TLAM246JYZ;
+						DevelopmentTeam = SKEZDL7MYB;
 						LastSwiftMigration = 0830;
 						ProvisioningStyle = Automatic;
 					};
@@ -497,7 +483,6 @@
 				61BD68BF1E6DEC0A00B1A0E9 /* LoginViewController.xib in Resources */,
 				CA7915AC1EB0750E002F8318 /* TeamDetailsViewController.xib in Resources */,
 				613B1B5E1E722F3C00544297 /* ProgressPostTableViewCell.xib in Resources */,
-				CA7915B01EB0753B002F8318 /* ChallengeDetailsViewController.xib in Resources */,
 				6874024B1EA665EE00232634 /* OpenSans-LightItalic.ttf in Resources */,
 				617ED0D41EAF11C5003639A6 /* SignUpWithEmailViewController.xib in Resources */,
 				687402461EA665E900232634 /* OpenSans-Bold.ttf in Resources */,
@@ -505,8 +490,8 @@
 				61F7F8771E6E06870017461F /* ChallengeViewController.xib in Resources */,
 				CA7915A81EB074E6002F8318 /* ChallengeCategoriesViewController.xib in Resources */,
 				6104FA501EBBDDD800444C3B /* LoginWithEmailViewController.xib in Resources */,
+				CA4D902F1EC269C500A74839 /* TeamsTableViewCell.xib in Resources */,
 				68C8E5661E6408AA00047901 /* LaunchScreen.storyboard in Resources */,
-				CA1B478E1EBBE74900353BD3 /* TeamsTableViewCell.xib in Resources */,
 				CA3A89441E6F81820000D33E /* ChallengeTableViewCell.xib in Resources */,
 				687402471EA665EE00232634 /* OpenSans-BoldItalic.ttf in Resources */,
 				61BD68C31E6DEEF400B1A0E9 /* ProfileViewController.xib in Resources */,
@@ -581,10 +566,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CA1B47901EBBE78E00353BD3 /* TeamsTableViewCell.swift in Sources */,
 				615A292B1E9AD5E700568D40 /* API.swift in Sources */,
 				61E7C2DD1E9DB3B60052B0E6 /* Challenge.swift in Sources */,
-				CA7915AF1EB0753B002F8318 /* ChallengeDetailsViewController.swift in Sources */,
 				61E7C2DF1E9DB3BD0052B0E6 /* Team.swift in Sources */,
 				613B1B551E721A1E00544297 /* FindChallengesViewController.swift in Sources */,
 				61BD68C21E6DEEF400B1A0E9 /* ProfileViewController.swift in Sources */,
@@ -599,6 +582,7 @@
 				61F7F87E1E6E076C0017461F /* CreateChallengeViewController.swift in Sources */,
 				61F7F8821E6E077D0017461F /* CreateTeamViewController.swift in Sources */,
 				618C69771EA2C2C500AA84B0 /* Badges.swift in Sources */,
+				CA4D902E1EC269C500A74839 /* TeamsTableViewCell.swift in Sources */,
 				CA7915A71EB074E6002F8318 /* ChallengeCategoriesViewController.swift in Sources */,
 				687402591EAE803700232634 /* ProfileInfoTableViewCell.swift in Sources */,
 				687FC5161EC2603D00B32B16 /* SingleTeamTableViewCell.swift in Sources */,
@@ -729,18 +713,21 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				DEVELOPMENT_TEAM = TLAM246JYZ;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = SKEZDL7MYB;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = Konstruu/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.example.Konstruu;
+				PRODUCT_BUNDLE_IDENTIFIER = com.morhm.Konstruu;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Konstruu/Konstruu-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -750,17 +737,20 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				DEVELOPMENT_TEAM = TLAM246JYZ;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = SKEZDL7MYB;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = Konstruu/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.example.Konstruu;
+				PRODUCT_BUNDLE_IDENTIFIER = com.morhm.Konstruu;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Konstruu/Konstruu-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

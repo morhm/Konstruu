@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Applozic
 
 class KonstruuTabBarController: UITabBarController, UITabBarControllerDelegate {
 
@@ -15,6 +16,8 @@ class KonstruuTabBarController: UITabBarController, UITabBarControllerDelegate {
     // MARK: - Model
     
     var user: User?
+    
+    static let messagingButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "message-7"), style: .plain, target: self, action: #selector(showMessaging))
     
     // MARK: - View controller lifecycle
     
@@ -35,12 +38,11 @@ class KonstruuTabBarController: UITabBarController, UITabBarControllerDelegate {
         let profileNavigationController = UINavigationController()
         profileNavigationController.viewControllers = [profileVC]
         
-        
        
         let teamsVC = TeamListViewController(nibName: "TeamListViewController", bundle: nil)
-        teamsVC.user = user
+        //teamsVC.user = user
         
-        let teamsTabBarItem = UITabBarItem(title: "Teams", image: #imageLiteral(resourceName: "groupIcon"), tag: 1)
+        let teamsTabBarItem = UITabBarItem(title: "Teams", image: #imageLiteral(resourceName: "groupIcon"), tag: 2)
         teamsVC.tabBarItem = teamsTabBarItem
         
         let teamsNavigationController = UINavigationController()
@@ -58,7 +60,7 @@ class KonstruuTabBarController: UITabBarController, UITabBarControllerDelegate {
  
         // Set up CreateChallengeViewController with its UITabBarItem
         let createChallengeVC = CreateChallengeViewController()
-        let createChallengeTabBarItem = UITabBarItem(title: "Create a Challenge", image: #imageLiteral(resourceName: "New"), tag: 2)
+        let createChallengeTabBarItem = UITabBarItem(title: "Create a Challenge", image: #imageLiteral(resourceName: "New"), tag: 4)
         createChallengeVC.tabBarItem = createChallengeTabBarItem
         
         let createChallengeNavigationController = UINavigationController()
@@ -72,8 +74,14 @@ class KonstruuTabBarController: UITabBarController, UITabBarControllerDelegate {
         let challengeCategoriesNavigationController = UINavigationController()
         challengeCategoriesNavigationController.viewControllers = [challengeCategoriesVC]
  */
+        
+        // Add messaging button to navigation bars
+        profileVC.navigationItem.rightBarButtonItem = KonstruuTabBarController.messagingButtonItem
+        teamsVC.navigationItem.rightBarButtonItem = KonstruuTabBarController.messagingButtonItem
+        findChallengesVC.navigationItem.rightBarButtonItem = KonstruuTabBarController.messagingButtonItem
+        createChallengeVC.navigationItem.rightBarButtonItem = KonstruuTabBarController.messagingButtonItem
       
-        self.viewControllers = [profileNavigationController, teamsNavigationController, createChallengeNavigationController, findChallengesNavigationController]
+        self.viewControllers = [profileNavigationController, teamsNavigationController, findChallengesNavigationController, createChallengeNavigationController]
  
     }
     
@@ -82,5 +90,10 @@ class KonstruuTabBarController: UITabBarController, UITabBarControllerDelegate {
         if let navigationController = (self.viewControllers?[1] as? UINavigationController) {
             navigationController.popToRootViewController(animated: false)
         }
+    }
+    
+    func showMessaging() {
+        let chatManager = ALChatManager(applicationKey: ALChatManager.applicationId as NSString)
+        chatManager.launchChat(self)
     }
 }

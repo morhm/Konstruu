@@ -124,6 +124,7 @@ class TeamViewController: UIViewController, UICollectionViewDelegate, UICollecti
         if let userKey = team?.userKeys[indexPath.row] {
             API.getUserWithKey(userKey, completed: { [weak self] user in
                 profileVC.user = user
+                profileVC.navigationItem.rightBarButtonItem = KonstruuTabBarController.messagingButtonItem
                 self?.navigationController?.pushViewController(profileVC, animated: true)
             })
         }
@@ -136,6 +137,7 @@ class TeamViewController: UIViewController, UICollectionViewDelegate, UICollecti
         if let challengeKey = team?.challengeKey {
             API.getChallengeWithKey(challengeKey, completed: { [weak self] challenge in
                 challengeVC.challenge = challenge
+                challengeVC.navigationItem.rightBarButtonItem = KonstruuTabBarController.messagingButtonItem
                 self?.navigationController?.pushViewController(challengeVC, animated: true)
             })
         }
