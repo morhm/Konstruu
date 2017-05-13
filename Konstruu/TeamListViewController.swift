@@ -17,13 +17,17 @@ class TeamListViewController: UIViewController, UITableViewDataSource, UITableVi
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        print(user?.teamKeys.count ?? 0)
-        
         self.edgesForExtendedLayout = []
         self.title = "Your Teams"
         
+        // todo - how do i get current user into new team??
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Add Team", style: .plain, target: self, action: #selector(addTeam))
+        
         teamsTableView.register(UINib(nibName: "TeamsTableViewCell", bundle: nil), forCellReuseIdentifier: "team")
+    }
+    
+    func addTeam() {
+        print ("yayy adding team!")
     }
     
     @IBOutlet weak var teamsTableView: UITableView! {
