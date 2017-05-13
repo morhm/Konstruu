@@ -21,6 +21,8 @@ class API {
                  "desc": "Hi everyone!",
                  "photoURL": "blah.com",
                  "email": "blah@blah.com",
+                 "location": "Hell, MI",
+                 "school": "Wissahickon High School",
                  "skills": {
                      "iOS Development": true,
                      "git": true,
@@ -34,6 +36,7 @@ class API {
                  "badges": {
                      "Challenge Guru": true
                  }
+                 "searchText": "Mark Orozco blah@blah.com Hell, MI Wissahickon High School iOS Development git"
              }
          },
          "teams": {
@@ -60,6 +63,7 @@ class API {
                  "teamKeys": {
                      "Frog and Code": true
                  }
+                 "searchText": "Mobile app to help geo-tag graffiti People can drop pins on a map to help remove grafitti. sponsored mobile"
              }
          },
          "skills": {
@@ -103,10 +107,32 @@ class API {
     static let storageReference = storage.reference()
     static let userImagesReference = storageReference.child("userImages")
     static let teamImagesReference = storageReference.child("teamImages")
-    
-    static let alApplicationId = "stanford2fb38fdcc41b82a674ad291ab8410ea70"
-    
+        
     // MARK: User
+    
+    class func searchUsers(keyword: String, completed: ((([User]) -> Void)?)) {
+        usersReference.observeSingleEvent(of: .value, with: { snapshot in
+            var matches: [User] = []
+            
+            // get all the users
+            for childSnapshot in snapshot.children.allObjects as! [FIRDataSnapshot] {
+                
+                // get the searchText for this user
+                if let dictionary = childSnapshot.value as? Dictionary<String, AnyObject> {
+                    if let searchText = dictionary["searchText"] as? String {
+                        
+                        // check for the keyword in the searchText
+                        if searchText.range(of: keyword) != nil {
+                            let match = User(key: childSnapshot.key, dictionary: dictionary)
+                            matches.append(match)
+                        }
+                    }
+                }
+            }
+            
+            completed?(matches)
+        })
+    }
     
     // reference: https://firebase.google.com/docs/database/ios/read-and-write
     class func getUserWithKey(_ key: String, completed: ((User?) -> Void)?) {
@@ -136,6 +162,8 @@ class API {
          "desc": "",
          "photoURL": "",
          "email": "",
+         "location": "",
+         "school": "",
          "skills": ["skill name", "skill name"],
          "likedChallengeKeys": ["challenge key", "challenge key"],
          "badges": ["badge name", "badge name"],
@@ -146,7 +174,9 @@ class API {
         let userReference = usersReference.childByAutoId()
         let key = userReference.key
         userReference.setValue(userInfo)
-        return User(key: key, dictionary: userInfo)
+        let user = User(key: key, dictionary: userInfo)
+        user.setSearchText()
+        return user
     }
     
     /* Dictionary Format:
@@ -163,7 +193,9 @@ class API {
     class func createUserWithKey(_ key: String, userInfo: Dictionary<String, AnyObject>) -> User {
         let userReference = usersReference.child(key)
         userReference.setValue(userInfo)
-        return User(key: key, dictionary: userInfo)
+        let user = User(key: key, dictionary: userInfo)
+        user.setSearchText()
+        return user
     }
     
     // MARK: Team
@@ -213,6 +245,30 @@ class API {
     }
     
     // MARK: Challenge
+    
+    class func searchChallenges(keyword: String, completed: ((([Challenge]) -> Void)?)) {
+        challengesReference.observeSingleEvent(of: .value, with: { snapshot in
+            var matches: [Challenge] = []
+            
+            // get all the users
+            for childSnapshot in snapshot.children.allObjects as! [FIRDataSnapshot] {
+                
+                // get the searchText for this user
+                if let dictionary = childSnapshot.value as? Dictionary<String, AnyObject> {
+                    if let searchText = dictionary["searchText"] as? String {
+                        
+                        // check for the keyword in the searchText
+                        if searchText.range(of: keyword) != nil {
+                            let match = Challenge(key: childSnapshot.key, dictionary: dictionary)
+                            matches.append(match)
+                        }
+                    }
+                }
+            }
+            
+            completed?(matches)
+        })
+    }
     
     class func getChallengeWithKey(_ key: String, completed: ((Challenge?) -> Void)?) {
         challengesReference.child(key).observeSingleEvent(of: .value, with: { snapshot in
@@ -270,7 +326,9 @@ class API {
         let challengeReference = challengesReference.childByAutoId()
         let key = challengeReference.key
         challengeReference.setValue(challengeInfo)
-        return Challenge(key: key, dictionary: challengeInfo)
+        let challenge = Challenge(key: key, dictionary: challengeInfo)
+        challenge.setSearchText()
+        return challenge
     }
     
     // MARK: Skills

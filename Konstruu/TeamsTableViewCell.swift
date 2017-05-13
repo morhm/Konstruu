@@ -2,34 +2,31 @@
 //  TeamsTableViewCell.swift
 //  Konstruu
 //
-//  Created by Mark Anthony Orozco on 5/4/17.
+//  Created by Mark Anthony Orozco on 5/9/17.
 //  Copyright © 2017 Frog and Code. All rights reserved.
 //
 
 import UIKit
 
 class TeamsTableViewCell: UITableViewCell {
-    
-    var Team: Team? {
+
+    var team: Team? {
         didSet {
             updateUI()
         }
     }
     
-    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var teamTitleLabel: UILabel!
     
-    @IBOutlet weak var memberCount: UILabel!
-    
-    @IBOutlet weak var lastActivity: UILabel!
-    
-    @IBOutlet weak var notificationIcon: UIImageView!
+
+//    override func setSelected(_ selected: Bool, animated: Bool) {
+//        super.setSelected(selected, animated: animated)
+//
+//        // Configure the view for the selected state
+//    }
     
     private func updateUI() {
-        
-        
-        
-       // titleLabel.text = team?.title
-       // memberCount.text = team?.desc
+        teamTitleLabel.text = team?.name
     }
     
 }

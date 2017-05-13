@@ -55,6 +55,7 @@ class LoginViewController: UIViewController, LoginButtonDelegate {
                 print(String(describing: firebaseAuthUser!.email)) // DEBUGGING
                 API.getUserWithKey(firebaseAuthUser!.uid, completed: { [weak self] user in
                     if user != nil {
+                        user?.registerForChat()
                         self?.showProfile(user: user!)
                     } else {
                         self?.createUserFromFacebookProfile(token: token, firebaseAuthUser: firebaseAuthUser!)
@@ -74,6 +75,16 @@ class LoginViewController: UIViewController, LoginButtonDelegate {
             case .success(let value):
                 if let dictionary = value.dictionaryValue {
                     let user = API.createUserWithKey(firebaseAuthUser.uid, userInfo: ["name": dictionary["name"] as AnyObject, "email": dictionary["email"] as AnyObject])
+                    user.registerForChat()
+                    
+                    /* Added test challenge and team for fb logins */
+                    let challenge = API.createChallenge(challengeInfo: ["title": "Test Challenge" as AnyObject, "desc": "Created for user \(user.key)" as AnyObject])
+                    
+                    let team = API.createTeam(teamInfo: ["name": "Test Team" as AnyObject, "open": true as AnyObject, "chalengeKey": challenge.key as AnyObject])
+                    
+                    team.addUser(user)
+                    challenge.addTeam(team)
+                    
                     self?.showProfile(user: user)
                 }
                 

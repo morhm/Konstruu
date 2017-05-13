@@ -22,10 +22,13 @@ class User: CustomStringConvertible {
     var desc: String?
     var photoURL: URL?
     var email: String?
+    var location: String?
+    var school: String?
     var skills: [String] = []
     var likedChallengeKeys: [String] = []
     var badges: [String] = []
     var teamKeys: [String] = []
+    var searchText: String?
     
     init(key: String, dictionary: Dictionary<String, AnyObject>) {
         self.key = key
@@ -46,6 +49,14 @@ class User: CustomStringConvertible {
             self.email = email
         }
         
+        if let location = dictionary["location"] as? String {
+            self.location = location
+        }
+        
+        if let school = dictionary["school"] as? String {
+            self.school = school
+        }
+        
         if let skillsDictionary = dictionary["skills"] as? Dictionary<String, AnyObject> {
             self.skills = self.skills + Array(skillsDictionary.keys)
         }
@@ -60,6 +71,10 @@ class User: CustomStringConvertible {
         
         if let teamKeysDictionary = dictionary["teamKeys"] as? Dictionary<String, AnyObject> {
             self.teamKeys = self.teamKeys + Array(teamKeysDictionary.keys)
+        }
+        
+        if let searchText = dictionary["searchText"] as? String {
+            self.searchText = searchText
         }
         
         self.reference = API.usersReference.child(self.key)
@@ -98,6 +113,22 @@ class User: CustomStringConvertible {
     func updateDescription(to desc: String) {
         self.desc = desc
         reference.child("desc").setValue(desc)
+        
+        setSearchText()
+    }
+    
+    func updateLocation(to location: String) {
+        self.location = location
+        reference.child("location").setValue(location)
+        
+        setSearchText()
+    }
+    
+    func updateSchool(to school: String) {
+        self.school = school
+        reference.child("school").setValue(school)
+        
+        setSearchText()
     }
     
     // reference: https://firebase.google.com/docs/storage/ios/upload-files
@@ -109,6 +140,8 @@ class User: CustomStringConvertible {
         self.skills.append(skill)
         reference.child("skills").child(skill).setValue(true)
         API.skillsReference.child(skill).child(key).setValue(true)
+        
+        setSearchText()
     }
     
     func removeSkill(_ skill: String) {
@@ -117,6 +150,8 @@ class User: CustomStringConvertible {
         }
         reference.child("skills").child(skill).removeValue()
         API.skillsReference.child(skill).child(key).removeValue()
+        
+        setSearchText()
     }
     
     func likeChallenge(_ challenge: Challenge) {
@@ -144,22 +179,47 @@ class User: CustomStringConvertible {
         reference.child("badges").child(badge).setValue(true)
     }
     
+    func registerForChat() {
+        let alUser = ALUser()
+        alUser.applicationId = ALChatManager.applicationId
+        alUser.userId = key
+        alUser.email = email
+        alUser.displayName = name
+        
+        let chatManager = ALChatManager(applicationKey: ALChatManager.applicationId as NSString)
+        chatManager.registerUser(alUser)
+        
+        ALUserDefaultsHandler.setApplicationKey(ALChatManager.applicationId)
+        ALUserDefaultsHandler.setUserId(key)
+        ALUserDefaultsHandler.setEmailId(email)
+        ALUserDefaultsHandler.setDisplayName(name)
+    }
+    
     func startChat(from controller: UIViewController) {
-        // register current user
-        API.getCurrentUser(completed: { [weak self] user in
-            if let user = user {
-                let alUser = ALUser()
-                alUser.applicationId = API.alApplicationId
-                alUser.userId = user.key
-                alUser.email = user.email
-                alUser.imageLink = String(describing: user.photoURL)
-                alUser.displayName = user.name
-                
-                // start chat with this user
-                let chatManager = ALChatManager(applicationKey: API.alApplicationId as NSString)
-                chatManager.registerUserAndLaunchChat(alUser, fromController: controller, forUser: self?.key)
-            }
-        })
+        let chatManager = ALChatManager(applicationKey: ALChatManager.applicationId as NSString)
+        chatManager.registerUserAndLaunchChat(ALChatManager.getUserDetail(), fromController: controller, forUser: key)
+    }
+    
+    func setSearchText() {
+        var searchText = ""
+        if let name = name {
+            searchText += "\(name) "
+        }
+        if let email = email {
+            searchText += "\(email) "
+        }
+        if let location = location {
+            searchText += "\(location) "
+        }
+        if let school = school {
+            searchText += "\(school) "
+        }
+        for skill in skills {
+            searchText += "\(skill) "
+        }
+        
+        self.searchText = searchText
+        reference.child("searchText").setValue(searchText)
     }
     
     var description: String { get {

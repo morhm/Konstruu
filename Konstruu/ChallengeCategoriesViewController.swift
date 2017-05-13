@@ -25,6 +25,7 @@ class ChallengeCategoriesViewController: UIViewController {
   
   @IBAction func findChallenges(_ sender: Any) {
     let findChallengesVC = FindChallengesViewController(nibName: "FindChallengesViewController", bundle: nil)
+    findChallengesVC.navigationItem.rightBarButtonItem = KonstruuTabBarController.messagingButtonItem
     self.navigationController?.pushViewController(findChallengesVC, animated: true)
   }
   
