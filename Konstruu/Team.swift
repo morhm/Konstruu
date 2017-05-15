@@ -113,12 +113,12 @@ class Team: CustomStringConvertible {
     }
     
     var description: String {
-        let data = [
-            "key": key,
-            "name": name,
-            "open": String(describing: open),
-            "challengeKey": challengeKey,
-            "userKeys": String(describing: userKeys)
+        let data: Dictionary<String, AnyObject> = [
+            "key": key as AnyObject,
+            "name": name as AnyObject,
+            "open": open as AnyObject,
+            "challengeKey": challengeKey as AnyObject,
+            "userKeys": userKeys as AnyObject
         ]
         return String(describing: data)
     }

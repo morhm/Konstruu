@@ -106,11 +106,14 @@ class Challenge: CustomStringConvertible {
     }
     
     var description: String {
-        let data = [
-            "key": key,
-            "title": title,
-            "desc": desc,
-            "teamKeys": String(describing: teamKeys)
+        let data: Dictionary<String, AnyObject> = [
+            "key": key as AnyObject,
+            "title": title as AnyObject,
+            "desc": desc as AnyObject,
+            "categories": categories as AnyObject,
+            "likesUserKeys": likesUserKeys as AnyObject,
+            "teamKeys": teamKeys as AnyObject,
+            "searchText": searchText as AnyObject
         ]
         return String(describing: data)
     }

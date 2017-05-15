@@ -28,7 +28,8 @@ class SignUpWithEmailViewController: UIViewController {
                 if error != nil || firebaseUser == nil {
                     print(error!)
                 } else {
-                    let user = API.createUserWithKey(firebaseUser!.uid, userInfo: ["name": name as AnyObject  , "email": firebaseUser!.email as AnyObject])
+                    let userInfo: Dictionary<String, AnyObject> = ["name": name as AnyObject  , "email": firebaseUser!.email as AnyObject]
+                    let user = API.createUserWithKey(firebaseUser!.uid, userInfo: userInfo)
                     user.registerForChat()
                     
                     let tabBarVC = KonstruuTabBarController(nibName: "KonstruuTabBarController", bundle: nil)
@@ -45,12 +46,15 @@ class SignUpWithEmailViewController: UIViewController {
                 if error != nil || firebaseUser == nil {
                     print(error!)
                 } else {
-                    let user = API.createUserWithKey(firebaseUser!.uid, userInfo: ["name": name as AnyObject, "email": firebaseUser!.email as AnyObject, "desc": "Test description for user with id \(firebaseUser!.uid)" as AnyObject, "skills": ["iOS", "git"] as AnyObject])
+                    let userInfo: Dictionary<String, AnyObject> = ["name": name as AnyObject, "email": firebaseUser!.email as AnyObject, "desc": "Test description for user with id \(firebaseUser!.uid)" as AnyObject, "skills": ["iOS", "git"] as AnyObject]
+                    let user = API.createUserWithKey(firebaseUser!.uid, userInfo: userInfo)
                     user.registerForChat()
                     
-                    let challenge = API.createChallenge(challengeInfo: ["title": "Test Challenge" as AnyObject, "desc": "Created for user \(user.key)" as AnyObject])
+                    let challengeInfo: Dictionary<String, AnyObject> = ["title": "Test Challenge" as AnyObject, "desc": "Created for user \(user.key)" as AnyObject]
+                    let challenge = API.createChallenge(challengeInfo: challengeInfo)
                     
-                    let team = API.createTeam(teamInfo: ["name": "Test Team" as AnyObject, "open": true as AnyObject, "challengeKey": challenge.key as AnyObject])
+                    let teamInfo: Dictionary<String, AnyObject> = ["name": "Test Team" as AnyObject, "open": true as AnyObject, "challengeKey": challenge.key as AnyObject]
+                    let team = API.createTeam(teamInfo: teamInfo)
                     
                     team.addUser(user)
                     challenge.addTeam(team)

@@ -220,19 +220,19 @@ class User: CustomStringConvertible {
     }
     
     var description: String { get {
-        let data = [
-            "key": key,
-            "name": name,
-            "desc": desc,
-            "photoURL": String(describing: photoURL),
-            "email": email,
-            "location": location,
-            "school": school,
-            "skills": String(describing: skills),
-            "likedChallengeKeys": String(describing: likedChallengeKeys),
-            "badges": String(describing: badges),
-            "teamKeys": String(describing: teamKeys),
-            "searchText": searchText
+        let data: Dictionary<String, AnyObject> = [
+            "key": key as AnyObject,
+            "name": name as AnyObject,
+            "desc": desc as AnyObject,
+            "photoURL": photoURL as AnyObject,
+            "email": email as AnyObject,
+            "location": location as AnyObject,
+            "school": school as AnyObject,
+            "skills": skills as AnyObject,
+            "likedChallengeKeys": likedChallengeKeys as AnyObject,
+            "badges": badges as AnyObject,
+            "teamKeys": teamKeys as AnyObject,
+            "searchText": searchText as AnyObject
         ]
         return String(describing: data)
     } }
