@@ -90,7 +90,7 @@ class ProfileSpecialtyTableViewCell: UITableViewCell, UITextFieldDelegate {
     let specialtyLabel = UITextField()
     specialtyLabel.isUserInteractionEnabled = false
     specialtyLabel.textColor = UIColor.black
-    specialtyLabel.text  = "1. " + (self.skills?[0] ?? "")
+    specialtyLabel.text  = self.skills?[0] ?? ""
     specialtyLabel.textAlignment = .left
     specialtyLabel.font = UIFont.konstruuLightFontWithSize(18.0)
     
@@ -102,7 +102,7 @@ class ProfileSpecialtyTableViewCell: UITableViewCell, UITextFieldDelegate {
     let specialtyLabel = UITextField()
     specialtyLabel.isUserInteractionEnabled = false
     specialtyLabel.textColor = UIColor.black
-    specialtyLabel.text  = "2. " + (self.skills?[1] ?? "")
+    specialtyLabel.text  = self.skills?[1] ?? ""
     specialtyLabel.textAlignment = .left
     specialtyLabel.font = UIFont.konstruuLightFontWithSize(18.0)
     
@@ -114,7 +114,7 @@ class ProfileSpecialtyTableViewCell: UITableViewCell, UITextFieldDelegate {
     let specialtyLabel = UITextField()
     specialtyLabel.isUserInteractionEnabled = false
     specialtyLabel.textColor = UIColor.black
-    specialtyLabel.text  = "3. " + (self.skills?[2] ?? "")
+    specialtyLabel.text  = self.skills?[2] ?? ""
     specialtyLabel.textAlignment = .left
     specialtyLabel.font = UIFont.konstruuLightFontWithSize(18.0)
     

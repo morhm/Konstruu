@@ -236,8 +236,23 @@ class CreateChallengeViewController: UIViewController, UITextViewDelegate {
     }
   
     func postChallenge() {
+      // post challenge to backend
+      let challengeTitle = challengeNameTextField.text
+      let challengeDesc = challengeDescriptionTextView.text
+      let challenge:Challenge = API.createChallenge(challengeInfo: ["title": challengeTitle as AnyObject, "desc": challengeDesc as AnyObject])
+      print(challenge.description)
       
-    }
+      // clear fields!
+      challengeNameTextField.text = ""
+      challengeDescriptionTextView.text = ""
+      
+      // show alert
+      let alertController = UIAlertController(title: "Challenge Posted!", message:
+        challengeTitle! + " was posted", preferredStyle: UIAlertControllerStyle.alert)
+      alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.default,handler: nil))
+      
+      self.present(alertController, animated: true, completion: nil)
+  }
   
     func doneClicked() {
       view.endEditing(true)

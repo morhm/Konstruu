@@ -39,18 +39,16 @@ class TeamListViewController: UIViewController, UITableViewDataSource, UITableVi
     
     func addTeam() {
         print ("yayy adding team!")
+      
+        let team = API.createTeam(teamInfo: ["name": "Mark-made Team" as AnyObject, "open": true as AnyObject, "challengeKey": "not-a-key" as AnyObject])
+      
+        print (user)
         
+        let currUser = API.getCurrentUser(completed: {currUser in self.user})
         
-        
-        //let team = API.createTeam(teamInfo: ["name": "Mark-made Team" as AnyObject, "open": true as AnyObject, "challengeKey": "not-a-key" as AnyObject])
-        
-        //print (user)
-        
-        //let currUser = API.getCurrentUser(completed: {currUser in self.user})
-        
-        //print (currUser)
-
-        
+        print (currUser)
+      
+        self.teamListTableView.reloadData()
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {

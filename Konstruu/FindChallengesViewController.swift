@@ -60,7 +60,16 @@ class FindChallengesViewController: UIViewController, UITableViewDataSource, UIT
             self?.challenges = challenges
         })
     }
-    
+  
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        challengeTableView.reloadData()
+        API.getAllChallenges(completed: { [weak self] challenges in
+          self?.challenges = challenges
+          self?.challengeTableView.reloadData()
+        })
+    }
+  
     func addChallenge() {
         
         print (user as Any)
