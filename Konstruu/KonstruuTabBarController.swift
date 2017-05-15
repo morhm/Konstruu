@@ -65,7 +65,8 @@ class KonstruuTabBarController: UITabBarController, UITabBarControllerDelegate {
         
         let createChallengeNavigationController = UINavigationController()
         createChallengeNavigationController.viewControllers = [createChallengeVC]
-      
+
+        
         // my new code
         /*let challengeCategoriesVC = ChallengeCategoriesViewController(nibName: "ChallengeCategoriesViewController", bundle: nil)
         let challengeCategoriesTabBarItem = UITabBarItem(title: "Find Challenges", image: #imageLiteral(resourceName: "Search"), tag: 3)
@@ -82,7 +83,6 @@ class KonstruuTabBarController: UITabBarController, UITabBarControllerDelegate {
         createChallengeVC.navigationItem.rightBarButtonItem = KonstruuTabBarController.messagingButtonItem
       
         self.viewControllers = [profileNavigationController, teamsNavigationController, findChallengesNavigationController, createChallengeNavigationController]
- 
     }
     
     func findChallengesWasClicked() {
