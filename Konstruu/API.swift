@@ -24,8 +24,9 @@ class API {
                  "location": "Hell, MI",
                  "school": "Wissahickon High School",
                  "skills": {
-                     "iOS Development": true,
-                     "git": true,
+                     "0": "iOS Development",
+                     "1": "git",
+                     "2": "Javascript"
                  },
                  "likedChallengeKeys": {
                      "3": true
@@ -36,7 +37,7 @@ class API {
                  "badges": {
                      "Challenge Guru": true
                  }
-                 "searchText": "Mark Orozco blah@blah.com Hell, MI Wissahickon High School iOS Development git"
+                 "searchText": "Mark Orozco blah@blah.com Hell, MI Wissahickon High School iOS Development git Javascript"
              }
          },
          "teams": {
@@ -64,14 +65,6 @@ class API {
                      "Frog and Code": true
                  }
                  "searchText": "Mobile app to help geo-tag graffiti People can drop pins on a map to help remove grafitti. sponsored mobile"
-             }
-         },
-         "skills": {
-             "iOS Development": {
-                 "1": true
-             },
-             "git": {
-                 "1": true
              }
          },
          "categories": {
@@ -165,9 +158,9 @@ class API {
          "location": "",
          "school": "",
          "skills": ["skill name", "skill name"],
-         "likedChallengeKeys": ["challenge key", "challenge key"],
-         "badges": ["badge name", "badge name"],
-         "teamKeys": ["team key", "team key"]
+         "likedChallengeKeys": ["challenge key": true, "challenge key": true],
+         "badges": ["badge name": true, "badge name": true],
+         "teamKeys": ["team key": true, "team key": true]
      ]
      */
     class func createUser(userInfo: Dictionary<String, AnyObject>) -> User {
@@ -181,14 +174,17 @@ class API {
     
     /* Dictionary Format:
      [
-         "name": "",                                REQUIRED
+         "name": "",                                                REQUIRED
          "desc": "",
          "photoURL": "",
          "email": "",
+         "location": "",
+         "school": "",
          "skills": ["skill name", "skill name"],
-         "badges": ["badge name", "badge name"],
-         "teamKeys": ["team key", "team key"]
-         ]
+         "likedChallengeKeys": ["challenge key": true, "challenge key": true],
+         "badges": ["badge name": true, "badge name": true],
+         "teamKeys": ["team key": true, "team key": true]
+     ]
      */
     class func createUserWithKey(_ key: String, userInfo: Dictionary<String, AnyObject>) -> User {
         let userReference = usersReference.child(key)
@@ -196,6 +192,23 @@ class API {
         let user = User(key: key, dictionary: userInfo)
         user.setSearchText()
         return user
+    }
+    
+    // model use only
+    class func getUsersInList(userKeys: [String], index: Int, users: [User], completed: (([User]) -> Void)?) {
+        var currentUsers = users
+        if index >= userKeys.count {
+            completed?(users)
+        } else {
+            let key = userKeys[index]
+            usersReference.child(key).observeSingleEvent(of: .value, with: { snapshot in
+                if let dictionary = snapshot.value as? Dictionary<String, AnyObject> {
+                    let user = User(key: key, dictionary: dictionary)
+                    currentUsers.append(user)
+                }
+                getUsersInList(userKeys: userKeys, index: index + 1, users: currentUsers, completed: completed)
+            })
+        }
     }
     
     // MARK: Team
@@ -213,6 +226,7 @@ class API {
     }
     
     // reference: http://www.appcoda.com/firebase/
+    // model use only
     class func getTeamsInList(teamKeys: [String], index: Int, teams: [Team], completed: (([Team]) -> Void)?) {
         var currentTeams = teams
         if index >= teamKeys.count {
@@ -234,7 +248,7 @@ class API {
          "name": "",                            REQUIRED
          "open": true,
          "challengeKey": "challenge key",       REQUIRED
-         "userKeys": ["user key", "user key"]
+         "userKeys": ["user key": true, "user key": true]
      ]
      */
     class func createTeam(teamInfo: Dictionary<String, AnyObject>) -> Team {
@@ -317,9 +331,9 @@ class API {
      [
          "title": "",                                       REQUIRED
          "desc": "",                                        REQUIRED
-         "cateogires": ["category name", "category name"],
-         "likesUserKeys": ["user key", "user key"],
-         "teamKeys": ["team key", "team key"]
+         "cateogires": ["category name": true, "category name": true],
+         "likesUserKeys": ["user key": true, "user key": true],
+         "teamKeys": ["team key": true, "team key": true]
      ]
      */
     class func createChallenge(challengeInfo: Dictionary<String, AnyObject>) -> Challenge {
@@ -329,33 +343,6 @@ class API {
         let challenge = Challenge(key: key, dictionary: challengeInfo)
         challenge.setSearchText()
         return challenge
-    }
-    
-    // MARK: Skills
-    
-    class func getUsersWithSkill(_ skill: String, completed: (([User]) -> Void)?) {
-        skillsReference.child(skill).observeSingleEvent(of: .value, with: { snapshot in
-            if let dictionary = snapshot.value as? Dictionary<String, AnyObject> {
-                let userKeys = Array(dictionary.keys)
-                getUsersInList(userKeys: userKeys, index: 0, users: [], completed: completed)
-            }
-        })
-    }
-    
-    private class func getUsersInList(userKeys: [String], index: Int, users: [User], completed: (([User]) -> Void)?) {
-        var currentUsers = users
-        if index >= userKeys.count {
-            completed?(users)
-        } else {
-            let key = userKeys[index]
-            usersReference.child(key).observeSingleEvent(of: .value, with: { snapshot in
-                if let dictionary = snapshot.value as? Dictionary<String, AnyObject> {
-                    let user = User(key: key, dictionary: dictionary)
-                    currentUsers.append(user)
-                }
-                getUsersInList(userKeys: userKeys, index: index + 1, users: currentUsers, completed: completed)
-            })
-        }
     }
     
     // MARK: Categories

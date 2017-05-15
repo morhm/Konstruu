@@ -57,8 +57,8 @@ class User: CustomStringConvertible {
             self.school = school
         }
         
-        if let skillsDictionary = dictionary["skills"] as? Dictionary<String, AnyObject> {
-            self.skills = self.skills + Array(skillsDictionary.keys)
+        if let skills = dictionary["skills"] as? Array<String> {
+            self.skills = self.skills + skills
         }
         
         if let likedChallengeKeysDictionary = dictionary["likedChallengeKeys"] as? Dictionary<String, AnyObject> {
@@ -141,22 +141,14 @@ class User: CustomStringConvertible {
         profileImageReference.put(imageData, metadata: nil, completion: completed)
     }
     
-    func addSkill(_ skill: String) {
-        self.skills.append(skill)
-        reference.child("skills").child(skill).setValue(true)
-        API.skillsReference.child(skill).child(key).setValue(true)
-        
-        setSearchText()
-    }
-    
-    func removeSkill(_ skill: String) {
-        if let index = skills.index(of: skill) {
-            skills.remove(at: index)
+    func updateSkill(at index: Int, to skill: String) {
+        if index >= 0, index < skills.count {
+            skills[index] = skill
+            reference.child("skills").setValue(skills)
+        } else if index == skills.count {
+            skills.append(skill)
+            reference.child("skills").setValue(skills)
         }
-        reference.child("skills").child(skill).removeValue()
-        API.skillsReference.child(skill).child(key).removeValue()
-        
-        setSearchText()
     }
     
     func likeChallenge(_ challenge: Challenge) {
@@ -234,9 +226,13 @@ class User: CustomStringConvertible {
             "desc": desc,
             "photoURL": String(describing: photoURL),
             "email": email,
+            "location": location,
+            "school": school,
             "skills": String(describing: skills),
+            "likedChallengeKeys": String(describing: likedChallengeKeys),
             "badges": String(describing: badges),
-            "teamKeys": String(describing: teamKeys)
+            "teamKeys": String(describing: teamKeys),
+            "searchText": searchText
         ]
         return String(describing: data)
     } }

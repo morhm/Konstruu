@@ -362,10 +362,10 @@
 		68C8E5711E64194800047901 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				CA1B47841EBBD37400353BD3 /* Team List Controller */,
-				618FBA411E732F0400B2F652 /* Tab Bar Controller */,
 				61592C6F1E711952008B89C6 /* Login Page */,
+				618FBA411E732F0400B2F652 /* Tab Bar Controller */,
 				61592C701E71195B008B89C6 /* Profile Page */,
+				CA1B47841EBBD37400353BD3 /* Team List Controller */,
 				CA7915A41EB074C9002F8318 /* Challenge Categories */,
 				61592C711E711965008B89C6 /* Find Challenges Page */,
 				CA7915A31EB074C2002F8318 /* Team Details */,
