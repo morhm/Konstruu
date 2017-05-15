@@ -251,12 +251,16 @@ class API {
          "userKeys": ["user key": true, "user key": true]
      ]
      */
+    
+    
     class func createTeam(teamInfo: Dictionary<String, AnyObject>) -> Team {
         let teamReference = teamsReference.childByAutoId()
         let key = teamReference.key
         teamReference.setValue(teamInfo)
         return Team(key: key, dictionary: teamInfo)
     }
+    
+    
     
     // MARK: Challenge
     
@@ -269,14 +273,15 @@ class API {
                 
                 // get the searchText for this user
                 if let dictionary = childSnapshot.value as? Dictionary<String, AnyObject> {
+                    
                     if let searchText = dictionary["searchText"] as? String {
-                        
                         // check for the keyword in the searchText
                         if searchText.range(of: keyword) != nil {
                             let match = Challenge(key: childSnapshot.key, dictionary: dictionary)
                             matches.append(match)
                         }
                     }
+                    
                 }
             }
             

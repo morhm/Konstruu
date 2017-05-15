@@ -17,28 +17,40 @@ class TeamListViewController: UIViewController, UITableViewDataSource, UITableVi
 
     var user: User? {
         didSet {
+            
           
         }
     }
     
+    
+    
+    @IBOutlet weak var teamListTableView: UITableView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        print(user?.teamKeys.count ?? 0)
-        
         self.edgesForExtendedLayout = []
         self.title = "Your Teams"
         
-        teamsTableView.register(UINib(nibName: "TeamsTableViewCell", bundle: nil), forCellReuseIdentifier: "team")
+        // todo - how do i get current user into new team??
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Add Team", style: .plain, target: self, action: #selector(addTeam))
+        
+        teamListTableView.register(UINib(nibName: "TeamsTableViewCell", bundle: nil), forCellReuseIdentifier: "teams")
     }
     
-    @IBOutlet weak var teamsTableView: UITableView! {
-        didSet {
-            teamsTableView.dataSource = self
-            teamsTableView.delegate = self
-            teamsTableView.rowHeight = UITableViewAutomaticDimension
-            teamsTableView.estimatedRowHeight = 100
-        }
+    func addTeam() {
+        print ("yayy adding team!")
+        
+        
+        
+        //let team = API.createTeam(teamInfo: ["name": "Mark-made Team" as AnyObject, "open": true as AnyObject, "challengeKey": "not-a-key" as AnyObject])
+        
+        //print (user)
+        
+        //let currUser = API.getCurrentUser(completed: {currUser in self.user})
+        
+        //print (currUser)
+
+        
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -52,7 +64,7 @@ class TeamListViewController: UIViewController, UITableViewDataSource, UITableVi
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "team", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "teams", for: indexPath)
         if let teamsCell = (cell as? TeamsTableViewCell),
             let teamKey = user?.teamKeys[indexPath.row]
                 {

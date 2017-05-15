@@ -13,7 +13,7 @@ private extension CGFloat {
     static let titleHeightConstraint:CGFloat = 45.0
     static let challengeDescriptionHeightConstraint:CGFloat = 140.0
     static let customButtonHeightConstraint:CGFloat = 30.0
-    static let teamsTableViewHeightConstraint:CGFloat = 120.0
+    static let teamsTableViewHeightConstraint:CGFloat = 150.0
 }
 
 class ChallengeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
@@ -30,8 +30,9 @@ class ChallengeViewController: UIViewController, UITableViewDelegate, UITableVie
     
     // MARK: - Constants
     
-    private let titlePlaceholderText = "I am a challenge"
+    private let titlePlaceholderText = "I am a challenge I am a challenge I am a challenge I am a challenge"
     private let descriptionPlaceholderText = "I am a description I am a description I am a description I am a description I am a description I am a description I am a description I am a descriptionI am a description I am a description I am a description I am a description I am a description I am a description I am a description I am a description"
+    private let teamTableLabelText = "Teams working on this challenge"
     private let placeholderColor = UIColor.gray
     
     // MARK: - View controller lifecycle
@@ -54,8 +55,12 @@ class ChallengeViewController: UIViewController, UITableViewDelegate, UITableVie
         challengeTitleLabel.text = self.titlePlaceholderText
         challengeTitleLabel.textColor =  UIColor.black
         challengeTitleLabel.textAlignment = .left
-        challengeTitleLabel.font = UIFont.konstruuFontWithSize(24.0)
+        challengeTitleLabel.numberOfLines = 3
         
+        challengeTitleLabel.allowsDefaultTighteningForTruncation = true
+        challengeTitleLabel.adjustsFontSizeToFitWidth = true
+        
+        challengeTitleLabel.font = UIFont.konstruuFontWithSize(24.0)
         challengeTitleLabel.translatesAutoresizingMaskIntoConstraints = false
         return challengeTitleLabel
         } ()
@@ -83,6 +88,12 @@ class ChallengeViewController: UIViewController, UITableViewDelegate, UITableVie
       return createTeamButton
     }()
     
+    func createTeam() {
+        let createTeamVC = CreateTeamViewController()
+        self.navigationController?.pushViewController(createTeamVC, animated: true)
+        createTeamVC.navigationItem.rightBarButtonItem = KonstruuTabBarController.messagingButtonItem
+    }
+    
     private lazy var bookmarkButton:
         ChallengeButton = { [unowned self] in
             let bookmarkButton = ChallengeButton(challengeButtonType: ChallengeButtonType.bookmark_challenge)
@@ -92,6 +103,18 @@ class ChallengeViewController: UIViewController, UITableViewDelegate, UITableVie
             bookmarkButton.translatesAutoresizingMaskIntoConstraints = false
             return bookmarkButton
     }()
+    
+    private lazy var teamsTableLabel: UILabel = { [unowned self] in
+        let teamsTableLabel = UILabel()
+        teamsTableLabel.text = self.teamTableLabelText
+        teamsTableLabel.textColor =  UIColor.gray
+        teamsTableLabel.textAlignment = .left
+        teamsTableLabel.font = UIFont.konstruuFontWithSize(14.0)
+        
+        teamsTableLabel.translatesAutoresizingMaskIntoConstraints = false
+        return teamsTableLabel
+    }()
+    
     
     @IBOutlet weak var teamsTableView: UITableView! {
         didSet {
@@ -148,10 +171,22 @@ class ChallengeViewController: UIViewController, UITableViewDelegate, UITableVie
         //height
         view.addConstraint(NSLayoutConstraint(item:bookmarkButton, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: .customButtonHeightConstraint))
         
+        // teamsTableLabel
+        
+        //top
+        view.addConstraint(NSLayoutConstraint(item:teamsTableLabel, attribute:.top, relatedBy:.equal, toItem: bookmarkButton, attribute:.bottom, multiplier: 1, constant: (2 * .marginConstraint)))
+        //left
+        view.addConstraint(NSLayoutConstraint(item:teamsTableLabel, attribute: .left, relatedBy: .equal, toItem: view, attribute:.left, multiplier: 1, constant: .marginConstraint))
+        //right
+        view.addConstraint(NSLayoutConstraint(item:teamsTableLabel, attribute: .right, relatedBy: .equal, toItem: view, attribute: .right, multiplier: 1, constant: .marginConstraint))
+        //height
+        view.addConstraint(NSLayoutConstraint(item:teamsTableLabel, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: .customButtonHeightConstraint))
+
+        
         // teamsTableView
         
         //top
-        view.addConstraint(NSLayoutConstraint(item:teamsTableView, attribute:.top, relatedBy:.equal, toItem: bookmarkButton, attribute:.bottom, multiplier: 1, constant: (2 * .marginConstraint)))
+        view.addConstraint(NSLayoutConstraint(item:teamsTableView, attribute:.top, relatedBy:.equal, toItem: teamsTableLabel, attribute:.bottom, multiplier: 1, constant: .marginConstraint))
         //left
         view.addConstraint(NSLayoutConstraint(item:teamsTableView, attribute: .left, relatedBy: .equal, toItem: view, attribute:.left, multiplier: 1, constant: .marginConstraint))
         //right
@@ -164,9 +199,26 @@ class ChallengeViewController: UIViewController, UITableViewDelegate, UITableVie
     
     // MARK: - Actions
     
-    func createTeam() {
-        print("creating team")
-    }
+    /*func createTeam() {
+        //let team = API.createTeam(teamInfo: ["name": "Mark-made Team" as AnyObject, "open": true as AnyObject, "challengeKey": "not-a-key" as AnyObject])
+        
+        API.getCurrentUser(completed: { user in
+            if user != nil {
+                let team = API.createTeam(teamInfo: ["name": "Mark-made Team" as AnyObject, "open": true as AnyObject, "challengeKey": self.challenge?.key as AnyObject])
+                
+                team.addUser(user!)
+                
+                print ("user not nil")
+            }
+            else {
+                print ("user nil")
+            }
+        })
+        
+        print (challenge?.key ?? 0)
+        
+        print ("added user to new team")
+    } */
     
     func bookmarkChallenge() {
         print("bookmark challenge")
@@ -181,6 +233,7 @@ class ChallengeViewController: UIViewController, UITableViewDelegate, UITableVie
         view.addSubview(challengeDescriptionLabel)
         view.addSubview(createTeamButton)
         view.addSubview(bookmarkButton)
+        view.addSubview(teamsTableLabel)
     }
     
     // MARK: - Table view data source

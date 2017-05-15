@@ -51,7 +51,8 @@ class LoginViewController: UIViewController, LoginButtonDelegate {
                 print("failed in loginWithFacebook") // DEBUGGING
                 print(error.debugDescription) // DEBUGGING
             } else {
-                print(String(describing: firebaseAuthUser!.displayName)) // DEBUGGING
+                print(String(describing:
+                    firebaseAuthUser!.displayName)) // DEBUGGING
                 print(String(describing: firebaseAuthUser!.email)) // DEBUGGING
                 API.getUserWithKey(firebaseAuthUser!.uid, completed: { [weak self] user in
                     if user != nil {
