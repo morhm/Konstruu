@@ -93,7 +93,7 @@ class ChallengeViewController: UIViewController, UITableViewDelegate, UITableVie
         ChallengeButton = { [unowned self] in
       let createTeamButton = ChallengeButton(challengeButtonType: ChallengeButtonType.create_team)
       createTeamButton.backgroundColor = UIColor.white
-            createTeamButton.addTarget(self, action: #selector(createTeam), for: UIControlEvents.touchUpInside)
+      createTeamButton.addTarget(self, action: #selector(createTeam), for: UIControlEvents.touchUpInside)
             
       createTeamButton.translatesAutoresizingMaskIntoConstraints = false
       return createTeamButton

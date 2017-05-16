@@ -32,11 +32,18 @@ class TeamViewController: UIViewController, UICollectionViewDelegate, UICollecti
         usersCollectionView.register(UINib(nibName: "UserCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "user")
         progressPostsTableView.register(UINib(nibName: "ProgressPostTableViewCell", bundle: nil), forCellReuseIdentifier: "progressPost")
         updateUI()
+        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "new team page", style: .plain, target: self, action: #selector(seeNewTeamPage))
       
         addSubviews()
         addConstraints()
     }
-  
+    
+    func seeNewTeamPage() {
+        let newTeamVC = NewTeamViewController()
+        self.navigationController?.pushViewController(newTeamVC, animated: true)
+    }
+    
     func addSubviews() {
       view.addSubview(backgroundView)
       view.sendSubview(toBack: backgroundView)
