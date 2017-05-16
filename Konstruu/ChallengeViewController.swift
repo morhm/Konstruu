@@ -29,7 +29,6 @@ class ChallengeViewController: UIViewController, UITableViewDelegate, UITableVie
     var challenge: Challenge? {
         didSet {
             updateUI()
-            teamsTableView?.reloadData()
         }
     }
     
@@ -241,9 +240,11 @@ class ChallengeViewController: UIViewController, UITableViewDelegate, UITableVie
     
     
     private func updateUI() {
-      
+        challengeTitleLabel.text = challenge?.title
+        challengeDescriptionLabel.text = challenge?.desc
+        teamsTableView?.reloadData()
     }
-    
+  
     func addSubviews() {
         view.addSubview(challengeTitleLabel)
         view.addSubview(challengeDescriptionLabel)
