@@ -220,7 +220,16 @@ class CreateTeamViewController: UIViewController, UITextViewDelegate {
     func createTeam() {
       //TODO: add description information for the team!
       
-      let teamInfo: Dictionary<String, AnyObject> = ["name": "New Team" as AnyObject, "open": openTeamToggle.isOn as AnyObject, "challengeKey": challenge!.key as AnyObject]
+      var nameText = teamNameTextField.text
+      var descText = teamDescriptionTextView.text
+      if (teamNameTextField.textColor == placeholderColor) {
+        nameText = ""
+      }
+      if (teamDescriptionTextView.textColor == placeholderColor) {
+        descText = ""
+      }
+      
+      let teamInfo: Dictionary<String, AnyObject> = ["name": nameText as AnyObject, "open": openTeamToggle.isOn as AnyObject, "challengeKey": challenge!.key as AnyObject]
       let team = API.createTeam(teamInfo: teamInfo)
       team.addUser(user!)
       challenge?.addTeam(team) // TODO: remove when fixed in backend
@@ -233,23 +242,35 @@ class CreateTeamViewController: UIViewController, UITextViewDelegate {
     }
     
     // MARK: - Delegates
-    
+  
     
     func textViewDidBeginEditing(_ textView: UITextView) {
+        if textView.isEqual(teamNameTextField) {
+          if teamNameTextField.textColor == placeholderColor {
+            teamNameTextField.text = ""
+            teamNameTextField.textColor = UIColor.black
+          }
+        }
         if textView.isEqual(teamDescriptionTextView) {
-            if teamDescriptionTextView.textColor == placeholderColor {
-                teamDescriptionTextView.text = ""
-                teamDescriptionTextView.textColor = UIColor.black
-            }
+          if teamDescriptionTextView.textColor == placeholderColor {
+              teamDescriptionTextView.text = ""
+              teamDescriptionTextView.textColor = UIColor.black
+          }
         }
     }
     
     func textViewDidEndEditing(_ textView: UITextView) {
+        if textView.isEqual(teamNameTextField) {
+          if teamNameTextField.text.isEmpty {
+            teamNameTextField.text = namePlaceholderText
+            teamNameTextField.textColor = placeholderColor
+          }
+        }
         if textView.isEqual(teamDescriptionTextView) {
-            if teamDescriptionTextView.text.isEmpty {
-                teamDescriptionTextView.text = descriptionPlaceholderText
-                teamDescriptionTextView.textColor = placeholderColor
-            }
+          if teamDescriptionTextView.text.isEmpty {
+              teamDescriptionTextView.text = descriptionPlaceholderText
+              teamDescriptionTextView.textColor = placeholderColor
+          }
         }
     }
 }
