@@ -65,16 +65,17 @@ class TeamListViewController: UIViewController, UITableViewDataSource, UITableVi
         return cell
     }
   
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-      let teamVC = TeamViewController(nibName: "TeamViewController", bundle: nil)
-      if let teamKey = user?.teamKeys[indexPath.row] {
-        API.getTeamWithKey(teamKey, completed: { team in
-          teamVC.team = team
-          teamVC.navigationItem.rightBarButtonItem = KonstruuTabBarController.messagingButtonItem
-          self.navigationController?.pushViewController(teamVC, animated: true)
-        })
-      }
-  }
-  
-
+    func tableView(_ tableView: UITableView, didSelectRowAt
+        indexPath: IndexPath) {
+        let teamVC = TeamViewController(nibName: "TeamViewController", bundle: nil)
+        if let teamKey = user?.teamKeys[indexPath.row]
+            {
+                API.getTeamWithKey(teamKey, completed: { team in
+                    teamVC.team = team
+                    teamVC.navigationItem.rightBarButtonItem =
+                        KonstruuTabBarController.messagingButtonItem
+                    self.navigationController?.pushViewController(teamVC, animated: true)
+                })
+        }
+    }
 }
