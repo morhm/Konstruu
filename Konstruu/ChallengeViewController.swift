@@ -199,27 +199,6 @@ class ChallengeViewController: UIViewController, UITableViewDelegate, UITableVie
     
     // MARK: - Actions
     
-    /*func createTeam() {
-        //let team = API.createTeam(teamInfo: ["name": "Mark-made Team" as AnyObject, "open": true as AnyObject, "challengeKey": "not-a-key" as AnyObject])
-        
-        API.getCurrentUser(completed: { user in
-            if user != nil {
-                let team = API.createTeam(teamInfo: ["name": "Mark-made Team" as AnyObject, "open": true as AnyObject, "challengeKey": self.challenge?.key as AnyObject])
-                
-                team.addUser(user!)
-                
-                print ("user not nil")
-            }
-            else {
-                print ("user nil")
-            }
-        })
-        
-        print (challenge?.key ?? 0)
-        
-        print ("added user to new team")
-    } */
-    
     func bookmarkChallenge() {
         print("bookmark challenge")
     }

@@ -171,7 +171,17 @@ class CreateTeamViewController: UIViewController, UITextViewDelegate {
     }
     
     func createTeam() {
+        API.getCurrentUser(completed: { user in
+            let team = API.createTeam(teamInfo: ["name": "Mark-made Team" as AnyObject, "open": true as AnyObject, "challengeKey": "not-a-key" as AnyObject])
+            team.addUser(user!)
+        })
+        print ("added user to new team")
         
+        // todo: navigate to the new team page
+        
+        /*let createTeamVC = CreateTeamViewController()
+        self.navigationController?.pushViewController(createTeamVC, animated: true)
+        createTeamVC.navigationItem.rightBarButtonItem = KonstruuTabBarController.messagingButtonItem */
     }
     
     func doneClicked() {

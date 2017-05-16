@@ -39,7 +39,6 @@
 		61F7F87B1E6E06FB0017461F /* TeamViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 61F7F8791E6E06FB0017461F /* TeamViewController.xib */; };
 		61F7F87E1E6E076C0017461F /* CreateChallengeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61F7F87C1E6E076C0017461F /* CreateChallengeViewController.swift */; };
 		61F7F8821E6E077D0017461F /* CreateTeamViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61F7F8801E6E077D0017461F /* CreateTeamViewController.swift */; };
-		61F7F8831E6E077D0017461F /* CreateTeamViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 61F7F8811E6E077D0017461F /* CreateTeamViewController.xib */; };
 		63C9D1FF9CC1A80C8AADAB4C /* Pods_Konstruu.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F54197AF7908272DF974385 /* Pods_Konstruu.framework */; };
 		681085F51E9D239300FB32F0 /* ChallengeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 681085F41E9D239300FB32F0 /* ChallengeButton.swift */; };
 		681085F71E9D245000FB32F0 /* ScalableButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 681085F61E9D245000FB32F0 /* ScalableButton.swift */; };
@@ -123,7 +122,6 @@
 		61F7F8791E6E06FB0017461F /* TeamViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TeamViewController.xib; sourceTree = "<group>"; };
 		61F7F87C1E6E076C0017461F /* CreateChallengeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateChallengeViewController.swift; sourceTree = "<group>"; };
 		61F7F8801E6E077D0017461F /* CreateTeamViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateTeamViewController.swift; sourceTree = "<group>"; };
-		61F7F8811E6E077D0017461F /* CreateTeamViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CreateTeamViewController.xib; sourceTree = "<group>"; };
 		681085F41E9D239300FB32F0 /* ChallengeButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChallengeButton.swift; sourceTree = "<group>"; };
 		681085F61E9D245000FB32F0 /* ScalableButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScalableButton.swift; sourceTree = "<group>"; };
 		6874023A1EA6656600232634 /* UIFont+Helper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIFont+Helper.swift"; sourceTree = "<group>"; };
@@ -254,7 +252,6 @@
 			isa = PBXGroup;
 			children = (
 				61F7F8801E6E077D0017461F /* CreateTeamViewController.swift */,
-				61F7F8811E6E077D0017461F /* CreateTeamViewController.xib */,
 			);
 			name = "Create Team Page";
 			sourceTree = "<group>";
@@ -507,7 +504,6 @@
 				613B1B5A1E722F2A00544297 /* UserCollectionViewCell.xib in Resources */,
 				613B1B561E721A1E00544297 /* FindChallengesViewController.xib in Resources */,
 				6874024A1EA665EE00232634 /* OpenSans-Light.ttf in Resources */,
-				61F7F8831E6E077D0017461F /* CreateTeamViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
