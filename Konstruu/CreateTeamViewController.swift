@@ -17,7 +17,23 @@ private extension CGFloat {
 }
 
 class CreateTeamViewController: UIViewController, UITextViewDelegate {
-    
+  
+    // MARK: - Data
+  
+    var user: User? {
+      didSet {
+        
+      }
+    }
+  
+    var challenge: Challenge? {
+      didSet {
+//        updateUI()
+//        teamsTableView?.reloadData()
+      }
+    }
+  
+  
     // MARK: - Constants
     
     private let descriptionPlaceholderText = "Describe your team's mission and how they will solve the challenge"
@@ -171,7 +187,18 @@ class CreateTeamViewController: UIViewController, UITextViewDelegate {
     }
     
     func createTeam() {
-        
+      //TODO: add description information for the team!
+      
+      
+      let teamInfo: Dictionary<String, AnyObject> = ["name": "New Team" as AnyObject, "open": openTeamToggle.isOn as AnyObject, "challengeKey": challenge!.key as AnyObject]
+      let team = API.createTeam(teamInfo: teamInfo)
+      team.addUser(user!)
+      challenge?.addTeam(team) // TODO: remove when fixed in backend
+      
+      print("CHALLENGE KEY: \(challenge!.key)")
+      print("TEAM KEY:      \(challenge!.teamKeys)")
+      
+      self.navigationController?.popViewController(animated: true)
     }
     
     func doneClicked() {
@@ -182,7 +209,6 @@ class CreateTeamViewController: UIViewController, UITextViewDelegate {
     
     
     func textViewDidBeginEditing(_ textView: UITextView) {
-        
         if textView.isEqual(teamDescriptionTextView) {
             if teamDescriptionTextView.textColor == placeholderColor {
                 teamDescriptionTextView.text = ""

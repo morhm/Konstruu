@@ -22,35 +22,29 @@ class TeamListViewController: UIViewController, UITableViewDataSource, UITableVi
         }
     }
     
-    
-    
-    @IBOutlet weak var teamListTableView: UITableView!
-    
+    @IBOutlet weak var teamListTableView: UITableView! {
+      didSet {
+        teamListTableView.dataSource = self
+        teamListTableView.delegate = self
+  //      teamListTableView.rowHeight = UITableViewAutomaticDimension
+  //      teamListTableView.estimatedRowHeight = 150
+      }
+    }
+  
     override func viewDidLoad() {
         super.viewDidLoad()
         self.edgesForExtendedLayout = []
         self.title = "Your Teams"
-        
-        // todo - how do i get current user into new team??
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Add Team", style: .plain, target: self, action: #selector(addTeam))
-        
+      
         teamListTableView.register(UINib(nibName: "TeamsTableViewCell", bundle: nil), forCellReuseIdentifier: "teams")
     }
-    
-    func addTeam() {
-        print ("yayy adding team!")
+  
+    override func viewWillAppear(_ animated: Bool) {
+      super.viewWillAppear(animated)
       
-        let team = API.createTeam(teamInfo: ["name": "Mark-made Team" as AnyObject, "open": true as AnyObject, "challengeKey": "not-a-key" as AnyObject])
-      
-        print (user)
-        
-        let currUser = API.getCurrentUser(completed: {currUser in self.user})
-        
-        print (currUser)
-      
-        self.teamListTableView.reloadData()
+      self.teamListTableView.reloadData()
     }
-    
+  
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -58,6 +52,7 @@ class TeamListViewController: UIViewController, UITableViewDataSource, UITableVi
     
     /* Probably wrongo! */
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        print("There are currently \(user?.teamKeys.count) teams this user belongs to!")
         return user?.teamKeys.count ?? 0
     }
     

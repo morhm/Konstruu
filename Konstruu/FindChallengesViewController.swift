@@ -26,9 +26,6 @@ class FindChallengesViewController: UIViewController, UITableViewDataSource, UIT
     
     var user: User? {
         didSet {
-            
-            
-            
             print (user as Any)
             print (user?.key as Any)
             print (user?.teamKeys as Any)
@@ -53,8 +50,8 @@ class FindChallengesViewController: UIViewController, UITableViewDataSource, UIT
         self.edgesForExtendedLayout = []
         self.title = "Find Challenges"
         
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Add Challenge", style: .plain, target: self, action: #selector(addChallenge))
-        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: self, action: #selector(addChallenge))
+      
         challengeTableView.register(UINib(nibName: "ChallengeTableViewCell", bundle: nil), forCellReuseIdentifier: "challenge")
         API.getAllChallenges(completed: { [weak self] challenges in
             self?.challenges = challenges
@@ -85,16 +82,13 @@ class FindChallengesViewController: UIViewController, UITableViewDataSource, UIT
         print (user?.key as Any)
         print (user?.teamKeys as Any)
         print (user?.description as Any)
-        
-        
+      
 //        API.createChallenge(challengeInfo: ["title": "Test Challenge" as AnyObject, "desc": "Created for user \(user?.key)" as AnyObject])
-        
-        
-        
+      
         print("added challenge!!")
         //updateUI()
     }
-    
+  
     // MARK: - UI
     
     @IBOutlet weak var searchBar: UISearchBar! {
@@ -154,6 +148,7 @@ class FindChallengesViewController: UIViewController, UITableViewDataSource, UIT
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let challengeVC = ChallengeViewController(nibName: "ChallengeViewController", bundle: nil)
+        challengeVC.user = user
         challengeVC.challenge = challenges?[indexPath.row]
         challengeVC.navigationItem.rightBarButtonItem = KonstruuTabBarController.messagingButtonItem
         self.navigationController?.pushViewController(challengeVC, animated: true)
