@@ -48,11 +48,8 @@ class TeamListViewController: UIViewController, UITableViewDataSource, UITableVi
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
-    
-    
-    /* Probably wrongo! */
+  
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print("There are currently \(user?.teamKeys.count) teams this user belongs to!")
         return user?.teamKeys.count ?? 0
     }
     
@@ -67,7 +64,7 @@ class TeamListViewController: UIViewController, UITableViewDataSource, UITableVi
         }
         return cell
     }
-    
+  
     func tableView(_ tableView: UITableView, didSelectRowAt
         indexPath: IndexPath) {
         let teamVC = TeamViewController(nibName: "TeamViewController", bundle: nil)

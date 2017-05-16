@@ -35,15 +35,33 @@ class CreateTeamViewController: UIViewController, UITextViewDelegate {
   
   
     // MARK: - Constants
+  
+    private let namePlaceholderText = "What is your team name?"
     
     private let descriptionPlaceholderText = "Describe your team's mission and how they will solve the challenge"
     
     static let openTeamLabelText = "Is this team open to other users?"
     
     private let placeholderColor = UIColor.gray
-    
+  
     // MARK: - UI
-    
+  
+    private lazy var teamNameTextField: UITextView = { [unowned self] in
+      let teamNameTextField = UITextView()
+      teamNameTextField.text = self.namePlaceholderText
+      teamNameTextField.textColor =  self.placeholderColor
+      teamNameTextField.backgroundColor = UIColor.white
+      teamNameTextField.delegate = self
+      teamNameTextField.textAlignment = .left
+      teamNameTextField.font = UIFont.konstruuFontWithSize(14.0)
+      teamNameTextField.autocorrectionType = UITextAutocorrectionType.yes
+      teamNameTextField.autocapitalizationType = UITextAutocapitalizationType.words
+      
+      teamNameTextField.translatesAutoresizingMaskIntoConstraints = false
+      return teamNameTextField
+      } ()
+  
+  
     private lazy var teamDescriptionTextView: UITextView = { [unowned self] in
         let teamDescriptionTextView = UITextView()
         teamDescriptionTextView.text = self.descriptionPlaceholderText
@@ -120,6 +138,7 @@ class CreateTeamViewController: UIViewController, UITextViewDelegate {
     }
     
     func addSubviews() {
+        view.addSubview(teamNameTextField)
         view.addSubview(teamDescriptionTextView)
         view.addSubview(openTeamToggle)
         view.addSubview(openTeamLabel)
@@ -127,11 +146,23 @@ class CreateTeamViewController: UIViewController, UITextViewDelegate {
     }
     
     func addConstraints() {
+      
+        //teamNameTextField
+      
+        //top
+        view.addConstraint(NSLayoutConstraint(item:teamNameTextField, attribute:.top, relatedBy:.equal, toItem: view, attribute:.top, multiplier: 1, constant: .marginConstraint))
+        //left
+        view.addConstraint(NSLayoutConstraint(item:teamNameTextField, attribute:.left, relatedBy:.equal, toItem: view, attribute:.left, multiplier: 1, constant: .marginConstraint))
+        //right
+        view.addConstraint(NSLayoutConstraint(item:teamNameTextField, attribute:.right, relatedBy:.equal, toItem: view, attribute:.right, multiplier: 1, constant: .marginConstraint))
+        //height
+        view.addConstraint(NSLayoutConstraint(item:teamNameTextField, attribute:.height, relatedBy:.equal, toItem: nil, attribute:.notAnAttribute, multiplier: 1, constant: .nameTextFieldHeightConstraint))
         
+      
         //teamDescriptionTextView
         
         //top
-        view.addConstraint(NSLayoutConstraint(item:teamDescriptionTextView, attribute:.top, relatedBy:.equal, toItem: view, attribute:.top, multiplier: 1, constant: .marginConstraint))
+        view.addConstraint(NSLayoutConstraint(item:teamDescriptionTextView, attribute:.top, relatedBy:.equal, toItem: teamNameTextField, attribute:.bottom, multiplier: 1, constant: .marginConstraint))
         //left
         view.addConstraint(NSLayoutConstraint(item:teamDescriptionTextView, attribute:.left, relatedBy:.equal, toItem: view, attribute:.left, multiplier: 1, constant: .marginConstraint))
         //right
@@ -187,17 +218,23 @@ class CreateTeamViewController: UIViewController, UITextViewDelegate {
     }
     
     func createTeam() {
-        API.getCurrentUser(completed: { user in
-            let team = API.createTeam(teamInfo: ["name": "Mark-made Team" as AnyObject, "open": true as AnyObject, "challengeKey": "not-a-key" as AnyObject])
-            team.addUser(user!)
-        })
-        print ("added user to new team")
-        
-        // todo: navigate to the new team page
-        
-        /*let createTeamVC = CreateTeamViewController()
-        self.navigationController?.pushViewController(createTeamVC, animated: true)
-        createTeamVC.navigationItem.rightBarButtonItem = KonstruuTabBarController.messagingButtonItem */
+      //TODO: add description information for the team!
+      
+      var nameText = teamNameTextField.text
+      var descText = teamDescriptionTextView.text
+      if (teamNameTextField.textColor == placeholderColor) {
+        nameText = ""
+      }
+      if (teamDescriptionTextView.textColor == placeholderColor) {
+        descText = ""
+      }
+      
+      let teamInfo: Dictionary<String, AnyObject> = ["name": nameText as AnyObject, "open": openTeamToggle.isOn as AnyObject, "challengeKey": challenge!.key as AnyObject]
+      let team = API.createTeam(teamInfo: teamInfo)
+      team.addUser(user!)
+      challenge?.addTeam(team) // TODO: remove when fixed in backend
+      
+      self.navigationController?.popViewController(animated: true)
     }
     
     func doneClicked() {
@@ -205,23 +242,35 @@ class CreateTeamViewController: UIViewController, UITextViewDelegate {
     }
     
     // MARK: - Delegates
-    
+  
     
     func textViewDidBeginEditing(_ textView: UITextView) {
+        if textView.isEqual(teamNameTextField) {
+          if teamNameTextField.textColor == placeholderColor {
+            teamNameTextField.text = ""
+            teamNameTextField.textColor = UIColor.black
+          }
+        }
         if textView.isEqual(teamDescriptionTextView) {
-            if teamDescriptionTextView.textColor == placeholderColor {
-                teamDescriptionTextView.text = ""
-                teamDescriptionTextView.textColor = UIColor.black
-            }
+          if teamDescriptionTextView.textColor == placeholderColor {
+              teamDescriptionTextView.text = ""
+              teamDescriptionTextView.textColor = UIColor.black
+          }
         }
     }
     
     func textViewDidEndEditing(_ textView: UITextView) {
+        if textView.isEqual(teamNameTextField) {
+          if teamNameTextField.text.isEmpty {
+            teamNameTextField.text = namePlaceholderText
+            teamNameTextField.textColor = placeholderColor
+          }
+        }
         if textView.isEqual(teamDescriptionTextView) {
-            if teamDescriptionTextView.text.isEmpty {
-                teamDescriptionTextView.text = descriptionPlaceholderText
-                teamDescriptionTextView.textColor = placeholderColor
-            }
+          if teamDescriptionTextView.text.isEmpty {
+              teamDescriptionTextView.text = descriptionPlaceholderText
+              teamDescriptionTextView.textColor = placeholderColor
+          }
         }
     }
 }

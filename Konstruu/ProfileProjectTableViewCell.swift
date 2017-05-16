@@ -253,7 +253,6 @@ class ProfileProjectTableViewCell: UITableViewCell, UITableViewDelegate, UITable
   
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     return user?.teamKeys.count ?? 0
-    
   }
   
   func numberOfSections(in tableView: UITableView) -> Int {
