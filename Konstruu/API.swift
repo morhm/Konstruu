@@ -259,9 +259,7 @@ class API {
         teamReference.setValue(teamInfo)
         return Team(key: key, dictionary: teamInfo)
     }
-    
-    
-    
+  
     // MARK: Challenge
     
     class func searchChallenges(keyword: String, completed: ((([Challenge]) -> Void)?)) {

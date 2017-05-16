@@ -40,8 +40,8 @@ class KonstruuTabBarController: UITabBarController, UITabBarControllerDelegate {
         
        
         let teamsVC = TeamListViewController(nibName: "TeamListViewController", bundle: nil)
-        //teamsVC.user = user
-        
+        teamsVC.user = user
+      
         let teamsTabBarItem = UITabBarItem(title: "Teams", image: #imageLiteral(resourceName: "groupIcon"), tag: 2)
         teamsVC.tabBarItem = teamsTabBarItem
         
@@ -51,6 +51,7 @@ class KonstruuTabBarController: UITabBarController, UITabBarControllerDelegate {
       
         // Set up FindChallengesViewController with its UITabBarItem
         let findChallengesVC = FindChallengesViewController(nibName: "FindChallengesViewController", bundle: nil)
+        findChallengesVC.user = user
         let findChallengesTabBarItem = UITabBarItem(title: "Find Challenges", image: #imageLiteral(resourceName: "Search"), tag: 3)
         findChallengesVC.tabBarItem = findChallengesTabBarItem
         

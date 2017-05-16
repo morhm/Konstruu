@@ -19,11 +19,16 @@ private extension CGFloat {
 class ChallengeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     // MARK: - Model
-    
+  
+    var user: User? {
+      didSet {
+        
+      }
+    }
+  
     var challenge: Challenge? {
         didSet {
             updateUI()
-            teamsTableView?.reloadData()
         }
     }
     
@@ -46,6 +51,12 @@ class ChallengeViewController: UIViewController, UITableViewDelegate, UITableVie
         
         addSubviews()
         addConstraints()
+    }
+  
+    override func viewWillAppear(_ animated: Bool) {
+      super.viewWillAppear(animated)
+      
+      teamsTableView.reloadData()
     }
     
     // MARK: - UI
@@ -90,8 +101,11 @@ class ChallengeViewController: UIViewController, UITableViewDelegate, UITableVie
     
     func createTeam() {
         let createTeamVC = CreateTeamViewController()
+      
+        createTeamVC.user = user
+        createTeamVC.challenge = challenge
         self.navigationController?.pushViewController(createTeamVC, animated: true)
-        createTeamVC.navigationItem.rightBarButtonItem = KonstruuTabBarController.messagingButtonItem
+        // createTeamVC.navigationItem.rightBarButtonItem = KonstruuTabBarController.messagingButtonItem
     }
     
     private lazy var bookmarkButton:
@@ -205,8 +219,11 @@ class ChallengeViewController: UIViewController, UITableViewDelegate, UITableVie
     
     
     private func updateUI() {
+        challengeTitleLabel.text = challenge?.title
+        challengeDescriptionLabel.text = challenge?.desc
+        teamsTableView?.reloadData()
     }
-    
+  
     func addSubviews() {
         view.addSubview(challengeTitleLabel)
         view.addSubview(challengeDescriptionLabel)

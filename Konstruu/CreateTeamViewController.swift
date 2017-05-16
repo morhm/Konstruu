@@ -17,7 +17,23 @@ private extension CGFloat {
 }
 
 class CreateTeamViewController: UIViewController, UITextViewDelegate {
-    
+  
+    // MARK: - Data
+  
+    var user: User? {
+      didSet {
+        
+      }
+    }
+  
+    var challenge: Challenge? {
+      didSet {
+//        updateUI()
+//        teamsTableView?.reloadData()
+      }
+    }
+  
+  
     // MARK: - Constants
     
     private let descriptionPlaceholderText = "Describe your team's mission and how they will solve the challenge"
@@ -192,7 +208,6 @@ class CreateTeamViewController: UIViewController, UITextViewDelegate {
     
     
     func textViewDidBeginEditing(_ textView: UITextView) {
-        
         if textView.isEqual(teamDescriptionTextView) {
             if teamDescriptionTextView.textColor == placeholderColor {
                 teamDescriptionTextView.text = ""

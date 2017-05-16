@@ -200,8 +200,8 @@
 				687402581EAE803600232634 /* ProfileInfoTableViewCell.swift */,
 				6874025A1EAF014D00232634 /* ProfileSpecialityTableViewCell.swift */,
 				68EFF7751EAFB0CD003D7785 /* ProfileProjectTableViewCell.swift */,
-				687FC5131EC25FAD00B32B16 /* SingleSpecialtyTableViewCell.swift */,
 				687FC5151EC2603D00B32B16 /* SingleTeamTableViewCell.swift */,
+				687FC5131EC25FAD00B32B16 /* SingleSpecialtyTableViewCell.swift */,
 			);
 			name = "Profile Page";
 			sourceTree = "<group>";
@@ -448,7 +448,7 @@
 				TargetAttributes = {
 					68C8E5571E6408AA00047901 = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = SKEZDL7MYB;
+						DevelopmentTeam = TLAM246JYZ;
 						LastSwiftMigration = 0830;
 						ProvisioningStyle = Automatic;
 					};
@@ -684,7 +684,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -710,7 +710,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = SKEZDL7MYB;
+				DEVELOPMENT_TEAM = TLAM246JYZ;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -734,7 +734,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = SKEZDL7MYB;
+				DEVELOPMENT_TEAM = TLAM246JYZ;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",

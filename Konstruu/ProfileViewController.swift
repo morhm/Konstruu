@@ -123,6 +123,7 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
         case 1:
           return specialtyCell
         case 2:
+          projectCell.navController = self.navigationController
           return projectCell
         default:
           break

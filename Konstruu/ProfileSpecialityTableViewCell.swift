@@ -20,10 +20,10 @@ private extension CGFloat {
 //  static let imageViewHeightConstraint: CGFloat      = 80.0
 //  static let imageViewWidthConstraint: CGFloat       = 80.0
   
-  static let editButtonTopConstraint:CGFloat         = 5.0
+  static let editButtonTopConstraint:CGFloat         = 8.0
   static let editButtonRightConstraint:CGFloat       = 8.0
   static let editButtonHeightConstraint:CGFloat      = 30.0
-  static let editButtonWidthConstraint:CGFloat       = 80.0
+  static let editButtonWidthConstraint:CGFloat       = 60.0
   
   static let nameLabelTopConstraint:CGFloat           = 8.0
   static let nameLabelLeftConstraint:CGFloat          = 20.0
@@ -34,7 +34,7 @@ private extension CGFloat {
   static let descriptionLabelHeightConstraint:CGFloat = 55.0
 }
 
-class ProfileSpecialtyTableViewCell: UITableViewCell {
+class ProfileSpecialtyTableViewCell: UITableViewCell, UITextFieldDelegate {
   
   // MARK: - Data
   
@@ -80,16 +80,17 @@ class ProfileSpecialtyTableViewCell: UITableViewCell {
     editButton.setTitle("Edit", for: UIControlState())
     editButton.titleLabel!.font = UIFont.konstruuFontWithSize(15.0)
     editButton.backgroundColor = UIColor.konstruuDarkBlue()
-//    editButton.addTarget(self, action: #selector(toggleEditMode), for: UIControlEvents.touchUpInside)
+    editButton.addTarget(self, action: #selector(toggleEditMode), for: UIControlEvents.touchUpInside)
     
     editButton.translatesAutoresizingMaskIntoConstraints = false
     return editButton
     }()
   
-  private lazy var firstSpecialtyNameLabel : UILabel = { [unowned self] in
-    let specialtyLabel = UILabel()
+  private lazy var firstSpecialtyNameLabel : UITextField = { [unowned self] in
+    let specialtyLabel = UITextField()
+    specialtyLabel.isUserInteractionEnabled = false
     specialtyLabel.textColor = UIColor.black
-    specialtyLabel.text  = "1. " + (self.skills?[0] ?? "")
+    specialtyLabel.text  = self.skills?[0] ?? ""
     specialtyLabel.textAlignment = .left
     specialtyLabel.font = UIFont.konstruuLightFontWithSize(18.0)
     
@@ -97,10 +98,11 @@ class ProfileSpecialtyTableViewCell: UITableViewCell {
     return specialtyLabel
     }()
   
-  private lazy var secondSpecialtyNameLabel : UILabel = { [unowned self] in
-    let specialtyLabel = UILabel()
+  private lazy var secondSpecialtyNameLabel : UITextField = { [unowned self] in
+    let specialtyLabel = UITextField()
+    specialtyLabel.isUserInteractionEnabled = false
     specialtyLabel.textColor = UIColor.black
-    specialtyLabel.text  = "2. " + (self.skills?[1] ?? "")
+    specialtyLabel.text  = self.skills?[1] ?? ""
     specialtyLabel.textAlignment = .left
     specialtyLabel.font = UIFont.konstruuLightFontWithSize(18.0)
     
@@ -108,12 +110,14 @@ class ProfileSpecialtyTableViewCell: UITableViewCell {
     return specialtyLabel
     }()
   
-  private lazy var thirdSpecialtyNameLabel : UILabel = { [unowned self] in
-    let specialtyLabel = UILabel()
+  private lazy var thirdSpecialtyNameLabel : UITextField = { [unowned self] in
+    let specialtyLabel = UITextField()
+    specialtyLabel.isUserInteractionEnabled = false
     specialtyLabel.textColor = UIColor.black
-    specialtyLabel.text  = "3. " + (self.skills?[2] ?? "")
+    specialtyLabel.text  = self.skills?[2] ?? ""
     specialtyLabel.textAlignment = .left
     specialtyLabel.font = UIFont.konstruuLightFontWithSize(18.0)
+    
     
     specialtyLabel.translatesAutoresizingMaskIntoConstraints = false
     return specialtyLabel
@@ -122,15 +126,15 @@ class ProfileSpecialtyTableViewCell: UITableViewCell {
   var editingMode:Bool = false {
     didSet {
       if editingMode {
-        firstSpecialtyNameLabel.isHidden = true
-        secondSpecialtyNameLabel.isHidden = true
-        thirdSpecialtyNameLabel.isHidden = true
+        firstSpecialtyNameLabel.isUserInteractionEnabled = true
+        secondSpecialtyNameLabel.isUserInteractionEnabled = true
+        thirdSpecialtyNameLabel.isUserInteractionEnabled = true
         
 //        usernameTextField.isHidden = false
       } else {
-        firstSpecialtyNameLabel.isHidden = false
-        secondSpecialtyNameLabel.isHidden = false
-        thirdSpecialtyNameLabel.isHidden = false
+        firstSpecialtyNameLabel.isUserInteractionEnabled = false
+        secondSpecialtyNameLabel.isUserInteractionEnabled = false
+        thirdSpecialtyNameLabel.isUserInteractionEnabled = false
         
 //        usernameTextField.isHidden = true
       }
@@ -198,7 +202,7 @@ class ProfileSpecialtyTableViewCell: UITableViewCell {
     //top
     contentView.addConstraint(NSLayoutConstraint(item:editButton, attribute:.top, relatedBy:.equal, toItem: cardView, attribute:.top, multiplier: 1, constant: .editButtonTopConstraint))
     //right
-    contentView.addConstraint(NSLayoutConstraint(item:editButton, attribute:.right, relatedBy:.equal, toItem: contentView, attribute:.right, multiplier: 1, constant: .editButtonRightConstraint))
+    contentView.addConstraint(NSLayoutConstraint(item:editButton, attribute:.right, relatedBy:.equal, toItem: contentView, attribute:.right, multiplier: 1, constant: -.editButtonRightConstraint))
     //width
     contentView.addConstraint(NSLayoutConstraint(item:editButton, attribute:.width, relatedBy:.equal, toItem: nil, attribute:.notAnAttribute, multiplier: 1, constant: .editButtonWidthConstraint))
     //height
@@ -247,7 +251,7 @@ class ProfileSpecialtyTableViewCell: UITableViewCell {
 //    contentView.addConstraint(NSLayoutConstraint(item:secondSpecialtyDescriptionLabel, attribute:.top, relatedBy:.equal, toItem: secondSpecialtyNameLabel, attribute:.bottom, multiplier: 1, constant: .descriptionLabelTopConstraint))
 //    //height
 //    contentView.addConstraint(NSLayoutConstraint(item:secondSpecialtyDescriptionLabel, attribute:.height, relatedBy:.equal, toItem: nil, attribute:.notAnAttribute, multiplier: 1, constant: .descriptionLabelHeightConstraint))
-//    
+    
     //thirdSpecialtyNameLabel
     
     //left
@@ -269,7 +273,7 @@ class ProfileSpecialtyTableViewCell: UITableViewCell {
 //    contentView.addConstraint(NSLayoutConstraint(item:thirdSpecialtyDescriptionLabel, attribute:.top, relatedBy:.equal, toItem: thirdSpecialtyNameLabel, attribute:.bottom, multiplier: 1, constant: .descriptionLabelTopConstraint))
 //    //height
 //    contentView.addConstraint(NSLayoutConstraint(item:thirdSpecialtyDescriptionLabel, attribute:.height, relatedBy:.equal, toItem: nil, attribute:.notAnAttribute, multiplier: 1, constant: .descriptionLabelHeightConstraint))
-//    
+    
     super.updateConstraints()
   }
   
@@ -289,13 +293,9 @@ class ProfileSpecialtyTableViewCell: UITableViewCell {
   }
   
   func doneClicked() {
-//    user?.updateName(to: usernameTextField.text!)
-//    user?.updateDescription(to: descriptionTextView.text)
-//    
-//    usernameLabel.text = usernameTextField.text!
-//    educationLabel.text = educationTextField.text!
-//    locationLabel.text = locationTextField.text!
-//    descriptionLabel.text = descriptionTextView.text
+    user?.updateSkill(at: 0, to: firstSpecialtyNameLabel.text!)
+    user?.updateSkill(at: 1, to: secondSpecialtyNameLabel.text!)
+    user?.updateSkill(at: 2, to: thirdSpecialtyNameLabel.text!)
     
     contentView.endEditing(true)
   }
