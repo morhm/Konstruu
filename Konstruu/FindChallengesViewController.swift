@@ -51,6 +51,7 @@ class FindChallengesViewController: UIViewController, UITableViewDataSource, UIT
         self.title = "Find Challenges"
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: self, action: #selector(addChallenge))
+        navigationItem.leftBarButtonItem = KonstruuTabBarController.logoutButtonItem
       
         challengeTableView.register(UINib(nibName: "ChallengeTableViewCell", bundle: nil), forCellReuseIdentifier: "challenge")
         API.getAllChallenges(completed: { [weak self] challenges in
@@ -151,6 +152,7 @@ class FindChallengesViewController: UIViewController, UITableViewDataSource, UIT
         challengeVC.user = user
         challengeVC.challenge = challenges?[indexPath.row]
         challengeVC.navigationItem.rightBarButtonItem = KonstruuTabBarController.messagingButtonItem
+        challengeVC.navigationItem.leftBarButtonItem = KonstruuTabBarController.logoutButtonItem
         self.navigationController?.pushViewController(challengeVC, animated: true)
     }
     

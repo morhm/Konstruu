@@ -277,6 +277,7 @@ class ProfileProjectTableViewCell: UITableViewCell, UITableViewDelegate, UITable
       API.getTeamWithKey(teamKey, completed: { team in
         teamVC.team = team
         teamVC.navigationItem.rightBarButtonItem = KonstruuTabBarController.messagingButtonItem
+        teamVC.navigationItem.leftBarButtonItem = KonstruuTabBarController.logoutButtonItem
         self.navController?.pushViewController(teamVC, animated: true)
       })
     }

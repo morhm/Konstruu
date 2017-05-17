@@ -28,14 +28,29 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Set Background Color of window
         window?.backgroundColor = UIColor.white
         
-        // Allocate memory for an instance of the 'MainViewController' class
-        let mainViewController = LoginViewController()
+        API.getCurrentUser(completed: { [weak self] user in
+            if user != nil {
+                // Allocate memory for an instance of the 'MainViewController' class
+                let mainViewController = KonstruuTabBarController()
+                mainViewController.user = user
+                
+                // Set the root view controller of the app's window
+                self?.window!.rootViewController = mainViewController
+                
+                // Make the window visible
+                self?.window!.makeKeyAndVisible()
+            } else {
+                // Allocate memory for an instance of the 'MainViewController' class
+                let mainViewController = LoginViewController()
+                
+                // Set the root view controller of the app's window
+                self?.window!.rootViewController = mainViewController
+                
+                // Make the window visible
+                self?.window!.makeKeyAndVisible()
+            }
+        })
         
-        // Set the root view controller of the app's window
-        window!.rootViewController = mainViewController
-        
-        // Make the window visible
-        window!.makeKeyAndVisible()
         return true
     }
     

@@ -26,6 +26,7 @@ class ChallengeCategoriesViewController: UIViewController {
   @IBAction func findChallenges(_ sender: Any) {
     let findChallengesVC = FindChallengesViewController(nibName: "FindChallengesViewController", bundle: nil)
     findChallengesVC.navigationItem.rightBarButtonItem = KonstruuTabBarController.messagingButtonItem
+    findChallengesVC.navigationItem.leftBarButtonItem = KonstruuTabBarController.logoutButtonItem
     self.navigationController?.pushViewController(findChallengesVC, animated: true)
   }
   
@@ -33,6 +34,9 @@ class ChallengeCategoriesViewController: UIViewController {
   
   override func viewDidLoad() {
       super.viewDidLoad()
+    
+      self.navigationItem.rightBarButtonItem = KonstruuTabBarController.messagingButtonItem
+      self.navigationItem.leftBarButtonItem = KonstruuTabBarController.logoutButtonItem
   }
 
   override func didReceiveMemoryWarning() {
