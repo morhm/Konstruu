@@ -18,6 +18,7 @@ class Team: CustomStringConvertible {
     var profileImageReference: FIRStorageReference!
     var key: String!
     var name: String!
+    var desc: String?
     var open: Bool = true
     var challengeKey: String!
     var userKeys: [String] = []
@@ -27,6 +28,10 @@ class Team: CustomStringConvertible {
         
         if let name = dictionary["name"] as? String {
             self.name = name
+        }
+        
+        if let desc = dictionary["desc"] as? String {
+            self.desc = desc
         }
         
         if let open = dictionary["open"] as? Bool {
@@ -58,6 +63,11 @@ class Team: CustomStringConvertible {
     
     func updateProfileImage(to imageData: Data, completed: ((FIRStorageMetadata?, Error?) -> Void)?) {
         profileImageReference.put(imageData, metadata: nil, completion: completed)
+    }
+    
+    func updateDescription(to desc: String) {
+        self.desc = desc
+        reference.child("desc").setValue(desc)
     }
     
     func addUser(_ user: User) {
@@ -116,6 +126,7 @@ class Team: CustomStringConvertible {
         let data: Dictionary<String, AnyObject> = [
             "key": key as AnyObject,
             "name": name as AnyObject,
+            "desc": desc as AnyObject,
             "open": open as AnyObject,
             "challengeKey": challengeKey as AnyObject,
             "userKeys": userKeys as AnyObject

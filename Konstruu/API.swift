@@ -43,6 +43,7 @@ class API {
          "teams": {
              "2": {
                  "name": "Frog and Code",
+                 "desc": "Hello!",
                  "open": true, // looking for teammates
                  "challengeKey": "3",
                  "userKeys": {
@@ -246,17 +247,23 @@ class API {
     /* Dictionary Format:
      [
          "name": "",                            REQUIRED
+         "desc": "",
          "open": true,
          "challengeKey": "challenge key",       REQUIRED
          "userKeys": ["user key": true, "user key": true]
      ]
      */
-    
-    
+    // Also adds the team to the challenge in the database
     class func createTeam(teamInfo: Dictionary<String, AnyObject>) -> Team {
         let teamReference = teamsReference.childByAutoId()
         let key = teamReference.key
         teamReference.setValue(teamInfo)
+        
+        if let challengeKey = teamInfo["challengeKey"] as? String {
+            let challengeReference = challengesReference.child(challengeKey)
+            challengeReference.child("teamKeys").child(key).setValue(true)
+        }
+        
         return Team(key: key, dictionary: teamInfo)
     }
   
