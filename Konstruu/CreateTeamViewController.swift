@@ -232,7 +232,6 @@ class CreateTeamViewController: UIViewController, UITextViewDelegate {
       let teamInfo: Dictionary<String, AnyObject> = ["name": nameText as AnyObject, "open": openTeamToggle.isOn as AnyObject, "challengeKey": challenge!.key as AnyObject]
       let team = API.createTeam(teamInfo: teamInfo)
       team.addUser(user!)
-      challenge?.addTeam(team) // TODO: remove when fixed in backend
       
       self.navigationController?.popViewController(animated: true)
     }
