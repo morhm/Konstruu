@@ -151,6 +151,7 @@ class FindChallengesViewController: UIViewController, UITableViewDataSource, UIT
         challengeVC.user = user
         challengeVC.challenge = challenges?[indexPath.row]
         challengeVC.navigationItem.rightBarButtonItem = KonstruuTabBarController.messagingButtonItem
+        challengeVC.navigationItem.leftBarButtonItem = KonstruuTabBarController.logoutButtonItem
         self.navigationController?.pushViewController(challengeVC, animated: true)
     }
     

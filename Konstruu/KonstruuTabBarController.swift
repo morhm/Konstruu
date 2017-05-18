@@ -8,6 +8,7 @@
 
 import UIKit
 import Applozic
+import FirebaseAuth
 
 class KonstruuTabBarController: UITabBarController, UITabBarControllerDelegate {
 
@@ -18,6 +19,8 @@ class KonstruuTabBarController: UITabBarController, UITabBarControllerDelegate {
     var user: User?
     
     static let messagingButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "message-7"), style: .plain, target: self, action: #selector(showMessaging))
+    
+    static let logoutButtonItem = UIBarButtonItem(title: "Logout", style: .plain, target: self, action: #selector(logout))
     
     // MARK: - View controller lifecycle
     
@@ -76,12 +79,6 @@ class KonstruuTabBarController: UITabBarController, UITabBarControllerDelegate {
         let challengeCategoriesNavigationController = UINavigationController()
         challengeCategoriesNavigationController.viewControllers = [challengeCategoriesVC]
  */
-        
-        // Add messaging button to navigation bars
-        profileVC.navigationItem.rightBarButtonItem = KonstruuTabBarController.messagingButtonItem
-        teamsVC.navigationItem.rightBarButtonItem = KonstruuTabBarController.messagingButtonItem
-        findChallengesVC.navigationItem.rightBarButtonItem = KonstruuTabBarController.messagingButtonItem
-        createChallengeVC.navigationItem.rightBarButtonItem = KonstruuTabBarController.messagingButtonItem
       
         self.viewControllers = [profileNavigationController, teamsNavigationController, findChallengesNavigationController, createChallengeNavigationController]
     }
@@ -96,5 +93,15 @@ class KonstruuTabBarController: UITabBarController, UITabBarControllerDelegate {
     func showMessaging() {
         let chatManager = ALChatManager(applicationKey: ALChatManager.applicationId as NSString)
         chatManager.launchChat(self)
+    }
+    
+    func logout() {
+        do {
+            try FIRAuth.auth()?.signOut()
+            let loginVC = LoginViewController(nibName: "LoginViewController", bundle: nil)
+            present(loginVC, animated: true, completion: nil)
+        } catch {
+            print("error in logging out")
+        }
     }
 }

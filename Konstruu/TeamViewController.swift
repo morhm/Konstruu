@@ -34,6 +34,7 @@ class TeamViewController: UIViewController, UICollectionViewDelegate, UICollecti
         updateUI()
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "new team page", style: .plain, target: self, action: #selector(seeNewTeamPage))
+        navigationItem.leftBarButtonItem = KonstruuTabBarController.logoutButtonItem
       
         addSubviews()
         addConstraints()
@@ -132,6 +133,7 @@ class TeamViewController: UIViewController, UICollectionViewDelegate, UICollecti
             API.getUserWithKey(userKey, completed: { [weak self] user in
                 profileVC.user = user
                 profileVC.navigationItem.rightBarButtonItem = KonstruuTabBarController.messagingButtonItem
+                profileVC.navigationItem.leftBarButtonItem = KonstruuTabBarController.logoutButtonItem
                 self?.navigationController?.pushViewController(profileVC, animated: true)
             })
         }
@@ -145,6 +147,7 @@ class TeamViewController: UIViewController, UICollectionViewDelegate, UICollecti
             API.getChallengeWithKey(challengeKey, completed: { [weak self] challenge in
                 challengeVC.challenge = challenge
                 challengeVC.navigationItem.rightBarButtonItem = KonstruuTabBarController.messagingButtonItem
+                challengeVC.navigationItem.leftBarButtonItem = KonstruuTabBarController.logoutButtonItem
                 self?.navigationController?.pushViewController(challengeVC, animated: true)
             })
         }
