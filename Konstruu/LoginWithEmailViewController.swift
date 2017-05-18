@@ -22,7 +22,10 @@ class LoginWithEmailViewController: UIViewController {
         if let email = emailTextField.text, let password = passwordTextField.text {
             FIRAuth.auth()?.signIn(withEmail: email, password: password, completion: { [weak self] firebaseUser, error in
                 if error != nil || firebaseUser == nil {
-                    print(error!)
+                    print(error.debugDescription)
+                    let alert = UIAlertController(title: "Unable to Login", message: "\(error!.localizedDescription)", preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "Dismiss", style: .default, handler: nil))
+                    self?.present(alert, animated: true, completion: nil)
                 } else {
                     API.getUserWithKey(firebaseUser!.uid, completed: { user in
                         user?.registerForChat()
@@ -34,6 +37,11 @@ class LoginWithEmailViewController: UIViewController {
                 }
             })
         }
+    }
+    
+    @IBAction func cancel(_ sender: UIButton) {
+        let loginVC = LoginViewController(nibName: "LoginViewController", bundle: nil)
+        present(loginVC, animated: true, completion: nil)
     }
     
     // MARK: - View controller lifecycle

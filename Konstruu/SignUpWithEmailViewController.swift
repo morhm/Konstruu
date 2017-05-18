@@ -26,7 +26,10 @@ class SignUpWithEmailViewController: UIViewController {
         if let name = nameTextField.text, let email = emailTextField.text, let password = passwordTextField.text {
             FIRAuth.auth()?.createUser(withEmail: email, password: password, completion: { [weak self] firebaseUser, error in
                 if error != nil || firebaseUser == nil {
-                    print(error!)
+                    print(error.debugDescription)
+                    let alert = UIAlertController(title: "Unable to Sign Up", message: "\(error!.localizedDescription)", preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "Dismiss", style: .default, handler: nil))
+                    self?.present(alert, animated: true, completion: nil)
                 } else {
                     let userInfo: Dictionary<String, AnyObject> = ["name": name as AnyObject  , "email": firebaseUser!.email as AnyObject]
                     let user = API.createUserWithKey(firebaseUser!.uid, userInfo: userInfo)
@@ -65,6 +68,11 @@ class SignUpWithEmailViewController: UIViewController {
                 }
             })
         }
+    }
+    
+    @IBAction func cancel(_ sender: UIButton) {
+        let loginVC = LoginViewController(nibName: "LoginViewController", bundle: nil)
+        present(loginVC, animated: true, completion: nil)
     }
     
     private func addToolbarToKeyboard() {
