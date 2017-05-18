@@ -9,16 +9,9 @@
 import UIKit
 
 class TeamListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
-
-//    var teams: [Team]? {
-//        didSet {
-//        }
-//    }
-
+    
     var user: User? {
         didSet {
-            
-          
         }
     }
     

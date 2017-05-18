@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12118" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16B2659" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -16,7 +16,7 @@
             <rect key="frame" x="0.0" y="0.0" width="376" height="117"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="376" height="116.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="376" height="116"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Challenge Title" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xj6-l6-GaE" userLabel="titleLabel">
@@ -62,13 +62,21 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eHD-MI-gSq">
+                        <rect key="frame" x="59" y="91" width="11" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <constraints>
                     <constraint firstItem="4u5-ia-KYo" firstAttribute="centerX" secondItem="pay-Od-7gE" secondAttribute="centerX" id="0p8-Ch-TdV"/>
                     <constraint firstItem="bAm-2T-Pdm" firstAttribute="top" secondItem="pay-Od-7gE" secondAttribute="top" id="3Uf-1V-QyC"/>
                     <constraint firstItem="w8j-pe-UB4" firstAttribute="leading" secondItem="Y7g-Sz-jpy" secondAttribute="trailing" constant="14" id="BgO-65-M7O"/>
                     <constraint firstItem="Xj6-l6-GaE" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="FHN-g9-9ws"/>
+                    <constraint firstItem="eHD-MI-gSq" firstAttribute="leading" secondItem="bAm-2T-Pdm" secondAttribute="trailing" constant="25" id="GLz-V8-sOZ"/>
                     <constraint firstItem="pay-Od-7gE" firstAttribute="bottom" secondItem="Y7g-Sz-jpy" secondAttribute="bottom" id="Hbi-j4-7Ga"/>
+                    <constraint firstItem="eHD-MI-gSq" firstAttribute="baseline" secondItem="bAm-2T-Pdm" secondAttribute="baseline" constant="-2" id="O06-kl-VeF"/>
                     <constraint firstItem="4u5-ia-KYo" firstAttribute="top" secondItem="Xj6-l6-GaE" secondAttribute="bottom" constant="8" symbolic="YES" id="OOD-6b-LlF"/>
                     <constraint firstItem="pay-Od-7gE" firstAttribute="top" secondItem="Y7g-Sz-jpy" secondAttribute="top" id="QRE-Zo-CUj"/>
                     <constraint firstItem="4u5-ia-KYo" firstAttribute="leading" secondItem="bAm-2T-Pdm" secondAttribute="leading" id="Sm2-l0-fhD"/>
@@ -85,7 +93,11 @@
                 </constraints>
             </tableViewCellContentView>
             <connections>
+                <outlet property="bookmarkButton" destination="Y7g-Sz-jpy" id="l7h-e4-Lz2"/>
                 <outlet property="descriptionLabel" destination="4u5-ia-KYo" id="4iH-jl-biZ"/>
+                <outlet property="likeButton" destination="bAm-2T-Pdm" id="vCK-H3-Ssz"/>
+                <outlet property="likeCount" destination="eHD-MI-gSq" id="lEd-93-cmO"/>
+                <outlet property="shareButton" destination="w8j-pe-UB4" id="XND-eK-g8f"/>
                 <outlet property="titleLabel" destination="Xj6-l6-GaE" id="8fp-9F-krm"/>
             </connections>
             <point key="canvasLocation" x="55" y="13.5"/>

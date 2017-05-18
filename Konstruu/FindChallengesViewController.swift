@@ -26,22 +26,12 @@ class FindChallengesViewController: UIViewController, UITableViewDataSource, UIT
     
     var user: User? {
         didSet {
-            print (user as Any)
-            print (user?.key as Any)
-            print (user?.teamKeys as Any)
-            print (user?.description as Any)
+//            print (user as Any)
+//            print (user?.key as Any)
+//            print (user?.teamKeys as Any)
+//            print (user?.description as Any)
         }
     }
-    
-//    private func updateUI() {
-//        
-//        teamNameLabel?.text = team?.name
-//        if let challengeKey = team?.challengeKey {
-//            API.getChallengeWithKey(challengeKey, completed: { [weak self] challenge in
-//                self?.challengeButton?.setTitle(challenge?.title, for: UIControlState.normal)
-//            })
-//        }
-//    }
     
     // MARK: - View controller lifecycle
 
@@ -50,8 +40,6 @@ class FindChallengesViewController: UIViewController, UITableViewDataSource, UIT
         self.edgesForExtendedLayout = []
         self.title = "Find Challenges"
         
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: self, action: #selector(addChallenge))
-      
         challengeTableView.register(UINib(nibName: "ChallengeTableViewCell", bundle: nil), forCellReuseIdentifier: "challenge")
         API.getAllChallenges(completed: { [weak self] challenges in
             self?.challenges = challenges
@@ -66,29 +54,7 @@ class FindChallengesViewController: UIViewController, UITableViewDataSource, UIT
           self?.challengeTableView.reloadData()
         })
     }
-  
-    func addChallenge() {
-        
-        print (user as Any)
-        print (user?.key as Any)
-        print (user?.teamKeys as Any)
-        print (user?.description as Any)
-        
-        API.getCurrentUser(completed: { [weak self] user in self?.user = user })
-        
-        print ("after getCurrentUser")
-        
-        print (user as Any)
-        print (user?.key as Any)
-        print (user?.teamKeys as Any)
-        print (user?.description as Any)
-      
-//        API.createChallenge(challengeInfo: ["title": "Test Challenge" as AnyObject, "desc": "Created for user \(user?.key)" as AnyObject])
-      
-        print("added challenge!!")
-        //updateUI()
-    }
-  
+    
     // MARK: - UI
     
     @IBOutlet weak var searchBar: UISearchBar! {
@@ -137,13 +103,47 @@ class FindChallengesViewController: UIViewController, UITableViewDataSource, UIT
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "challenge", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "challenge", for: indexPath) as! ChallengeTableViewCell
         
-        if let challengeCell = (cell as? ChallengeTableViewCell) {
-            challengeCell.challenge = challenges?[indexPath.row]
-        }
+        cell.tag = indexPath.row
+        
+        cell.likeButton.tag = indexPath.row
+        cell.likeButton.addTarget(self, action: #selector(handleLikes), for: .touchUpInside)
+        
+        cell.bookmarkButton.tag = indexPath.row
+        cell.bookmarkButton.addTarget(self, action: #selector(bookmark), for: .touchUpInside)
+        
+        cell.shareButton.tag = indexPath.row
+        cell.shareButton.addTarget(self, action: #selector(share), for: .touchUpInside)
+        
+        
+        cell.challenge = challenges?[indexPath.row]
+        
+//        if let challengeCell = (cell) {
+//            challengeCell.challenge = challenges?[indexPath.row]
+//        }
         
         return cell
+    }
+    
+    @IBAction func handleLikes(sender: AnyObject){
+        print ("handling da lyke boo")
+        print(sender.tag)
+        sender.setTitle("Liked", for: UIControlState.normal)
+        
+        user?.likeChallenge((challenges?[sender.tag])!)
+        challengeTableView.reloadData()
+    }
+    
+    @IBAction func bookmark(sender: AnyObject) {
+        print ("bookmarking dooooood")
+        print (sender.tag)
+        sender.setTitle("bookmarked", for: UIControlState.normal)
+    }
+    
+    @IBAction func share(sender: AnyObject) {
+        print ("sharon ooh ooh")
+        print (sender.tag)
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

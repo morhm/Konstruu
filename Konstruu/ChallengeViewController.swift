@@ -105,7 +105,7 @@ class ChallengeViewController: UIViewController, UITableViewDelegate, UITableVie
         createTeamVC.user = user
         createTeamVC.challenge = challenge
         self.navigationController?.pushViewController(createTeamVC, animated: true)
-        // createTeamVC.navigationItem.rightBarButtonItem = KonstruuTabBarController.messagingButtonItem
+        createTeamVC.navigationItem.rightBarButtonItem = KonstruuTabBarController.messagingButtonItem
     }
     
     private lazy var bookmarkButton:
