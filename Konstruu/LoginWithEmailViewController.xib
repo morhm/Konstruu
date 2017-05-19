@@ -59,6 +59,13 @@
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress"/>
                 </textField>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FTa-Nq-5dT">
+                    <rect key="frame" x="163" y="312" width="48" height="30"/>
+                    <state key="normal" title="Cancel"/>
+                    <connections>
+                        <action selector="cancel:" destination="-1" eventType="touchUpInside" id="rH8-A0-vHG"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
@@ -66,6 +73,8 @@
                 <constraint firstItem="P7J-t8-qjT" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="94" id="5wd-wF-e6h"/>
                 <constraint firstAttribute="trailing" secondItem="P7J-t8-qjT" secondAttribute="trailing" constant="16" id="8vd-WB-S6M"/>
                 <constraint firstItem="P7J-t8-qjT" firstAttribute="trailing" secondItem="hSz-QX-32r" secondAttribute="trailing" id="9sp-Cf-4hL"/>
+                <constraint firstItem="FTa-Nq-5dT" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="QFb-mp-Ge8"/>
+                <constraint firstItem="FTa-Nq-5dT" firstAttribute="top" secondItem="64m-N0-qUk" secondAttribute="bottom" constant="23" id="RuR-Wz-8Ve"/>
                 <constraint firstItem="P7J-t8-qjT" firstAttribute="leading" secondItem="LE7-yN-7zm" secondAttribute="trailing" constant="8" symbolic="YES" id="Z28-lc-U2B"/>
                 <constraint firstItem="64m-N0-qUk" firstAttribute="top" secondItem="hSz-QX-32r" secondAttribute="bottom" constant="58" id="b04-Uf-9Ud"/>
                 <constraint firstItem="Mh7-tS-ri2" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="16" id="bHx-F4-Ql4"/>

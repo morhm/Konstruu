@@ -46,10 +46,12 @@ class LoginViewController: UIViewController, LoginButtonDelegate {
     
     private func loginWithFacebook(token: AccessToken) {
         let credential = FIRFacebookAuthProvider.credential(withAccessToken: token.authenticationToken)
-        FIRAuth.auth()?.signIn(with: credential, completion: { (firebaseAuthUser, error) in
+        FIRAuth.auth()?.signIn(with: credential, completion: { [weak self] (firebaseAuthUser, error) in
             if error != nil || firebaseAuthUser == nil {
-                print("failed in loginWithFacebook") // DEBUGGING
                 print(error.debugDescription) // DEBUGGING
+                let alert = UIAlertController(title: "Unable to Login", message: "\(error!.localizedDescription)", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "Dismiss", style: .default, handler: nil))
+                self?.present(alert, animated: true, completion: nil)
             } else {
                 print(String(describing:
                     firebaseAuthUser!.displayName)) // DEBUGGING
@@ -73,6 +75,9 @@ class LoginViewController: UIViewController, LoginButtonDelegate {
             switch result {
             case .failed(let error):
                 print(error.localizedDescription)
+                let alert = UIAlertController(title: "Unable to Sign Up", message: "\(error.localizedDescription)", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "Dismiss", style: .default, handler: nil))
+                self?.present(alert, animated: true, completion: nil)
             case .success(let value):
                 if let dictionary = value.dictionaryValue {
                     let userInfo: Dictionary<String, AnyObject> = ["name": dictionary["name"] as AnyObject, "email": dictionary["email"] as AnyObject]
