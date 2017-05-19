@@ -10,6 +10,8 @@ import UIKit
 
 class FindChallengesViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate {
     
+    var likes: [String]!
+    
     // MARK: - Model
     
     var challenges: [Challenge]? {
@@ -26,10 +28,7 @@ class FindChallengesViewController: UIViewController, UITableViewDataSource, UIT
     
     var user: User? {
         didSet {
-//            print (user as Any)
-//            print (user?.key as Any)
-//            print (user?.teamKeys as Any)
-//            print (user?.description as Any)
+            
         }
     }
     
@@ -41,9 +40,39 @@ class FindChallengesViewController: UIViewController, UITableViewDataSource, UIT
         self.title = "Find Challenges"
         
         challengeTableView.register(UINib(nibName: "ChallengeTableViewCell", bundle: nil), forCellReuseIdentifier: "challenge")
+        
         API.getAllChallenges(completed: { [weak self] challenges in
             self?.challenges = challenges
+            
+            print (challenges.count)
+            print (challenges)
+            
+            self?.likes = Array(repeating: "like", count: challenges.count)
+            
+            for i in 0...(challenges.count - 1) {
+                let currKey = (challenges[i].key)!
+                for key in (self?.user?.likedChallengeKeys)! {
+                    if currKey == key {
+                        self?.likes[i] = "unlike"
+                        break
+                    }
+                }
+            }
+            print (self?.likes)
         })
+        
+        
+        
+//        for i in 0...(likes.count) {
+//            let currKey = (challenges?[i].key)!
+//            for key in (user?.likedChallengeKeys)! {
+//                if currKey == key {
+//                    likes[i] = "unlike"
+//                    break
+//                }
+//            }
+//        }
+        
     }
   
     override func viewDidAppear(_ animated: Bool) {
@@ -108,6 +137,7 @@ class FindChallengesViewController: UIViewController, UITableViewDataSource, UIT
         cell.tag = indexPath.row
         
         cell.likeButton.tag = indexPath.row
+        cell.likeButton.setTitle(likes?[indexPath.row], for: .normal)
         cell.likeButton.addTarget(self, action: #selector(handleLikes), for: .touchUpInside)
         
         cell.bookmarkButton.tag = indexPath.row
@@ -127,15 +157,29 @@ class FindChallengesViewController: UIViewController, UITableViewDataSource, UIT
     }
     
     @IBAction func handleLikes(sender: AnyObject){
-        print ("handling da lyke boo")
-        print(sender.tag)
-        sender.setTitle("Liked", for: UIControlState.normal)
+        let selectedChallenge = challenges?[(sender.tag)!]
+        let challengeKey = (selectedChallenge?.key)!
         
-        user?.likeChallenge((challenges?[sender.tag])!)
+        for i in (user?.likedChallengeKeys)! {
+            if i == challengeKey {
+                print ("unliking")
+                user?.unlikeChallenge(selectedChallenge!)
+                likes?[sender.tag] = "like"
+                sender.setTitle(likes?[sender.tag], for: .normal)
+                challengeTableView.reloadData()
+                return
+            }
+        }
+        
+        print ("liking")
+        user?.likeChallenge(selectedChallenge!)
+        likes?[sender.tag] = "unlike"
+        sender.setTitle(likes?[sender.tag], for: .normal)
         challengeTableView.reloadData()
     }
     
     @IBAction func bookmark(sender: AnyObject) {
+        
         print ("bookmarking dooooood")
         print (sender.tag)
         sender.setTitle("bookmarked", for: UIControlState.normal)
@@ -151,7 +195,7 @@ class FindChallengesViewController: UIViewController, UITableViewDataSource, UIT
         challengeVC.user = user
         challengeVC.challenge = challenges?[indexPath.row]
         challengeVC.navigationItem.rightBarButtonItem = KonstruuTabBarController.messagingButtonItem
-        challengeVC.navigationItem.leftBarButtonItem = KonstruuTabBarController.logoutButtonItem
+        //challengeVC.navigationItem.leftBarButtonItem = KonstruuTabBarController.logoutButtonItem
         self.navigationController?.pushViewController(challengeVC, animated: true)
     }
     
