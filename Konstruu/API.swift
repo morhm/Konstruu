@@ -16,7 +16,7 @@ class API {
     /* Database Structure:
      {
          "users": {
-             "1": {
+             "USERKEY": {
                  "name": "Mark Orozco",
                  "desc": "Hi everyone!",
                  "photoURL": "blah.com",
@@ -29,10 +29,10 @@ class API {
                      "2": "Javascript"
                  },
                  "likedChallengeKeys": {
-                     "3": true
+                     "CHALLENGEKEY": true
                  }
                  "teamKeys": {
-                     "2": true
+                     "TEAMKEY": true
                  },
                  "badges": {
                      "Challenge Guru": true
@@ -41,18 +41,21 @@ class API {
              }
          },
          "teams": {
-             "2": {
+             "TEAMKEY": {
                  "name": "Frog and Code",
                  "desc": "Hello!",
                  "open": true, // looking for teammates
-                 "challengeKey": "3",
+                 "challengeKey": "CHALLENGEKEY",
                  "userKeys": {
-                     "1": true,
+                     "USERKEY": true
+                 },
+                 "requestUserKeys": {
+                     "USERKEY": true
                  }
              }
          },
          "challenges": {
-             "3": {
+             "CHALLENGEKEY": {
                  "title": "Mobile app to help geo-tag graffiti",
                  "desc": "People can drop pins on a map to help remove grafitti.",
                  "categories": {
@@ -60,7 +63,7 @@ class API {
                      "mobile": true
                  },
                  "likesUserKeys": {
-                     "1": true
+                     "USERKEY": true
                  },
                  "teamKeys": {
                      "Frog and Code": true
@@ -70,10 +73,10 @@ class API {
          },
          "categories": {
              "sponsored": {
-                 "3": true
+                 "CHALLENGEKEY": true
              },
              "mobile": {
-                 "3": true
+                 "CHALLENGEKEY": true
              },
          }
      }
@@ -250,7 +253,8 @@ class API {
          "desc": "",
          "open": true,
          "challengeKey": "challenge key",       REQUIRED
-         "userKeys": ["user key": true, "user key": true]
+         "userKeys": ["user key": true, "user key": true],
+         "requestUserKeys": ["user key": true, "user key": true]
      ]
      */
     // Also adds the team to the challenge in the database
@@ -273,10 +277,10 @@ class API {
         challengesReference.observeSingleEvent(of: .value, with: { snapshot in
             var matches: [Challenge] = []
             
-            // get all the users
+            // get all the challenges
             for childSnapshot in snapshot.children.allObjects as! [FIRDataSnapshot] {
                 
-                // get the searchText for this user
+                // get the searchText for this challenge
                 if let dictionary = childSnapshot.value as? Dictionary<String, AnyObject> {
                     
                     if let searchText = dictionary["searchText"] as? String {
