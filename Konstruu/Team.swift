@@ -116,7 +116,7 @@ class Team: CustomStringConvertible {
     
     // pseudonym for removeRequest
     func denyRequest(from user: User) {
-        
+        removeRequest(from: user)
     }
     
     func markAsOpen() {
