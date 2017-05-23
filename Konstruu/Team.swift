@@ -22,6 +22,7 @@ class Team: CustomStringConvertible {
     var open: Bool = true
     var challengeKey: String!
     var userKeys: [String] = []
+    var requestUserKeys: [String] = []
     
     init(key: String, dictionary: Dictionary<String, AnyObject>) {
         self.key = key
@@ -43,7 +44,11 @@ class Team: CustomStringConvertible {
         }
         
         if let userKeysDictionary = dictionary["userKeys"] as? Dictionary<String, AnyObject> {
-            self.userKeys = Array(userKeysDictionary.keys)
+            self.userKeys = self.userKeys + Array(userKeysDictionary.keys)
+        }
+        
+        if let requestUserKeysDictionary = dictionary["requestUserKeys"] as? Dictionary<String, AnyObject> {
+            self.requestUserKeys = self.requestUserKeys + Array(requestUserKeysDictionary.keys)
         }
         
         self.reference = API.teamsReference.child(self.key)
@@ -90,6 +95,30 @@ class Team: CustomStringConvertible {
         user.reference.child("teamKeys").child(key).removeValue()
     }
     
+    func addRequest(from user: User) {
+        requestUserKeys.append(user.key)
+        reference.child("requestUserKeys").child(user.key).setValue(true)
+    }
+    
+    // removes/denies a request (does not add the user to the team)
+    func removeRequest(from user: User) {
+        if let index = requestUserKeys.index(of: user.key) {
+            requestUserKeys.remove(at: index)
+        }
+        reference.child("requestUserKeys").child(user.key).removeValue()
+    }
+    
+    // removes the request and also adds the user to the team
+    func acceptRequest(from user: User) {
+        removeRequest(from: user)
+        addUser(user)
+    }
+    
+    // pseudonym for removeRequest
+    func denyRequest(from user: User) {
+        removeRequest(from: user)
+    }
+    
     func markAsOpen() {
         open = true
         reference.child("open").setValue(true)
@@ -129,7 +158,8 @@ class Team: CustomStringConvertible {
             "desc": desc as AnyObject,
             "open": open as AnyObject,
             "challengeKey": challengeKey as AnyObject,
-            "userKeys": userKeys as AnyObject
+            "userKeys": userKeys as AnyObject,
+            "requestUserKeys": requestUserKeys as AnyObject
         ]
         return String(describing: data)
     }
