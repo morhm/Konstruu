@@ -54,6 +54,8 @@ class Challenge: CustomStringConvertible {
         API.getTeamsInList(teamKeys: teamKeys, index: 0, teams: [], completed: completed)
     }
     
+    
+    
     func updateDescription(to desc: String) {
         self.desc = desc
         reference.child("desc").setValue(desc)

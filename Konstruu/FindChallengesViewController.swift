@@ -60,19 +60,6 @@ class FindChallengesViewController: UIViewController, UITableViewDataSource, UIT
             }
             print (self?.likes)
         })
-        
-        
-        
-//        for i in 0...(likes.count) {
-//            let currKey = (challenges?[i].key)!
-//            for key in (user?.likedChallengeKeys)! {
-//                if currKey == key {
-//                    likes[i] = "unlike"
-//                    break
-//                }
-//            }
-//        }
-        
     }
   
     override func viewDidAppear(_ animated: Bool) {
@@ -105,15 +92,12 @@ class FindChallengesViewController: UIViewController, UITableViewDataSource, UIT
     @IBOutlet weak var noResultsLabel: UILabel!
     
     private func addToolbarToKeyboard() {
+        
         let toolbar = UIToolbar()
         toolbar.sizeToFit()
-        
         let doneButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.done, target: self, action: #selector(self.doneClicked))
-        
         let flexibleSpace = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace, target: nil, action: nil)
-        
         toolbar.setItems([flexibleSpace, doneButton], animated: false)
-        
         searchBar.inputAccessoryView = toolbar
     }
     
@@ -146,12 +130,7 @@ class FindChallengesViewController: UIViewController, UITableViewDataSource, UIT
         cell.shareButton.tag = indexPath.row
         cell.shareButton.addTarget(self, action: #selector(share), for: .touchUpInside)
         
-        
         cell.challenge = challenges?[indexPath.row]
-        
-//        if let challengeCell = (cell) {
-//            challengeCell.challenge = challenges?[indexPath.row]
-//        }
         
         return cell
     }
@@ -182,7 +161,7 @@ class FindChallengesViewController: UIViewController, UITableViewDataSource, UIT
         
         print ("bookmarking dooooood")
         print (sender.tag)
-        sender.setTitle("bookmarked", for: UIControlState.normal)
+        //sender.setTitle("bookmarked", for: UIControlState.normal)
     }
     
     @IBAction func share(sender: AnyObject) {
