@@ -214,6 +214,7 @@ class User: CustomStringConvertible {
         for skill in skills {
             searchText += "\(skill) "
         }
+        searchText = searchText.lowercased()
         
         self.searchText = searchText
         reference.child("searchText").setValue(searchText)

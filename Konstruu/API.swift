@@ -108,6 +108,7 @@ class API {
     // MARK: User
     
     class func searchUsers(keyword: String, completed: ((([User]) -> Void)?)) {
+        let caseInsensitiveKeyword = keyword.lowercased()
         usersReference.observeSingleEvent(of: .value, with: { snapshot in
             var matches: [User] = []
             
@@ -119,7 +120,7 @@ class API {
                     if let searchText = dictionary["searchText"] as? String {
                         
                         // check for the keyword in the searchText
-                        if searchText.range(of: keyword) != nil {
+                        if searchText.range(of: caseInsensitiveKeyword) != nil {
                             let match = User(key: childSnapshot.key, dictionary: dictionary)
                             matches.append(match)
                         }
@@ -274,6 +275,7 @@ class API {
     // MARK: Challenge
     
     class func searchChallenges(keyword: String, completed: ((([Challenge]) -> Void)?)) {
+        let caseInsensitiveKeyword = keyword.lowercased()
         challengesReference.observeSingleEvent(of: .value, with: { snapshot in
             var matches: [Challenge] = []
             
@@ -285,7 +287,7 @@ class API {
                     
                     if let searchText = dictionary["searchText"] as? String {
                         // check for the keyword in the searchText
-                        if searchText.range(of: keyword) != nil {
+                        if searchText.range(of: caseInsensitiveKeyword) != nil {
                             let match = Challenge(key: childSnapshot.key, dictionary: dictionary)
                             matches.append(match)
                         }

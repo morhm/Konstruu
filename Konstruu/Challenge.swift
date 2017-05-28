@@ -47,14 +47,16 @@ class Challenge: CustomStringConvertible {
             self.teamKeys = self.teamKeys + Array(teamKeysDictionary.keys)
         }
         
+        if let searchText = dictionary["searchText"] as? String {
+            self.searchText = searchText
+        }
+        
         self.reference = API.challengesReference.child(self.key)
     }
     
     func getTeams(completed: (([Team]) -> Void)?) {
         API.getTeamsInList(teamKeys: teamKeys, index: 0, teams: [], completed: completed)
     }
-    
-    
     
     func updateDescription(to desc: String) {
         self.desc = desc
@@ -102,6 +104,7 @@ class Challenge: CustomStringConvertible {
         for category in categories {
             searchText += "\(category) "
         }
+        searchText = searchText.lowercased()
         
         self.searchText = searchText
         reference.child("searchText").setValue(searchText)
