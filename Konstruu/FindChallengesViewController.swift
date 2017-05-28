@@ -11,6 +11,18 @@ import UIKit
 class FindChallengesViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate {
     
     var likes: [String]!
+    var whiteRoundedView: UIView!
+    
+    // count to ensure that whiteRoundedView isn't added excessively
+    var numLoaded = 0
+    
+    // MARK: - Constants
+    
+    /*  [unused]
+        spacing for header and footer of cells
+    */
+    let cellSpacingHeight = CGFloat(7.0)
+    
     
     // MARK: - Model
     
@@ -22,15 +34,14 @@ class FindChallengesViewController: UIViewController, UITableViewDataSource, UIT
                 noResultsLabel.isHidden = true
             }
             challengeTableView?.reloadData()
-            
         }
     }
     
     var user: User? {
         didSet {
-            
         }
     }
+    
     
     // MARK: - View controller lifecycle
 
@@ -42,10 +53,9 @@ class FindChallengesViewController: UIViewController, UITableViewDataSource, UIT
         challengeTableView.register(UINib(nibName: "ChallengeTableViewCell", bundle: nil), forCellReuseIdentifier: "challenge")
         
         API.getAllChallenges(completed: { [weak self] challenges in
-            self?.challenges = challenges
             
-            print (challenges.count)
-            print (challenges)
+            // todo: account for when a challenge is added
+            self?.challenges = challenges
             
             self?.likes = Array(repeating: "like", count: challenges.count)
             
@@ -58,8 +68,32 @@ class FindChallengesViewController: UIViewController, UITableViewDataSource, UIT
                     }
                 }
             }
-            print (self?.likes)
+            
         })
+        //addSubviews()
+        //addConstraints()
+    }
+    
+    func addSubviews() {
+        view.addSubview(backgroundView)
+        view.sendSubview(toBack: backgroundView)
+    }
+    
+    func addConstraints() {
+        
+        //backgroundView
+        
+        //top
+        view.addConstraint(NSLayoutConstraint(item:backgroundView, attribute:.top, relatedBy:.equal, toItem: view, attribute:.top, multiplier: 1, constant: 0))
+        //bottom
+        view.addConstraint(NSLayoutConstraint(item:backgroundView, attribute:.bottom, relatedBy:.equal, toItem: view, attribute:.bottom, multiplier: 1, constant: 0))
+        //left
+        view.addConstraint(NSLayoutConstraint(item:backgroundView, attribute:.left, relatedBy:.equal, toItem: view, attribute:.left, multiplier: 1, constant: 0))
+        //right
+        view.addConstraint(NSLayoutConstraint(item:backgroundView, attribute:.right, relatedBy:.equal, toItem: view, attribute:.right, multiplier: 1, constant: 0))
+        
+        view.layoutIfNeeded()
+        
     }
   
     override func viewDidAppear(_ animated: Bool) {
@@ -73,6 +107,15 @@ class FindChallengesViewController: UIViewController, UITableViewDataSource, UIT
     
     // MARK: - UI
     
+    private lazy var backgroundView: UIImageView = { [unowned self] in
+        let backgroundView = UIImageView()
+        backgroundView.image = UIImage(named: "profileGradient.png")
+        backgroundView.contentMode = UIViewContentMode.scaleAspectFill
+        
+        backgroundView.translatesAutoresizingMaskIntoConstraints = false
+        return backgroundView
+    }()
+    
     @IBOutlet weak var searchBar: UISearchBar! {
         didSet {
             searchBar.delegate = self
@@ -84,8 +127,9 @@ class FindChallengesViewController: UIViewController, UITableViewDataSource, UIT
         didSet {
             challengeTableView.dataSource = self
             challengeTableView.delegate = self
-            challengeTableView.rowHeight = UITableViewAutomaticDimension
-            challengeTableView.estimatedRowHeight = 150
+            challengeTableView.separatorStyle = .none
+            //challengeTableView.rowHeight = UITableViewAutomaticDimension
+            //challengeTableView.estimatedRowHeight = 150
         }
     }
     
@@ -108,40 +152,79 @@ class FindChallengesViewController: UIViewController, UITableViewDataSource, UIT
     // MARK: - Table view data source
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return challenges?.count ?? 0
+        return 1
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        return challenges?.count ?? 0
     }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 140
+    }
+    
+/*
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return cellSpacingHeight
+    }
+*/
+    
+/*
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return cellSpacingHeight
+    }
+*/
+    
+/*    
+     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        cell.contentView.backgroundColor = UIColor.clear
+        whiteRoundedView.frame = CGRect(x: 10, y: 10, width: (self.view.frame.size.width - 10), height: 120)
+    }
+*/
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "challenge", for: indexPath) as! ChallengeTableViewCell
         
-        cell.tag = indexPath.row
+        cell.tag = indexPath.section
         
-        cell.likeButton.tag = indexPath.row
-        cell.likeButton.setTitle(likes?[indexPath.row], for: .normal)
+        if (numLoaded < (challenges?.count)! ) {
+            numLoaded = numLoaded + 1
+            whiteRoundedView = UIView(frame: CGRect(x: 10, y: 10, width: (self.view.frame.size.width - 10), height: 120))
+        
+            whiteRoundedView.layer.backgroundColor = CGColor(colorSpace: CGColorSpaceCreateDeviceRGB(), components: [1.0, 1.0, 1.0, 1.0])
+            whiteRoundedView.layer.masksToBounds = false
+            whiteRoundedView.layer.cornerRadius = 10.0
+            whiteRoundedView.layer.shadowOffset = CGSize(width: -0, height: 1.0)
+            whiteRoundedView.layer.shadowOpacity = 0.2
+        
+            cell.contentView.addSubview(whiteRoundedView)
+            cell.contentView.sendSubview(toBack: whiteRoundedView)
+        }
+
+        cell.likeButton.tag = indexPath.section
+        cell.likeButton.setTitle(likes?[indexPath.section], for: .normal)
         cell.likeButton.addTarget(self, action: #selector(handleLikes), for: .touchUpInside)
         
-        cell.bookmarkButton.tag = indexPath.row
+        cell.bookmarkButton.tag = indexPath.section
         cell.bookmarkButton.addTarget(self, action: #selector(bookmark), for: .touchUpInside)
         
-        cell.shareButton.tag = indexPath.row
+        cell.shareButton.tag = indexPath.section
         cell.shareButton.addTarget(self, action: #selector(share), for: .touchUpInside)
         
-        cell.challenge = challenges?[indexPath.row]
+        cell.challenge = challenges?[indexPath.section]
         
         return cell
     }
     
-    @IBAction func handleLikes(sender: AnyObject){
+    // MARK: - Actions
+    
+    @IBAction func handleLikes(sender: AnyObject) {
         let selectedChallenge = challenges?[(sender.tag)!]
         let challengeKey = (selectedChallenge?.key)!
         
         for i in (user?.likedChallengeKeys)! {
             if i == challengeKey {
-                print ("unliking")
+                //print ("unliking")
                 user?.unlikeChallenge(selectedChallenge!)
                 likes?[sender.tag] = "like"
                 sender.setTitle(likes?[sender.tag], for: .normal)
@@ -149,8 +232,7 @@ class FindChallengesViewController: UIViewController, UITableViewDataSource, UIT
                 return
             }
         }
-        
-        print ("liking")
+        //print ("liking")
         user?.likeChallenge(selectedChallenge!)
         likes?[sender.tag] = "unlike"
         sender.setTitle(likes?[sender.tag], for: .normal)
@@ -172,7 +254,7 @@ class FindChallengesViewController: UIViewController, UITableViewDataSource, UIT
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let challengeVC = ChallengeViewController(nibName: "ChallengeViewController", bundle: nil)
         challengeVC.user = user
-        challengeVC.challenge = challenges?[indexPath.row]
+        challengeVC.challenge = challenges?[indexPath.section]
         challengeVC.navigationItem.rightBarButtonItem = KonstruuTabBarController.messagingButtonItem
         //challengeVC.navigationItem.leftBarButtonItem = KonstruuTabBarController.logoutButtonItem
         self.navigationController?.pushViewController(challengeVC, animated: true)

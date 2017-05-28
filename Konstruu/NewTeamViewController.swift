@@ -10,11 +10,19 @@ import UIKit
 
 private extension CGFloat {
     static let marginConstraint:CGFloat = 8.0
+    static let headerRectHeight:CGFloat = 180.0
     static let nameTextFieldHeightConstraint:CGFloat = 35.0
     static let descriptionTextViewHeightConstraint:CGFloat = 250.0
     static let addPhotoHeightConstraint:CGFloat = 30.0
     static let addLocationHeightConstraint:CGFloat = 30.0
     static let tagFriendsHeightConstraint:CGFloat = 30.0
+}
+
+// MARK: - Data
+
+var team: Team? {
+    didSet {
+    }
 }
 
 class NewTeamViewController: UIViewController {
@@ -30,12 +38,7 @@ class NewTeamViewController: UIViewController {
     private let lookingForMemPlaceholderText = "Looking for team member(s)"
     
     private let placeholderColor = UIColor.gray
-    
-    var team: Team? {
-        didSet {
-            updateUI()
-        }
-    }
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,13 +55,14 @@ class NewTeamViewController: UIViewController {
         view.sendSubview(toBack: backgroundView)
         
         view.addSubview(headerRect)
+        headerRect.addSubview(teamImageView)
         headerRect.addSubview(teamTitleLabel)
         headerRect.addSubview(numGroupMemLabel)
         headerRect.addSubview(lookingForMemLabel)
-        view.addSubview(teamDescriptionLabel)
-        view.addSubview(seeMembersButton)
-        view.addSubview(seeGroupButton)
-        view.addSubview(requestButton)
+//        view.addSubview(teamDescriptionLabel)
+//        view.addSubview(seeMembersButton)
+//        view.addSubview(seeGroupButton)
+//        view.addSubview(requestButton)
     }
     
     // MARK - Constraints
@@ -76,88 +80,113 @@ class NewTeamViewController: UIViewController {
         //right
         view.addConstraint(NSLayoutConstraint(item:backgroundView, attribute:.right, relatedBy:.equal, toItem: view, attribute:.right, multiplier: 1, constant: 0))
         
-        // teamTitleLabel
+        //headerRect
         
         //top
-        view.addConstraint(NSLayoutConstraint(item:teamTitleLabel, attribute:.top, relatedBy:.equal, toItem: headerRect, attribute:.top, multiplier: 1, constant: .marginConstraint))
-//        //left
-//        view.addConstraint(NSLayoutConstraint(item:teamTitleLabel, attribute: .left, relatedBy: .equal, toItem: view, attribute:.left, multiplier: 1, constant: .marginConstraint))
+        view.addConstraint(NSLayoutConstraint(item:headerRect, attribute:.top, relatedBy:.equal, toItem: view, attribute:.top, multiplier: 1, constant: .marginConstraint))
+
+        //left
+        view.addConstraint(NSLayoutConstraint(item:headerRect, attribute:.left, relatedBy:.equal, toItem: view, attribute:.left, multiplier: 1, constant: .marginConstraint))
         //right
-        view.addConstraint(NSLayoutConstraint(item:teamTitleLabel, attribute: .right, relatedBy: .equal, toItem: headerRect, attribute: .right, multiplier: 1, constant: .marginConstraint))
-        //height
-//        view.addConstraint(NSLayoutConstraint(item:teamTitleLabel, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 30
-//        ))
+        view.addConstraint(NSLayoutConstraint(item:headerRect, attribute:.right, relatedBy:.equal, toItem: view, attribute:.right, multiplier: 1, constant: .marginConstraint))
         
+        //height
+        view.addConstraint(NSLayoutConstraint(item:headerRect, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: .headerRectHeight))
+    
+        // teamImageView
+        
+        //top
+        headerRect.addConstraint(NSLayoutConstraint(item:teamImageView, attribute:.top, relatedBy:.equal, toItem: headerRect, attribute:.top, multiplier: 1, constant: .marginConstraint))
+        //left
+        headerRect.addConstraint(NSLayoutConstraint(item:teamTitleLabel, attribute: .left, relatedBy: .equal, toItem: headerRect, attribute:.left, multiplier: 1, constant: .marginConstraint))
+//        //right
+//        headerRect.addConstraint(NSLayoutConstraint(item:teamTitleLabel, attribute: .right, relatedBy: .equal, toItem: headerRect, attribute: .right, multiplier: 1, constant: .marginConstraint))
+        //height
+        headerRect.addConstraint(NSLayoutConstraint(item:teamTitleLabel, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 60))
+        
+        // teamTitleLabel
+    
+        //top
+        headerRect.addConstraint(NSLayoutConstraint(item:teamTitleLabel, attribute:.top, relatedBy:.equal, toItem: headerRect, attribute:.top, multiplier: 1, constant: .marginConstraint))
+        //left
+        headerRect.addConstraint(NSLayoutConstraint(item:teamTitleLabel, attribute: .left, relatedBy: .equal, toItem: teamImageView, attribute:.left, multiplier: 1, constant: .marginConstraint))
+        //right
+        headerRect.addConstraint(NSLayoutConstraint(item:teamTitleLabel, attribute: .right, relatedBy: .equal, toItem: headerRect, attribute: .right, multiplier: 1, constant: .marginConstraint))
+        //height
+        headerRect.addConstraint(NSLayoutConstraint(item:teamTitleLabel, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 30))
+    
         // numGroupMemLabel
         
         //top
-        view.addConstraint(NSLayoutConstraint(item:numGroupMemLabel, attribute:.top, relatedBy:.equal, toItem: teamTitleLabel, attribute:.bottom, multiplier: 1, constant: 0))
+        headerRect.addConstraint(NSLayoutConstraint(item:numGroupMemLabel, attribute:.top, relatedBy:.equal, toItem: teamTitleLabel, attribute:.bottom, multiplier: 1, constant: .marginConstraint))
 //        //left
-//        view.addConstraint(NSLayoutConstraint(item:numGroupMemLabel, attribute: .left, relatedBy: .equal, toItem: view, attribute:.left, multiplier: 1, constant: .marginConstraint))
+        headerRect.addConstraint(NSLayoutConstraint(item:numGroupMemLabel, attribute: .left, relatedBy: .equal, toItem: teamImageView, attribute:.left, multiplier: 1, constant: .marginConstraint))
         //right
-        view.addConstraint(NSLayoutConstraint(item:numGroupMemLabel, attribute: .right, relatedBy: .equal, toItem: headerRect, attribute: .right, multiplier: 1, constant: .marginConstraint))
+        headerRect.addConstraint(NSLayoutConstraint(item:numGroupMemLabel, attribute: .right, relatedBy: .equal, toItem: headerRect, attribute: .right, multiplier: 1, constant: .marginConstraint))
 //        //height
-//        view.addConstraint(NSLayoutConstraint(item:numGroupMemLabel, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 30
-//        ))
+        headerRect.addConstraint(NSLayoutConstraint(item:numGroupMemLabel, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 30
+        ))
         
         //lookingForMemLabel
         
         //top
-        view.addConstraint(NSLayoutConstraint(item:lookingForMemLabel, attribute:.top, relatedBy:.equal, toItem: numGroupMemLabel, attribute:.bottom, multiplier: 1, constant: 0))
-//        //left
-//        view.addConstraint(NSLayoutConstraint(item:lookingForMemLabel, attribute: .left, relatedBy: .equal, toItem: view, attribute:.left, multiplier: 1, constant: .marginConstraint))
-        //right
-        view.addConstraint(NSLayoutConstraint(item:lookingForMemLabel, attribute: .right, relatedBy: .equal, toItem: headerRect, attribute: .right, multiplier: 1, constant: .marginConstraint))
-//        //height
-//        view.addConstraint(NSLayoutConstraint(item:lookingForMemLabel, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 30
-//        ))
-        
-        // teamDescriptionLabel
-        
-        //top
-        view.addConstraint(NSLayoutConstraint(item:teamDescriptionLabel, attribute:.top, relatedBy:.equal, toItem: headerRect, attribute:.bottom, multiplier: 1, constant: .marginConstraint))
+        headerRect.addConstraint(NSLayoutConstraint(item:lookingForMemLabel, attribute:.top, relatedBy:.equal, toItem: numGroupMemLabel, attribute:.bottom, multiplier: 1, constant: .marginConstraint))
         //left
-        view.addConstraint(NSLayoutConstraint(item:teamDescriptionLabel, attribute: .left, relatedBy: .equal, toItem: view, attribute:.left, multiplier: 1, constant: .marginConstraint))
+        headerRect.addConstraint(NSLayoutConstraint(item:lookingForMemLabel, attribute: .left, relatedBy: .equal, toItem: teamImageView, attribute:.left, multiplier: 1, constant: .marginConstraint))
         //right
-        view.addConstraint(NSLayoutConstraint(item:teamDescriptionLabel, attribute: .right, relatedBy: .equal, toItem: view, attribute: .right, multiplier: 1, constant: .marginConstraint))
+        headerRect.addConstraint(NSLayoutConstraint(item:lookingForMemLabel, attribute: .right, relatedBy: .equal, toItem: headerRect, attribute: .right, multiplier: 1, constant: .marginConstraint))
         //height
-        view.addConstraint(NSLayoutConstraint(item:teamDescriptionLabel, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 30))
+        headerRect.addConstraint(NSLayoutConstraint(item:lookingForMemLabel, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 30
+        ))
         
-        // seeMembersButton
-        
-        //top
-        view.addConstraint(NSLayoutConstraint(item:seeMembersButton, attribute:.top, relatedBy:.equal, toItem: teamDescriptionLabel, attribute:.bottom, multiplier: 1, constant: (.marginConstraint * 6)))
-        //left
-        view.addConstraint(NSLayoutConstraint(item:seeMembersButton, attribute: .left, relatedBy: .equal, toItem: view, attribute:.left, multiplier: 1, constant: .marginConstraint))
-        //right
-        view.addConstraint(NSLayoutConstraint(item:seeMembersButton, attribute: .right, relatedBy: .equal, toItem: view, attribute: .right, multiplier: 1, constant: .marginConstraint))
-        //height
-        view.addConstraint(NSLayoutConstraint(item:seeMembersButton, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 30))
-        
-        // seeGroupButton
-        
-        //top
-        view.addConstraint(NSLayoutConstraint(item:seeGroupButton, attribute:.top, relatedBy:.equal, toItem: seeMembersButton, attribute:.bottom, multiplier: 1, constant: 0))
-        //left
-        view.addConstraint(NSLayoutConstraint(item:seeGroupButton, attribute: .left, relatedBy: .equal, toItem: view, attribute:.left, multiplier: 1, constant: .marginConstraint))
-        //right
-        view.addConstraint(NSLayoutConstraint(item:seeGroupButton, attribute: .right, relatedBy: .equal, toItem: view, attribute: .right, multiplier: 1, constant: .marginConstraint))
-        //height
-        view.addConstraint(NSLayoutConstraint(item:seeGroupButton, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 30))
-        
-        // requestButton
-        
-        //top
-        view.addConstraint(NSLayoutConstraint(item:requestButton, attribute:.top, relatedBy:.equal, toItem: seeGroupButton, attribute:.bottom, multiplier: 1, constant: 0))
-        //left
-        view.addConstraint(NSLayoutConstraint(item:requestButton, attribute: .left, relatedBy: .equal, toItem: view, attribute:.left, multiplier: 1, constant: .marginConstraint))
-        //right
-        view.addConstraint(NSLayoutConstraint(item:requestButton, attribute: .right, relatedBy: .equal, toItem: view, attribute: .right, multiplier: 1, constant: .marginConstraint))
-        //height
-        view.addConstraint(NSLayoutConstraint(item:requestButton, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 30))
-        
-        view.layoutIfNeeded()
     }
+    
+//        // teamDescriptionLabel
+//        
+//        //top
+//        view.addConstraint(NSLayoutConstraint(item:teamDescriptionLabel, attribute:.top, relatedBy:.equal, toItem: headerRect, attribute:.bottom, multiplier: 1, constant: .marginConstraint))
+//        //left
+//        view.addConstraint(NSLayoutConstraint(item:teamDescriptionLabel, attribute: .left, relatedBy: .equal, toItem: view, attribute:.left, multiplier: 1, constant: .marginConstraint))
+//        //right
+//        view.addConstraint(NSLayoutConstraint(item:teamDescriptionLabel, attribute: .right, relatedBy: .equal, toItem: view, attribute: .right, multiplier: 1, constant: .marginConstraint))
+//        //height
+//        view.addConstraint(NSLayoutConstraint(item:teamDescriptionLabel, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 30))
+//        
+//        // seeMembersButton
+//        
+//        //top
+//        view.addConstraint(NSLayoutConstraint(item:seeMembersButton, attribute:.top, relatedBy:.equal, toItem: teamDescriptionLabel, attribute:.bottom, multiplier: 1, constant: (.marginConstraint * 6)))
+//        //left
+//        view.addConstraint(NSLayoutConstraint(item:seeMembersButton, attribute: .left, relatedBy: .equal, toItem: view, attribute:.left, multiplier: 1, constant: .marginConstraint))
+//        //right
+//        view.addConstraint(NSLayoutConstraint(item:seeMembersButton, attribute: .right, relatedBy: .equal, toItem: view, attribute: .right, multiplier: 1, constant: .marginConstraint))
+//        //height
+//        view.addConstraint(NSLayoutConstraint(item:seeMembersButton, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 30))
+//        
+//        // seeGroupButton
+//        
+//        //top
+//        view.addConstraint(NSLayoutConstraint(item:seeGroupButton, attribute:.top, relatedBy:.equal, toItem: seeMembersButton, attribute:.bottom, multiplier: 1, constant: 0))
+//        //left
+//        view.addConstraint(NSLayoutConstraint(item:seeGroupButton, attribute: .left, relatedBy: .equal, toItem: view, attribute:.left, multiplier: 1, constant: .marginConstraint))
+//        //right
+//        view.addConstraint(NSLayoutConstraint(item:seeGroupButton, attribute: .right, relatedBy: .equal, toItem: view, attribute: .right, multiplier: 1, constant: .marginConstraint))
+//        //height
+//        view.addConstraint(NSLayoutConstraint(item:seeGroupButton, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 30))
+//        
+//        // requestButton
+//        
+//        //top
+//        view.addConstraint(NSLayoutConstraint(item:requestButton, attribute:.top, relatedBy:.equal, toItem: seeGroupButton, attribute:.bottom, multiplier: 1, constant: 0))
+//        //left
+//        view.addConstraint(NSLayoutConstraint(item:requestButton, attribute: .left, relatedBy: .equal, toItem: view, attribute:.left, multiplier: 1, constant: .marginConstraint))
+//        //right
+//        view.addConstraint(NSLayoutConstraint(item:requestButton, attribute: .right, relatedBy: .equal, toItem: view, attribute: .right, multiplier: 1, constant: .marginConstraint))
+//        //height
+//        view.addConstraint(NSLayoutConstraint(item:requestButton, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 30))
+//        
+//        view.layoutIfNeeded()
+//    }
     
     // MARK: - UI
     
@@ -168,7 +197,18 @@ class NewTeamViewController: UIViewController {
     private lazy var headerRect: UIView = { [unowned self] in
         let headerRect = UIView()
         headerRect.backgroundColor = UIColor.white
+        
+        headerRect.translatesAutoresizingMaskIntoConstraints = false
         return headerRect
+    }()
+    
+    private lazy var teamImageView: UIImageView = { [unowned self] in
+        let teamImageView = UIImageView()
+        teamImageView.image = #imageLiteral(resourceName: "slackIcon")
+        teamImageView.contentMode  = .scaleAspectFill
+        
+        teamImageView.translatesAutoresizingMaskIntoConstraints = false
+        return teamImageView
     }()
     
     private lazy var teamTitleLabel: UILabel = { [unowned self] in
