@@ -27,7 +27,7 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
       
       backgroundView.translatesAutoresizingMaskIntoConstraints = false
       return backgroundView
-      }()
+    }()
   
     @IBOutlet weak var badgesTableView: UITableView! {
         didSet {

@@ -256,7 +256,7 @@ class ChallengeViewController: UIViewController, UITableViewDelegate, UITableVie
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let teamVC = TeamViewController(nibName: "TeamViewController", bundle: nil)
+        let teamVC = TeamViewController(nibName: "NewTeamViewController", bundle: nil)
         if let teamKey = challenge?.teamKeys[indexPath.row] {
             API.getTeamWithKey(teamKey, completed: { team in
                 teamVC.team = team
