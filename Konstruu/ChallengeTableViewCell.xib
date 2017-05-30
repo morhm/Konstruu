@@ -18,7 +18,7 @@
             <rect key="frame" x="0.0" y="0.0" width="376" height="138"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="376" height="138"/>
+                <rect key="frame" x="0.0" y="0.0" width="376" height="137.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Challenge Title" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xj6-l6-GaE" userLabel="titleLabel">
@@ -72,7 +72,7 @@
                         <constraints>
                             <constraint firstAttribute="width" constant="15" id="bGM-YW-xwW"/>
                         </constraints>
-                        <state key="normal" image="Report_Abuse"/>
+                        <state key="normal" image="Bookmark_Flag"/>
                     </button>
                 </subviews>
                 <constraints>
@@ -114,7 +114,7 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="Report_Abuse" width="18" height="27"/>
+        <image name="Bookmark_Flag" width="17" height="20"/>
         <image name="Share" width="19" height="27"/>
     </resources>
 </document>

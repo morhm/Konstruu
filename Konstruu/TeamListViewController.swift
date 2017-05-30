@@ -10,6 +10,10 @@ import UIKit
 
 class TeamListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
+    var whiteRoundedView: UIView!
+    var numLoaded = 0
+    let cellSpacingHeight = CGFloat(7.0)
+    
     var user: User? {
         didSet {
         }
@@ -19,6 +23,8 @@ class TeamListViewController: UIViewController, UITableViewDataSource, UITableVi
       didSet {
         teamListTableView.dataSource = self
         teamListTableView.delegate = self
+        teamListTableView.separatorStyle = .none
+        
   //      teamListTableView.rowHeight = UITableViewAutomaticDimension
   //      teamListTableView.estimatedRowHeight = 150
       }
@@ -43,17 +49,37 @@ class TeamListViewController: UIViewController, UITableViewDataSource, UITableVi
     }
   
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        return (user?.teamKeys.count)!
     }
   
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return user?.teamKeys.count ?? 0
+        return 1
     }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 80
+    }
+    
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "teams", for: indexPath)
+        
+        if (numLoaded < (user?.teamKeys.count)! ) {
+            numLoaded = numLoaded + 1
+            whiteRoundedView = UIView(frame: CGRect(x: 10, y: 10, width: (self.view.frame.size.width - 10), height: 60))
+            
+            whiteRoundedView.layer.backgroundColor = CGColor(colorSpace: CGColorSpaceCreateDeviceRGB(), components: [1.0, 1.0, 1.0, 1.0])
+            whiteRoundedView.layer.masksToBounds = false
+            whiteRoundedView.layer.cornerRadius = 10.0
+            whiteRoundedView.layer.shadowOffset = CGSize(width: -0, height: 1.0)
+            whiteRoundedView.layer.shadowOpacity = 0.2
+            
+            cell.contentView.addSubview(whiteRoundedView)
+            cell.contentView.sendSubview(toBack: whiteRoundedView)
+        }
+        
         if let teamsCell = (cell as? TeamsTableViewCell),
-            let teamKey = user?.teamKeys[indexPath.row]
+            let teamKey = user?.teamKeys[indexPath.section]
                 {
             API.getTeamWithKey(teamKey, completed: { team in teamsCell.team = team
             })
@@ -65,13 +91,13 @@ class TeamListViewController: UIViewController, UITableViewDataSource, UITableVi
     func tableView(_ tableView: UITableView, didSelectRowAt
         indexPath: IndexPath) {
         let teamVC = TeamViewController(nibName: "TeamViewController", bundle: nil)
-        if let teamKey = user?.teamKeys[indexPath.row]
+        if let teamKey = user?.teamKeys[indexPath.section]
             {
                 API.getTeamWithKey(teamKey, completed: { team in
                     teamVC.team = team
                     teamVC.navigationItem.rightBarButtonItem =
                         KonstruuTabBarController.messagingButtonItem
-                    teamVC.navigationItem.leftBarButtonItem = KonstruuTabBarController.logoutButtonItem
+                    //teamVC.navigationItem.leftBarButtonItem = KonstruuTabBarController.logoutButtonItem
                     self.navigationController?.pushViewController(teamVC, animated: true)
                 })
         }

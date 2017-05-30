@@ -239,11 +239,14 @@ class FindChallengesViewController: UIViewController, UITableViewDataSource, UIT
         challengeTableView.reloadData()
     }
     
-    @IBAction func bookmark(sender: AnyObject) {
-        
+    @IBAction func bookmark(sender: UIButton) {
         print ("bookmarking dooooood")
-        print (sender.tag)
-        //sender.setTitle("bookmarked", for: UIControlState.normal)
+        let currImage = sender.image(for: UIControlState())
+        if (currImage == #imageLiteral(resourceName: "Bookmark_Flag")) {
+            sender.setImage(UIImage(named: "Bookmark_Flag_Selected"), for: UIControlState())
+        } else {
+            sender.setImage(UIImage(named: "Bookmark_Flag"), for: UIControlState())
+        }
     }
     
     @IBAction func share(sender: AnyObject) {

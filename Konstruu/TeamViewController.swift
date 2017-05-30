@@ -19,7 +19,9 @@ private extension CGFloat {
     static let tagFriendsHeightConstraint:CGFloat = 30.0
 }
 
-
+class RequestResponseButton : UIButton {
+    var userID : String = "coolness"
+}
 
 class TeamViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
@@ -80,6 +82,7 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
         view.addSubview(tableLabel)
         view.addSubview(usersTableView)
         
+        view.addSubview(sampleRequestResponseButton)
         //        headerRect.addSubview(numGroupMemLabel)
         //        headerRect.addSubview(lookingForMemLabel)
         
@@ -162,37 +165,6 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
         return seeGroupButton
         }()
     
-    //    private lazy var numGroupMemLabel: UILabel = { [unowned self] in
-    //        let numGroupMemLabel = UILabel()
-    //        numGroupMemLabel.text = self.numGroupMemPlaceholderText
-    //        numGroupMemLabel.textColor =  UIColor.black
-    //        numGroupMemLabel.textAlignment = .left
-    //        numGroupMemLabel.numberOfLines = 1
-    //
-    //        numGroupMemLabel.allowsDefaultTighteningForTruncation = true
-    //        numGroupMemLabel.adjustsFontSizeToFitWidth = true
-    //
-    //        numGroupMemLabel.font = UIFont.konstruuFontWithSize(14.0)
-    //        numGroupMemLabel.translatesAutoresizingMaskIntoConstraints = false
-    //        return numGroupMemLabel
-    //    }()
-    //
-    //    private lazy var lookingForMemLabel: UILabel = { [unowned self] in
-    //        let lookingForMemLabel = UILabel()
-    //        lookingForMemLabel.text = self.lookingForMemPlaceholderText
-    //        lookingForMemLabel.textColor =  UIColor.black
-    //        lookingForMemLabel.textAlignment = .left
-    //        lookingForMemLabel.numberOfLines = 1
-    //
-    //        lookingForMemLabel.allowsDefaultTighteningForTruncation = true
-    //        lookingForMemLabel.adjustsFontSizeToFitWidth = true
-    //
-    //        lookingForMemLabel.font = UIFont.konstruuFontWithSize(14.0)
-    //        lookingForMemLabel.translatesAutoresizingMaskIntoConstraints = false
-    //
-    //        return lookingForMemLabel
-    //    }()
-    
     private lazy var teamDescriptionLabel: UILabel = { [unowned self] in
         let teamDescriptionLabel = UILabel()
         teamDescriptionLabel.text = self.descriptionPlaceholderText
@@ -209,41 +181,11 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
         return teamDescriptionLabel
         }()
     
-    private lazy var seeMembersButton:
-        ChallengeButton = { [unowned self] in
-            let seeMembersButton = ChallengeButton(challengeButtonType: ChallengeButtonType.media)
-            seeMembersButton.backgroundColor = UIColor.white
-            seeMembersButton.addTarget(self, action: #selector(seeMembers), for: UIControlEvents.touchUpInside)
-            
-            seeMembersButton.translatesAutoresizingMaskIntoConstraints = false
-            return seeMembersButton
-            }()
-    
-    //    private lazy var seeGroupButton:
-    //        ChallengeButton = { [unowned self] in
-    //            let seeGroupButton = ChallengeButton(challengeButtonType: ChallengeButtonType.media)
-    //            seeGroupButton.backgroundColor = UIColor.white
-    //            seeGroupButton.addTarget(self, action: #selector(seeGroup), for: UIControlEvents.touchUpInside)
-    //
-    //            seeGroupButton.translatesAutoresizingMaskIntoConstraints = false
-    //            return seeGroupButton
-    //    }()
-    
-    private lazy var requestButton:
-        ChallengeButton = { [unowned self] in
-            let requestButton = ChallengeButton(challengeButtonType: ChallengeButtonType.media)
-            requestButton.backgroundColor = UIColor.white
-            requestButton.addTarget(self, action: #selector(sendRequest), for: UIControlEvents.touchUpInside)
-            
-            requestButton.translatesAutoresizingMaskIntoConstraints = false
-            return requestButton
-            }()
-    
     private lazy var tableLabel: UILabel = { [unowned self] in
         let tableLabel = UILabel()
         tableLabel.textColor = UIColor.black
         tableLabel.text = "Group Members"
-        tableLabel.font = UIFont.konstruuLightFontWithSize(18.0)
+        tableLabel.font = UIFont.konstruuLightFontWithSize(16.0)
         
         tableLabel.translatesAutoresizingMaskIntoConstraints = false
         return tableLabel
@@ -268,6 +210,16 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
         backgroundView.translatesAutoresizingMaskIntoConstraints = false
         return backgroundView
         }()
+
+    private lazy var sampleRequestResponseButton: RequestResponseButton = { [unowned self] in
+        let sampleRequestResponseButton = RequestResponseButton(type: .custom)
+        sampleRequestResponseButton.setTitle("add user -- ", for: UIControlState())
+        sampleRequestResponseButton.backgroundColor = UIColor.konstruuDarkBlue()
+        sampleRequestResponseButton.addTarget(self, action: #selector(acceptUser), for: UIControlEvents.touchUpInside)
+        sampleRequestResponseButton.translatesAutoresizingMaskIntoConstraints = false
+        //sampleRequestResponseButton.userID =
+        return sampleRequestResponseButton
+    }()
 
     // MARK - Constraints
     
@@ -335,11 +287,11 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
         //top
         headerRect.addConstraint(NSLayoutConstraint(item:joinRequestButton, attribute:.top, relatedBy:.equal, toItem: locationLabel, attribute:.bottom, multiplier: 1, constant: .marginConstraint))
         //centerX
-        headerRect.addConstraint(NSLayoutConstraint(item:joinRequestButton, attribute:.centerX, relatedBy:.equal, toItem: headerRect, attribute:.centerX, multiplier: 1, constant: -50))
+        headerRect.addConstraint(NSLayoutConstraint(item:joinRequestButton, attribute:.centerX, relatedBy:.equal, toItem: headerRect, attribute:.centerX, multiplier: 1, constant: -80))
         //height
         headerRect.addConstraint(NSLayoutConstraint(item:joinRequestButton, attribute:.height, relatedBy:.equal, toItem: nil, attribute:.notAnAttribute, multiplier: 1, constant: 30.0))
         //width
-        headerRect.addConstraint(NSLayoutConstraint(item:joinRequestButton, attribute:.width, relatedBy:.equal, toItem: nil, attribute:.notAnAttribute, multiplier: 1, constant: 80.0))
+        headerRect.addConstraint(NSLayoutConstraint(item:joinRequestButton, attribute:.width, relatedBy:.equal, toItem: nil, attribute:.notAnAttribute, multiplier: 1, constant: 120.0))
         
         // seeGroupButton
         
@@ -367,7 +319,7 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         // tableLabel
         //top
-        view.addConstraint(NSLayoutConstraint(item:tableLabel, attribute:.top, relatedBy:.equal, toItem: headerRect, attribute:.bottom, multiplier: 1, constant: 30.0))
+        view.addConstraint(NSLayoutConstraint(item:tableLabel, attribute:.top, relatedBy:.equal, toItem: headerRect, attribute:.bottom, multiplier: 1, constant: 20.0))
         //left
         view.addConstraint(NSLayoutConstraint(item:tableLabel, attribute:.left, relatedBy:.equal, toItem: view, attribute:.left, multiplier: 1, constant: .marginConstraint))
         //right
@@ -378,7 +330,7 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
         // usersTableView
         
         //top
-        view.addConstraint(NSLayoutConstraint(item:usersTableView, attribute:.top, relatedBy:.equal, toItem: tableLabel, attribute:.bottom, multiplier: 1, constant: 20.0))
+        view.addConstraint(NSLayoutConstraint(item:usersTableView, attribute:.top, relatedBy:.equal, toItem: tableLabel, attribute:.bottom, multiplier: 1, constant: 10.0))
         
         //left
         view.addConstraint(NSLayoutConstraint(item:usersTableView, attribute:.left, relatedBy:.equal, toItem: view, attribute:.left, multiplier: 1, constant: .marginConstraint))
@@ -388,92 +340,18 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
         //height
         view.addConstraint(NSLayoutConstraint(item:usersTableView, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant:120.0))
         
+        // sampleRequestResponseButton 
         
-        //        // numGroupMemLabel
-        //
-        //        //top
-        //        headerRect.addConstraint(NSLayoutConstraint(item:numGroupMemLabel, attribute:.top, relatedBy:.equal, toItem: teamTitleLabel, attribute:.bottom, multiplier: 1, constant: .marginConstraint))
-        ////        //left
-        //        headerRect.addConstraint(NSLayoutConstraint(item:numGroupMemLabel, attribute: .left, relatedBy: .equal, toItem: teamImageView, attribute:.left, multiplier: 1, constant: .marginConstraint))
-        //        //right
-        //        headerRect.addConstraint(NSLayoutConstraint(item:numGroupMemLabel, attribute: .right, relatedBy: .equal, toItem: headerRect, attribute: .right, multiplier: 1, constant: .marginConstraint))
-        ////        //height
-        //        headerRect.addConstraint(NSLayoutConstraint(item:numGroupMemLabel, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 30
-        //        ))
-        //
-        //        //lookingForMemLabel
-        //
-        //        //top
-        //        headerRect.addConstraint(NSLayoutConstraint(item:lookingForMemLabel, attribute:.top, relatedBy:.equal, toItem: numGroupMemLabel, attribute:.bottom, multiplier: 1, constant: .marginConstraint))
-        //        //left
-        //        headerRect.addConstraint(NSLayoutConstraint(item:lookingForMemLabel, attribute: .left, relatedBy: .equal, toItem: teamImageView, attribute:.left, multiplier: 1, constant: .marginConstraint))
-        //        //right
-        //        headerRect.addConstraint(NSLayoutConstraint(item:lookingForMemLabel, attribute: .right, relatedBy: .equal, toItem: headerRect, attribute: .right, multiplier: 1, constant: .marginConstraint))
-        //        //height
-        //        headerRect.addConstraint(NSLayoutConstraint(item:lookingForMemLabel, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 30
-        //        ))
+        //top
+        view.addConstraint(NSLayoutConstraint(item:sampleRequestResponseButton , attribute:.top, relatedBy:.equal, toItem: usersTableView, attribute:.bottom, multiplier: 1, constant: 30.0))
         
-        //        // descriptionRect
-        //
-        //        //top
-        //        view.addConstraint(NSLayoutConstraint(item:descriptionRect, attribute:.top, relatedBy:.equal, toItem: headerRect, attribute:.bottom, multiplier: 1, constant: .marginConstraint))
-        //        //left
-        //        view.addConstraint(NSLayoutConstraint(item:descriptionRect, attribute: .left, relatedBy: .equal, toItem: view, attribute:.left, multiplier: 1, constant: .marginConstraint))
-        //        //right
-        //        view.addConstraint(NSLayoutConstraint(item:descriptionRect, attribute: .right, relatedBy: .equal, toItem: view, attribute: .right, multiplier: 1, constant: .marginConstraint))
-        //        //height
-        //        view.addConstraint(NSLayoutConstraint(item:descriptionRect, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: .descriptionRectHeight
-        //        ))
-        //
-        //
-        //    }
+        //left
+        view.addConstraint(NSLayoutConstraint(item:sampleRequestResponseButton , attribute:.left, relatedBy:.equal, toItem: view, attribute:.left, multiplier: 1, constant: .marginConstraint))
+        //right
+        view.addConstraint(NSLayoutConstraint(item:sampleRequestResponseButton , attribute:.right, relatedBy:.equal, toItem: view, attribute:.right, multiplier: 1, constant: .marginConstraint))
         
-        //        // teamDescriptionLabel
-        //
-        //        //top
-        //        view.addConstraint(NSLayoutConstraint(item:teamDescriptionLabel, attribute:.top, relatedBy:.equal, toItem: headerRect, attribute:.bottom, multiplier: 1, constant: .marginConstraint))
-        //        //left
-        //        view.addConstraint(NSLayoutConstraint(item:teamDescriptionLabel, attribute: .left, relatedBy: .equal, toItem: view, attribute:.left, multiplier: 1, constant: .marginConstraint))
-        //        //right
-        //        view.addConstraint(NSLayoutConstraint(item:teamDescriptionLabel, attribute: .right, relatedBy: .equal, toItem: view, attribute: .right, multiplier: 1, constant: .marginConstraint))
-        //        //height
-        //        view.addConstraint(NSLayoutConstraint(item:teamDescriptionLabel, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 30))
-        //
-        //        // seeMembersButton
-        //
-        //        //top
-        //        view.addConstraint(NSLayoutConstraint(item:seeMembersButton, attribute:.top, relatedBy:.equal, toItem: teamDescriptionLabel, attribute:.bottom, multiplier: 1, constant: (.marginConstraint * 6)))
-        //        //left
-        //        view.addConstraint(NSLayoutConstraint(item:seeMembersButton, attribute: .left, relatedBy: .equal, toItem: view, attribute:.left, multiplier: 1, constant: .marginConstraint))
-        //        //right
-        //        view.addConstraint(NSLayoutConstraint(item:seeMembersButton, attribute: .right, relatedBy: .equal, toItem: view, attribute: .right, multiplier: 1, constant: .marginConstraint))
-        //        //height
-        //        view.addConstraint(NSLayoutConstraint(item:seeMembersButton, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 30))
-        //
-        //        // seeGroupButton
-        //
-        //        //top
-        //        view.addConstraint(NSLayoutConstraint(item:seeGroupButton, attribute:.top, relatedBy:.equal, toItem: seeMembersButton, attribute:.bottom, multiplier: 1, constant: 0))
-        //        //left
-        //        view.addConstraint(NSLayoutConstraint(item:seeGroupButton, attribute: .left, relatedBy: .equal, toItem: view, attribute:.left, multiplier: 1, constant: .marginConstraint))
-        //        //right
-        //        view.addConstraint(NSLayoutConstraint(item:seeGroupButton, attribute: .right, relatedBy: .equal, toItem: view, attribute: .right, multiplier: 1, constant: .marginConstraint))
-        //        //height
-        //        view.addConstraint(NSLayoutConstraint(item:seeGroupButton, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 30))
-        //
-        //        // requestButton
-        //
-        //        //top
-        //        view.addConstraint(NSLayoutConstraint(item:requestButton, attribute:.top, relatedBy:.equal, toItem: seeGroupButton, attribute:.bottom, multiplier: 1, constant: 0))
-        //        //left
-        //        view.addConstraint(NSLayoutConstraint(item:requestButton, attribute: .left, relatedBy: .equal, toItem: view, attribute:.left, multiplier: 1, constant: .marginConstraint))
-        //        //right
-        //        view.addConstraint(NSLayoutConstraint(item:requestButton, attribute: .right, relatedBy: .equal, toItem: view, attribute: .right, multiplier: 1, constant: .marginConstraint))
-        //        //height
-        //        view.addConstraint(NSLayoutConstraint(item:requestButton, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 30))
-        //
-        //        view.layoutIfNeeded()
-        //    }
+        //height
+        view.addConstraint(NSLayoutConstraint(item:sampleRequestResponseButton , attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant:30.0))
     }
     
     
@@ -489,26 +367,39 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
         return 1
     }
     
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "user", for: indexPath)
         if let userCell = (cell as? UserTableViewCell),
             let userKey = team?.userKeys[indexPath.row] {
             API.getUserWithKey(userKey, completed: { user in
-                print (user)
-                //user in userCell.user = user
-                //print (user!)
+                userCell.user = user
             })
             return userCell
         }
         return cell
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let profileVC = ProfileViewController(nibName: "ProfileViewController", bundle: nil)
+        if let userKey = team?.userKeys[indexPath.row] {
+            API.getUserWithKey(userKey, completed: { user in
+                profileVC.user = user
+                profileVC.navigationItem.rightBarButtonItem = KonstruuTabBarController.messagingButtonItem
+                //teamVC.navigationItem.leftBarButtonItem = KonstruuTabBarController.logoutButtonItem
+                self.navigationController?.pushViewController(profileVC, animated: true)
+            })
+        }
+    }
     
     // MARK: - Action
     
     func sendJoinRequest() {
-        
-        print ("sending join request")
+        API.getCurrentUser(completed: { user in
+            self.team!.addRequest(from: user!)
+        })
+        joinRequestButton.setTitle("Request Sent", for: UIControlState())
+        joinRequestButton.isEnabled = false
     }
     
     func seeMembers() {
@@ -516,12 +407,25 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func seeGroup() {
+        print (team?.requestUserKeys)
         print ("see group")
     }
     
     func sendRequest() {
         
         print ("send request")
+    }
+    
+    func acceptUser() {
+        print ("accepting user")
+        
+        API.getCurrentUser(completed: { user in
+            self.team!.acceptRequest(from: user!)
+            print ((self.team!.requestUserKeys))
+        })
+        
+        sampleRequestResponseButton.setTitle("accepted", for: UIControlState())
+        
     }
     
 }
