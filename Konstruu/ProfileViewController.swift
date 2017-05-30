@@ -41,7 +41,7 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
   
     var infoCell: ProfileInfoTableViewCell = ProfileInfoTableViewCell(style: .default, reuseIdentifier: "infoCell")
     var specialtyCell: ProfileSpecialtyTableViewCell = ProfileSpecialtyTableViewCell(style: .default, reuseIdentifier: "specialtyCell")
-    var projectCell: ProfileProjectTableViewCell = ProfileProjectTableViewCell(style: .default, reuseIdentifier: "projectCell")
+//    var projectCell: ProfileProjectTableViewCell = ProfileProjectTableViewCell(style: .default, reuseIdentifier: "projectCell")
   
     private func updateUI() {
       infoCell.user = user
@@ -97,8 +97,8 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
           return 290.0
         case 1:
           return 170.0
-        case 2:
-          return 300.0
+//        case 2:
+//          return 300.0
         default:
           break
         }
@@ -111,7 +111,7 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
   
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return 2
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -125,9 +125,9 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
           return infoCell
         case 1:
           return specialtyCell
-        case 2:
-          projectCell.navController = self.navigationController
-          return projectCell
+//        case 2:
+//          projectCell.navController = self.navigationController
+//          return projectCell
         default:
           break
         }
