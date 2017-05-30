@@ -13,9 +13,6 @@
 		613B1B521E72144800544297 /* TeamTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 613B1B501E72144800544297 /* TeamTableViewCell.xib */; };
 		613B1B551E721A1E00544297 /* FindChallengesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 613B1B531E721A1E00544297 /* FindChallengesViewController.swift */; };
 		613B1B561E721A1E00544297 /* FindChallengesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 613B1B541E721A1E00544297 /* FindChallengesViewController.xib */; };
-		613B1B591E722F2A00544297 /* UserCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 613B1B571E722F2A00544297 /* UserCollectionViewCell.swift */; };
-		613B1B5A1E722F2A00544297 /* UserCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 613B1B581E722F2A00544297 /* UserCollectionViewCell.xib */; };
-		613B1B5E1E722F3C00544297 /* ProgressPostTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 613B1B5C1E722F3C00544297 /* ProgressPostTableViewCell.xib */; };
 		615A292B1E9AD5E700568D40 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 615A292A1E9AD5E700568D40 /* API.swift */; };
 		615BD3C11EBAF0F8003F62B9 /* Applozic.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 615BD3C01EBAF0F8003F62B9 /* Applozic.framework */; };
 		615BD3C31EBAF152003F62B9 /* ALChatManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 615BD3C21EBAF152003F62B9 /* ALChatManager.swift */; };
@@ -72,8 +69,6 @@
 		CA7915A81EB074E6002F8318 /* ChallengeCategoriesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA7915A61EB074E6002F8318 /* ChallengeCategoriesViewController.xib */; };
 		CA7915AB1EB0750E002F8318 /* TeamDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7915A91EB0750E002F8318 /* TeamDetailsViewController.swift */; };
 		CA7915AC1EB0750E002F8318 /* TeamDetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA7915AA1EB0750E002F8318 /* TeamDetailsViewController.xib */; };
-		CA8551AD1ECB862C00AF7528 /* NewTeamViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8551AB1ECB862C00AF7528 /* NewTeamViewController.swift */; };
-		CA8551AE1ECB862C00AF7528 /* NewTeamViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA8551AC1ECB862C00AF7528 /* NewTeamViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -99,9 +94,6 @@
 		613B1B501E72144800544297 /* TeamTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TeamTableViewCell.xib; sourceTree = "<group>"; };
 		613B1B531E721A1E00544297 /* FindChallengesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FindChallengesViewController.swift; sourceTree = "<group>"; };
 		613B1B541E721A1E00544297 /* FindChallengesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FindChallengesViewController.xib; sourceTree = "<group>"; };
-		613B1B571E722F2A00544297 /* UserCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserCollectionViewCell.swift; sourceTree = "<group>"; };
-		613B1B581E722F2A00544297 /* UserCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserCollectionViewCell.xib; sourceTree = "<group>"; };
-		613B1B5C1E722F3C00544297 /* ProgressPostTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProgressPostTableViewCell.xib; sourceTree = "<group>"; };
 		615A292A1E9AD5E700568D40 /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		615BD3C01EBAF0F8003F62B9 /* Applozic.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Applozic.framework; sourceTree = "<group>"; };
 		615BD3C21EBAF152003F62B9 /* ALChatManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ALChatManager.swift; sourceTree = "<group>"; };
@@ -161,8 +153,6 @@
 		CA7915A61EB074E6002F8318 /* ChallengeCategoriesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChallengeCategoriesViewController.xib; sourceTree = "<group>"; };
 		CA7915A91EB0750E002F8318 /* TeamDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeamDetailsViewController.swift; sourceTree = "<group>"; };
 		CA7915AA1EB0750E002F8318 /* TeamDetailsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TeamDetailsViewController.xib; sourceTree = "<group>"; };
-		CA8551AB1ECB862C00AF7528 /* NewTeamViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewTeamViewController.swift; sourceTree = "<group>"; };
-		CA8551AC1ECB862C00AF7528 /* NewTeamViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewTeamViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -241,9 +231,8 @@
 			children = (
 				61F7F8781E6E06FB0017461F /* TeamViewController.swift */,
 				61F7F8791E6E06FB0017461F /* TeamViewController.xib */,
-				613B1B571E722F2A00544297 /* UserCollectionViewCell.swift */,
-				613B1B581E722F2A00544297 /* UserCollectionViewCell.xib */,
-				613B1B5C1E722F3C00544297 /* ProgressPostTableViewCell.xib */,
+				CA18FADE1EDC120300FA91C6 /* UserTableViewCell.swift */,
+				CA18FADF1EDC120300FA91C6 /* UserTableViewCell.xib */,
 			);
 			name = "Team Page";
 			sourceTree = "<group>";
@@ -415,10 +404,6 @@
 		CA8551AA1ECB85FE00AF7528 /* NewTeamPage */ = {
 			isa = PBXGroup;
 			children = (
-				CA8551AB1ECB862C00AF7528 /* NewTeamViewController.swift */,
-				CA8551AC1ECB862C00AF7528 /* NewTeamViewController.xib */,
-				CA18FADE1EDC120300FA91C6 /* UserTableViewCell.swift */,
-				CA18FADF1EDC120300FA91C6 /* UserTableViewCell.xib */,
 			);
 			name = NewTeamPage;
 			sourceTree = "<group>";
@@ -499,7 +484,6 @@
 			files = (
 				61BD68BF1E6DEC0A00B1A0E9 /* LoginViewController.xib in Resources */,
 				CA7915AC1EB0750E002F8318 /* TeamDetailsViewController.xib in Resources */,
-				613B1B5E1E722F3C00544297 /* ProgressPostTableViewCell.xib in Resources */,
 				6874024B1EA665EE00232634 /* OpenSans-LightItalic.ttf in Resources */,
 				617ED0D41EAF11C5003639A6 /* SignUpWithEmailViewController.xib in Resources */,
 				687402461EA665E900232634 /* OpenSans-Bold.ttf in Resources */,
@@ -519,10 +503,8 @@
 				61F7F87B1E6E06FB0017461F /* TeamViewController.xib in Resources */,
 				6874024E1EA665EE00232634 /* OpenSans-SemiboldItalic.ttf in Resources */,
 				613B1B521E72144800544297 /* TeamTableViewCell.xib in Resources */,
-				CA8551AE1ECB862C00AF7528 /* NewTeamViewController.xib in Resources */,
 				6874024D1EA665EE00232634 /* OpenSans-Semibold.ttf in Resources */,
 				68C8E5631E6408AA00047901 /* Assets.xcassets in Resources */,
-				613B1B5A1E722F2A00544297 /* UserCollectionViewCell.xib in Resources */,
 				CA18FAE11EDC120300FA91C6 /* UserTableViewCell.xib in Resources */,
 				613B1B561E721A1E00544297 /* FindChallengesViewController.xib in Resources */,
 				6874024A1EA665EE00232634 /* OpenSans-Light.ttf in Resources */,
@@ -605,7 +587,6 @@
 				CA7915A71EB074E6002F8318 /* ChallengeCategoriesViewController.swift in Sources */,
 				687402591EAE803700232634 /* ProfileInfoTableViewCell.swift in Sources */,
 				687FC5161EC2603D00B32B16 /* SingleTeamTableViewCell.swift in Sources */,
-				613B1B591E722F2A00544297 /* UserCollectionViewCell.swift in Sources */,
 				615BD3C31EBAF152003F62B9 /* ALChatManager.swift in Sources */,
 				61F7F8761E6E06870017461F /* ChallengeViewController.swift in Sources */,
 				613B1B511E72144800544297 /* TeamTableViewCell.swift in Sources */,
@@ -613,7 +594,6 @@
 				6104FA4F1EBBDDD800444C3B /* LoginWithEmailViewController.swift in Sources */,
 				CA1B47871EBBD41700353BD3 /* TeamListViewController.swift in Sources */,
 				61BD68CF1E6DF7B900B1A0E9 /* ChallengeTableViewCell.swift in Sources */,
-				CA8551AD1ECB862C00AF7528 /* NewTeamViewController.swift in Sources */,
 				618FBA441E7332B300B2F652 /* KonstruuTabBarController.swift in Sources */,
 				61F7F87A1E6E06FB0017461F /* TeamViewController.swift in Sources */,
 				68EFF7761EAFB0CE003D7785 /* ProfileProjectTableViewCell.swift in Sources */,

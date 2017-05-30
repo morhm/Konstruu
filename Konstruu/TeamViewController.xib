@@ -1,20 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16B2659" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16B2659" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TeamViewController" customModule="Konstruu" customModuleProvider="target">
             <connections>
-                <outlet property="challengeButton" destination="LEm-tP-cOA" id="mXg-Ae-GO3"/>
-                <outlet property="progressPostsTableView" destination="y0b-PJ-lje" id="Hg5-Bx-TCw"/>
-                <outlet property="teamNameLabel" destination="qMw-2d-ZMa" id="gG1-E4-2AB"/>
-                <outlet property="usersCollectionView" destination="ccp-sw-7Jp" id="est-Fh-5gb"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -22,76 +18,7 @@
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-            <subviews>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="y0b-PJ-lje">
-                    <rect key="frame" x="0.0" y="318" width="375" height="349"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                </tableView>
-                <collectionView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="ccp-sw-7Jp">
-                    <rect key="frame" x="0.0" y="96" width="375" height="106"/>
-                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="106" id="m63-pk-cxI"/>
-                    </constraints>
-                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="htf-TR-CL6">
-                        <size key="itemSize" width="50" height="50"/>
-                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                    </collectionViewFlowLayout>
-                </collectionView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Team Name" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qMw-2d-ZMa">
-                    <rect key="frame" x="16" y="27" width="343" height="50"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="50" id="IXv-aY-woS"/>
-                    </constraints>
-                    <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="36"/>
-                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Current Challenges" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8mY-CF-uQu">
-                    <rect key="frame" x="16" y="206" width="149" height="24"/>
-                    <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="17"/>
-                    <nil key="textColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <button opaque="NO" contentMode="redraw" contentHorizontalAlignment="left" contentVerticalAlignment="top" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LEm-tP-cOA">
-                    <rect key="frame" x="32" y="231" width="343" height="20"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="20" id="j06-Ze-Smx"/>
-                    </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <state key="normal" title="Challenge Name"/>
-                    <connections>
-                        <action selector="showChallenge:" destination="-1" eventType="touchUpInside" id="T4U-vF-OkD"/>
-                    </connections>
-                </button>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Past Milestones" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="62C-1f-rIe">
-                    <rect key="frame" x="16" y="286" width="143" height="24"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="17"/>
-                    <nil key="textColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
-            </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-            <constraints>
-                <constraint firstAttribute="trailing" secondItem="LEm-tP-cOA" secondAttribute="trailing" id="0pZ-4r-sfC"/>
-                <constraint firstItem="8mY-CF-uQu" firstAttribute="top" secondItem="ccp-sw-7Jp" secondAttribute="bottom" constant="4" id="1bq-Qj-iWH"/>
-                <constraint firstItem="ccp-sw-7Jp" firstAttribute="leading" secondItem="8mY-CF-uQu" secondAttribute="leading" constant="-16" id="BZz-re-fJs"/>
-                <constraint firstAttribute="bottom" secondItem="y0b-PJ-lje" secondAttribute="bottom" id="HWP-pu-iiJ"/>
-                <constraint firstAttribute="trailing" secondItem="qMw-2d-ZMa" secondAttribute="trailing" constant="16" id="I84-bF-hZe"/>
-                <constraint firstItem="LEm-tP-cOA" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="32" id="NqW-zV-9Oh"/>
-                <constraint firstItem="ccp-sw-7Jp" firstAttribute="top" secondItem="qMw-2d-ZMa" secondAttribute="bottom" constant="19" id="ThA-N2-6Ld"/>
-                <constraint firstItem="y0b-PJ-lje" firstAttribute="top" secondItem="LEm-tP-cOA" secondAttribute="bottom" constant="67" id="ZBB-7C-Szl"/>
-                <constraint firstAttribute="trailing" secondItem="ccp-sw-7Jp" secondAttribute="trailing" id="deV-fH-UPo"/>
-                <constraint firstItem="qMw-2d-ZMa" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="27" id="elI-T6-N5p"/>
-                <constraint firstItem="y0b-PJ-lje" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="pRp-AS-rB2"/>
-                <constraint firstItem="ccp-sw-7Jp" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="rU9-ba-aUS"/>
-                <constraint firstAttribute="trailing" secondItem="y0b-PJ-lje" secondAttribute="trailing" id="tQg-Gd-CWh"/>
-                <constraint firstItem="qMw-2d-ZMa" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="16" id="ytn-Rw-7rO"/>
-                <constraint firstItem="LEm-tP-cOA" firstAttribute="top" secondItem="8mY-CF-uQu" secondAttribute="bottom" constant="1.5" id="zdh-77-yX4"/>
-            </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <nil key="simulatedTopBarMetrics"/>
             <nil key="simulatedBottomBarMetrics"/>
