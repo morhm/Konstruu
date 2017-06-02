@@ -109,9 +109,7 @@ class CreateChallengeViewController: UIViewController, UITextViewDelegate {
         toolbar.sizeToFit()
         
         let doneButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.done, target: self, action: #selector(self.doneClicked))
-        
         let flexibleSpace = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace, target: nil, action: nil)
-        
         toolbar.setItems([flexibleSpace, doneButton], animated: false)
         
         challengeNameTextField.inputAccessoryView = toolbar
@@ -173,9 +171,7 @@ class CreateChallengeViewController: UIViewController, UITextViewDelegate {
       //height
       view.addConstraint(NSLayoutConstraint(item:challengeNameTextField, attribute:.height, relatedBy:.equal, toItem: nil, attribute:.notAnAttribute, multiplier: 1, constant: .nameTextFieldHeightConstraint))
       
-      
       //challengeDescriptionTextView
-      
       
       //top
       view.addConstraint(NSLayoutConstraint(item:challengeDescriptionTextView, attribute:.top, relatedBy:.equal, toItem: challengeNameTextField, attribute:.bottom, multiplier: 1, constant: .marginConstraint))
@@ -185,7 +181,6 @@ class CreateChallengeViewController: UIViewController, UITextViewDelegate {
       view.addConstraint(NSLayoutConstraint(item:challengeDescriptionTextView, attribute:.right, relatedBy:.equal, toItem: view, attribute:.right, multiplier: 1, constant: -.marginConstraint))
       //height
       view.addConstraint(NSLayoutConstraint(item:challengeDescriptionTextView, attribute:.height, relatedBy:.equal, toItem: nil, attribute:.notAnAttribute, multiplier: 1, constant: .descriptionTextViewHeightConstraint))
-      
       
       //addPhotoButton
       
@@ -259,7 +254,6 @@ class CreateChallengeViewController: UIViewController, UITextViewDelegate {
     }
   
     // MARK: - Delegates
-  
   
     func textViewDidBeginEditing(_ textView: UITextView) {
       if textView.isEqual(challengeNameTextField) {
