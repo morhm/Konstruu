@@ -78,7 +78,6 @@ class Team: CustomStringConvertible {
     func addUser(_ user: User) {
         userKeys.append(user.key)
         reference.child("userKeys").child(user.key).setValue(true)
-        
         user.teamKeys.append(key)
         user.reference.child("teamKeys").child(key).setValue(true)
     }
@@ -88,7 +87,6 @@ class Team: CustomStringConvertible {
             userKeys.remove(at: index)
         }
         reference.child("userKeys").child(user.key).removeValue()
-        
         if let index = user.teamKeys.index(of: key) {
             user.teamKeys.remove(at: index)
         }
@@ -139,7 +137,6 @@ class Team: CustomStringConvertible {
     func startChatWithUser(_ user: User, from controller: UIViewController) {
         var membersList = userKeys
         membersList.append(user.key)
-        
         let channelService = ALChannelService()
         channelService.createChannel("\(user.name) with \(self.name)", orClientChannelKey: "\(user.key)\(self.key)", andMembersList: membersList as? NSMutableArray, andImageLink: nil, withCompletion: { alChannel, error in
             if error != nil || alChannel == nil {

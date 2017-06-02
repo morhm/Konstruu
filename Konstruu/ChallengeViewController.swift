@@ -45,6 +45,8 @@ class ChallengeViewController: UIViewController, UITableViewDelegate, UITableVie
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.navigationItem.rightBarButtonItems = KonstruuTabBarController.barButtonItems
+        
         view.backgroundColor = UIColor.konstruuLightGray()
         self.edgesForExtendedLayout = []
         teamsTableView.register(UINib(nibName: "TeamTableViewCell", bundle: nil), forCellReuseIdentifier: "team")

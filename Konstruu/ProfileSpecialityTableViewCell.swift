@@ -41,6 +41,7 @@ class ProfileSpecialtyTableViewCell: UITableViewCell, UITextFieldDelegate {
   var user: User? {
     didSet {
       skills = user?.skills
+        editButton.isHidden = !(user?.isCurrentUser() ?? false)
     }
   }
   

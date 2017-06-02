@@ -46,6 +46,8 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.navigationItem.rightBarButtonItems = KonstruuTabBarController.barButtonItems
+        
         self.edgesForExtendedLayout = []
         usersTableView.register(UINib(nibName: "UserTableViewCell", bundle: nil), forCellReuseIdentifier: "user")
         
@@ -412,7 +414,6 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func sendRequest() {
-        
         print ("send request")
     }
     

@@ -33,8 +33,7 @@ class TeamListViewController: UIViewController, UITableViewDataSource, UITableVi
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.navigationItem.rightBarButtonItem = KonstruuTabBarController.messagingButtonItem
-        self.navigationItem.leftBarButtonItem = KonstruuTabBarController.logoutButtonItem
+        self.navigationItem.rightBarButtonItems = KonstruuTabBarController.barButtonItems
         
         self.edgesForExtendedLayout = []
         self.title = "Your Teams"
