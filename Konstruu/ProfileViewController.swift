@@ -56,8 +56,7 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
     override func viewDidLoad() {
       super.viewDidLoad()
         
-      self.navigationItem.rightBarButtonItem = KonstruuTabBarController.messagingButtonItem
-      self.navigationItem.leftBarButtonItem = KonstruuTabBarController.logoutButtonItem
+      self.navigationItem.rightBarButtonItems = KonstruuTabBarController.barButtonItems
       
       self.edgesForExtendedLayout = []
       self.title = "Profile"

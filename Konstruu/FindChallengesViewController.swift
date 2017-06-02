@@ -47,6 +47,7 @@ class FindChallengesViewController: UIViewController, UITableViewDataSource, UIT
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationItem.rightBarButtonItems = KonstruuTabBarController.barButtonItems
         self.edgesForExtendedLayout = []
         self.title = "Find Challenges"
         
