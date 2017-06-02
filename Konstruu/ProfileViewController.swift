@@ -56,8 +56,7 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
     override func viewDidLoad() {
       super.viewDidLoad()
         
-      self.navigationItem.rightBarButtonItem = KonstruuTabBarController.messagingButtonItem
-      //self.navigationItem.leftBarButtonItem = KonstruuTabBarController.logoutButtonItem
+      self.navigationItem.rightBarButtonItems = KonstruuTabBarController.barButtonItems
       
       self.edgesForExtendedLayout = []
       self.title = "Profile"
@@ -66,7 +65,16 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
       addConstraints()
       
       updateUI()
+      
+      NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: NSNotification.Name.UIKeyboardDidShow, object: nil)
+      NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(notification:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
     }
+  
+  override func viewDidDisappear(_ animated: Bool) {
+    super.viewDidDisappear(animated)
+    
+    NotificationCenter.default.removeObserver(self)
+  }
     
     func addSubviews() {
       view.addSubview(backgroundView)
@@ -141,9 +149,33 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
         let cell =  UITableViewCell(style: .default, reuseIdentifier: "cell")
         return cell
     }
-    
+  
+  func keyboardWillShow(notification: NSNotification) {
+    if ((notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue) != nil {
+      //self.view.frame.origin.y -= keyboardSize.height
+      var userInfo = notification.userInfo!
+      var keyboardFrame:CGRect = (userInfo[UIKeyboardFrameBeginUserInfoKey] as! NSValue).cgRectValue
+      keyboardFrame = self.view.convert(keyboardFrame, from: nil)
+      
+      var contentInset:UIEdgeInsets = self.badgesTableView.contentInset
+      contentInset.bottom = keyboardFrame.size.height
+      self.badgesTableView.contentInset = contentInset
+      
+      //get indexpath
+      let indexpath = IndexPath(row: 1, section: 0)
+      self.badgesTableView.scrollToRow(at: indexpath, at: UITableViewScrollPosition.top, animated: true)
+    }
+  }
+  
+  func keyboardWillHide(notification: NSNotification) {
+    if ((notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue) != nil {
+      let contentInset:UIEdgeInsets = .zero
+      self.badgesTableView.contentInset = contentInset
+    }
+  }
+  
     // MARK: - Navigation
-    
+  
     @IBAction func showFindChallenges(_ sender: UIButton) {
         if let tabBarController = (self.tabBarController as? KonstruuTabBarController) {
             tabBarController.findChallengesWasClicked()

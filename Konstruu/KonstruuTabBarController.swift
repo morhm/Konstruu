@@ -22,6 +22,8 @@ class KonstruuTabBarController: UITabBarController, UITabBarControllerDelegate {
     
     static let logoutButtonItem = UIBarButtonItem(title: "Logout", style: .plain, target: self, action: #selector(logout))
     
+    static let barButtonItems = [messagingButtonItem, logoutButtonItem]
+    
     // MARK: - View controller lifecycle
     
     override func viewDidLoad() {

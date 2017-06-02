@@ -142,14 +142,11 @@ class ProfileProjectTableViewCell: UITableViewCell, UITableViewDelegate, UITable
     accessibilityLabel = "projectCell"
     
     contentView.addSubview(cardView)
-    
     contentView.addSubview(titleLabel)
-    
     contentView.addSubview(teamsTableView)
     
 //    contentView.addSubview(firstProjectNameLabel)
 //    contentView.addSubview(firstProjectDescriptionLabel)
-//
 //    contentView.addSubview(secondProjectNameLabel)
 //    contentView.addSubview(secondProjectDescriptionLabel)
     

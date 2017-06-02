@@ -41,6 +41,7 @@ class ProfileSpecialtyTableViewCell: UITableViewCell, UITextFieldDelegate {
   var user: User? {
     didSet {
       skills = user?.skills
+        editButton.isHidden = !(user?.isCurrentUser() ?? false)
     }
   }
   
@@ -118,7 +119,6 @@ class ProfileSpecialtyTableViewCell: UITableViewCell, UITextFieldDelegate {
     specialtyLabel.textAlignment = .left
     specialtyLabel.font = UIFont.konstruuLightFontWithSize(18.0)
     
-    
     specialtyLabel.translatesAutoresizingMaskIntoConstraints = false
     return specialtyLabel
     }()
@@ -152,9 +152,7 @@ class ProfileSpecialtyTableViewCell: UITableViewCell, UITextFieldDelegate {
     accessibilityLabel = "specialtyCell"
     
     contentView.addSubview(cardView)
-    
     contentView.addSubview(titleLabel)
-    
     contentView.addSubview(editButton)
     
     contentView.addSubview(firstSpecialtyNameLabel)
@@ -276,6 +274,10 @@ class ProfileSpecialtyTableViewCell: UITableViewCell, UITextFieldDelegate {
     
     super.updateConstraints()
   }
+  
+  //func textViewDidBeginEditing(_ textView: UITextView) {
+    
+  //}
   
   // MARK: - Actions
   
