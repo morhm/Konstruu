@@ -84,16 +84,6 @@ class LoginViewController: UIViewController, LoginButtonDelegate {
                     let user = API.createUserWithKey(firebaseAuthUser.uid, userInfo: userInfo)
                     user.registerForChat()
                     
-                    /* Added test challenge and team for fb logins */
-                    let challengeInfo: Dictionary<String, AnyObject> = ["title": "Test Challenge" as AnyObject, "desc": "Created for user \(user.key)" as AnyObject]
-                    let challenge = API.createChallenge(challengeInfo: challengeInfo)
-                    
-                    let teamInfo: Dictionary<String, AnyObject> = ["name": "Test Team" as AnyObject, "open": true as AnyObject, "challengeKey": challenge.key as AnyObject]
-                    let team = API.createTeam(teamInfo: teamInfo)
-                    
-                    team.addUser(user)
-                    challenge.addTeam(team)
-                    
                     self?.showProfile(user: user)
                 }
                 
