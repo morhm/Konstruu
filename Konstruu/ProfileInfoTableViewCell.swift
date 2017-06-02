@@ -51,8 +51,8 @@ class ProfileInfoTableViewCell: UITableViewCell, UITextFieldDelegate, UITextView
           user?.getProfileImage(completed: { [weak self] image in
               self?.profileImage = image
           })
-//            messageButton.isHidden = user?.isCurrentUser() ?? false
-//            editButton.isHidden = user?.isCurrentUser() ?? true
+            messageButton.isHidden = user?.isCurrentUser() ?? false
+            editButton.isHidden = !(user?.isCurrentUser() ?? false)
       }
   }
     
