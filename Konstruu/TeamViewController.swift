@@ -412,7 +412,6 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func sendRequest() {
-        
         print ("send request")
     }
     

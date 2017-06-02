@@ -46,9 +46,8 @@ class ChallengeTableViewCell: UITableViewCell {
     
     //var openTeamAvailable = false
     
-    
-    
     private func updateUI() {
+        
         titleLabel.text = challenge?.title
         descriptionLabel.text = challenge?.desc
         
