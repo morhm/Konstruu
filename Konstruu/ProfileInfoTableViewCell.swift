@@ -38,7 +38,7 @@ private extension CGFloat {
   static let descriptionLabelRightConstraint:CGFloat    = 20.0
 }
 
-class ProfileInfoTableViewCell: UITableViewCell, UITextFieldDelegate, UITextViewDelegate {
+class ProfileInfoTableViewCell: UITableViewCell, UITextFieldDelegate, UITextViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
   
   // MARK: - Data
   
@@ -55,7 +55,7 @@ class ProfileInfoTableViewCell: UITableViewCell, UITextFieldDelegate, UITextView
 //            editButton.isHidden = user?.isCurrentUser() ?? true
       }
   }
-  
+    
   var parentViewController: UIViewController!
   
   var educationText:String? = "Senior at Phoenix High School" {
@@ -70,7 +70,7 @@ class ProfileInfoTableViewCell: UITableViewCell, UITextFieldDelegate, UITextView
     }
   }
   
-//  var descriptionText:String? = "Helloooo???" {
+//  var descriptionText:String? = "" {
 //    didSet {
 //      descriptionLabel.text = descriptionText
 //    }
@@ -78,13 +78,15 @@ class ProfileInfoTableViewCell: UITableViewCell, UITextFieldDelegate, UITextView
   
   var profileImage:UIImage? {
     didSet {
-      profileImageView.image = profileImage
+      profileImageButton.setImage(profileImage, for: .normal)
     }
   }
   
   var editingMode:Bool = false {
     didSet {
       if editingMode {
+        profileImageButton.isEnabled = true
+        
         usernameLabel.isHidden = true
         educationLabel.isHidden = true
         locationLabel.isHidden = true
@@ -95,6 +97,8 @@ class ProfileInfoTableViewCell: UITableViewCell, UITextFieldDelegate, UITextView
         locationTextField.isHidden = false
         descriptionTextView.isHidden = false
       } else {
+        profileImageButton.isEnabled = false
+
         usernameLabel.isHidden = false
         educationLabel.isHidden = false
         locationLabel.isHidden = false
@@ -112,6 +116,8 @@ class ProfileInfoTableViewCell: UITableViewCell, UITextFieldDelegate, UITextView
   
   // MARK: - Subviews
   
+  let imagePicker: UIImagePickerController = UIImagePickerController()
+  
   private lazy var cardView: UIView = { [unowned self] in
     let cardView = UIView()
     cardView.backgroundColor = UIColor.white
@@ -120,13 +126,18 @@ class ProfileInfoTableViewCell: UITableViewCell, UITextFieldDelegate, UITextView
     return cardView
     }()
   
-  private lazy var profileImageView: UIImageView = { [unowned self] in
-    let profileImageView = UIImageView()
-    profileImageView.image = self.profileImage
-    profileImageView.contentMode = .scaleAspectFill
-    
-    profileImageView.translatesAutoresizingMaskIntoConstraints = false
-    return profileImageView
+  private lazy var profileImageButton: UIButton = { [unowned self] in
+    let profileImageButton = UIButton()
+    profileImageButton.setImage(self.profileImage, for: .normal)
+    profileImageButton.imageView?.contentMode = .scaleAspectFill
+    profileImageButton.contentMode = .scaleAspectFill
+    profileImageButton.contentHorizontalAlignment = .fill
+    profileImageButton.contentVerticalAlignment = .fill
+    profileImageButton.isEnabled = false
+    profileImageButton.addTarget(self, action: #selector(updateImage), for: UIControlEvents.touchUpInside)
+
+    profileImageButton.translatesAutoresizingMaskIntoConstraints = false
+    return profileImageButton
     }()
   
   private lazy var usernameLabel : UILabel = { [unowned self] in
@@ -247,13 +258,15 @@ class ProfileInfoTableViewCell: UITableViewCell, UITextFieldDelegate, UITextView
   override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
     super.init(style: style, reuseIdentifier: reuseIdentifier)
     
+    imagePicker.delegate = self
+    
     backgroundColor = UIColor.clear
     
     selectionStyle = .none
     accessibilityLabel = "infoCell"
     
     contentView.addSubview(cardView)
-    contentView.addSubview(profileImageView)
+    contentView.addSubview(profileImageButton)
     
     contentView.addSubview(usernameLabel)
     contentView.addSubview(usernameTextField)
@@ -324,21 +337,21 @@ class ProfileInfoTableViewCell: UITableViewCell, UITextFieldDelegate, UITextView
     contentView.addConstraint(NSLayoutConstraint(item:cardView, attribute:.bottom, relatedBy:.equal, toItem: contentView, attribute:.bottom, multiplier: 1, constant: 0))
     
     
-    //profileImageView
+    //profileImageButton
     
     //top
-    contentView.addConstraint(NSLayoutConstraint(item:profileImageView, attribute:.top, relatedBy:.equal, toItem: contentView, attribute:.top, multiplier: 1, constant: .imageViewTopConstraint))
+    contentView.addConstraint(NSLayoutConstraint(item:profileImageButton, attribute:.top, relatedBy:.equal, toItem: contentView, attribute:.top, multiplier: 1, constant: .imageViewTopConstraint))
     //centerX
-    contentView.addConstraint(NSLayoutConstraint(item:profileImageView, attribute:.centerX, relatedBy:.equal, toItem: contentView, attribute:.centerX, multiplier: 1, constant: 0))
+    contentView.addConstraint(NSLayoutConstraint(item:profileImageButton, attribute:.centerX, relatedBy:.equal, toItem: contentView, attribute:.centerX, multiplier: 1, constant: 0))
     //height
-    contentView.addConstraint(NSLayoutConstraint(item:profileImageView, attribute:.height, relatedBy:.equal, toItem: nil, attribute:.notAnAttribute, multiplier: 1, constant: .imageViewHeightConstraint))
+    contentView.addConstraint(NSLayoutConstraint(item:profileImageButton, attribute:.height, relatedBy:.equal, toItem: nil, attribute:.notAnAttribute, multiplier: 1, constant: .imageViewHeightConstraint))
     //width
-    contentView.addConstraint(NSLayoutConstraint(item:profileImageView, attribute:.width, relatedBy:.equal, toItem: nil, attribute:.notAnAttribute, multiplier: 1, constant: .imageViewWidthConstraint))
+    contentView.addConstraint(NSLayoutConstraint(item:profileImageButton, attribute:.width, relatedBy:.equal, toItem: nil, attribute:.notAnAttribute, multiplier: 1, constant: .imageViewWidthConstraint))
     
     //usernameLabel
     
     //top
-    contentView.addConstraint(NSLayoutConstraint(item:usernameLabel, attribute:.top, relatedBy:.equal, toItem: profileImageView, attribute:.bottom, multiplier: 1, constant: .nameLabelTopConstraint))
+    contentView.addConstraint(NSLayoutConstraint(item:usernameLabel, attribute:.top, relatedBy:.equal, toItem: profileImageButton, attribute:.bottom, multiplier: 1, constant: .nameLabelTopConstraint))
     //centerX
     contentView.addConstraint(NSLayoutConstraint(item:usernameLabel, attribute:.centerX, relatedBy:.equal, toItem: contentView, attribute:.centerX, multiplier: 1, constant: 0))
     //height
@@ -349,7 +362,7 @@ class ProfileInfoTableViewCell: UITableViewCell, UITextFieldDelegate, UITextView
     //usernameTextField
     
     //top
-    contentView.addConstraint(NSLayoutConstraint(item:usernameTextField, attribute:.top, relatedBy:.equal, toItem: profileImageView, attribute:.bottom, multiplier: 1, constant: .nameLabelTopConstraint))
+    contentView.addConstraint(NSLayoutConstraint(item:usernameTextField, attribute:.top, relatedBy:.equal, toItem: profileImageButton, attribute:.bottom, multiplier: 1, constant: .nameLabelTopConstraint))
     //centerX
     contentView.addConstraint(NSLayoutConstraint(item:usernameTextField, attribute:.centerX, relatedBy:.equal, toItem: contentView, attribute:.centerX, multiplier: 1, constant: 0))
     //height
@@ -479,8 +492,33 @@ class ProfileInfoTableViewCell: UITableViewCell, UITextFieldDelegate, UITextView
     contentView.endEditing(true)
   }
   
-  // MARK: - Delegates
   
+  
+  func updateImage() {
+    if UIImagePickerController.isSourceTypeAvailable(.savedPhotosAlbum){
+      imagePicker.sourceType = .savedPhotosAlbum
+      imagePicker.allowsEditing = false
+      
+      parentViewController.present(imagePicker, animated: true, completion: nil)
+    }
+  }
+  
+  func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+    if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
+      //profileImage = pickedImage
+      user?.updateProfileImage(to: pickedImage.jpeg!, completed: { (data, error) in
+        //print(error)
+        self.profileImage = pickedImage
+      })
+    }
+    parentViewController.dismiss(animated: true, completion: nil)
+  }
+  
+  func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+    parentViewController.dismiss(animated:true, completion: nil)
+  }
+  
+  // MARK: - Delegates
   
 //  func textViewDidBeginEditing(_ textView: UITextView) {
 //    if textView.isEqual(challengeNameTextField) {

@@ -57,7 +57,7 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
       super.viewDidLoad()
         
       self.navigationItem.rightBarButtonItem = KonstruuTabBarController.messagingButtonItem
-      //self.navigationItem.leftBarButtonItem = KonstruuTabBarController.logoutButtonItem
+      self.navigationItem.leftBarButtonItem = KonstruuTabBarController.logoutButtonItem
       
       self.edgesForExtendedLayout = []
       self.title = "Profile"
@@ -70,6 +70,12 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
       NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: NSNotification.Name.UIKeyboardDidShow, object: nil)
       NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(notification:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
     }
+  
+  override func viewDidDisappear(_ animated: Bool) {
+    super.viewDidDisappear(animated)
+    
+    NotificationCenter.default.removeObserver(self)
+  }
     
     func addSubviews() {
       view.addSubview(backgroundView)
