@@ -41,7 +41,7 @@ class ProfileSpecialtyTableViewCell: UITableViewCell, UITextFieldDelegate {
   var user: User? {
     didSet {
       skills = user?.skills
-        editButton.isHidden = !(user?.isCurrentUser() ?? false)
+      editButton.isHidden = !(user?.isCurrentUser() ?? false)
     }
   }
   
@@ -151,6 +151,8 @@ class ProfileSpecialtyTableViewCell: UITableViewCell, UITextFieldDelegate {
     selectionStyle = .none
     accessibilityLabel = "specialtyCell"
     
+    editButton.isHidden = !(user?.isCurrentUser() ?? false)
+
     contentView.addSubview(cardView)
     contentView.addSubview(titleLabel)
     contentView.addSubview(editButton)
