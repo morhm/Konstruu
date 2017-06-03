@@ -7,7 +7,9 @@
 //
 
 import UIKit
-//import Social
+import Social
+
+import FacebookShare
 
 class FindChallengesViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate {
     
@@ -211,7 +213,7 @@ class FindChallengesViewController: UIViewController, UITableViewDataSource, UIT
         cell.bookmarkButton.addTarget(self, action: #selector(bookmark), for: .touchUpInside)
         
         cell.shareButton.tag = indexPath.section
-        //cell.shareButton.addTarget(self, action: #selector(fbShare), for: .touchUpInside)
+        cell.shareButton.addTarget(self, action: #selector(fbShare), for: .touchUpInside)
         
         cell.challenge = challenges?[indexPath.section]
         
@@ -248,7 +250,32 @@ class FindChallengesViewController: UIViewController, UITableViewDataSource, UIT
         }
     }
     
-//    @IBAction func fbShare(sender: UIButton) {
+    @IBAction func fbShare(sender: UIButton) {
+        
+        if SLComposeViewController.isAvailable(forServiceType: SLServiceTypeFacebook) {
+            let vc = SLComposeViewController(forServiceType:SLServiceTypeFacebook)
+            //vc?.add(UIImage(named: "groupIcon"))
+            //vc?.add(URL(string: "http://www.facebook.com/"))
+            vc?.setInitialText("Poopy doopyasdjf;lkf.")
+            self.present(vc!, animated: true, completion: nil)
+        } else {
+            let alert = UIAlertController(title: "Accounts", message: "Please login to a Facebook account to share.", preferredStyle: UIAlertControllerStyle.alert)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        }
+        
+//        let content = LinkShareContent(url: NSURL("https://developers.facebook.com"))
+//        try ShareDialog.show(from: myViewController, content: content)
+
+        
+//        let content: FBSDKShareLinkContent = FBSDKShareLinkContent()
+//        content.contentURL = NSURL(string: self.contentURL)
+//        content.contentTitle = self.contentTitle
+//        content.contentDescription = self.contentDescription
+//        content.imageURL = NSURL(string: self.contentURLImage)
+//        FBSDKShareDialog.showFromViewController(self, withContent: content, delegate: nil)
+        
+        
 //        if SLComposeViewController.isAvailable(forServiceType: SLServiceTypeFacebook) {
 //            let fbShare:SLComposeViewController = SLComposeViewController(forServiceType: SLServiceTypeFacebook)
 //            self.present(fbShare, animated: true)
@@ -257,7 +284,7 @@ class FindChallengesViewController: UIViewController, UITableViewDataSource, UIT
 //            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
 //            self.present(alert, animated: true)
 //        }
-//    }
+    }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let challengeVC = ChallengeViewController(nibName: "ChallengeViewController", bundle: nil)
