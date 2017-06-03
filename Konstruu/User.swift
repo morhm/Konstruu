@@ -137,8 +137,9 @@ class User: CustomStringConvertible {
     }
     
     // reference: https://firebase.google.com/docs/storage/ios/upload-files
-    func updateProfileImage(to imageData: Data, completed: ((FIRStorageMetadata?, Error?) -> Void)?) {
-        profileImageReference.put(imageData, metadata: nil, completion: completed)
+    func updateProfileImage(to imageData: Data, completed: ((FIRStorageMetadata?, Error?) -> Void)?) -> FIRStorageUploadTask {
+        let uploadTask = profileImageReference.put(imageData, metadata: nil, completion: completed)
+        return uploadTask
     }
     
     func updateSkill(at index: Int, to skill: String) {
@@ -194,7 +195,7 @@ class User: CustomStringConvertible {
     
     func startChat(from controller: UIViewController) {
         let chatManager = ALChatManager(applicationKey: ALChatManager.applicationId as NSString)
-        chatManager.registerUserAndLaunchChat(ALChatManager.getUserDetail(), fromController: controller, forUser: key)
+        chatManager.launchChatForUser(key, fromViewController: controller)
     }
     
     func setSearchText() {

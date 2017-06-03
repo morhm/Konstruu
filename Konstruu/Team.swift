@@ -127,25 +127,49 @@ class Team: CustomStringConvertible {
         reference.child("open").setValue(false)
     }
     
-    func registerForChat() {
-        let channelService = ALChannelService()
-        let membersList = userKeys as NSArray
-        let mutableMembersList = membersList.mutableCopy() as? NSMutableArray
-        channelService.createChannel(name, orClientChannelKey: key, andMembersList: mutableMembersList, andImageLink: nil, withCompletion: nil)
+    func startChat(from controller: UIViewController) {
+        if userKeys.count > 1 {
+            let channelService = ALChannelService()
+            let chatManager = ALChatManager(applicationKey: ALChatManager.applicationId as NSString)
+            
+            channelService.getChannelInformation(nil, orClientChannelKey: key, withCompletion: { [weak self] alChannel in
+                if let alChannel = alChannel {
+                    chatManager.launchChatForGroup(alChannel.key, fromController: controller)
+                    
+                } else if self != nil {
+                    let membersList = self!.userKeys as NSArray
+                    let mutableMembersList = membersList.mutableCopy() as? NSMutableArray
+                    
+                    channelService.createChannel(self!.name, orClientChannelKey: self!.key, andMembersList: mutableMembersList, andImageLink: nil, withCompletion: { newChannel, error in
+                        if error != nil || newChannel == nil {
+                            print(error.debugDescription)
+                        } else {
+                            chatManager.launchChatForGroup(newChannel!.key, fromController: controller)
+                        }
+                    })
+                }
+            })
+        } else {
+            print("group has only 1 user")
+        }
     }
     
     func startChatWithUser(_ user: User, from controller: UIViewController) {
         var membersList = userKeys
-        membersList.append(user.key)
-        let channelService = ALChannelService()
-        channelService.createChannel("\(user.name) with \(self.name)", orClientChannelKey: "\(user.key)\(self.key)", andMembersList: membersList as? NSMutableArray, andImageLink: nil, withCompletion: { alChannel, error in
-            if error != nil || alChannel == nil {
-                print(error.debugDescription)
-            } else {
-                let chatManager = ALChatManager(applicationKey: ALChatManager.applicationId as NSString)
-                chatManager.launchChatForGroup(alChannel!.key, fromController: controller)
-            }
-        })
+        if membersList.index(of: user.key) == nil {
+            membersList.append(user.key)
+        }
+        if membersList.count > 1 {
+            let channelService = ALChannelService()
+            channelService.createChannel("\(user.name) with \(self.name)", orClientChannelKey: "\(user.key)\(self.key)", andMembersList: membersList as? NSMutableArray, andImageLink: nil, withCompletion: { alChannel, error in
+                if error != nil || alChannel == nil {
+                    print(error.debugDescription)
+                } else {
+                    let chatManager = ALChatManager(applicationKey: ALChatManager.applicationId as NSString)
+                    chatManager.launchChatForGroup(alChannel!.key, fromController: controller)
+                }
+            })
+        }
     }
     
     var description: String {

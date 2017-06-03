@@ -51,8 +51,8 @@ class ProfileInfoTableViewCell: UITableViewCell, UITextFieldDelegate, UITextView
           user?.getProfileImage(completed: { [weak self] image in
               self?.profileImage = image
           })
-            messageButton.isHidden = user?.isCurrentUser() ?? false
-            editButton.isHidden = !(user?.isCurrentUser() ?? false)
+          messageButton.isHidden = user?.isCurrentUser() ?? false
+          editButton.isHidden = !(user?.isCurrentUser() ?? false)
       }
   }
     
@@ -419,7 +419,7 @@ class ProfileInfoTableViewCell: UITableViewCell, UITextFieldDelegate, UITextView
     //top
     contentView.addConstraint(NSLayoutConstraint(item:messageButton, attribute:.top, relatedBy:.equal, toItem: locationLabel, attribute:.bottom, multiplier: 1, constant: .messageButtonTopConstraint))
     //centerX
-    contentView.addConstraint(NSLayoutConstraint(item:messageButton, attribute:.centerX, relatedBy:.equal, toItem: contentView, attribute:.centerX, multiplier: 1, constant: -50))
+    contentView.addConstraint(NSLayoutConstraint(item:messageButton, attribute:.centerX, relatedBy:.equal, toItem: contentView, attribute:.centerX, multiplier: 1, constant: 0))
     //height
     contentView.addConstraint(NSLayoutConstraint(item:messageButton, attribute:.height, relatedBy:.equal, toItem: nil, attribute:.notAnAttribute, multiplier: 1, constant: .messageButtonHeightConstraint))
     //width
@@ -430,7 +430,7 @@ class ProfileInfoTableViewCell: UITableViewCell, UITextFieldDelegate, UITextView
     //top
     contentView.addConstraint(NSLayoutConstraint(item:editButton, attribute:.top, relatedBy:.equal, toItem: locationLabel, attribute:.bottom, multiplier: 1, constant: .messageButtonTopConstraint))
     //centerX
-    contentView.addConstraint(NSLayoutConstraint(item:editButton, attribute:.centerX, relatedBy:.equal, toItem: contentView, attribute:.centerX, multiplier: 1, constant: 50))
+    contentView.addConstraint(NSLayoutConstraint(item:editButton, attribute:.centerX, relatedBy:.equal, toItem: contentView, attribute:.centerX, multiplier: 1, constant: 0))
     //height
     contentView.addConstraint(NSLayoutConstraint(item:editButton, attribute:.height, relatedBy:.equal, toItem: nil, attribute:.notAnAttribute, multiplier: 1, constant: .messageButtonHeightConstraint))
     //width
@@ -482,6 +482,8 @@ class ProfileInfoTableViewCell: UITableViewCell, UITextFieldDelegate, UITextView
   
   func doneClicked() {
     user?.updateName(to: usernameTextField.text!)
+    user?.updateSchool(to: educationTextField.text!)
+    user?.updateLocation(to: locationTextField.text!)
     user?.updateDescription(to: descriptionTextView.text)
     
     usernameLabel.text = usernameTextField.text!
@@ -491,8 +493,6 @@ class ProfileInfoTableViewCell: UITableViewCell, UITextFieldDelegate, UITextView
     
     contentView.endEditing(true)
   }
-  
-  
   
   func updateImage() {
     if UIImagePickerController.isSourceTypeAvailable(.savedPhotosAlbum){

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate {
   
     // MARK: - Model
     
@@ -29,13 +29,21 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
       return backgroundView
     }()
   
+  
+  @IBOutlet weak var searchBar: UISearchBar! {
+    didSet {
+      searchBar.delegate = self
+      addToolbarToKeyboard()
+    }
+  }
+  
     @IBOutlet weak var badgesTableView: UITableView! {
         didSet {
             badgesTableView.dataSource = self
             badgesTableView.delegate = self
             badgesTableView.backgroundColor = .clear
-            badgesTableView.rowHeight = 290.0
-            badgesTableView.estimatedRowHeight = 100
+            //badgesTableView.rowHeight = 290.0
+            //badgesTableView.estimatedRowHeight = 100
         }
     }
   
@@ -46,6 +54,8 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
     private func updateUI() {
       infoCell.user = user
       infoCell.parentViewController = self
+
+      specialtyCell.user = user
       
       badgesTableView?.reloadData()
     }
@@ -65,15 +75,15 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
       addConstraints()
       
       updateUI()
-      
+      self.badgesTableView.rowHeight = 120.0
+      self.badgesTableView.contentInset = .zero
+
       NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: NSNotification.Name.UIKeyboardDidShow, object: nil)
       NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(notification:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
     }
   
   override func viewDidDisappear(_ animated: Bool) {
     super.viewDidDisappear(animated)
-    
-    NotificationCenter.default.removeObserver(self)
   }
     
     func addSubviews() {
@@ -150,6 +160,23 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
         return cell
     }
   
+  // MARK: - Keyboard Helper Functions
+  
+  private func addToolbarToKeyboard() {
+    let toolbar = UIToolbar()
+    toolbar.sizeToFit()
+    let doneButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.done, target: self, action: #selector(self.doneClicked))
+    let flexibleSpace = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace, target: nil, action: nil)
+    toolbar.setItems([flexibleSpace, doneButton], animated: false)
+    searchBar.inputAccessoryView = toolbar
+  }
+  
+  func doneClicked() {
+    view.endEditing(true)
+  }
+  
+  // MARK: - Keyboard notifications
+  
   func keyboardWillShow(notification: NSNotification) {
     if ((notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue) != nil {
       //self.view.frame.origin.y -= keyboardSize.height
@@ -169,8 +196,17 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
   
   func keyboardWillHide(notification: NSNotification) {
     if ((notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue) != nil {
-      let contentInset:UIEdgeInsets = .zero
-      self.badgesTableView.contentInset = contentInset
+      self.badgesTableView.contentInset = .zero
+    }
+  }
+  
+  // MARK: - Search bar delegate
+  
+  func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+    if let keyword = searchBar.text, !keyword.isEmpty {
+        API.searchUsers(keyword: keyword, completed: { users in
+            // display users
+        })
     }
   }
   
