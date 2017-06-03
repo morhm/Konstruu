@@ -774,7 +774,7 @@
 					"-isystem",
 					"\"${PODS_ROOT}/Headers/Public/GoogleSymbolUtilities\"",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.frogandcode.Konstruu;
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.Konstruu;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Konstruu/Konstruu-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -841,7 +841,7 @@
 					"\"${PODS_ROOT}/Headers/Public/GoogleSymbolUtilities\"",
 					"-isystem",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.frogandcode.Konstruu;
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.Konstruu;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Konstruu/Konstruu-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
