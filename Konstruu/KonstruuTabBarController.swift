@@ -9,6 +9,7 @@
 import UIKit
 import Applozic
 import FirebaseAuth
+import FacebookLogin
 
 class KonstruuTabBarController: UITabBarController, UITabBarControllerDelegate {
 
@@ -100,6 +101,12 @@ class KonstruuTabBarController: UITabBarController, UITabBarControllerDelegate {
     func logout() {
         do {
             try FIRAuth.auth()?.signOut()
+            let registerUserClientService = ALRegisterUserClientService()
+            registerUserClientService.logout(completionHandler: { error in
+                print("error in logging out from Applozic")
+            })
+            let facebookLoginManager = LoginManager()
+            facebookLoginManager.logOut()
             let loginVC = LoginViewController(nibName: "LoginViewController", bundle: nil)
             present(loginVC, animated: true, completion: nil)
         } catch {
