@@ -29,6 +29,15 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     var team: Team? {
         didSet {
+            API.getCurrentUser(completed: { [weak self] user in
+                if user != nil, self?.team != nil, self != nil, self?.team!.userKeys.index(of: user!.key) != nil {
+                    self?.messageButton.isHidden = self!.team!.userKeys.count <= 1
+                    self?.joinRequestButton.isHidden = true
+                } else {
+                    self?.messageButton.isHidden = true
+                    self?.joinRequestButton.isHidden = false
+                }
+            })
         }
     }
     
@@ -78,7 +87,7 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
         headerRect.addSubview(locationLabel)
         
         headerRect.addSubview(joinRequestButton)
-        headerRect.addSubview(seeGroupButton)
+        headerRect.addSubview(messageButton)
         headerRect.addSubview(teamDescriptionLabel)
         
         view.addSubview(tableLabel)
@@ -156,15 +165,15 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
         return joinRequestButton
         }()
     
-    private lazy var seeGroupButton: UIButton = { [unowned self] in
-        let seeGroupButton = UIButton(type: .custom)
-        seeGroupButton.setTitle("See Group", for: UIControlState())
-        seeGroupButton.titleLabel!.font = UIFont.konstruuFontWithSize(15.0)
-        seeGroupButton.backgroundColor = UIColor.konstruuDarkBlue()
-        seeGroupButton.addTarget(self, action: #selector(seeGroup), for: UIControlEvents.touchUpInside)
+    private lazy var messageButton: UIButton = { [unowned self] in
+        let messageButton = UIButton(type: .custom)
+        messageButton.setTitle("Message", for: UIControlState())
+        messageButton.titleLabel!.font = UIFont.konstruuFontWithSize(15.0)
+        messageButton.backgroundColor = UIColor.konstruuDarkBlue()
+        messageButton.addTarget(self, action: #selector(messageGroup), for: UIControlEvents.touchUpInside)
         
-        seeGroupButton.translatesAutoresizingMaskIntoConstraints = false
-        return seeGroupButton
+        messageButton.translatesAutoresizingMaskIntoConstraints = false
+        return messageButton
         }()
     
     private lazy var teamDescriptionLabel: UILabel = { [unowned self] in
@@ -289,22 +298,22 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
         //top
         headerRect.addConstraint(NSLayoutConstraint(item:joinRequestButton, attribute:.top, relatedBy:.equal, toItem: locationLabel, attribute:.bottom, multiplier: 1, constant: .marginConstraint))
         //centerX
-        headerRect.addConstraint(NSLayoutConstraint(item:joinRequestButton, attribute:.centerX, relatedBy:.equal, toItem: headerRect, attribute:.centerX, multiplier: 1, constant: -75))
+        headerRect.addConstraint(NSLayoutConstraint(item:joinRequestButton, attribute:.centerX, relatedBy:.equal, toItem: headerRect, attribute:.centerX, multiplier: 1, constant: 0))
         //height
         headerRect.addConstraint(NSLayoutConstraint(item:joinRequestButton, attribute:.height, relatedBy:.equal, toItem: nil, attribute:.notAnAttribute, multiplier: 1, constant: 30.0))
         //width
         headerRect.addConstraint(NSLayoutConstraint(item:joinRequestButton, attribute:.width, relatedBy:.equal, toItem: nil, attribute:.notAnAttribute, multiplier: 1, constant: 120.0))
         
-        // seeGroupButton
+        // messageButton
         
         //top
-        headerRect.addConstraint(NSLayoutConstraint(item:seeGroupButton, attribute:.top, relatedBy:.equal, toItem: locationLabel, attribute:.bottom, multiplier: 1, constant: .marginConstraint))
+        headerRect.addConstraint(NSLayoutConstraint(item:messageButton, attribute:.top, relatedBy:.equal, toItem: locationLabel, attribute:.bottom, multiplier: 1, constant: .marginConstraint))
         //centerX
-        headerRect.addConstraint(NSLayoutConstraint(item:seeGroupButton, attribute:.centerX, relatedBy:.equal, toItem: headerRect, attribute:.centerX, multiplier: 1, constant: 50))
+        headerRect.addConstraint(NSLayoutConstraint(item:messageButton, attribute:.centerX, relatedBy:.equal, toItem: headerRect, attribute:.centerX, multiplier: 1, constant: 0))
         //height
-        headerRect.addConstraint(NSLayoutConstraint(item:seeGroupButton, attribute:.height, relatedBy:.equal, toItem: nil, attribute:.notAnAttribute, multiplier: 1, constant: 30.0))
+        headerRect.addConstraint(NSLayoutConstraint(item:messageButton, attribute:.height, relatedBy:.equal, toItem: nil, attribute:.notAnAttribute, multiplier: 1, constant: 30.0))
         //width
-        headerRect.addConstraint(NSLayoutConstraint(item:seeGroupButton, attribute:.width, relatedBy:.equal, toItem: nil, attribute:.notAnAttribute, multiplier: 1, constant: 80.0))
+        headerRect.addConstraint(NSLayoutConstraint(item:messageButton, attribute:.width, relatedBy:.equal, toItem: nil, attribute:.notAnAttribute, multiplier: 1, constant: 80.0))
         
         // locationLabel
         
@@ -397,8 +406,8 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
     // MARK: - Action
     
     func sendJoinRequest() {
-        API.getCurrentUser(completed: { user in
-            self.team!.addRequest(from: user!)
+        API.getCurrentUser(completed: { [weak self] user in
+            self?.team?.addRequest(from: user!)
         })
         joinRequestButton.setTitle("Request Sent", for: UIControlState())
         joinRequestButton.isEnabled = false
@@ -408,9 +417,11 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
         print ("see members")
     }
     
-    func seeGroup() {
-        print (team?.requestUserKeys)
-        print ("see group")
+    func messageGroup() {
+        print("messageGroup")
+        if let parent = parent {
+            team?.startChat(from: parent)
+        }
     }
     
     func sendRequest() {
