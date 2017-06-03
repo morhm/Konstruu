@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import Social
+//import Social
 
 class FindChallengesViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate {
     
@@ -211,7 +211,7 @@ class FindChallengesViewController: UIViewController, UITableViewDataSource, UIT
         cell.bookmarkButton.addTarget(self, action: #selector(bookmark), for: .touchUpInside)
         
         cell.shareButton.tag = indexPath.section
-        cell.shareButton.addTarget(self, action: #selector(fbShare), for: .touchUpInside)
+        //cell.shareButton.addTarget(self, action: #selector(fbShare), for: .touchUpInside)
         
         cell.challenge = challenges?[indexPath.section]
         
@@ -248,26 +248,14 @@ class FindChallengesViewController: UIViewController, UITableViewDataSource, UIT
         }
     }
     
-    @IBAction func fbShare(sender: UIButton) {
-        if SLComposeViewController.isAvailable(forServiceType: SLServiceTypeFacebook) {
-            let fbShare:SLComposeViewController = SLComposeViewController(forServiceType: SLServiceTypeFacebook)
-            self.present(fbShare, animated: true)
-            print ("fb")
-        } else {
-            let alert = UIAlertController(title: "Accounts", message: "Please login to a Facebook account to share.", preferredStyle: UIAlertControllerStyle.alert)
-            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
-            self.present(alert, animated: true)
-            print ("alert")
-        }
-    }
-    
-//    @IBAction func share(sender: AnyObject) {
-//        print ("sharon ooh ooh")
-//        print (sender.tag)
-//    }
-    
-//    func presentShareDialogue(controller: UIViewController) {
-//        self.present(controller, animated: true) { () -> Void in
+//    @IBAction func fbShare(sender: UIButton) {
+//        if SLComposeViewController.isAvailable(forServiceType: SLServiceTypeFacebook) {
+//            let fbShare:SLComposeViewController = SLComposeViewController(forServiceType: SLServiceTypeFacebook)
+//            self.present(fbShare, animated: true)
+//        } else {
+//            let alert = UIAlertController(title: "Accounts", message: "Please login to a Facebook account to share.", preferredStyle: UIAlertControllerStyle.alert)
+//            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+//            self.present(alert, animated: true)
 //        }
 //    }
     
