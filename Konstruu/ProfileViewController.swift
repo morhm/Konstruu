@@ -72,8 +72,6 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
   
   override func viewDidDisappear(_ animated: Bool) {
     super.viewDidDisappear(animated)
-    
-    NotificationCenter.default.removeObserver(self)
   }
     
     func addSubviews() {

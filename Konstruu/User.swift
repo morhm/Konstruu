@@ -137,8 +137,9 @@ class User: CustomStringConvertible {
     }
     
     // reference: https://firebase.google.com/docs/storage/ios/upload-files
-    func updateProfileImage(to imageData: Data, completed: ((FIRStorageMetadata?, Error?) -> Void)?) {
-        profileImageReference.put(imageData, metadata: nil, completion: completed)
+    func updateProfileImage(to imageData: Data, completed: ((FIRStorageMetadata?, Error?) -> Void)?) -> FIRStorageUploadTask {
+        let uploadTask = profileImageReference.put(imageData, metadata: nil, completion: completed)
+        return uploadTask
     }
     
     func updateSkill(at index: Int, to skill: String) {

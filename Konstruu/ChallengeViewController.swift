@@ -238,7 +238,6 @@ class ChallengeViewController: UIViewController, UITableViewDelegate, UITableVie
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return challenge?.teamKeys.count ?? 0
-        
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {

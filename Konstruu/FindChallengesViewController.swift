@@ -23,8 +23,7 @@ class FindChallengesViewController: UIViewController, UITableViewDataSource, UIT
         spacing for header and footer of cells
     */
     let cellSpacingHeight = CGFloat(7.0)
-    
-    
+  
     // MARK: - Model
     
     var challenges: [Challenge]? {
