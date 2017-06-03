@@ -45,6 +45,8 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
   
     private func updateUI() {
       infoCell.user = user
+      specialtyCell.user = user
+      
       infoCell.parentViewController = self
       
       badgesTableView?.reloadData()
@@ -64,7 +66,7 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
       addSubviews()
       addConstraints()
       
-      updateUI()
+      //updateUI()
       
       NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: NSNotification.Name.UIKeyboardDidShow, object: nil)
       NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(notification:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)

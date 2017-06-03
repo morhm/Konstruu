@@ -47,9 +47,11 @@ class ProfileSpecialtyTableViewCell: UITableViewCell, UITextFieldDelegate {
   
   var skills: [String]? = ["None", "None", "None"] {
     didSet {
-      firstSpecialtyNameLabel.text = skills?[0] ?? "None"
-      secondSpecialtyNameLabel.text = skills?[1] ?? "None"
-      thirdSpecialtyNameLabel.text = skills?[2] ?? "None"
+      if skills?.count == 3 {
+        firstSpecialtyNameLabel.text = skills?[0] ?? "None"
+        secondSpecialtyNameLabel.text = skills?[1] ?? "None"
+        thirdSpecialtyNameLabel.text = skills?[2] ?? "None"
+      }
     }
   }
   
@@ -151,8 +153,6 @@ class ProfileSpecialtyTableViewCell: UITableViewCell, UITextFieldDelegate {
     selectionStyle = .none
     accessibilityLabel = "specialtyCell"
     
-    editButton.isHidden = !(user?.isCurrentUser() ?? false)
-
     contentView.addSubview(cardView)
     contentView.addSubview(titleLabel)
     contentView.addSubview(editButton)
