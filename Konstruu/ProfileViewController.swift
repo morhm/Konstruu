@@ -204,13 +204,9 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
   
   func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
     if let keyword = searchBar.text, !keyword.isEmpty {
-//      API.searchChallenges(keyword: keyword, completed: { challenges in
-//        self.challenges = challenges
-//      })
-    } else {
-//      API.getAllChallenges(completed: { challenges in
-//        self.challenges = challenges
-//      })
+        API.searchUsers(keyword: keyword, completed: { users in
+            // display users
+        })
     }
   }
   
