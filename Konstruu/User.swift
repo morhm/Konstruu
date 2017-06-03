@@ -194,7 +194,7 @@ class User: CustomStringConvertible {
     
     func startChat(from controller: UIViewController) {
         let chatManager = ALChatManager(applicationKey: ALChatManager.applicationId as NSString)
-        chatManager.registerUserAndLaunchChat(ALChatManager.getUserDetail(), fromController: controller, forUser: key)
+        chatManager.launchChatForUser(key, fromViewController: controller)
     }
     
     func setSearchText() {
