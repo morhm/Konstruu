@@ -482,6 +482,8 @@ class ProfileInfoTableViewCell: UITableViewCell, UITextFieldDelegate, UITextView
   
   func doneClicked() {
     user?.updateName(to: usernameTextField.text!)
+    user?.updateSchool(to: educationTextField.text!)
+    user?.updateLocation(to: locationTextField.text!)
     user?.updateDescription(to: descriptionTextView.text)
     
     usernameLabel.text = usernameTextField.text!

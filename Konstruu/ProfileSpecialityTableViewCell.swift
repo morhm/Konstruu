@@ -41,15 +41,17 @@ class ProfileSpecialtyTableViewCell: UITableViewCell, UITextFieldDelegate {
   var user: User? {
     didSet {
       skills = user?.skills
-        editButton.isHidden = !(user?.isCurrentUser() ?? false)
+      editButton.isHidden = !(user?.isCurrentUser() ?? false)
     }
   }
   
   var skills: [String]? = ["None", "None", "None"] {
     didSet {
-      firstSpecialtyNameLabel.text = skills?[0] ?? "None"
-      secondSpecialtyNameLabel.text = skills?[1] ?? "None"
-      thirdSpecialtyNameLabel.text = skills?[2] ?? "None"
+      if skills?.count == 3 {
+        firstSpecialtyNameLabel.text = skills?[0] ?? "None"
+        secondSpecialtyNameLabel.text = skills?[1] ?? "None"
+        thirdSpecialtyNameLabel.text = skills?[2] ?? "None"
+      }
     }
   }
   
