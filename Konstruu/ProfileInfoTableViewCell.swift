@@ -10,6 +10,8 @@ import Foundation
 import UIKit
 
 private extension CGFloat {
+  static let marginConstant : CGFloat               = 10.0
+
   static let imageViewTopConstraint : CGFloat        = 0.0
   static let imageViewHeightConstraint: CGFloat      = 100.0
   static let imageViewWidthConstraint: CGFloat       = 100.0
@@ -330,9 +332,9 @@ class ProfileInfoTableViewCell: UITableViewCell, UITextFieldDelegate, UITextView
     //top
     contentView.addConstraint(NSLayoutConstraint(item:cardView, attribute:.top, relatedBy:.equal, toItem: contentView, attribute:.top, multiplier: 1, constant: .cardViewTopConstraint))
     //left
-    contentView.addConstraint(NSLayoutConstraint(item:cardView, attribute:.left, relatedBy:.equal, toItem: contentView, attribute:.left, multiplier: 1, constant: 0))
+    contentView.addConstraint(NSLayoutConstraint(item:cardView, attribute:.left, relatedBy:.equal, toItem: contentView, attribute:.left, multiplier: 1, constant: .marginConstant))
     //right
-    contentView.addConstraint(NSLayoutConstraint(item:cardView, attribute:.right, relatedBy:.equal, toItem: contentView, attribute:.right, multiplier: 1, constant: 0))
+    contentView.addConstraint(NSLayoutConstraint(item:cardView, attribute:.right, relatedBy:.equal, toItem: contentView, attribute:.right, multiplier: 1, constant: -.marginConstant))
     //bottom
     contentView.addConstraint(NSLayoutConstraint(item:cardView, attribute:.bottom, relatedBy:.equal, toItem: contentView, attribute:.bottom, multiplier: 1, constant: 0))
     

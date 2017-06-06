@@ -62,6 +62,7 @@ class FindChallengesViewController: UIViewController, UITableViewDataSource, UIT
             
             self?.likes = Array(repeating: "like", count: challenges.count)
             
+            
             for i in 0...(challenges.count - 1) {
                 let currKey = (challenges[i].key)!
                 for key in (self?.user?.likedChallengeKeys)! {
