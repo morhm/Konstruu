@@ -33,7 +33,6 @@
 		61F7F8761E6E06870017461F /* ChallengeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61F7F8741E6E06870017461F /* ChallengeViewController.swift */; };
 		61F7F8771E6E06870017461F /* ChallengeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 61F7F8751E6E06870017461F /* ChallengeViewController.xib */; };
 		61F7F87A1E6E06FB0017461F /* TeamViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61F7F8781E6E06FB0017461F /* TeamViewController.swift */; };
-		61F7F87B1E6E06FB0017461F /* TeamViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 61F7F8791E6E06FB0017461F /* TeamViewController.xib */; };
 		61F7F87E1E6E076C0017461F /* CreateChallengeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61F7F87C1E6E076C0017461F /* CreateChallengeViewController.swift */; };
 		61F7F8821E6E077D0017461F /* CreateTeamViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61F7F8801E6E077D0017461F /* CreateTeamViewController.swift */; };
 		63C9D1FF9CC1A80C8AADAB4C /* Pods_Konstruu.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F54197AF7908272DF974385 /* Pods_Konstruu.framework */; };
@@ -61,6 +60,8 @@
 		68EFF7761EAFB0CE003D7785 /* ProfileProjectTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68EFF7751EAFB0CD003D7785 /* ProfileProjectTableViewCell.swift */; };
 		CA18FAE01EDC120300FA91C6 /* UserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA18FADE1EDC120300FA91C6 /* UserTableViewCell.swift */; };
 		CA18FAE11EDC120300FA91C6 /* UserTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA18FADF1EDC120300FA91C6 /* UserTableViewCell.xib */; };
+		CA18FAE81EE27E0E00FA91C6 /* RequestTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA18FAE61EE27E0E00FA91C6 /* RequestTableViewCell.swift */; };
+		CA18FAE91EE27E0E00FA91C6 /* RequestTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA18FAE71EE27E0E00FA91C6 /* RequestTableViewCell.xib */; };
 		CA1B47871EBBD41700353BD3 /* TeamListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1B47851EBBD41700353BD3 /* TeamListViewController.swift */; };
 		CA1B47881EBBD41700353BD3 /* TeamListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA1B47861EBBD41700353BD3 /* TeamListViewController.xib */; };
 		CA3A89441E6F81820000D33E /* ChallengeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA3A89431E6F81820000D33E /* ChallengeTableViewCell.xib */; };
@@ -68,8 +69,7 @@
 		CA4D902F1EC269C500A74839 /* TeamsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA4D902D1EC269C500A74839 /* TeamsTableViewCell.xib */; };
 		CA7915A71EB074E6002F8318 /* ChallengeCategoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7915A51EB074E6002F8318 /* ChallengeCategoriesViewController.swift */; };
 		CA7915A81EB074E6002F8318 /* ChallengeCategoriesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA7915A61EB074E6002F8318 /* ChallengeCategoriesViewController.xib */; };
-		CA7915AB1EB0750E002F8318 /* TeamDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7915A91EB0750E002F8318 /* TeamDetailsViewController.swift */; };
-		CA7915AC1EB0750E002F8318 /* TeamDetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA7915AA1EB0750E002F8318 /* TeamDetailsViewController.xib */; };
+		CA81CC0B1EE5354E00E6659C /* TeamViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA81CC0A1EE5354E00E6659C /* TeamViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -116,7 +116,6 @@
 		61F7F8741E6E06870017461F /* ChallengeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChallengeViewController.swift; sourceTree = "<group>"; };
 		61F7F8751E6E06870017461F /* ChallengeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChallengeViewController.xib; sourceTree = "<group>"; };
 		61F7F8781E6E06FB0017461F /* TeamViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeamViewController.swift; sourceTree = "<group>"; };
-		61F7F8791E6E06FB0017461F /* TeamViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TeamViewController.xib; sourceTree = "<group>"; };
 		61F7F87C1E6E076C0017461F /* CreateChallengeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateChallengeViewController.swift; sourceTree = "<group>"; };
 		61F7F8801E6E077D0017461F /* CreateTeamViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateTeamViewController.swift; sourceTree = "<group>"; };
 		6800406C1EE1415E0028F585 /* UIImage+Helper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Helper.swift"; sourceTree = "<group>"; };
@@ -146,6 +145,8 @@
 		A9732213F7532194FC238323 /* Pods-Konstruu.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Konstruu.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Konstruu/Pods-Konstruu.debug.xcconfig"; sourceTree = "<group>"; };
 		CA18FADE1EDC120300FA91C6 /* UserTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserTableViewCell.swift; sourceTree = "<group>"; };
 		CA18FADF1EDC120300FA91C6 /* UserTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserTableViewCell.xib; sourceTree = "<group>"; };
+		CA18FAE61EE27E0E00FA91C6 /* RequestTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestTableViewCell.swift; sourceTree = "<group>"; };
+		CA18FAE71EE27E0E00FA91C6 /* RequestTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RequestTableViewCell.xib; sourceTree = "<group>"; };
 		CA1B47851EBBD41700353BD3 /* TeamListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeamListViewController.swift; sourceTree = "<group>"; };
 		CA1B47861EBBD41700353BD3 /* TeamListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TeamListViewController.xib; sourceTree = "<group>"; };
 		CA3A89431E6F81820000D33E /* ChallengeTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChallengeTableViewCell.xib; sourceTree = "<group>"; };
@@ -153,8 +154,7 @@
 		CA4D902D1EC269C500A74839 /* TeamsTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TeamsTableViewCell.xib; sourceTree = "<group>"; };
 		CA7915A51EB074E6002F8318 /* ChallengeCategoriesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChallengeCategoriesViewController.swift; sourceTree = "<group>"; };
 		CA7915A61EB074E6002F8318 /* ChallengeCategoriesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChallengeCategoriesViewController.xib; sourceTree = "<group>"; };
-		CA7915A91EB0750E002F8318 /* TeamDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeamDetailsViewController.swift; sourceTree = "<group>"; };
-		CA7915AA1EB0750E002F8318 /* TeamDetailsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TeamDetailsViewController.xib; sourceTree = "<group>"; };
+		CA81CC0A1EE5354E00E6659C /* TeamViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TeamViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -232,9 +232,11 @@
 			isa = PBXGroup;
 			children = (
 				61F7F8781E6E06FB0017461F /* TeamViewController.swift */,
-				61F7F8791E6E06FB0017461F /* TeamViewController.xib */,
+				CA81CC0A1EE5354E00E6659C /* TeamViewController.xib */,
 				CA18FADE1EDC120300FA91C6 /* UserTableViewCell.swift */,
 				CA18FADF1EDC120300FA91C6 /* UserTableViewCell.xib */,
+				CA18FAE61EE27E0E00FA91C6 /* RequestTableViewCell.swift */,
+				CA18FAE71EE27E0E00FA91C6 /* RequestTableViewCell.xib */,
 			);
 			name = "Team Page";
 			sourceTree = "<group>";
@@ -365,7 +367,6 @@
 				CA1B47841EBBD37400353BD3 /* Team List Controller */,
 				CA7915A41EB074C9002F8318 /* Challenge Categories */,
 				61592C711E711965008B89C6 /* Find Challenges Page */,
-				CA7915A31EB074C2002F8318 /* Team Details */,
 				61592C721E71196F008B89C6 /* Challenge Page */,
 				61592C731E711975008B89C6 /* Team Page */,
 				61592C741E71197B008B89C6 /* Create Challenge Page */,
@@ -383,15 +384,6 @@
 				CA4D902D1EC269C500A74839 /* TeamsTableViewCell.xib */,
 			);
 			name = "Team List Controller";
-			sourceTree = "<group>";
-		};
-		CA7915A31EB074C2002F8318 /* Team Details */ = {
-			isa = PBXGroup;
-			children = (
-				CA7915A91EB0750E002F8318 /* TeamDetailsViewController.swift */,
-				CA7915AA1EB0750E002F8318 /* TeamDetailsViewController.xib */,
-			);
-			name = "Team Details";
 			sourceTree = "<group>";
 		};
 		CA7915A41EB074C9002F8318 /* Challenge Categories */ = {
@@ -478,7 +470,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				61BD68BF1E6DEC0A00B1A0E9 /* LoginViewController.xib in Resources */,
-				CA7915AC1EB0750E002F8318 /* TeamDetailsViewController.xib in Resources */,
 				6874024B1EA665EE00232634 /* OpenSans-LightItalic.ttf in Resources */,
 				617ED0D41EAF11C5003639A6 /* SignUpWithEmailViewController.xib in Resources */,
 				687402461EA665E900232634 /* OpenSans-Bold.ttf in Resources */,
@@ -495,10 +486,11 @@
 				6874024C1EA665EE00232634 /* OpenSans-Regular.ttf in Resources */,
 				687402491EA665EE00232634 /* OpenSans-ExtraBoldItalic.ttf in Resources */,
 				687402481EA665EE00232634 /* OpenSans-ExtraBold.ttf in Resources */,
-				61F7F87B1E6E06FB0017461F /* TeamViewController.xib in Resources */,
 				6874024E1EA665EE00232634 /* OpenSans-SemiboldItalic.ttf in Resources */,
 				613B1B521E72144800544297 /* TeamTableViewCell.xib in Resources */,
 				6874024D1EA665EE00232634 /* OpenSans-Semibold.ttf in Resources */,
+				CA18FAE91EE27E0E00FA91C6 /* RequestTableViewCell.xib in Resources */,
+				CA81CC0B1EE5354E00E6659C /* TeamViewController.xib in Resources */,
 				68C8E5631E6408AA00047901 /* Assets.xcassets in Resources */,
 				CA18FAE11EDC120300FA91C6 /* UserTableViewCell.xib in Resources */,
 				613B1B561E721A1E00544297 /* FindChallengesViewController.xib in Resources */,
@@ -562,6 +554,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				615A292B1E9AD5E700568D40 /* API.swift in Sources */,
+				CA18FAE81EE27E0E00FA91C6 /* RequestTableViewCell.swift in Sources */,
 				61E7C2DD1E9DB3B60052B0E6 /* Challenge.swift in Sources */,
 				61E7C2DF1E9DB3BD0052B0E6 /* Team.swift in Sources */,
 				613B1B551E721A1E00544297 /* FindChallengesViewController.swift in Sources */,
@@ -593,7 +586,6 @@
 				618FBA441E7332B300B2F652 /* KonstruuTabBarController.swift in Sources */,
 				61F7F87A1E6E06FB0017461F /* TeamViewController.swift in Sources */,
 				68EFF7761EAFB0CE003D7785 /* ProfileProjectTableViewCell.swift in Sources */,
-				CA7915AB1EB0750E002F8318 /* TeamDetailsViewController.swift in Sources */,
 				617ED0D31EAF11C5003639A6 /* SignUpWithEmailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

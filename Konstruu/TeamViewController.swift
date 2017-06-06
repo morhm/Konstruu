@@ -29,6 +29,12 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     var team: Team? {
         didSet {
+            // if no requests, don't show requestsTableView
+            if team != nil, team?.requestUserKeys.count == 0 {
+                self.requestsTableView.isHidden = true
+            }
+            
+            /* if user is part of team, dont show message button or join request button, otherwise show them both */
             API.getCurrentUser(completed: { [weak self] user in
                 if user != nil, self?.team != nil, self != nil, self?.team!.userKeys.index(of: user!.key) != nil {
                     self?.messageButton.isHidden = self!.team!.userKeys.count <= 1
@@ -36,6 +42,7 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
                 } else {
                     self?.messageButton.isHidden = true
                     self?.joinRequestButton.isHidden = false
+                    self?.requestsTableView.isHidden = true
                 }
             })
         }
@@ -59,6 +66,8 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         self.edgesForExtendedLayout = []
         usersTableView.register(UINib(nibName: "UserTableViewCell", bundle: nil), forCellReuseIdentifier: "user")
+       
+        requestsTableView.register(UINib(nibName: "RequestTableViewCell", bundle: nil), forCellReuseIdentifier: "request")
         
         addSubviews()
         addConstraints()
@@ -68,6 +77,7 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
         super.viewWillAppear(animated)
         
         usersTableView.reloadData()
+        requestsTableView.reloadData()
     }
     
     override func didReceiveMemoryWarning() {
@@ -93,7 +103,9 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
         view.addSubview(tableLabel)
         view.addSubview(usersTableView)
         
-        view.addSubview(sampleRequestResponseButton)
+        view.addSubview(requestsTableView)
+        
+        //view.addSubview(sampleRequestResponseButton)
         //        headerRect.addSubview(numGroupMemLabel)
         //        headerRect.addSubview(lookingForMemLabel)
         
@@ -104,13 +116,22 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
         //        view.addSubview(requestButton)
     }
     
+    private lazy var tableHeaderRect: UIView = { [unowned self] in
+        let headerRect = UIView()
+        headerRect.backgroundColor = UIColor.white
+        
+        headerRect.translatesAutoresizingMaskIntoConstraints = false
+        return headerRect
+    }()
+    
+    
     private lazy var headerRect: UIView = { [unowned self] in
         let headerRect = UIView()
         headerRect.backgroundColor = UIColor.white
         
         headerRect.translatesAutoresizingMaskIntoConstraints = false
         return headerRect
-        }()
+    }()
     
     private lazy var descriptionRect: UIView = { [unowned self] in
         let descriptionRect = UIView()
@@ -221,15 +242,16 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
         backgroundView.translatesAutoresizingMaskIntoConstraints = false
         return backgroundView
         }()
-
-    private lazy var sampleRequestResponseButton: RequestResponseButton = { [unowned self] in
-        let sampleRequestResponseButton = RequestResponseButton(type: .custom)
-        sampleRequestResponseButton.setTitle("add user -- ", for: UIControlState())
-        sampleRequestResponseButton.backgroundColor = UIColor.konstruuDarkBlue()
-        sampleRequestResponseButton.addTarget(self, action: #selector(acceptUser), for: UIControlEvents.touchUpInside)
-        sampleRequestResponseButton.translatesAutoresizingMaskIntoConstraints = false
-        //sampleRequestResponseButton.userID =
-        return sampleRequestResponseButton
+    
+    private lazy var requestsTableView: UITableView = { [unowned self] in
+        let requestsTableView = UITableView()
+        requestsTableView.backgroundColor = UIColor.white
+        
+        requestsTableView.delegate = self
+        requestsTableView.dataSource = self
+        
+        requestsTableView.translatesAutoresizingMaskIntoConstraints = false
+        return requestsTableView
     }()
 
     // MARK - Constraints
@@ -255,7 +277,7 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
         //left
         view.addConstraint(NSLayoutConstraint(item:headerRect, attribute:.left, relatedBy:.equal, toItem: view, attribute:.left, multiplier: 1, constant: .marginConstraint))
         //right
-        view.addConstraint(NSLayoutConstraint(item:headerRect, attribute:.right, relatedBy:.equal, toItem: view, attribute:.right, multiplier: 1, constant: .marginConstraint))
+        view.addConstraint(NSLayoutConstraint(item:headerRect, attribute:.right, relatedBy:.equal, toItem: view, attribute:.right, multiplier: 1, constant: -.marginConstraint))
         
         //height
         view.addConstraint(NSLayoutConstraint(item:headerRect, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: .headerRectHeight))
@@ -322,7 +344,7 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
         //left
         headerRect.addConstraint(NSLayoutConstraint(item:teamDescriptionLabel, attribute:.left, relatedBy:.equal, toItem: headerRect, attribute:.left, multiplier: 1, constant: .marginConstraint))
         //right
-        headerRect.addConstraint(NSLayoutConstraint(item:teamDescriptionLabel, attribute:.right, relatedBy:.equal, toItem: headerRect, attribute:.right, multiplier: 1, constant: .marginConstraint))
+        headerRect.addConstraint(NSLayoutConstraint(item:teamDescriptionLabel, attribute:.right, relatedBy:.equal, toItem: headerRect, attribute:.right, multiplier: 1, constant: -.marginConstraint))
         //height
         headerRect.addConstraint(NSLayoutConstraint(item:teamDescriptionLabel, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 80.0))
         //width
@@ -334,7 +356,7 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
         //left
         view.addConstraint(NSLayoutConstraint(item:tableLabel, attribute:.left, relatedBy:.equal, toItem: view, attribute:.left, multiplier: 1, constant: .marginConstraint))
         //right
-        view.addConstraint(NSLayoutConstraint(item:tableLabel, attribute:.right, relatedBy:.equal, toItem: view, attribute:.right, multiplier: 1, constant: .marginConstraint))
+        view.addConstraint(NSLayoutConstraint(item:tableLabel, attribute:.right, relatedBy:.equal, toItem: view, attribute:.right, multiplier: 1, constant: -.marginConstraint))
         //height
         view.addConstraint(NSLayoutConstraint(item:tableLabel, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant:20.0))
         
@@ -346,23 +368,36 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
         //left
         view.addConstraint(NSLayoutConstraint(item:usersTableView, attribute:.left, relatedBy:.equal, toItem: view, attribute:.left, multiplier: 1, constant: .marginConstraint))
         //right
-        view.addConstraint(NSLayoutConstraint(item:usersTableView, attribute:.right, relatedBy:.equal, toItem: view, attribute:.right, multiplier: 1, constant: .marginConstraint))
+        view.addConstraint(NSLayoutConstraint(item:usersTableView, attribute:.right, relatedBy:.equal, toItem: view, attribute:.right, multiplier: 1, constant: -.marginConstraint))
         
         //height
         view.addConstraint(NSLayoutConstraint(item:usersTableView, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant:120.0))
         
-        // sampleRequestResponseButton 
+//        // sampleRequestResponseButton 
+//        
+//        //top
+//        view.addConstraint(NSLayoutConstraint(item:sampleRequestResponseButton , attribute:.top, relatedBy:.equal, toItem: usersTableView, attribute:.bottom, multiplier: 1, constant: 30.0))
+//        
+//        //left
+//        view.addConstraint(NSLayoutConstraint(item:sampleRequestResponseButton , attribute:.left, relatedBy:.equal, toItem: view, attribute:.left, multiplier: 1, constant: .marginConstraint))
+//        //right
+//        view.addConstraint(NSLayoutConstraint(item:sampleRequestResponseButton , attribute:.right, relatedBy:.equal, toItem: view, attribute:.right, multiplier: 1, constant: .marginConstraint))
+//        
+//        //height
+//        view.addConstraint(NSLayoutConstraint(item:sampleRequestResponseButton , attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant:30.0))
+        
+        // requestsTableView
         
         //top
-        view.addConstraint(NSLayoutConstraint(item:sampleRequestResponseButton , attribute:.top, relatedBy:.equal, toItem: usersTableView, attribute:.bottom, multiplier: 1, constant: 30.0))
+        view.addConstraint(NSLayoutConstraint(item:requestsTableView, attribute:.top, relatedBy:.equal, toItem: usersTableView, attribute:.bottom, multiplier: 1, constant: 20.0))
         
         //left
-        view.addConstraint(NSLayoutConstraint(item:sampleRequestResponseButton , attribute:.left, relatedBy:.equal, toItem: view, attribute:.left, multiplier: 1, constant: .marginConstraint))
+        view.addConstraint(NSLayoutConstraint(item:requestsTableView, attribute:.left, relatedBy:.equal, toItem: view, attribute:.left, multiplier: 1, constant: .marginConstraint))
         //right
-        view.addConstraint(NSLayoutConstraint(item:sampleRequestResponseButton , attribute:.right, relatedBy:.equal, toItem: view, attribute:.right, multiplier: 1, constant: .marginConstraint))
+        view.addConstraint(NSLayoutConstraint(item:requestsTableView, attribute:.right, relatedBy:.equal, toItem: view, attribute:.right, multiplier: 1, constant: .marginConstraint))
         
         //height
-        view.addConstraint(NSLayoutConstraint(item:sampleRequestResponseButton , attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant:30.0))
+        view.addConstraint(NSLayoutConstraint(item:requestsTableView, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant:120.0))
     }
     
     
@@ -370,36 +405,81 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
     // MARK: - Table view data source
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return team?.userKeys.count ?? 0
-        //return (team?.userKeys.count)!
+        if tableView == usersTableView {
+            return team?.userKeys.count ?? 0
+        } else {
+            return team?.requestUserKeys.count ?? 0
+        }
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
+//    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+//        return 15
+//    }
+//    
+//    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+//        return "Group Members"
+//    }
+//    
+//    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView?
+//    {
+//        let headerView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: 15))
+//        headerView.backgroundColor = UIColor.konstruuRed()
+////        headerView.backgroundColor = UIColor.clear
+//        print ("whate")
+//        return headerView
+//    }
+    
+//    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+//        return 40.0
+//    }
+//    
+//    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+//        return "Poopoo"
+//    }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "user", for: indexPath)
-        if let userCell = (cell as? UserTableViewCell),
-            let userKey = team?.userKeys[indexPath.row] {
-            API.getUserWithKey(userKey, completed: { user in
-                userCell.user = user
-            })
-            return userCell
+        if tableView == usersTableView {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "user", for: indexPath) as! UserTableViewCell
+            if let userCell = (cell as? UserTableViewCell),
+                let userKey = team?.userKeys[indexPath.row] {
+                API.getUserWithKey(userKey, completed: { user in
+                    userCell.user = user
+                })
+                return userCell
+            }
+            return cell
+        } else {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "request", for: indexPath) as! RequestTableViewCell
+            cell.acceptButton.tag = indexPath.row
+            cell.acceptButton.addTarget(self, action:#selector(acceptRequest), for: .touchUpInside)
+            cell.declineButton.tag = indexPath.row
+            cell.declineButton.addTarget(self, action: #selector(declineRequest), for: .touchUpInside)
+            if let requestCell = (cell as? RequestTableViewCell),
+                let requestKey = team?.requestUserKeys[indexPath.row] {
+                API.getUserWithKey(requestKey, completed: { user in
+                    requestCell.user = user
+                })
+                return requestCell
+            }
+            return cell
         }
-        return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let profileVC = ProfileViewController(nibName: "ProfileViewController", bundle: nil)
-        if let userKey = team?.userKeys[indexPath.row] {
-            API.getUserWithKey(userKey, completed: { user in
-                profileVC.user = user
-                profileVC.navigationItem.rightBarButtonItem = KonstruuTabBarController.messagingButtonItem
-                //teamVC.navigationItem.leftBarButtonItem = KonstruuTabBarController.logoutButtonItem
-                self.navigationController?.pushViewController(profileVC, animated: true)
-            })
+        if tableView == usersTableView {
+            let profileVC = ProfileViewController(nibName: "ProfileViewController", bundle: nil)
+            if let userKey = team?.userKeys[indexPath.row] {
+                API.getUserWithKey(userKey, completed: { user in
+                    profileVC.user = user
+                    profileVC.navigationItem.rightBarButtonItem = KonstruuTabBarController.messagingButtonItem
+                    //teamVC.navigationItem.leftBarButtonItem = KonstruuTabBarController.logoutButtonItem
+                    self.navigationController?.pushViewController(profileVC, animated: true)
+                })
+            }
         }
     }
     
@@ -411,6 +491,7 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
         })
         joinRequestButton.setTitle("Request Sent", for: UIControlState())
         joinRequestButton.isEnabled = false
+        
     }
     
     func seeMembers() {
@@ -424,20 +505,20 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
     }
     
-    func sendRequest() {
-        print ("send request")
+    @IBAction func acceptRequest(sender: UIButton) {
+        let userKey = team?.requestUserKeys[sender.tag]
+        API.getUserWithKey(userKey!, completed: { user in
+            self.team!.acceptRequest(from: user!)
+            self.requestsTableView.reloadData()
+        })
     }
     
-    func acceptUser() {
-        print ("accepting user")
-        
-        API.getCurrentUser(completed: { user in
-            self.team!.acceptRequest(from: user!)
-            print ((self.team!.requestUserKeys))
+    @IBAction func declineRequest(sender: UIButton) {
+        let userKey = team?.requestUserKeys[sender.tag]
+        API.getUserWithKey(userKey!, completed: { user in
+            self.team!.denyRequest(from: user!)
+            self.requestsTableView.reloadData()
         })
-        
-        sampleRequestResponseButton.setTitle("accepted", for: UIControlState())
-        
     }
     
 }

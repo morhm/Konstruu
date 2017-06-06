@@ -32,9 +32,9 @@
                         <state key="normal" image="Share"/>
                     </button>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="251" text="No open teams" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pay-Od-7gE">
-                        <rect key="frame" x="127" y="100" width="92" height="17"/>
+                        <rect key="frame" x="127" y="100" width="123" height="17"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="92" id="YoT-Cl-jkb"/>
+                            <constraint firstAttribute="width" constant="123" id="YoT-Cl-jkb"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="italicSystem" pointSize="12"/>
                         <color key="textColor" red="0.41960784313725491" green="0.41960784313725491" blue="0.41960784313725491" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -80,7 +80,7 @@
                     <constraint firstAttribute="trailingMargin" secondItem="w8j-pe-UB4" secondAttribute="trailing" constant="31" id="2Jd-jc-6lr"/>
                     <constraint firstItem="4u5-ia-KYo" firstAttribute="leading" secondItem="Xj6-l6-GaE" secondAttribute="leading" id="2z5-JG-Lk0"/>
                     <constraint firstItem="eHD-MI-gSq" firstAttribute="top" secondItem="Y7g-Sz-jpy" secondAttribute="top" id="EMw-Id-pRd"/>
-                    <constraint firstItem="Y7g-Sz-jpy" firstAttribute="leading" secondItem="pay-Od-7gE" secondAttribute="trailing" constant="54" id="FUQ-eE-683"/>
+                    <constraint firstItem="Y7g-Sz-jpy" firstAttribute="leading" secondItem="pay-Od-7gE" secondAttribute="trailing" constant="23" id="FUQ-eE-683"/>
                     <constraint firstAttribute="bottomMargin" secondItem="xqY-kz-gj0" secondAttribute="bottom" constant="6" id="Jmj-3T-yEQ"/>
                     <constraint firstItem="xqY-kz-gj0" firstAttribute="top" secondItem="4u5-ia-KYo" secondAttribute="bottom" constant="8" id="Lme-le-AIg"/>
                     <constraint firstItem="4u5-ia-KYo" firstAttribute="width" secondItem="Xj6-l6-GaE" secondAttribute="width" id="Loo-hK-mrD"/>

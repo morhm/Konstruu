@@ -150,7 +150,7 @@ class ChallengeViewController: UIViewController, UITableViewDelegate, UITableVie
       //left
       view.addConstraint(NSLayoutConstraint(item:challengeTitleLabel, attribute: .left, relatedBy: .equal, toItem: view, attribute:.left, multiplier: 1, constant: .marginConstraint))
       //right
-      view.addConstraint(NSLayoutConstraint(item:challengeTitleLabel, attribute: .right, relatedBy: .equal, toItem: view, attribute: .right, multiplier: 1, constant: .marginConstraint))
+      view.addConstraint(NSLayoutConstraint(item:challengeTitleLabel, attribute: .right, relatedBy: .equal, toItem: view, attribute: .right, multiplier: 1, constant: -.marginConstraint))
       //height
       view.addConstraint(NSLayoutConstraint(item:challengeTitleLabel, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: .titleHeightConstraint))
         
@@ -161,7 +161,7 @@ class ChallengeViewController: UIViewController, UITableViewDelegate, UITableVie
       //left
       view.addConstraint(NSLayoutConstraint(item:challengeDescriptionLabel, attribute: .left, relatedBy: .equal, toItem: view, attribute:.left, multiplier: 1, constant: .marginConstraint))
       //right
-      view.addConstraint(NSLayoutConstraint(item:challengeDescriptionLabel, attribute: .right, relatedBy: .equal, toItem: view, attribute: .right, multiplier: 1, constant: .marginConstraint))
+      view.addConstraint(NSLayoutConstraint(item:challengeDescriptionLabel, attribute: .right, relatedBy: .equal, toItem: view, attribute: .right, multiplier: 1, constant: -.marginConstraint))
       //height
       view.addConstraint(NSLayoutConstraint(item:challengeDescriptionLabel, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: .challengeDescriptionHeightConstraint))
         
@@ -172,7 +172,7 @@ class ChallengeViewController: UIViewController, UITableViewDelegate, UITableVie
         //left
         view.addConstraint(NSLayoutConstraint(item:createTeamButton, attribute: .left, relatedBy: .equal, toItem: view, attribute:.left, multiplier: 1, constant: .marginConstraint))
         //right
-        view.addConstraint(NSLayoutConstraint(item:createTeamButton, attribute: .right, relatedBy: .equal, toItem: view, attribute: .right, multiplier: 1, constant: .marginConstraint))
+        view.addConstraint(NSLayoutConstraint(item:createTeamButton, attribute: .right, relatedBy: .equal, toItem: view, attribute: .right, multiplier: 1, constant: -.marginConstraint))
         //height
         view.addConstraint(NSLayoutConstraint(item:createTeamButton, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: .customButtonHeightConstraint))
         
@@ -183,7 +183,7 @@ class ChallengeViewController: UIViewController, UITableViewDelegate, UITableVie
         //left
         view.addConstraint(NSLayoutConstraint(item:bookmarkButton, attribute: .left, relatedBy: .equal, toItem: view, attribute:.left, multiplier: 1, constant: .marginConstraint))
         //right
-        view.addConstraint(NSLayoutConstraint(item:bookmarkButton, attribute: .right, relatedBy: .equal, toItem: view, attribute: .right, multiplier: 1, constant: .marginConstraint))
+        view.addConstraint(NSLayoutConstraint(item:bookmarkButton, attribute: .right, relatedBy: .equal, toItem: view, attribute: .right, multiplier: 1, constant: -.marginConstraint))
         //height
         view.addConstraint(NSLayoutConstraint(item:bookmarkButton, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: .customButtonHeightConstraint))
         
@@ -194,7 +194,7 @@ class ChallengeViewController: UIViewController, UITableViewDelegate, UITableVie
         //left
         view.addConstraint(NSLayoutConstraint(item:teamsTableLabel, attribute: .left, relatedBy: .equal, toItem: view, attribute:.left, multiplier: 1, constant: .marginConstraint))
         //right
-        view.addConstraint(NSLayoutConstraint(item:teamsTableLabel, attribute: .right, relatedBy: .equal, toItem: view, attribute: .right, multiplier: 1, constant: .marginConstraint))
+        view.addConstraint(NSLayoutConstraint(item:teamsTableLabel, attribute: .right, relatedBy: .equal, toItem: view, attribute: .right, multiplier: 1, constant: -.marginConstraint))
         //height
         view.addConstraint(NSLayoutConstraint(item:teamsTableLabel, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: .customButtonHeightConstraint))
 
@@ -206,7 +206,7 @@ class ChallengeViewController: UIViewController, UITableViewDelegate, UITableVie
         //left
         view.addConstraint(NSLayoutConstraint(item:teamsTableView, attribute: .left, relatedBy: .equal, toItem: view, attribute:.left, multiplier: 1, constant: .marginConstraint))
         //right
-        view.addConstraint(NSLayoutConstraint(item:teamsTableView, attribute: .right, relatedBy: .equal, toItem: view, attribute: .right, multiplier: 1, constant: .marginConstraint))
+        view.addConstraint(NSLayoutConstraint(item:teamsTableView, attribute: .right, relatedBy: .equal, toItem: view, attribute: .right, multiplier: 1, constant: -.marginConstraint))
         //height
         view.addConstraint(NSLayoutConstraint(item:teamsTableView, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: .teamsTableViewHeightConstraint))
     }

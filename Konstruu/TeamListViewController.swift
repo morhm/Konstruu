@@ -65,7 +65,7 @@ class TeamListViewController: UIViewController, UITableViewDataSource, UITableVi
         
         if (numLoaded < (user?.teamKeys.count)! ) {
             numLoaded = numLoaded + 1
-            whiteRoundedView = UIView(frame: CGRect(x: 10, y: 10, width: (self.view.frame.size.width - 10), height: 60))
+            whiteRoundedView = UIView(frame: CGRect(x: 10, y: 10, width: (self.view.frame.size.width - 20), height: 60))
             
             whiteRoundedView.layer.backgroundColor = CGColor(colorSpace: CGColorSpaceCreateDeviceRGB(), components: [1.0, 1.0, 1.0, 1.0])
             whiteRoundedView.layer.masksToBounds = false

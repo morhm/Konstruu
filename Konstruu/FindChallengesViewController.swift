@@ -192,7 +192,7 @@ class FindChallengesViewController: UIViewController, UITableViewDataSource, UIT
         
         if (numLoaded < (challenges?.count)! ) {
             numLoaded = numLoaded + 1
-            whiteRoundedView = UIView(frame: CGRect(x: 10, y: 10, width: (self.view.frame.size.width - 10), height: 120))
+            whiteRoundedView = UIView(frame: CGRect(x: 10, y: 10, width: (self.view.frame.size.width - 20), height: 120))
         
             whiteRoundedView.layer.backgroundColor = CGColor(colorSpace: CGColorSpaceCreateDeviceRGB(), components: [1.0, 1.0, 1.0, 1.0])
             whiteRoundedView.layer.masksToBounds = false
