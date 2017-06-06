@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -65,15 +65,8 @@
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Q6-en-aqq">
-                    <rect key="frame" x="129" y="363" width="116" height="30"/>
-                    <state key="normal" title="Create Test User"/>
-                    <connections>
-                        <action selector="createTestUser:" destination="-1" eventType="touchUpInside" id="VeP-UE-rus"/>
-                    </connections>
-                </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Zh-7p-8OM">
-                    <rect key="frame" x="163" y="413" width="48" height="30"/>
+                    <rect key="frame" x="163" y="359" width="48" height="30"/>
                     <state key="normal" title="Cancel"/>
                     <connections>
                         <action selector="cancel:" destination="-1" eventType="touchUpInside" id="Efv-o1-Wpd"/>
@@ -83,23 +76,21 @@
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="tWV-JH-oA2" firstAttribute="top" secondItem="Mok-th-WLh" secondAttribute="bottom" constant="42" id="79K-dn-DOD"/>
-                <constraint firstItem="6Zh-7p-8OM" firstAttribute="centerX" secondItem="b53-or-fA9" secondAttribute="centerX" id="Ayu-t4-fDY"/>
                 <constraint firstItem="b53-or-fA9" firstAttribute="top" secondItem="tWV-JH-oA2" secondAttribute="bottom" constant="28" id="EKF-uM-Thq"/>
                 <constraint firstItem="kGz-rP-MDn" firstAttribute="centerY" secondItem="tWV-JH-oA2" secondAttribute="centerY" id="IcL-u2-Es3"/>
                 <constraint firstItem="EJs-3s-Ew1" firstAttribute="leading" secondItem="Mok-th-WLh" secondAttribute="leading" id="JVM-jW-K48"/>
                 <constraint firstItem="kGz-rP-MDn" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="16" id="Kjy-gI-dPB"/>
                 <constraint firstItem="b53-or-fA9" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="LBp-6n-to2"/>
-                <constraint firstItem="6Zh-7p-8OM" firstAttribute="centerX" secondItem="9Q6-en-aqq" secondAttribute="centerX" id="ObN-Lb-8lv"/>
                 <constraint firstItem="Ao0-cf-gkZ" firstAttribute="centerY" secondItem="EJs-3s-Ew1" secondAttribute="centerY" id="PCB-M0-4ud"/>
                 <constraint firstItem="tWV-JH-oA2" firstAttribute="leading" secondItem="kGz-rP-MDn" secondAttribute="trailing" constant="8" symbolic="YES" id="Ss9-Fg-EH7"/>
                 <constraint firstAttribute="trailing" secondItem="EJs-3s-Ew1" secondAttribute="trailing" constant="16" id="ULR-tG-Ms6"/>
+                <constraint firstItem="6Zh-7p-8OM" firstAttribute="centerX" secondItem="b53-or-fA9" secondAttribute="centerX" id="V4y-r6-rYD"/>
                 <constraint firstItem="EJs-3s-Ew1" firstAttribute="leading" secondItem="Ao0-cf-gkZ" secondAttribute="trailing" constant="8" symbolic="YES" id="ZtT-oA-6wa"/>
                 <constraint firstItem="EJs-3s-Ew1" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="108" id="Ztm-47-bwb"/>
-                <constraint firstItem="6Zh-7p-8OM" firstAttribute="top" secondItem="9Q6-en-aqq" secondAttribute="bottom" constant="20" id="au1-Gw-qsf"/>
                 <constraint firstItem="Ao0-cf-gkZ" firstAttribute="leading" secondItem="kDw-h4-zHF" secondAttribute="leading" id="cPv-b1-MiK"/>
                 <constraint firstItem="Mok-th-WLh" firstAttribute="leading" secondItem="tWV-JH-oA2" secondAttribute="leading" id="dxR-MC-P1o"/>
                 <constraint firstItem="kDw-h4-zHF" firstAttribute="centerY" secondItem="Mok-th-WLh" secondAttribute="centerY" id="eGc-3w-HpF"/>
-                <constraint firstAttribute="bottom" secondItem="6Zh-7p-8OM" secondAttribute="bottom" constant="224" id="iM8-jO-bc7"/>
+                <constraint firstItem="6Zh-7p-8OM" firstAttribute="top" secondItem="b53-or-fA9" secondAttribute="bottom" constant="18" id="hQp-pq-g3C"/>
                 <constraint firstItem="Mok-th-WLh" firstAttribute="trailing" secondItem="tWV-JH-oA2" secondAttribute="trailing" id="oRZ-7l-AcR"/>
                 <constraint firstItem="EJs-3s-Ew1" firstAttribute="trailing" secondItem="Mok-th-WLh" secondAttribute="trailing" id="rbO-fw-3Xq"/>
                 <constraint firstItem="Mok-th-WLh" firstAttribute="top" secondItem="EJs-3s-Ew1" secondAttribute="bottom" constant="43" id="wrw-6T-OtS"/>

@@ -43,6 +43,8 @@ class SignUpWithEmailViewController: UIViewController {
         }
     }
     
+    // FOR TESTING PURPOSES
+    // not connected to a button at this time
     @IBAction func createTestUser(_ sender: UIButton) {
         if let name = nameTextField.text, let email = emailTextField.text, let password = passwordTextField.text {
             FIRAuth.auth()?.createUser(withEmail: email, password: password, completion: { [weak self] firebaseUser, error in
