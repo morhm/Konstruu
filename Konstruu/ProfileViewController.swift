@@ -33,6 +33,8 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
   @IBOutlet weak var searchBar: UISearchBar! {
     didSet {
       searchBar.delegate = self
+        
+      searchBar.layer.borderColor = UIColor.konstruuGreen().cgColor
       addToolbarToKeyboard()
     }
   }
@@ -69,7 +71,7 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
       self.navigationItem.rightBarButtonItems = KonstruuTabBarController.barButtonItems
       
       self.edgesForExtendedLayout = []
-      self.title = "Profile"
+      //self.title = "Profile"
       
       addSubviews()
       addConstraints()

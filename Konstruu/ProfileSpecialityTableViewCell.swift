@@ -9,6 +9,8 @@
 import UIKit
 
 private extension CGFloat {
+    
+  static let marginConstant:CGFloat               = 10.0
   static let cardViewTopConstraint:CGFloat          = 10.0
 
   static let titleLabelTopConstraint:CGFloat         = 10.0
@@ -154,12 +156,13 @@ class ProfileSpecialtyTableViewCell: UITableViewCell, UITextFieldDelegate {
     accessibilityLabel = "specialtyCell"
     
     contentView.addSubview(cardView)
-    contentView.addSubview(titleLabel)
-    contentView.addSubview(editButton)
     
-    contentView.addSubview(firstSpecialtyNameLabel)
-    contentView.addSubview(secondSpecialtyNameLabel)
-    contentView.addSubview(thirdSpecialtyNameLabel)
+    cardView.addSubview(titleLabel)
+    cardView.addSubview(editButton)
+    
+    cardView.addSubview(firstSpecialtyNameLabel)
+    cardView.addSubview(secondSpecialtyNameLabel)
+    cardView.addSubview(thirdSpecialtyNameLabel)
     
     updateConstraints()
   }
@@ -180,9 +183,9 @@ class ProfileSpecialtyTableViewCell: UITableViewCell, UITextFieldDelegate {
     //top
     contentView.addConstraint(NSLayoutConstraint(item:cardView, attribute:.top, relatedBy:.equal, toItem: contentView, attribute:.top, multiplier: 1, constant: .cardViewTopConstraint))
     //left
-    contentView.addConstraint(NSLayoutConstraint(item:cardView, attribute:.left, relatedBy:.equal, toItem: contentView, attribute:.left, multiplier: 1, constant: 0))
+    contentView.addConstraint(NSLayoutConstraint(item:cardView, attribute:.left, relatedBy:.equal, toItem: contentView, attribute:.left, multiplier: 1, constant: .marginConstant))
     //right
-    contentView.addConstraint(NSLayoutConstraint(item:cardView, attribute:.right, relatedBy:.equal, toItem: contentView, attribute:.right, multiplier: 1, constant: 0))
+    contentView.addConstraint(NSLayoutConstraint(item:cardView, attribute:.right, relatedBy:.equal, toItem: contentView, attribute:.right, multiplier: 1, constant: -.marginConstant))
     //bottom
     contentView.addConstraint(NSLayoutConstraint(item:cardView, attribute:.bottom, relatedBy:.equal, toItem: contentView, attribute:.bottom, multiplier: 1, constant: 0))
     
@@ -191,9 +194,9 @@ class ProfileSpecialtyTableViewCell: UITableViewCell, UITextFieldDelegate {
     //top
     contentView.addConstraint(NSLayoutConstraint(item:titleLabel, attribute:.top, relatedBy:.equal, toItem: cardView, attribute:.top, multiplier: 1, constant: .titleLabelTopConstraint))
     //left
-    contentView.addConstraint(NSLayoutConstraint(item:titleLabel, attribute:.left, relatedBy:.equal, toItem: contentView, attribute:.left, multiplier: 1, constant: .titleLabelLeftConstraint))
+    contentView.addConstraint(NSLayoutConstraint(item:titleLabel, attribute:.left, relatedBy:.equal, toItem: cardView, attribute:.left, multiplier: 1, constant: .titleLabelLeftConstraint))
     //right
-    contentView.addConstraint(NSLayoutConstraint(item:titleLabel, attribute:.right, relatedBy:.equal, toItem: contentView, attribute:.right, multiplier: 1, constant: 0))
+    contentView.addConstraint(NSLayoutConstraint(item:titleLabel, attribute:.right, relatedBy:.equal, toItem: cardView, attribute:.right, multiplier: 1, constant: 0))
     //height
     contentView.addConstraint(NSLayoutConstraint(item:titleLabel, attribute:.height, relatedBy:.equal, toItem: nil, attribute:.notAnAttribute, multiplier: 1, constant: .titleLabelHeightConstraint))
     
@@ -202,7 +205,7 @@ class ProfileSpecialtyTableViewCell: UITableViewCell, UITextFieldDelegate {
     //top
     contentView.addConstraint(NSLayoutConstraint(item:editButton, attribute:.top, relatedBy:.equal, toItem: cardView, attribute:.top, multiplier: 1, constant: .editButtonTopConstraint))
     //right
-    contentView.addConstraint(NSLayoutConstraint(item:editButton, attribute:.right, relatedBy:.equal, toItem: contentView, attribute:.right, multiplier: 1, constant: -.editButtonRightConstraint))
+    contentView.addConstraint(NSLayoutConstraint(item:editButton, attribute:.right, relatedBy:.equal, toItem: cardView, attribute:.right, multiplier: 1, constant: -.editButtonRightConstraint))
     //width
     contentView.addConstraint(NSLayoutConstraint(item:editButton, attribute:.width, relatedBy:.equal, toItem: nil, attribute:.notAnAttribute, multiplier: 1, constant: .editButtonWidthConstraint))
     //height
@@ -211,9 +214,9 @@ class ProfileSpecialtyTableViewCell: UITableViewCell, UITextFieldDelegate {
     //firstSpecialtyNameLabel
     
     //left
-    contentView.addConstraint(NSLayoutConstraint(item:firstSpecialtyNameLabel, attribute:.left, relatedBy:.equal, toItem: contentView, attribute:.left, multiplier: 1, constant: .nameLabelLeftConstraint))
+    contentView.addConstraint(NSLayoutConstraint(item:firstSpecialtyNameLabel, attribute:.left, relatedBy:.equal, toItem: cardView, attribute:.left, multiplier: 1, constant: .nameLabelLeftConstraint))
     //right
-    contentView.addConstraint(NSLayoutConstraint(item:firstSpecialtyNameLabel, attribute:.right, relatedBy:.equal, toItem: contentView, attribute:.right, multiplier: 1, constant: -.nameLabelRightConstraint))
+    contentView.addConstraint(NSLayoutConstraint(item:firstSpecialtyNameLabel, attribute:.right, relatedBy:.equal, toItem: cardView, attribute:.right, multiplier: 1, constant: -.nameLabelRightConstraint))
     //top
     contentView.addConstraint(NSLayoutConstraint(item:firstSpecialtyNameLabel, attribute:.top, relatedBy:.equal, toItem: titleLabel, attribute:.bottom, multiplier: 1, constant: .nameLabelTopConstraint))
     //height
@@ -233,9 +236,9 @@ class ProfileSpecialtyTableViewCell: UITableViewCell, UITextFieldDelegate {
     //secondSpecialtyNameLabel
     
     //left
-    contentView.addConstraint(NSLayoutConstraint(item:secondSpecialtyNameLabel, attribute:.left, relatedBy:.equal, toItem: contentView, attribute:.left, multiplier: 1, constant: .nameLabelLeftConstraint))
+    contentView.addConstraint(NSLayoutConstraint(item:secondSpecialtyNameLabel, attribute:.left, relatedBy:.equal, toItem: cardView, attribute:.left, multiplier: 1, constant: .nameLabelLeftConstraint))
     //right
-    contentView.addConstraint(NSLayoutConstraint(item:secondSpecialtyNameLabel, attribute:.right, relatedBy:.equal, toItem: contentView, attribute:.right, multiplier: 1, constant: -.nameLabelRightConstraint))
+    contentView.addConstraint(NSLayoutConstraint(item:secondSpecialtyNameLabel, attribute:.right, relatedBy:.equal, toItem: cardView, attribute:.right, multiplier: 1, constant: -.nameLabelRightConstraint))
     //top
     contentView.addConstraint(NSLayoutConstraint(item:secondSpecialtyNameLabel, attribute:.top, relatedBy:.equal, toItem: firstSpecialtyNameLabel, attribute:.bottom, multiplier: 1, constant: .nameLabelTopConstraint))
     //height
@@ -255,9 +258,9 @@ class ProfileSpecialtyTableViewCell: UITableViewCell, UITextFieldDelegate {
     //thirdSpecialtyNameLabel
     
     //left
-    contentView.addConstraint(NSLayoutConstraint(item:thirdSpecialtyNameLabel, attribute:.left, relatedBy:.equal, toItem: contentView, attribute:.left, multiplier: 1, constant: .nameLabelLeftConstraint))
+    contentView.addConstraint(NSLayoutConstraint(item:thirdSpecialtyNameLabel, attribute:.left, relatedBy:.equal, toItem: cardView, attribute:.left, multiplier: 1, constant: .nameLabelLeftConstraint))
     //right
-    contentView.addConstraint(NSLayoutConstraint(item:thirdSpecialtyNameLabel, attribute:.right, relatedBy:.equal, toItem: contentView, attribute:.right, multiplier: 1, constant: -.nameLabelRightConstraint))
+    contentView.addConstraint(NSLayoutConstraint(item:thirdSpecialtyNameLabel, attribute:.right, relatedBy:.equal, toItem: cardView, attribute:.right, multiplier: 1, constant: -.nameLabelRightConstraint))
     //top
     contentView.addConstraint(NSLayoutConstraint(item:thirdSpecialtyNameLabel, attribute:.top, relatedBy:.equal, toItem: secondSpecialtyNameLabel, attribute:.bottom, multiplier: 1, constant: .nameLabelTopConstraint))
     //height
