@@ -24,8 +24,8 @@ private extension CGFloat {
   
   static let editButtonTopConstraint:CGFloat         = 8.0
   static let editButtonRightConstraint:CGFloat       = 8.0
-  static let editButtonHeightConstraint:CGFloat      = 30.0
-  static let editButtonWidthConstraint:CGFloat       = 60.0
+  static let editButtonHeightConstraint:CGFloat      = 35.0
+  static let editButtonWidthConstraint:CGFloat       = 55.0
   
   static let nameLabelTopConstraint:CGFloat           = 8.0
   static let nameLabelLeftConstraint:CGFloat          = 20.0
@@ -65,8 +65,8 @@ class ProfileSpecialtyTableViewCell: UITableViewCell, UITextFieldDelegate {
     let titleLabel = UILabel()
     titleLabel.textColor = UIColor.black
     titleLabel.text  = "Specialties"
+    titleLabel.font = UIFont.konstruuSemiboldFontWithSize(18.0)
     titleLabel.textAlignment = .left
-    titleLabel.font = UIFont.konstruuLightFontWithSize(18.0)
     
     titleLabel.translatesAutoresizingMaskIntoConstraints = false
     return titleLabel
@@ -75,6 +75,7 @@ class ProfileSpecialtyTableViewCell: UITableViewCell, UITextFieldDelegate {
   private  lazy var cardView: UIView = { [unowned self] in
     let cardView = UIView()
     cardView.backgroundColor = UIColor.white
+    cardView.layer.cornerRadius = 5.0
     
     cardView.translatesAutoresizingMaskIntoConstraints = false
     return cardView
@@ -82,15 +83,13 @@ class ProfileSpecialtyTableViewCell: UITableViewCell, UITextFieldDelegate {
   
   private lazy var editButton: UIButton = { [unowned self] in
     let editButton = UIButton(type: .custom)
-    editButton.setTitle("Edit", for: UIControlState())
-    editButton.titleLabel!.font = UIFont.konstruuFontWithSize(15.0)
-    editButton.backgroundColor = UIColor.konstruuDarkBlue()
+    editButton.setImage(#imageLiteral(resourceName: "pencil-6"), for: UIControlState())
     editButton.addTarget(self, action: #selector(toggleEditMode), for: UIControlEvents.touchUpInside)
-    
+        
     editButton.translatesAutoresizingMaskIntoConstraints = false
     return editButton
-    }()
-  
+  }()
+    
   private lazy var firstSpecialtyNameLabel : UITextField = { [unowned self] in
     let specialtyLabel = UITextField()
     specialtyLabel.isUserInteractionEnabled = false
@@ -289,12 +288,12 @@ class ProfileSpecialtyTableViewCell: UITableViewCell, UITextFieldDelegate {
   func toggleEditMode() {
     if editingMode {
       editingMode = false
-      editButton.setTitle("Edit", for: UIControlState())
-      editButton.backgroundColor = UIColor.konstruuDarkBlue()
+      editButton.setImage(#imageLiteral(resourceName: "pencil-6"), for: UIControlState())
     } else {
       editingMode = true
+      editButton.setImage(nil, for: UIControlState())
       editButton.setTitle("Save", for: UIControlState())
-      editButton.backgroundColor = UIColor.konstruuGreen()
+      editButton.setTitleColor(UIColor.konstruuYellow(), for: UIControlState())
     }
     doneClicked()
   }

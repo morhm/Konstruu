@@ -254,9 +254,9 @@ class FindChallengesViewController: UIViewController, UITableViewDataSource, UIT
         
         if SLComposeViewController.isAvailable(forServiceType: SLServiceTypeFacebook) {
             let vc = SLComposeViewController(forServiceType:SLServiceTypeFacebook)
-            //vc?.add(UIImage(named: "groupIcon"))
-            //vc?.add(URL(string: "http://www.facebook.com/"))
-            vc?.setInitialText("Poopy doopyasdjf;lkf.")
+             vc?.add(UIImage(named: "groupIcon"))
+            vc?.add(URL(string: "http://www.facebook.com/"))
+            //vc?.setInitialText("Poopy doopyasdjf;lkf.")
             self.present(vc!, animated: true, completion: nil)
         } else {
             let alert = UIAlertController(title: "Accounts", message: "Please login to a Facebook account to share.", preferredStyle: UIAlertControllerStyle.alert)
