@@ -42,14 +42,22 @@ private extension CGFloat {
 
 class ProfileInfoTableViewCell: UITableViewCell, UITextFieldDelegate, UITextViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
   
-  // MARK: - Data
+  let defaultEducationText = "Enter your school"
+  let defaultLocationText = "Enter your location"
+  let defaultDescriptionText = "Tell us more about who you are"
+
+    // MARK: - Data
   
   var user: User? {
       didSet {
           usernameLabel.text = user?.name
           usernameTextField.text = user?.name
-          descriptionLabel.text = user?.desc
-          descriptionTextView.text = user?.desc
+          educationLabel.text = (user?.school ?? "").isEmpty ? defaultEducationText : user?.school!
+          educationTextField.text = (user?.school ?? "").isEmpty ? defaultEducationText : user?.school!
+          locationLabel.text = (user?.location ?? "").isEmpty ? defaultLocationText : user?.location!
+          locationTextField.text = (user?.location ?? "").isEmpty ? defaultLocationText : user?.location!
+          descriptionLabel.text = (user?.desc ?? "").isEmpty ? defaultDescriptionText : user?.desc!
+          descriptionTextView.text = (user?.desc ?? "").isEmpty ? defaultDescriptionText : user?.desc!
           user?.getProfileImage(completed: { [weak self] image in
               self?.profileImage = image
           })
@@ -60,17 +68,17 @@ class ProfileInfoTableViewCell: UITableViewCell, UITextFieldDelegate, UITextView
     
   var parentViewController: UIViewController!
   
-  var educationText:String? = "Senior at Phoenix High School" {
-    didSet {
-      educationLabel.text = educationText
-    }
-  }
-  
-  var locationText:String? = "San Jose, CA" {
-    didSet {
-      locationLabel.text = locationText
-    }
-  }
+//  var educationText:String? = "Senior at Phoenix High School" {
+//    didSet {
+//      educationLabel.text = educationText
+//    }
+//  }
+//  
+//  var locationText:String? = "Enter H" {
+//    didSet {
+//      locationLabel.text = locationText
+//    }
+//  }
   
 //  var descriptionText:String? = "" {
 //    didSet {
@@ -123,6 +131,7 @@ class ProfileInfoTableViewCell: UITableViewCell, UITextFieldDelegate, UITextView
   private lazy var cardView: UIView = { [unowned self] in
     let cardView = UIView()
     cardView.backgroundColor = UIColor.white
+    cardView.layer.cornerRadius = 5
     
     cardView.translatesAutoresizingMaskIntoConstraints = false
     return cardView
@@ -168,7 +177,7 @@ class ProfileInfoTableViewCell: UITableViewCell, UITextFieldDelegate, UITextView
   private lazy var educationLabel : UILabel = { [unowned self] in
     let educationLabel = UILabel()
     educationLabel.textColor = UIColor.black
-    educationLabel.text  = self.educationText
+    educationLabel.text  = self.defaultEducationText
     educationLabel.textAlignment = .center
     educationLabel.font = UIFont.konstruuLightFontWithSize(13.0)
     
@@ -179,7 +188,7 @@ class ProfileInfoTableViewCell: UITableViewCell, UITextFieldDelegate, UITextView
   private lazy var educationTextField : UITextField = { [unowned self] in
     let educationTextField = UITextField()
     educationTextField.textColor = UIColor.black
-    educationTextField.text  = self.educationText
+    educationTextField.text  = self.defaultEducationText
     educationTextField.textAlignment = .center
     educationTextField.font = UIFont.konstruuLightFontWithSize(13.0)
     educationTextField.delegate = self
@@ -191,25 +200,25 @@ class ProfileInfoTableViewCell: UITableViewCell, UITextFieldDelegate, UITextView
   private lazy var locationLabel : UILabel = { [unowned self] in
     let locationLabel = UILabel()
     locationLabel.textColor = UIColor.black
-    locationLabel.text  = self.locationText
+    locationLabel.text  = self.defaultLocationText
     locationLabel.textAlignment = .center
     locationLabel.font = UIFont.konstruuLightFontWithSize(13.0)
     
     locationLabel.translatesAutoresizingMaskIntoConstraints = false
     return locationLabel
-    }()
+  }()
   
   private lazy var locationTextField : UITextField = { [unowned self] in
     let locationTextField = UITextField()
     locationTextField.textColor = UIColor.black
-    locationTextField.text  = self.locationText
+    locationTextField.text  = self.defaultLocationText
     locationTextField.textAlignment = .center
     locationTextField.font = UIFont.konstruuLightFontWithSize(13.0)
     locationTextField.delegate = self
     
     locationTextField.translatesAutoresizingMaskIntoConstraints = false
     return locationTextField
-    }()
+  }()
   
   private lazy var messageButton: UIButton = { [unowned self] in
     let messageButton = UIButton(type: .custom)
@@ -220,40 +229,38 @@ class ProfileInfoTableViewCell: UITableViewCell, UITextFieldDelegate, UITextView
     
     messageButton.translatesAutoresizingMaskIntoConstraints = false
     return messageButton
-    }()
+  }()
   
   private lazy var editButton: UIButton = { [unowned self] in
     let editButton = UIButton(type: .custom)
-    editButton.setTitle("Edit", for: UIControlState())
-    editButton.titleLabel!.font = UIFont.konstruuFontWithSize(15.0)
-    editButton.backgroundColor = UIColor.konstruuDarkBlue()
+    editButton.setImage(#imageLiteral(resourceName: "pencil-6"), for: UIControlState())
     editButton.addTarget(self, action: #selector(toggleEditMode), for: UIControlEvents.touchUpInside)
     
     editButton.translatesAutoresizingMaskIntoConstraints = false
     return editButton
-    }()
+  }()
   
   private lazy var descriptionLabel : UILabel = { [unowned self] in
     let descriptionLabel = UILabel()
     descriptionLabel.textColor = UIColor.black
-    descriptionLabel.text  = self.user?.desc
+    descriptionLabel.text  = self.defaultDescriptionText
     descriptionLabel.numberOfLines = 0
     descriptionLabel.font = UIFont.konstruuLightFontWithSize(13.0)
-    
+
     descriptionLabel.translatesAutoresizingMaskIntoConstraints = false
     return descriptionLabel
-    }()
+  }()
   
   private lazy var descriptionTextView : UITextView = { [unowned self] in
     let descriptionTextView = UITextView()
     descriptionTextView.textColor = UIColor.black
-    descriptionTextView.text  = self.user?.desc
+    descriptionTextView.text  = self.defaultDescriptionText
     descriptionTextView.font = UIFont.konstruuLightFontWithSize(13.0)
     descriptionTextView.delegate = self
     
     descriptionTextView.translatesAutoresizingMaskIntoConstraints = false
     return descriptionTextView
-    }()
+  }()
   
   // MARK: - Init
   
@@ -427,16 +434,16 @@ class ProfileInfoTableViewCell: UITableViewCell, UITextFieldDelegate, UITextView
     //width
     contentView.addConstraint(NSLayoutConstraint(item:messageButton, attribute:.width, relatedBy:.equal, toItem: nil, attribute:.notAnAttribute, multiplier: 1, constant: .messageButtonWidthConstraint))
     
-    //editButton
-    
+//    //editButton
+
     //top
-    contentView.addConstraint(NSLayoutConstraint(item:editButton, attribute:.top, relatedBy:.equal, toItem: locationLabel, attribute:.bottom, multiplier: 1, constant: .messageButtonTopConstraint))
-    //centerX
-    contentView.addConstraint(NSLayoutConstraint(item:editButton, attribute:.centerX, relatedBy:.equal, toItem: contentView, attribute:.centerX, multiplier: 1, constant: 0))
+    contentView.addConstraint(NSLayoutConstraint(item:editButton, attribute:.top, relatedBy:.equal, toItem: cardView, attribute:.top, multiplier: 1, constant: 8))
+    // right
+    contentView.addConstraint(NSLayoutConstraint(item:editButton, attribute: .right, relatedBy:.equal, toItem: cardView, attribute:.right, multiplier: 1, constant: -8))
     //height
-    contentView.addConstraint(NSLayoutConstraint(item:editButton, attribute:.height, relatedBy:.equal, toItem: nil, attribute:.notAnAttribute, multiplier: 1, constant: .messageButtonHeightConstraint))
+    contentView.addConstraint(NSLayoutConstraint(item:editButton, attribute:.height, relatedBy:.equal, toItem: nil, attribute:.notAnAttribute, multiplier: 1, constant: 35))
     //width
-    contentView.addConstraint(NSLayoutConstraint(item:editButton, attribute:.width, relatedBy:.equal, toItem: nil, attribute:.notAnAttribute, multiplier: 1, constant: .messageButtonWidthConstraint))
+    contentView.addConstraint(NSLayoutConstraint(item:editButton, attribute:.width, relatedBy:.equal, toItem: nil, attribute:.notAnAttribute, multiplier: 1, constant: 55))
     
     //descriptionLabel
     
@@ -472,12 +479,13 @@ class ProfileInfoTableViewCell: UITableViewCell, UITextFieldDelegate, UITextView
   func toggleEditMode() {
     if editingMode {
       editingMode = false
-      editButton.setTitle("Edit", for: UIControlState())
-      editButton.backgroundColor = UIColor.konstruuDarkBlue()
+      editButton.setImage(#imageLiteral(resourceName: "pencil-6"), for: UIControlState())
     } else {
       editingMode = true
+      editButton.setImage(nil, for: UIControlState())
       editButton.setTitle("Save", for: UIControlState())
-      editButton.backgroundColor = UIColor.konstruuGreen()
+      editButton.setTitleColor(UIColor.konstruuYellow(), for: UIControlState())
+      
     }
     doneClicked()
   }
