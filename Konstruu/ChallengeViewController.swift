@@ -101,7 +101,8 @@ class ChallengeViewController: UIViewController, UITableViewDelegate, UITableVie
       return createTeamButton
     }()
     
-    func createTeam() {
+    
+    @IBAction func createTeam(sender: UIButton) {
         let createTeamVC = CreateTeamViewController()
       
         createTeamVC.user = user
@@ -131,15 +132,16 @@ class ChallengeViewController: UIViewController, UITableViewDelegate, UITableVie
         return teamsTableLabel
     }()
     
-    
-    @IBOutlet weak var teamsTableView: UITableView! {
-        didSet {
-            teamsTableView.dataSource = self
-            teamsTableView.delegate = self
-            teamsTableView.rowHeight = UITableViewAutomaticDimension
-            teamsTableView.estimatedRowHeight = 100
-        }
-    }
+    private lazy var teamsTableView: UITableView = { [unowned self] in
+        let teamsTableView = UITableView()
+        teamsTableView.backgroundColor = UIColor.white
+        
+        teamsTableView.delegate = self
+        teamsTableView.dataSource = self
+        
+        teamsTableView.translatesAutoresizingMaskIntoConstraints = false
+        return teamsTableView
+    }()
     
     func addConstraints() {
         
@@ -168,7 +170,7 @@ class ChallengeViewController: UIViewController, UITableViewDelegate, UITableVie
         // createTeamButton
         
         //top
-        view.addConstraint(NSLayoutConstraint(item:createTeamButton, attribute:.top, relatedBy:.equal, toItem: challengeDescriptionLabel, attribute:.bottom, multiplier: 1, constant: (.marginConstraint * 6)))
+        view.addConstraint(NSLayoutConstraint(item:createTeamButton, attribute:.top, relatedBy:.equal, toItem: challengeDescriptionLabel, attribute:.bottom, multiplier: 1, constant: (.marginConstraint * 2)))
         //left
         view.addConstraint(NSLayoutConstraint(item:createTeamButton, attribute: .left, relatedBy: .equal, toItem: view, attribute:.left, multiplier: 1, constant: .marginConstraint))
         //right
@@ -190,7 +192,7 @@ class ChallengeViewController: UIViewController, UITableViewDelegate, UITableVie
         // teamsTableLabel
         
         //top
-        view.addConstraint(NSLayoutConstraint(item:teamsTableLabel, attribute:.top, relatedBy:.equal, toItem: bookmarkButton, attribute:.bottom, multiplier: 1, constant: (2 * .marginConstraint)))
+        view.addConstraint(NSLayoutConstraint(item:teamsTableLabel, attribute:.top, relatedBy:.equal, toItem: bookmarkButton, attribute:.bottom, multiplier: 1, constant: (.marginConstraint * 2)))
         //left
         view.addConstraint(NSLayoutConstraint(item:teamsTableLabel, attribute: .left, relatedBy: .equal, toItem: view, attribute:.left, multiplier: 1, constant: .marginConstraint))
         //right
@@ -223,7 +225,7 @@ class ChallengeViewController: UIViewController, UITableViewDelegate, UITableVie
     private func updateUI() {
         challengeTitleLabel.text = challenge?.title
         challengeDescriptionLabel.text = challenge?.desc
-        teamsTableView?.reloadData()
+        teamsTableView.reloadData()
     }
   
     func addSubviews() {
@@ -232,6 +234,7 @@ class ChallengeViewController: UIViewController, UITableViewDelegate, UITableVie
         view.addSubview(createTeamButton)
         view.addSubview(bookmarkButton)
         view.addSubview(teamsTableLabel)
+        view.addSubview(teamsTableView)
     }
     
     // MARK: - Table view data source

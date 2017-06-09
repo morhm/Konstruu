@@ -218,8 +218,6 @@ class CreateTeamViewController: UIViewController, UITextViewDelegate {
     }
     
     func createTeam() {
-      //TODO: add description information for the team!
-      
       var nameText = teamNameTextField.text
       var descText = teamDescriptionTextView.text
       if (teamNameTextField.textColor == placeholderColor) {
@@ -228,11 +226,9 @@ class CreateTeamViewController: UIViewController, UITextViewDelegate {
       if (teamDescriptionTextView.textColor == placeholderColor) {
         descText = ""
       }
-      
-      let teamInfo: Dictionary<String, AnyObject> = ["name": nameText as AnyObject, "open": openTeamToggle.isOn as AnyObject, "challengeKey": challenge!.key as AnyObject]
+      let teamInfo: Dictionary<String, AnyObject> = ["name": nameText as AnyObject, "description": descText as AnyObject, "open": openTeamToggle.isOn as AnyObject, "challengeKey": challenge!.key as AnyObject]
       let team = API.createTeam(teamInfo: teamInfo)
       team.addUser(user!)
-      
       self.navigationController?.popViewController(animated: true)
     }
     
@@ -241,7 +237,6 @@ class CreateTeamViewController: UIViewController, UITextViewDelegate {
     }
     
     // MARK: - Delegates
-  
     
     func textViewDidBeginEditing(_ textView: UITextView) {
         if textView.isEqual(teamNameTextField) {
