@@ -28,13 +28,13 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w8j-pe-UB4">
-                        <rect key="frame" x="322" y="95" width="15" height="24"/>
+                        <rect key="frame" x="318" y="95" width="19" height="24"/>
                         <state key="normal" image="Share"/>
                     </button>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="251" text="No open teams" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pay-Od-7gE">
-                        <rect key="frame" x="127" y="100" width="123" height="17"/>
+                        <rect key="frame" x="127" y="100" width="169" height="17"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="123" id="YoT-Cl-jkb"/>
+                            <constraint firstAttribute="width" constant="169" id="YoT-Cl-jkb"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="italicSystem" pointSize="12"/>
                         <color key="textColor" red="0.41960784313725491" green="0.41960784313725491" blue="0.41960784313725491" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -67,30 +67,19 @@
                         <color key="textColor" red="0.14901960784313725" green="0.14901960784313725" blue="0.14901960784313725" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y7g-Sz-jpy">
-                        <rect key="frame" x="273" y="98" width="15" height="22"/>
-                        <constraints>
-                            <constraint firstAttribute="width" constant="15" id="bGM-YW-xwW"/>
-                        </constraints>
-                        <state key="normal" image="Bookmark_Flag"/>
-                    </button>
                 </subviews>
                 <constraints>
                     <constraint firstItem="xqY-kz-gj0" firstAttribute="leading" secondItem="Xj6-l6-GaE" secondAttribute="leading" id="29v-gm-jLC"/>
                     <constraint firstAttribute="trailingMargin" secondItem="w8j-pe-UB4" secondAttribute="trailing" constant="31" id="2Jd-jc-6lr"/>
                     <constraint firstItem="4u5-ia-KYo" firstAttribute="leading" secondItem="Xj6-l6-GaE" secondAttribute="leading" id="2z5-JG-Lk0"/>
-                    <constraint firstItem="eHD-MI-gSq" firstAttribute="top" secondItem="Y7g-Sz-jpy" secondAttribute="top" id="EMw-Id-pRd"/>
-                    <constraint firstItem="Y7g-Sz-jpy" firstAttribute="leading" secondItem="pay-Od-7gE" secondAttribute="trailing" constant="23" id="FUQ-eE-683"/>
                     <constraint firstAttribute="bottomMargin" secondItem="xqY-kz-gj0" secondAttribute="bottom" constant="6" id="Jmj-3T-yEQ"/>
                     <constraint firstItem="xqY-kz-gj0" firstAttribute="top" secondItem="4u5-ia-KYo" secondAttribute="bottom" constant="8" id="Lme-le-AIg"/>
                     <constraint firstItem="4u5-ia-KYo" firstAttribute="width" secondItem="Xj6-l6-GaE" secondAttribute="width" id="Loo-hK-mrD"/>
                     <constraint firstItem="xqY-kz-gj0" firstAttribute="baseline" secondItem="eHD-MI-gSq" secondAttribute="firstBaseline" id="PIz-kO-5nG"/>
                     <constraint firstItem="xqY-kz-gj0" firstAttribute="baseline" secondItem="pay-Od-7gE" secondAttribute="baseline" id="Qpq-h3-qMJ"/>
                     <constraint firstItem="4u5-ia-KYo" firstAttribute="top" secondItem="Xj6-l6-GaE" secondAttribute="bottom" constant="6" id="SrF-BK-zbn"/>
-                    <constraint firstItem="Y7g-Sz-jpy" firstAttribute="centerY" secondItem="xqY-kz-gj0" secondAttribute="centerY" constant="0.75" id="cGD-is-YZd"/>
                     <constraint firstAttribute="trailingMargin" secondItem="Xj6-l6-GaE" secondAttribute="trailing" id="cfv-Od-ugB"/>
                     <constraint firstItem="eHD-MI-gSq" firstAttribute="leading" secondItem="xqY-kz-gj0" secondAttribute="trailing" constant="25" id="fEO-A2-5Q1"/>
-                    <constraint firstItem="w8j-pe-UB4" firstAttribute="leading" secondItem="Y7g-Sz-jpy" secondAttribute="trailing" constant="34" id="g1K-lN-Hua"/>
                     <constraint firstItem="w8j-pe-UB4" firstAttribute="centerY" secondItem="xqY-kz-gj0" secondAttribute="centerY" constant="-1.25" id="iLe-bx-AIL"/>
                     <constraint firstItem="Xj6-l6-GaE" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="10" id="n1x-Ff-q1E"/>
                     <constraint firstItem="eHD-MI-gSq" firstAttribute="centerY" secondItem="xqY-kz-gj0" secondAttribute="centerY" id="nGW-3f-pfn"/>
@@ -102,7 +91,6 @@
                 </constraints>
             </tableViewCellContentView>
             <connections>
-                <outlet property="bookmarkButton" destination="Y7g-Sz-jpy" id="l7h-e4-Lz2"/>
                 <outlet property="descriptionLabel" destination="4u5-ia-KYo" id="4iH-jl-biZ"/>
                 <outlet property="likeButton" destination="xqY-kz-gj0" id="IDA-MD-fIh"/>
                 <outlet property="likeCount" destination="eHD-MI-gSq" id="lEd-93-cmO"/>
@@ -114,7 +102,6 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="Bookmark_Flag" width="17" height="20"/>
         <image name="Share" width="19" height="27"/>
     </resources>
 </document>

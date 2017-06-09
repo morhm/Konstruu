@@ -209,9 +209,6 @@ class FindChallengesViewController: UIViewController, UITableViewDataSource, UIT
         cell.likeButton.setTitle(likes?[indexPath.section], for: .normal)
         cell.likeButton.addTarget(self, action: #selector(handleLikes), for: .touchUpInside)
         
-        cell.bookmarkButton.tag = indexPath.section
-        cell.bookmarkButton.addTarget(self, action: #selector(bookmark), for: .touchUpInside)
-        
         cell.shareButton.tag = indexPath.section
         cell.shareButton.addTarget(self, action: #selector(fbShare), for: .touchUpInside)
         
@@ -240,23 +237,13 @@ class FindChallengesViewController: UIViewController, UITableViewDataSource, UIT
         challengeTableView.reloadData()
     }
     
-    @IBAction func bookmark(sender: UIButton) {
-        print ("bookmarking dooooood")
-        let currImage = sender.image(for: UIControlState())
-        if (currImage == #imageLiteral(resourceName: "Bookmark_Flag")) {
-            sender.setImage(UIImage(named: "Bookmark_Flag_Selected"), for: UIControlState())
-        } else {
-            sender.setImage(UIImage(named: "Bookmark_Flag"), for: UIControlState())
-        }
-    }
-    
     @IBAction func fbShare(sender: UIButton) {
         
         if SLComposeViewController.isAvailable(forServiceType: SLServiceTypeFacebook) {
             let vc = SLComposeViewController(forServiceType:SLServiceTypeFacebook)
              vc?.add(UIImage(named: "groupIcon"))
             vc?.add(URL(string: "http://www.facebook.com/"))
-            //vc?.setInitialText("Poopy doopyasdjf;lkf.")
+            //vc?.setInitialText("hooloo")
             self.present(vc!, animated: true, completion: nil)
         } else {
             let alert = UIAlertController(title: "Accounts", message: "Please login to a Facebook account to share.", preferredStyle: UIAlertControllerStyle.alert)

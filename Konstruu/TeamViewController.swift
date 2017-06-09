@@ -29,6 +29,12 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     var team: Team? {
         didSet {
+            
+            self.teamTitleLabel.text = self.team?.name
+            self.locationLabel.text = self.placeholderLocationText
+            self.teamDescriptionLabel.text = (self.team?.description ?? "no desc")
+            print (self.team?.description ?? "no description")
+            
             // if no requests, don't show requestsTableView
             if team != nil, team?.requestUserKeys.count == 0 {
                 self.requestsTableView.isHidden = true
@@ -199,7 +205,7 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     private lazy var teamDescriptionLabel: UILabel = { [unowned self] in
         let teamDescriptionLabel = UILabel()
-        teamDescriptionLabel.text = self.descriptionPlaceholderText
+        teamDescriptionLabel.text = self.team?.desc
         teamDescriptionLabel.textColor =  UIColor.black
         teamDescriptionLabel.textAlignment = .left
         teamDescriptionLabel.numberOfLines = 6

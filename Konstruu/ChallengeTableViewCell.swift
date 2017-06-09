@@ -40,8 +40,6 @@ class ChallengeTableViewCell: UITableViewCell {
     
     @IBOutlet weak var openTeamLabel: UILabel!
     
-    @IBOutlet weak var bookmarkButton: UIButton!
-    
     @IBOutlet weak var shareButton: UIButton!
     
     //var openTeamAvailable = false
