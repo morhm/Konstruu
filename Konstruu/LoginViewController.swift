@@ -84,7 +84,7 @@ class LoginViewController: UIViewController, LoginButtonDelegate {
                     let user = API.createUserWithKey(firebaseAuthUser.uid, userInfo: userInfo)
                     user.registerForChat()
                     
-                    self?.showProfile(user: user)
+                    self?.showGettingStartedGuide(user: user)
                 }
                 
             }
@@ -94,10 +94,15 @@ class LoginViewController: UIViewController, LoginButtonDelegate {
     // MARK: - Navigation
 
     private func showProfile(user: User) {
-        print(user) // DEBUGGING
         let tabBarVC = KonstruuTabBarController(nibName: "KonstruuTabBarController", bundle: nil)
         tabBarVC.user = user
         present(tabBarVC, animated: true, completion: nil)
+    }
+    
+    private func showGettingStartedGuide(user: User) {
+        let gettingStartedVC = GettingStartedViewController(nibName: "GettingStartedViewController", bundle: nil)
+        gettingStartedVC.user = user
+        present(gettingStartedVC, animated: true, completion: nil)
     }
     
     @IBAction func loginWithEmail(_ sender: UIButton) {

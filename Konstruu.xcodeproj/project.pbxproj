@@ -26,6 +26,8 @@
 		61BD68C21E6DEEF400B1A0E9 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61BD68C01E6DEEF400B1A0E9 /* ProfileViewController.swift */; };
 		61BD68C31E6DEEF400B1A0E9 /* ProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 61BD68C11E6DEEF400B1A0E9 /* ProfileViewController.xib */; };
 		61BD68CF1E6DF7B900B1A0E9 /* ChallengeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61BD68CD1E6DF7B900B1A0E9 /* ChallengeTableViewCell.swift */; };
+		61D757571EECC5D400DF0EA9 /* GettingStartedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D757551EECC5D400DF0EA9 /* GettingStartedViewController.swift */; };
+		61D757581EECC5D400DF0EA9 /* GettingStartedViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 61D757561EECC5D400DF0EA9 /* GettingStartedViewController.xib */; };
 		61E7C2DB1E9DB3AA0052B0E6 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61E7C2DA1E9DB3AA0052B0E6 /* User.swift */; };
 		61E7C2DD1E9DB3B60052B0E6 /* Challenge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61E7C2DC1E9DB3B60052B0E6 /* Challenge.swift */; };
 		61E7C2DF1E9DB3BD0052B0E6 /* Team.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61E7C2DE1E9DB3BD0052B0E6 /* Team.swift */; };
@@ -109,6 +111,8 @@
 		61BD68C01E6DEEF400B1A0E9 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		61BD68C11E6DEEF400B1A0E9 /* ProfileViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProfileViewController.xib; sourceTree = "<group>"; };
 		61BD68CD1E6DF7B900B1A0E9 /* ChallengeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChallengeTableViewCell.swift; sourceTree = "<group>"; };
+		61D757551EECC5D400DF0EA9 /* GettingStartedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GettingStartedViewController.swift; sourceTree = "<group>"; };
+		61D757561EECC5D400DF0EA9 /* GettingStartedViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GettingStartedViewController.xib; sourceTree = "<group>"; };
 		61E7C2DA1E9DB3AA0052B0E6 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		61E7C2DC1E9DB3B60052B0E6 /* Challenge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Challenge.swift; sourceTree = "<group>"; };
 		61E7C2DE1E9DB3BD0052B0E6 /* Team.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Team.swift; sourceTree = "<group>"; };
@@ -188,6 +192,8 @@
 				617ED0D21EAF11C5003639A6 /* SignUpWithEmailViewController.xib */,
 				6104FA4D1EBBDDD800444C3B /* LoginWithEmailViewController.swift */,
 				6104FA4E1EBBDDD800444C3B /* LoginWithEmailViewController.xib */,
+				61D757551EECC5D400DF0EA9 /* GettingStartedViewController.swift */,
+				61D757561EECC5D400DF0EA9 /* GettingStartedViewController.xib */,
 			);
 			name = "Login Page";
 			sourceTree = "<group>";
@@ -440,7 +446,7 @@
 				TargetAttributes = {
 					68C8E5571E6408AA00047901 = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = SKEZDL7MYB;
+						DevelopmentTeam = TLAM246JYZ;
 						LastSwiftMigration = 0830;
 						ProvisioningStyle = Automatic;
 					};
@@ -479,6 +485,7 @@
 				CA4D902F1EC269C500A74839 /* TeamsTableViewCell.xib in Resources */,
 				68C8E5661E6408AA00047901 /* LaunchScreen.storyboard in Resources */,
 				CAC85E251EE9E92800D5B7C8 /* ChallengeViewController.xib in Resources */,
+				61D757581EECC5D400DF0EA9 /* GettingStartedViewController.xib in Resources */,
 				CA3A89441E6F81820000D33E /* ChallengeTableViewCell.xib in Resources */,
 				687402471EA665EE00232634 /* OpenSans-BoldItalic.ttf in Resources */,
 				61BD68C31E6DEEF400B1A0E9 /* ProfileViewController.xib in Resources */,
@@ -570,6 +577,7 @@
 				6874025B1EAF014D00232634 /* ProfileSpecialityTableViewCell.swift in Sources */,
 				61E7C2DB1E9DB3AA0052B0E6 /* User.swift in Sources */,
 				61F7F87E1E6E076C0017461F /* CreateChallengeViewController.swift in Sources */,
+				61D757571EECC5D400DF0EA9 /* GettingStartedViewController.swift in Sources */,
 				61F7F8821E6E077D0017461F /* CreateTeamViewController.swift in Sources */,
 				618C69771EA2C2C500AA84B0 /* Badges.swift in Sources */,
 				CA4D902E1EC269C500A74839 /* TeamsTableViewCell.swift in Sources */,
@@ -707,7 +715,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = SKEZDL7MYB;
+				DEVELOPMENT_TEAM = TLAM246JYZ;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -758,7 +766,7 @@
 					"-isystem",
 					"\"${PODS_ROOT}/Headers/Public/GoogleSymbolUtilities\"",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.example123.Konstruu;
+				PRODUCT_BUNDLE_IDENTIFIER = com.frogandcode.Konstruu;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Konstruu/Konstruu-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -774,7 +782,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = SKEZDL7MYB;
+				DEVELOPMENT_TEAM = TLAM246JYZ;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -825,7 +833,7 @@
 					"\"${PODS_ROOT}/Headers/Public/GoogleSymbolUtilities\"",
 					"-isystem",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.example123.Konstruu;
+				PRODUCT_BUNDLE_IDENTIFIER = com.frogandcode.Konstruu;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Konstruu/Konstruu-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
