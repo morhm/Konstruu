@@ -32,8 +32,7 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
             
             self.teamTitleLabel.text = self.team?.name
             self.locationLabel.text = self.placeholderLocationText
-            self.teamDescriptionLabel.text = (self.team?.description ?? "no desc")
-            print (self.team?.description ?? "no description")
+            self.teamDescriptionLabel.text = (self.team?.desc ?? self.descriptionPlaceholderText)
             
             // if no requests, don't show requestsTableView
             if team != nil, team?.requestUserKeys.count == 0 {
