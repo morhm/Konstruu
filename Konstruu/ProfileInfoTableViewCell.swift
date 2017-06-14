@@ -144,6 +144,7 @@ class ProfileInfoTableViewCell: UITableViewCell, UITextFieldDelegate, UITextView
     profileImageButton.contentMode = .scaleAspectFill
     profileImageButton.contentHorizontalAlignment = .fill
     profileImageButton.contentVerticalAlignment = .fill
+    profileImageButton.adjustsImageWhenDisabled = false
     profileImageButton.isEnabled = false
     profileImageButton.addTarget(self, action: #selector(updateImage), for: UIControlEvents.touchUpInside)
 
@@ -516,10 +517,8 @@ class ProfileInfoTableViewCell: UITableViewCell, UITextFieldDelegate, UITextView
   func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
     if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
       //profileImage = pickedImage
-      user?.updateProfileImage(to: pickedImage.jpeg!, completed: { (data, error) in
-        //print(error)
-        self.profileImage = pickedImage
-      })
+      user?.imageUploadTask = user?.updateProfileImage(to: pickedImage.jpeg!, completed: nil)
+      profileImage = pickedImage
     }
     parentViewController.dismiss(animated: true, completion: nil)
   }
