@@ -30,6 +30,8 @@ class User: CustomStringConvertible {
     var teamKeys: [String] = []
     var searchText: String?
     
+    var imageUploadTask: FIRStorageUploadTask?
+    
     init(key: String, dictionary: Dictionary<String, AnyObject>) {
         self.key = key
         
@@ -92,14 +94,28 @@ class User: CustomStringConvertible {
     
     // reference: https://firebase.google.com/docs/storage/ios/download-files
     func getProfileImage(completed: ((UIImage?) -> Void)?) {
-        profileImageReference.data(withMaxSize: 100 * 1024 * 1024, completion: { data, error in
-            if error != nil || data == nil {
-                print("error in downloading user profile image:\n\(String(describing:error))")
-                completed?(#imageLiteral(resourceName: "Happy_Face"))
-            } else {
-                completed?(UIImage(data: data!))
-            }
-        })
+        if imageUploadTask != nil {
+            imageUploadTask!.observe(.success, handler: { [weak self] snapshot in
+                self?.profileImageReference.data(withMaxSize: 100 * 1024 * 1024, completion: { data, error in
+                    if error != nil || data == nil {
+                        print("error in downloading user profile image:\n\(String(describing:error))")
+                        completed?(#imageLiteral(resourceName: "Happy_Face"))
+                    } else {
+                        completed?(UIImage(data: data!))
+                    }
+                })
+                self?.imageUploadTask = nil
+            })
+        } else {
+            profileImageReference.data(withMaxSize: 100 * 1024 * 1024, completion: { data, error in
+                if error != nil || data == nil {
+                    print("error in downloading user profile image:\n\(String(describing:error))")
+                    completed?(#imageLiteral(resourceName: "Happy_Face"))
+                } else {
+                    completed?(UIImage(data: data!))
+                }
+            })
+        }
     }
     
     func getTeams(completed: (([Team]) -> Void)?) {

@@ -517,7 +517,7 @@ class ProfileInfoTableViewCell: UITableViewCell, UITextFieldDelegate, UITextView
   func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
     if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
       //profileImage = pickedImage
-      _ = user?.updateProfileImage(to: pickedImage.jpeg!, completed: nil)
+      user?.imageUploadTask = user?.updateProfileImage(to: pickedImage.jpeg!, completed: nil)
       profileImage = pickedImage
     }
     parentViewController.dismiss(animated: true, completion: nil)
