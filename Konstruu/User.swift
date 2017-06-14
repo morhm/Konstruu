@@ -92,7 +92,7 @@ class User: CustomStringConvertible {
     
     // reference: https://firebase.google.com/docs/storage/ios/download-files
     func getProfileImage(completed: ((UIImage?) -> Void)?) {
-        profileImageReference.data(withMaxSize: 1 * 1024 * 1024, completion: { data, error in
+        profileImageReference.data(withMaxSize: 100 * 1024 * 1024, completion: { data, error in
             if error != nil || data == nil {
                 print("error in downloading user profile image:\n\(String(describing:error))")
                 completed?(#imageLiteral(resourceName: "Happy_Face"))
