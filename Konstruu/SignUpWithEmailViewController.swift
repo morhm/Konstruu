@@ -35,9 +35,9 @@ class SignUpWithEmailViewController: UIViewController {
                     let user = API.createUserWithKey(firebaseUser!.uid, userInfo: userInfo)
                     user.registerForChat()
                     
-                    let tabBarVC = KonstruuTabBarController(nibName: "KonstruuTabBarController", bundle: nil)
-                    tabBarVC.user = user
-                    self?.present(tabBarVC, animated: true, completion: nil)
+                    let gettingStartedVC = GettingStartedViewController(nibName: "GettingStartedViewController", bundle: nil)
+                    gettingStartedVC.user = user
+                    self?.present(gettingStartedVC, animated: true, completion: nil)
                 }
             })
         }
