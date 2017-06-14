@@ -446,7 +446,7 @@
 				TargetAttributes = {
 					68C8E5571E6408AA00047901 = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = TLAM246JYZ;
+						DevelopmentTeam = SKEZDL7MYB;
 						LastSwiftMigration = 0830;
 						ProvisioningStyle = Automatic;
 					};
@@ -715,7 +715,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = TLAM246JYZ;
+				DEVELOPMENT_TEAM = SKEZDL7MYB;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -766,7 +766,7 @@
 					"-isystem",
 					"\"${PODS_ROOT}/Headers/Public/GoogleSymbolUtilities\"",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.example.Konstruu;
+				PRODUCT_BUNDLE_IDENTIFIER = com.example123.Konstruu;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Konstruu/Konstruu-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -782,7 +782,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = TLAM246JYZ;
+				DEVELOPMENT_TEAM = SKEZDL7MYB;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -833,7 +833,7 @@
 					"\"${PODS_ROOT}/Headers/Public/GoogleSymbolUtilities\"",
 					"-isystem",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.example.Konstruu;
+				PRODUCT_BUNDLE_IDENTIFIER = com.example123.Konstruu;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Konstruu/Konstruu-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;

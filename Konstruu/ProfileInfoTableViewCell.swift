@@ -46,7 +46,10 @@ class ProfileInfoTableViewCell: UITableViewCell, UITextFieldDelegate, UITextView
   let defaultLocationText = "Enter your location"
   let defaultDescriptionText = "Tell us more about who you are"
 
-    // MARK: - Data
+    
+  @IBOutlet weak var descHeightConstraint: NSLayoutConstraint?
+    
+  // MARK: - Data
   
   var user: User? {
       didSet {
@@ -61,31 +64,25 @@ class ProfileInfoTableViewCell: UITableViewCell, UITextFieldDelegate, UITextView
           user?.getProfileImage(completed: { [weak self] image in
               self?.profileImage = image
           })
-          messageButton.isHidden = user?.isCurrentUser() ?? false
-          editButton.isHidden = !(user?.isCurrentUser() ?? false)
+        
+          if (user?.isCurrentUser())! {
+              messageButton.isHidden = true
+              editButton.isHidden = false
+              descHeightConstraint!.constant = 8.0
+              print ("message button is hidden")
+          } else {
+              messageButton.isHidden = false
+              editButton.isHidden = true
+              descHeightConstraint!.constant = 38.0
+              print ("message button is not hidden")
+          }
+        
+          self.contentView.layoutIfNeeded()
       }
   }
     
   var parentViewController: UIViewController!
-  
-//  var educationText:String? = "Senior at Phoenix High School" {
-//    didSet {
-//      educationLabel.text = educationText
-//    }
-//  }
-//  
-//  var locationText:String? = "Enter H" {
-//    didSet {
-//      locationLabel.text = locationText
-//    }
-//  }
-  
-//  var descriptionText:String? = "" {
-//    didSet {
-//      descriptionLabel.text = descriptionText
-//    }
-//  }
-  
+    
   var profileImage:UIImage? {
     didSet {
       profileImageButton.setImage(profileImage, for: .normal)
@@ -138,7 +135,14 @@ class ProfileInfoTableViewCell: UITableViewCell, UITextFieldDelegate, UITextView
     }()
   
   private lazy var profileImageButton: UIButton = { [unowned self] in
-    let profileImageButton = UIButton()
+    let profileImageButton = UIButton(type: .custom)
+    profileImageButton.frame = CGRect(x: 160, y:100, width: .imageViewWidthConstraint, height: .imageViewHeightConstraint)
+    
+    profileImageButton.layer.borderWidth = 2.0
+    profileImageButton.layer.borderColor = UIColor.white.cgColor
+    
+    profileImageButton.layer.cornerRadius = 0.5 * profileImageButton.bounds.size.width
+    profileImageButton.clipsToBounds = true
     profileImageButton.setImage(self.profileImage, for: .normal)
     profileImageButton.imageView?.contentMode = .scaleAspectFill
     profileImageButton.contentMode = .scaleAspectFill
@@ -292,6 +296,9 @@ class ProfileInfoTableViewCell: UITableViewCell, UITextFieldDelegate, UITextView
     
     contentView.addSubview(descriptionLabel)
     contentView.addSubview(descriptionTextView)
+    
+    descHeightConstraint = NSLayoutConstraint(item:descriptionLabel, attribute:.top, relatedBy:.equal, toItem: locationLabel, attribute:.bottom, multiplier: 1, constant: 8.0)
+    contentView.addConstraint(descHeightConstraint!)
     
     usernameLabel.isHidden = false
     educationLabel.isHidden = false
@@ -449,7 +456,7 @@ class ProfileInfoTableViewCell: UITableViewCell, UITextFieldDelegate, UITextView
     //descriptionLabel
     
     //top
-    contentView.addConstraint(NSLayoutConstraint(item:descriptionLabel, attribute:.top, relatedBy:.equal, toItem: messageButton, attribute:.bottom, multiplier: 1, constant: .descriptionLabelTopConstraint))
+    //contentView.addConstraint(NSLayoutConstraint(item:descriptionLabel, attribute:.top, relatedBy:.equal, toItem: messageButton, attribute:.bottom, multiplier: 1, constant: .descriptionLabelTopConstraint))
     //left
     contentView.addConstraint(NSLayoutConstraint(item:descriptionLabel, attribute:.left, relatedBy:.equal, toItem: contentView, attribute:.left, multiplier: 1, constant: .descriptionLabelLeftConstraint))
     //right

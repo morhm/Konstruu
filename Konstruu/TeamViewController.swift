@@ -25,6 +25,8 @@ class RequestResponseButton : UIButton {
 
 class TeamViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
+    @IBOutlet weak var descTopConstraint: NSLayoutConstraint?
+    
     // MARK: - Data
     
     var team: Team? {
@@ -35,20 +37,32 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
             self.teamDescriptionLabel.text = (self.team?.desc ?? self.descriptionPlaceholderText)
             
             // if no requests, don't show requestsTableView
-            if team != nil, team?.requestUserKeys.count == 0 {
-                self.requestsTableView.isHidden = true
-            }
+//            if team != nil, team?.requestUserKeys.count == 0 {
+//                self.requestsTableView.isHidden = true
+//            }
             
             /* if user is part of team, dont show message button or join request button, otherwise show them both */
             API.getCurrentUser(completed: { [weak self] user in
                 if user != nil, self?.team != nil, self != nil, self?.team!.userKeys.index(of: user!.key) != nil {
                     self?.messageButton.isHidden = self!.team!.userKeys.count <= 1
                     self?.joinRequestButton.isHidden = true
+                    self?.requestsTableView.isHidden = false
+                    
+                    self?.descTopConstraint!.constant = 8.0
+                    
+                    if self!.team != nil, self!.team?.requestUserKeys.count == 0 {
+                        self!.requestsTableView.isHidden = true
+                    }
                 } else {
                     self?.messageButton.isHidden = true
                     self?.joinRequestButton.isHidden = false
                     self?.requestsTableView.isHidden = true
+                    
+                    self?.descTopConstraint!.constant = 38.0
+                    
                 }
+                
+                self?.view.layoutIfNeeded()
             })
         }
     }
@@ -75,6 +89,10 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
         requestsTableView.register(UINib(nibName: "RequestTableViewCell", bundle: nil), forCellReuseIdentifier: "request")
         
         addSubviews()
+        
+        descTopConstraint = NSLayoutConstraint(item:teamDescriptionLabel, attribute:.top, relatedBy:.equal, toItem: locationLabel, attribute:.bottom, multiplier: 1, constant: 8.0)
+        view.addConstraint(descTopConstraint!)
+        
         addConstraints()
     }
     
@@ -124,6 +142,7 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
     private lazy var tableHeaderRect: UIView = { [unowned self] in
         let headerRect = UIView()
         headerRect.backgroundColor = UIColor.white
+        headerRect.layer.cornerRadius = 5
         
         headerRect.translatesAutoresizingMaskIntoConstraints = false
         return headerRect
@@ -133,6 +152,7 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
     private lazy var headerRect: UIView = { [unowned self] in
         let headerRect = UIView()
         headerRect.backgroundColor = UIColor.white
+        headerRect.layer.cornerRadius = 5
         
         headerRect.translatesAutoresizingMaskIntoConstraints = false
         return headerRect
@@ -144,7 +164,6 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
         descriptionRect.translatesAutoresizingMaskIntoConstraints = false
         return descriptionRect
         }()
-    
     
     private lazy var teamImageView: UIImageView = { [unowned self] in
         let teamImageView = UIImageView()
@@ -231,6 +250,7 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
     private lazy var usersTableView: UITableView = { [unowned self] in
         let usersTableView = UITableView()
         usersTableView.backgroundColor = UIColor.white
+        usersTableView.layer.cornerRadius = 5.0
         
         usersTableView.delegate = self
         usersTableView.dataSource = self
@@ -251,6 +271,7 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
     private lazy var requestsTableView: UITableView = { [unowned self] in
         let requestsTableView = UITableView()
         requestsTableView.backgroundColor = UIColor.white
+        requestsTableView.layer.cornerRadius = 5.0
         
         requestsTableView.delegate = self
         requestsTableView.dataSource = self
@@ -342,10 +363,10 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
         //width
         headerRect.addConstraint(NSLayoutConstraint(item:messageButton, attribute:.width, relatedBy:.equal, toItem: nil, attribute:.notAnAttribute, multiplier: 1, constant: 80.0))
         
-        // locationLabel
+        // teamDescriptionLabel
         
         //top
-        headerRect.addConstraint(NSLayoutConstraint(item:teamDescriptionLabel, attribute:.top, relatedBy:.equal, toItem: joinRequestButton, attribute:.bottom, multiplier: 1, constant: .marginConstraint))
+//        headerRect.addConstraint(NSLayoutConstraint(item:teamDescriptionLabel, attribute:.top, relatedBy:.equal, toItem: joinRequestButton, attribute:.bottom, multiplier: 1, constant: .marginConstraint))
         //left
         headerRect.addConstraint(NSLayoutConstraint(item:teamDescriptionLabel, attribute:.left, relatedBy:.equal, toItem: headerRect, attribute:.left, multiplier: 1, constant: .marginConstraint))
         //right

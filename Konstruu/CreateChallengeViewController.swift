@@ -32,6 +32,15 @@ class CreateChallengeViewController: UIViewController, UITextViewDelegate {
     // MARK: - UI
     
 //    @IBOutlet weak var challengeNameTextField: UITextField!
+    
+    private lazy var backgroundView: UIImageView = { [unowned self] in
+        let backgroundView = UIImageView()
+        backgroundView.image = UIImage(named: "profileGradient.png")
+        backgroundView.contentMode = UIViewContentMode.scaleAspectFill
+        
+        backgroundView.translatesAutoresizingMaskIntoConstraints = false
+        return backgroundView
+    }()
   
     private lazy var challengeNameTextField: UITextView = { [unowned self] in
       let challengeNameTextField = UITextView()
@@ -152,6 +161,8 @@ class CreateChallengeViewController: UIViewController, UITextViewDelegate {
     // MARK: - Layout
   
     func addSubviews() {
+      view.addSubview(backgroundView)
+        view.sendSubview(toBack: backgroundView)
       view.addSubview(challengeNameTextField)
       view.addSubview(challengeDescriptionTextView)
       //view.addSubview(addPhotoButton)
@@ -160,6 +171,17 @@ class CreateChallengeViewController: UIViewController, UITextViewDelegate {
     }
   
     func addConstraints() {
+        
+        //backgroundView
+        //top
+        view.addConstraint(NSLayoutConstraint(item:backgroundView, attribute:.top, relatedBy:.equal, toItem: view, attribute:.top, multiplier: 1, constant: 0))
+        //bottom
+        view.addConstraint(NSLayoutConstraint(item:backgroundView, attribute:.bottom, relatedBy:.equal, toItem: view, attribute:.bottom, multiplier: 1, constant: 0))
+        //left
+        view.addConstraint(NSLayoutConstraint(item:backgroundView, attribute:.left, relatedBy:.equal, toItem: view, attribute:.left, multiplier: 1, constant: 0))
+        //right
+        view.addConstraint(NSLayoutConstraint(item:backgroundView, attribute:.right, relatedBy:.equal, toItem: view, attribute:.right, multiplier: 1, constant: 0))
+        
       //challengeNameTextField
       
       //top

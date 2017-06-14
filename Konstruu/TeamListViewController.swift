@@ -19,6 +19,15 @@ class TeamListViewController: UIViewController, UITableViewDataSource, UITableVi
         }
     }
     
+//    private lazy var backgroundView: UIImageView = { [unowned self] in
+//        let backgroundView = UIImageView()
+//        backgroundView.image = UIImage(named: "profileGradient.png")
+//        backgroundView.contentMode = UIViewContentMode.scaleAspectFill
+//        
+//        backgroundView.translatesAutoresizingMaskIntoConstraints = false
+//        return backgroundView
+//    }()
+    
     @IBOutlet weak var teamListTableView: UITableView! {
       didSet {
         teamListTableView.dataSource = self
@@ -39,6 +48,8 @@ class TeamListViewController: UIViewController, UITableViewDataSource, UITableVi
         self.title = "Your Teams"
       
         teamListTableView.register(UINib(nibName: "TeamsTableViewCell", bundle: nil), forCellReuseIdentifier: "teams")
+        
+        //view.addSubview(backgroundView)
     }
   
     override func viewWillAppear(_ animated: Bool) {
